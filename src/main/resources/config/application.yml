@@ -93,6 +93,11 @@ management:
 spring:
   application:
     name: jhipsterSampleApplication
+  activiti:
+    async-executor-activate: 'false'
+    check-process-definitions: 'false'
+    process-definition-location-prefix: /processes/
+    database-schema-update: 'true'
   profiles:
     # The commented value for `active` can be replaced with valid Spring profiles to load.
     # Otherwise, it will be filled in by maven when building the JAR file
@@ -153,7 +158,13 @@ spring:
   output:
     ansi:
       console-available: true
-
+  datasource:
+    driverClassName: com.mysql.jdbc.Driver
+    password: workflow
+    username: workflow
+    url: jdbc:mysql://localhost:3306/workflow-engine?useUnicode=yes&characterEncoding=UTF-8&useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true&nullCatalogMeansCurrent=true
+  liquibase:
+    enabled: 'false'
 server:
   servlet:
     session:
@@ -211,3 +222,28 @@ jhipster:
 # ===================================================================
 
 # application:
+log:
+  env:
+    profile: dev
+    logger:
+      level: info
+    module: activiti-workflow
+mybatis-plus:
+  global-config:
+    logic-not-delete-value: '0'
+    logic-delete-value: '1'
+    db-config:
+      id-type: auto
+  mapper-locations: classpath*:mapper/*Mapper.xml
+  configuration:
+    map-underscore-to-camel-case: 'true'
+server:
+  port: 8080
+logging:
+  level:
+    org:
+      activiti:
+        engine:
+          impl:
+            persistence:
+              entity: trace

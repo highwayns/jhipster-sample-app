@@ -18,6 +18,12 @@ logging:
     ROOT: INFO
     tech.jhipster: INFO
     io.github.jhipster.sample: INFO
+    org:
+      activiti:
+        engine:
+          impl:
+            persistence:
+              entity: trace
 
 management:
   metrics:
@@ -26,24 +32,38 @@ management:
         enabled: false
 
 spring:
+  activiti:
+    async-executor-activate: 'false'
+    check-process-definitions: 'false'
+    process-definition-location-prefix: /processes/
+    database-schema-update: 'true'
+  application:
+    name: activiti-workflow
   devtools:
     restart:
       enabled: false
     livereload:
       enabled: false
+  # datasource:
+  #   type: com.zaxxer.hikari.HikariDataSource
+  #   url: jdbc:postgresql://postgres/activitidb
+  #   username: activiti
+  #   password: mypassword
+  #   hikari:
+  #     poolName: Hikari
+  #     auto-commit: false
   datasource:
-    type: com.zaxxer.hikari.HikariDataSource
-    url: jdbc:postgresql://postgres/activitidb
-    username: activiti
-    password: mypassword
-    hikari:
-      poolName: Hikari
-      auto-commit: false
+    driverClassName: com.mysql.jdbc.Driver
+    password: workflow
+    username: workflow
+    url: jdbc:mysql://localhost:3306/workflow-engine?useUnicode=yes&characterEncoding=UTF-8&useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true&nullCatalogMeansCurrent=true
   jpa:
     database-platform: tech.jhipster.domain.util.FixedPostgreSQL10Dialect
   # Replace by 'prod, faker' to add the faker context and have sample data loaded in production
   liquibase:
     contexts: prod
+  # liquibase:
+  #   enabled: 'false'
   mail:
     host: localhost
     port: 25
@@ -124,3 +144,18 @@ jhipster:
 # ===================================================================
 
 # application:
+log:
+  env:
+    profile: dev
+    logger:
+      level: info
+    module: activiti-workflow
+mybatis-plus:
+  global-config:
+    logic-not-delete-value: '0'
+    logic-delete-value: '1'
+    db-config:
+      id-type: auto
+  mapper-locations: classpath*:mapper/*Mapper.xml
+  configuration:
+    map-underscore-to-camel-case: 'true'
