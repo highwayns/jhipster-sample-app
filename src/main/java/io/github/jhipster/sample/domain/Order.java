@@ -1,5 +1,6 @@
 package io.github.jhipster.sample.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
 import java.time.Instant;
 import javax.persistence.*;
@@ -45,6 +46,10 @@ public class Order implements Serializable {
     @OneToOne
     @JoinColumn(unique = true)
     private Address shippingAddress;
+
+    @ManyToOne
+    @JsonIgnoreProperties(value = { "orders" }, allowSetters = true)
+    private OrderLine orderLines;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
@@ -149,6 +154,19 @@ public class Order implements Serializable {
 
     public Order shippingAddress(Address address) {
         this.setShippingAddress(address);
+        return this;
+    }
+
+    public OrderLine getOrderLines() {
+        return this.orderLines;
+    }
+
+    public void setOrderLines(OrderLine orderLine) {
+        this.orderLines = orderLine;
+    }
+
+    public Order orderLines(OrderLine orderLine) {
+        this.setOrderLines(orderLine);
         return this;
     }
 

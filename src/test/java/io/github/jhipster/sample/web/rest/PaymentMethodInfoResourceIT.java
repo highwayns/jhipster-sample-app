@@ -7,7 +7,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import io.github.jhipster.sample.IntegrationTest;
 import io.github.jhipster.sample.domain.PaymentMethodInfo;
-import io.github.jhipster.sample.domain.enumeration.Currency;
 import io.github.jhipster.sample.repository.PaymentMethodInfoRepository;
 import java.util.List;
 import java.util.Random;
@@ -38,9 +37,6 @@ class PaymentMethodInfoResourceIT {
 
     private static final Boolean DEFAULT_SUPPORTS_TOKENISATION = false;
     private static final Boolean UPDATED_SUPPORTS_TOKENISATION = true;
-
-    private static final Currency DEFAULT_CURRENCIES = Currency.CNY;
-    private static final Currency UPDATED_CURRENCIES = Currency.JPY;
 
     private static final Double DEFAULT_SURCHARGE_AMOUNT = 1D;
     private static final Double UPDATED_SURCHARGE_AMOUNT = 2D;
@@ -85,7 +81,6 @@ class PaymentMethodInfoResourceIT {
             .paymentMethod(DEFAULT_PAYMENT_METHOD)
             .logo(DEFAULT_LOGO)
             .supportsTokenisation(DEFAULT_SUPPORTS_TOKENISATION)
-            .currencies(DEFAULT_CURRENCIES)
             .surchargeAmount(DEFAULT_SURCHARGE_AMOUNT)
             .surchargeAmountExclVat(DEFAULT_SURCHARGE_AMOUNT_EXCL_VAT)
             .surchargeAmountVat(DEFAULT_SURCHARGE_AMOUNT_VAT)
@@ -105,7 +100,6 @@ class PaymentMethodInfoResourceIT {
             .paymentMethod(UPDATED_PAYMENT_METHOD)
             .logo(UPDATED_LOGO)
             .supportsTokenisation(UPDATED_SUPPORTS_TOKENISATION)
-            .currencies(UPDATED_CURRENCIES)
             .surchargeAmount(UPDATED_SURCHARGE_AMOUNT)
             .surchargeAmountExclVat(UPDATED_SURCHARGE_AMOUNT_EXCL_VAT)
             .surchargeAmountVat(UPDATED_SURCHARGE_AMOUNT_VAT)
@@ -137,7 +131,6 @@ class PaymentMethodInfoResourceIT {
         assertThat(testPaymentMethodInfo.getPaymentMethod()).isEqualTo(DEFAULT_PAYMENT_METHOD);
         assertThat(testPaymentMethodInfo.getLogo()).isEqualTo(DEFAULT_LOGO);
         assertThat(testPaymentMethodInfo.getSupportsTokenisation()).isEqualTo(DEFAULT_SUPPORTS_TOKENISATION);
-        assertThat(testPaymentMethodInfo.getCurrencies()).isEqualTo(DEFAULT_CURRENCIES);
         assertThat(testPaymentMethodInfo.getSurchargeAmount()).isEqualTo(DEFAULT_SURCHARGE_AMOUNT);
         assertThat(testPaymentMethodInfo.getSurchargeAmountExclVat()).isEqualTo(DEFAULT_SURCHARGE_AMOUNT_EXCL_VAT);
         assertThat(testPaymentMethodInfo.getSurchargeAmountVat()).isEqualTo(DEFAULT_SURCHARGE_AMOUNT_VAT);
@@ -180,7 +173,6 @@ class PaymentMethodInfoResourceIT {
             .andExpect(jsonPath("$.[*].paymentMethod").value(hasItem(DEFAULT_PAYMENT_METHOD)))
             .andExpect(jsonPath("$.[*].logo").value(hasItem(DEFAULT_LOGO)))
             .andExpect(jsonPath("$.[*].supportsTokenisation").value(hasItem(DEFAULT_SUPPORTS_TOKENISATION.booleanValue())))
-            .andExpect(jsonPath("$.[*].currencies").value(hasItem(DEFAULT_CURRENCIES.toString())))
             .andExpect(jsonPath("$.[*].surchargeAmount").value(hasItem(DEFAULT_SURCHARGE_AMOUNT.doubleValue())))
             .andExpect(jsonPath("$.[*].surchargeAmountExclVat").value(hasItem(DEFAULT_SURCHARGE_AMOUNT_EXCL_VAT.doubleValue())))
             .andExpect(jsonPath("$.[*].surchargeAmountVat").value(hasItem(DEFAULT_SURCHARGE_AMOUNT_VAT.doubleValue())))
@@ -203,7 +195,6 @@ class PaymentMethodInfoResourceIT {
             .andExpect(jsonPath("$.paymentMethod").value(DEFAULT_PAYMENT_METHOD))
             .andExpect(jsonPath("$.logo").value(DEFAULT_LOGO))
             .andExpect(jsonPath("$.supportsTokenisation").value(DEFAULT_SUPPORTS_TOKENISATION.booleanValue()))
-            .andExpect(jsonPath("$.currencies").value(DEFAULT_CURRENCIES.toString()))
             .andExpect(jsonPath("$.surchargeAmount").value(DEFAULT_SURCHARGE_AMOUNT.doubleValue()))
             .andExpect(jsonPath("$.surchargeAmountExclVat").value(DEFAULT_SURCHARGE_AMOUNT_EXCL_VAT.doubleValue()))
             .andExpect(jsonPath("$.surchargeAmountVat").value(DEFAULT_SURCHARGE_AMOUNT_VAT.doubleValue()))
@@ -234,7 +225,6 @@ class PaymentMethodInfoResourceIT {
             .paymentMethod(UPDATED_PAYMENT_METHOD)
             .logo(UPDATED_LOGO)
             .supportsTokenisation(UPDATED_SUPPORTS_TOKENISATION)
-            .currencies(UPDATED_CURRENCIES)
             .surchargeAmount(UPDATED_SURCHARGE_AMOUNT)
             .surchargeAmountExclVat(UPDATED_SURCHARGE_AMOUNT_EXCL_VAT)
             .surchargeAmountVat(UPDATED_SURCHARGE_AMOUNT_VAT)
@@ -256,7 +246,6 @@ class PaymentMethodInfoResourceIT {
         assertThat(testPaymentMethodInfo.getPaymentMethod()).isEqualTo(UPDATED_PAYMENT_METHOD);
         assertThat(testPaymentMethodInfo.getLogo()).isEqualTo(UPDATED_LOGO);
         assertThat(testPaymentMethodInfo.getSupportsTokenisation()).isEqualTo(UPDATED_SUPPORTS_TOKENISATION);
-        assertThat(testPaymentMethodInfo.getCurrencies()).isEqualTo(UPDATED_CURRENCIES);
         assertThat(testPaymentMethodInfo.getSurchargeAmount()).isEqualTo(UPDATED_SURCHARGE_AMOUNT);
         assertThat(testPaymentMethodInfo.getSurchargeAmountExclVat()).isEqualTo(UPDATED_SURCHARGE_AMOUNT_EXCL_VAT);
         assertThat(testPaymentMethodInfo.getSurchargeAmountVat()).isEqualTo(UPDATED_SURCHARGE_AMOUNT_VAT);
@@ -334,7 +323,7 @@ class PaymentMethodInfoResourceIT {
         PaymentMethodInfo partialUpdatedPaymentMethodInfo = new PaymentMethodInfo();
         partialUpdatedPaymentMethodInfo.setId(paymentMethodInfo.getId());
 
-        partialUpdatedPaymentMethodInfo.currencies(UPDATED_CURRENCIES).surchargeAmount(UPDATED_SURCHARGE_AMOUNT);
+        partialUpdatedPaymentMethodInfo.surchargeAmount(UPDATED_SURCHARGE_AMOUNT).surchargeAmountExclVat(UPDATED_SURCHARGE_AMOUNT_EXCL_VAT);
 
         restPaymentMethodInfoMockMvc
             .perform(
@@ -351,9 +340,8 @@ class PaymentMethodInfoResourceIT {
         assertThat(testPaymentMethodInfo.getPaymentMethod()).isEqualTo(DEFAULT_PAYMENT_METHOD);
         assertThat(testPaymentMethodInfo.getLogo()).isEqualTo(DEFAULT_LOGO);
         assertThat(testPaymentMethodInfo.getSupportsTokenisation()).isEqualTo(DEFAULT_SUPPORTS_TOKENISATION);
-        assertThat(testPaymentMethodInfo.getCurrencies()).isEqualTo(UPDATED_CURRENCIES);
         assertThat(testPaymentMethodInfo.getSurchargeAmount()).isEqualTo(UPDATED_SURCHARGE_AMOUNT);
-        assertThat(testPaymentMethodInfo.getSurchargeAmountExclVat()).isEqualTo(DEFAULT_SURCHARGE_AMOUNT_EXCL_VAT);
+        assertThat(testPaymentMethodInfo.getSurchargeAmountExclVat()).isEqualTo(UPDATED_SURCHARGE_AMOUNT_EXCL_VAT);
         assertThat(testPaymentMethodInfo.getSurchargeAmountVat()).isEqualTo(DEFAULT_SURCHARGE_AMOUNT_VAT);
         assertThat(testPaymentMethodInfo.getSurchargeVatPercentage()).isEqualTo(DEFAULT_SURCHARGE_VAT_PERCENTAGE);
         assertThat(testPaymentMethodInfo.getDescription()).isEqualTo(DEFAULT_DESCRIPTION);
@@ -375,7 +363,6 @@ class PaymentMethodInfoResourceIT {
             .paymentMethod(UPDATED_PAYMENT_METHOD)
             .logo(UPDATED_LOGO)
             .supportsTokenisation(UPDATED_SUPPORTS_TOKENISATION)
-            .currencies(UPDATED_CURRENCIES)
             .surchargeAmount(UPDATED_SURCHARGE_AMOUNT)
             .surchargeAmountExclVat(UPDATED_SURCHARGE_AMOUNT_EXCL_VAT)
             .surchargeAmountVat(UPDATED_SURCHARGE_AMOUNT_VAT)
@@ -397,7 +384,6 @@ class PaymentMethodInfoResourceIT {
         assertThat(testPaymentMethodInfo.getPaymentMethod()).isEqualTo(UPDATED_PAYMENT_METHOD);
         assertThat(testPaymentMethodInfo.getLogo()).isEqualTo(UPDATED_LOGO);
         assertThat(testPaymentMethodInfo.getSupportsTokenisation()).isEqualTo(UPDATED_SUPPORTS_TOKENISATION);
-        assertThat(testPaymentMethodInfo.getCurrencies()).isEqualTo(UPDATED_CURRENCIES);
         assertThat(testPaymentMethodInfo.getSurchargeAmount()).isEqualTo(UPDATED_SURCHARGE_AMOUNT);
         assertThat(testPaymentMethodInfo.getSurchargeAmountExclVat()).isEqualTo(UPDATED_SURCHARGE_AMOUNT_EXCL_VAT);
         assertThat(testPaymentMethodInfo.getSurchargeAmountVat()).isEqualTo(UPDATED_SURCHARGE_AMOUNT_VAT);

@@ -135,6 +135,19 @@
             </option>
           </select>
         </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.order.orderLines" for="field_orderLines">Order Lines</label>
+          <select class="form-control" id="field_orderLines" data-cy="orderLines" name="orderLines" formControlName="orderLines">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="orderLineOption.id === editForm.get('orderLines')!.value?.id ? editForm.get('orderLines')!.value : orderLineOption"
+              *ngFor="let orderLineOption of orderLinesSharedCollection; trackBy: trackOrderLineById"
+            >
+              {{ orderLineOption.id }}
+            </option>
+          </select>
+        </div>
       </div>
 
       <div>

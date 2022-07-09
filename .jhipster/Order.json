@@ -48,6 +48,12 @@
       "ownerSide": true,
       "relationshipName": "shippingAddress",
       "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "orderLine",
+      "otherEntityRelationshipName": "order",
+      "relationshipName": "orderLines",
+      "relationshipType": "many-to-one"
     }
   ],
   "service": "no"

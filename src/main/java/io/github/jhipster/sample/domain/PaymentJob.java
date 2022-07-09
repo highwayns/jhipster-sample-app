@@ -86,7 +86,7 @@ public class PaymentJob implements Serializable {
     @Column(name = "last_processed_time_utc")
     private Instant lastProcessedTimeUtc;
 
-    @JsonIgnoreProperties(value = { "billingAddress", "billingIdentity", "shippingAddress" }, allowSetters = true)
+    @JsonIgnoreProperties(value = { "billingAddress", "billingIdentity", "shippingAddress", "orderLines" }, allowSetters = true)
     @OneToOne
     @JoinColumn(unique = true)
     private Order order;
@@ -98,6 +98,21 @@ public class PaymentJob implements Serializable {
     @OneToOne
     @JoinColumn(unique = true)
     private RecurrenceCriteria recurrenceCriteria;
+
+    @ManyToOne
+    @JsonIgnoreProperties(value = { "billingAddress", "billingIdentity", "shippingAddress", "orderLines" }, allowSetters = true)
+    private Order orderHistory;
+
+    @ManyToOne
+    @JsonIgnoreProperties(value = { "payments", "paymentSteps", "paymentJobs" }, allowSetters = true)
+    private PaymentMethods paymentMethodsToUse;
+
+    @ManyToOne
+    @JsonIgnoreProperties(
+        value = { "lastErrorReport", "abuseReport", "attributes", "paymentJobs", "paymentMethods", "steps", "refunds", "captures" },
+        allowSetters = true
+    )
+    private Payment payments;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
@@ -397,6 +412,45 @@ public class PaymentJob implements Serializable {
 
     public PaymentJob recurrenceCriteria(RecurrenceCriteria recurrenceCriteria) {
         this.setRecurrenceCriteria(recurrenceCriteria);
+        return this;
+    }
+
+    public Order getOrderHistory() {
+        return this.orderHistory;
+    }
+
+    public void setOrderHistory(Order order) {
+        this.orderHistory = order;
+    }
+
+    public PaymentJob orderHistory(Order order) {
+        this.setOrderHistory(order);
+        return this;
+    }
+
+    public PaymentMethods getPaymentMethodsToUse() {
+        return this.paymentMethodsToUse;
+    }
+
+    public void setPaymentMethodsToUse(PaymentMethods paymentMethods) {
+        this.paymentMethodsToUse = paymentMethods;
+    }
+
+    public PaymentJob paymentMethodsToUse(PaymentMethods paymentMethods) {
+        this.setPaymentMethodsToUse(paymentMethods);
+        return this;
+    }
+
+    public Payment getPayments() {
+        return this.payments;
+    }
+
+    public void setPayments(Payment payment) {
+        this.payments = payment;
+    }
+
+    public PaymentJob payments(Payment payment) {
+        this.setPayments(payment);
         return this;
     }
 

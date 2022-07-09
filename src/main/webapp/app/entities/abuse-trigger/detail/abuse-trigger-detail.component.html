@@ -28,6 +28,12 @@
         <dd>
           <span>{{ abuseTrigger.description }}</span>
         </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.abuseTrigger.parameters">Parameters</span></dt>
+        <dd>
+          <div *ngIf="abuseTrigger.parameters">
+            <a [routerLink]="['/parameters', abuseTrigger.parameters?.id, 'view']">{{ abuseTrigger.parameters?.id }}</a>
+          </div>
+        </dd>
       </dl>
 
       <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">

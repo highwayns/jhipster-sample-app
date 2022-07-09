@@ -40,6 +40,7 @@
           <th scope="col"><span jhiTranslate="jhipsterSampleApplicationApp.order.billingAddress">Billing Address</span></th>
           <th scope="col"><span jhiTranslate="jhipsterSampleApplicationApp.order.billingIdentity">Billing Identity</span></th>
           <th scope="col"><span jhiTranslate="jhipsterSampleApplicationApp.order.shippingAddress">Shipping Address</span></th>
+          <th scope="col"><span jhiTranslate="jhipsterSampleApplicationApp.order.orderLines">Order Lines</span></th>
           <th scope="col"></th>
         </tr>
       </thead>
@@ -65,6 +66,11 @@
           <td>
             <div *ngIf="order.shippingAddress">
               <a [routerLink]="['/address', order.shippingAddress?.id, 'view']">{{ order.shippingAddress?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="order.orderLines">
+              <a [routerLink]="['/order-line', order.orderLines?.id, 'view']">{{ order.orderLines?.id }}</a>
             </div>
           </td>
           <td class="text-end">

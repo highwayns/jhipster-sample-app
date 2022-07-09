@@ -125,6 +125,19 @@
             formControlName="conversionRate"
           />
         </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.refund.steps" for="field_steps">Steps</label>
+          <select class="form-control" id="field_steps" data-cy="steps" name="steps" formControlName="steps">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="refundStepOption.id === editForm.get('steps')!.value?.id ? editForm.get('steps')!.value : refundStepOption"
+              *ngFor="let refundStepOption of refundStepsSharedCollection; trackBy: trackRefundStepById"
+            >
+              {{ refundStepOption.id }}
+            </option>
+          </select>
+        </div>
       </div>
 
       <div>

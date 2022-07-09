@@ -8,6 +8,8 @@ import { of, Subject, from } from 'rxjs';
 
 import { PaymentStepService } from '../service/payment-step.service';
 import { IPaymentStep, PaymentStep } from '../payment-step.model';
+import { IPaymentMethods } from 'app/entities/payment-methods/payment-methods.model';
+import { PaymentMethodsService } from 'app/entities/payment-methods/service/payment-methods.service';
 
 import { PaymentStepUpdateComponent } from './payment-step-update.component';
 
@@ -16,6 +18,7 @@ describe('PaymentStep Management Update Component', () => {
   let fixture: ComponentFixture<PaymentStepUpdateComponent>;
   let activatedRoute: ActivatedRoute;
   let paymentStepService: PaymentStepService;
+  let paymentMethodsService: PaymentMethodsService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -37,18 +40,44 @@ describe('PaymentStep Management Update Component', () => {
     fixture = TestBed.createComponent(PaymentStepUpdateComponent);
     activatedRoute = TestBed.inject(ActivatedRoute);
     paymentStepService = TestBed.inject(PaymentStepService);
+    paymentMethodsService = TestBed.inject(PaymentMethodsService);
 
     comp = fixture.componentInstance;
   });
 
   describe('ngOnInit', () => {
+    it('Should call PaymentMethods query and add missing value', () => {
+      const paymentStep: IPaymentStep = { id: 456 };
+      const paymentMethods: IPaymentMethods = { id: 89075 };
+      paymentStep.paymentMethods = paymentMethods;
+
+      const paymentMethodsCollection: IPaymentMethods[] = [{ id: 58629 }];
+      jest.spyOn(paymentMethodsService, 'query').mockReturnValue(of(new HttpResponse({ body: paymentMethodsCollection })));
+      const additionalPaymentMethods = [paymentMethods];
+      const expectedCollection: IPaymentMethods[] = [...additionalPaymentMethods, ...paymentMethodsCollection];
+      jest.spyOn(paymentMethodsService, 'addPaymentMethodsToCollectionIfMissing').mockReturnValue(expectedCollection);
+
+      activatedRoute.data = of({ paymentStep });
+      comp.ngOnInit();
+
+      expect(paymentMethodsService.query).toHaveBeenCalled();
+      expect(paymentMethodsService.addPaymentMethodsToCollectionIfMissing).toHaveBeenCalledWith(
+        paymentMethodsCollection,
+        ...additionalPaymentMethods
+      );
+      expect(comp.paymentMethodsSharedCollection).toEqual(expectedCollection);
+    });
+
     it('Should update editForm', () => {
       const paymentStep: IPaymentStep = { id: 456 };
+      const paymentMethods: IPaymentMethods = { id: 59855 };
+      paymentStep.paymentMethods = paymentMethods;
 
       activatedRoute.data = of({ paymentStep });
       comp.ngOnInit();
 
       expect(comp.editForm.value).toEqual(expect.objectContaining(paymentStep));
+      expect(comp.paymentMethodsSharedCollection).toContain(paymentMethods);
     });
   });
 
@@ -113,6 +142,16 @@ describe('PaymentStep Management Update Component', () => {
       expect(paymentStepService.update).toHaveBeenCalledWith(paymentStep);
       expect(comp.isSaving).toEqual(false);
       expect(comp.previousState).not.toHaveBeenCalled();
+    });
+  });
+
+  describe('Tracking relationships identifiers', () => {
+    describe('trackPaymentMethodsById', () => {
+      it('Should return tracked PaymentMethods primary key', () => {
+        const entity = { id: 123 };
+        const trackResult = comp.trackPaymentMethodsById(0, entity);
+        expect(trackResult).toEqual(entity.id);
+      });
     });
   });
 });

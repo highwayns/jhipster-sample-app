@@ -22,7 +22,9 @@
       "createDateTimeUtc": "Create Date Time Utc",
       "action": "Action",
       "status": "Status",
-      "amountToCollect": "Amount To Collect"
+      "amountToCollect": "Amount To Collect",
+      "payment": "Payment",
+      "paymentMethods": "Payment Methods"
     }
   }
 }

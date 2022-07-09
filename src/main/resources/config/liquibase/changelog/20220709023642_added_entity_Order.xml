@@ -35,6 +35,9 @@
             <column name="shipping_address_id" type="bigint">
                 <constraints nullable="true" unique="true" uniqueConstraintName="ux_jhi_order__shipping_address_id" />
             </column>
+            <column name="order_lines_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
         </createTable>
         <dropDefaultValue tableName="jhi_order" columnName="create_date_time_utc" columnDataType="${datetimeType}"/>

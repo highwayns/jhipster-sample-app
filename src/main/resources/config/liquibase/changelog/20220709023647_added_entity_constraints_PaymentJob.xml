@@ -25,5 +25,23 @@
                                  constraintName="fk_payment_job__recurrence_criteria_id"
                                  referencedColumnNames="id"
                                  referencedTableName="recurrence_criteria"/>
+
+        <addForeignKeyConstraint baseColumnNames="order_history_id"
+                                 baseTableName="payment_job"
+                                 constraintName="fk_payment_job__order_history_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="jhi_order"/>
+
+        <addForeignKeyConstraint baseColumnNames="payment_methods_to_use_id"
+                                 baseTableName="payment_job"
+                                 constraintName="fk_payment_job__payment_methods_to_use_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="payment_methods"/>
+
+        <addForeignKeyConstraint baseColumnNames="payments_id"
+                                 baseTableName="payment_job"
+                                 constraintName="fk_payment_job__payments_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="payment"/>
     </changeSet>
 </databaseChangeLog>

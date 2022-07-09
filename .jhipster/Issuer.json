@@ -19,6 +19,13 @@
   "name": "Issuer",
   "pagination": "no",
   "readOnly": false,
-  "relationships": [],
+  "relationships": [
+    {
+      "otherEntityName": "paymentMethodInfo",
+      "otherEntityRelationshipName": "issuerList",
+      "relationshipName": "paymentMethodInfo",
+      "relationshipType": "one-to-many"
+    }
+  ],
   "service": "no"
 }

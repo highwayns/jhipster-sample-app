@@ -1,9 +1,12 @@
 package io.github.jhipster.sample.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import io.github.jhipster.sample.domain.enumeration.Currency;
 import io.github.jhipster.sample.domain.enumeration.RefundStatus;
 import java.io.Serializable;
 import java.time.Instant;
+import java.util.HashSet;
+import java.util.Set;
 import javax.persistence.*;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
@@ -49,6 +52,18 @@ public class Refund implements Serializable {
 
     @Column(name = "conversion_rate")
     private Double conversionRate;
+
+    @OneToMany(mappedBy = "refunds")
+    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+    @JsonIgnoreProperties(
+        value = { "lastErrorReport", "abuseReport", "attributes", "paymentJobs", "paymentMethods", "steps", "refunds", "captures" },
+        allowSetters = true
+    )
+    private Set<Payment> payments = new HashSet<>();
+
+    @ManyToOne
+    @JsonIgnoreProperties(value = { "resultAttributes", "refunds" }, allowSetters = true)
+    private RefundStep steps;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
@@ -167,6 +182,50 @@ public class Refund implements Serializable {
 
     public void setConversionRate(Double conversionRate) {
         this.conversionRate = conversionRate;
+    }
+
+    public Set<Payment> getPayments() {
+        return this.payments;
+    }
+
+    public void setPayments(Set<Payment> payments) {
+        if (this.payments != null) {
+            this.payments.forEach(i -> i.setRefunds(null));
+        }
+        if (payments != null) {
+            payments.forEach(i -> i.setRefunds(this));
+        }
+        this.payments = payments;
+    }
+
+    public Refund payments(Set<Payment> payments) {
+        this.setPayments(payments);
+        return this;
+    }
+
+    public Refund addPayment(Payment payment) {
+        this.payments.add(payment);
+        payment.setRefunds(this);
+        return this;
+    }
+
+    public Refund removePayment(Payment payment) {
+        this.payments.remove(payment);
+        payment.setRefunds(null);
+        return this;
+    }
+
+    public RefundStep getSteps() {
+        return this.steps;
+    }
+
+    public void setSteps(RefundStep refundStep) {
+        this.steps = refundStep;
+    }
+
+    public Refund steps(RefundStep refundStep) {
+        this.setSteps(refundStep);
+        return this;
     }
 
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here

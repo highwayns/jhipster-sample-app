@@ -24,6 +24,18 @@
         <dd>
           <span>{{ errorReport.isFatalError }}</span>
         </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.errorReport.errors">Errors</span></dt>
+        <dd>
+          <div *ngIf="errorReport.errors">
+            <a [routerLink]="['/entry', errorReport.errors?.id, 'view']">{{ errorReport.errors?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.errorReport.warnings">Warnings</span></dt>
+        <dd>
+          <div *ngIf="errorReport.warnings">
+            <a [routerLink]="['/entry', errorReport.warnings?.id, 'view']">{{ errorReport.warnings?.id }}</a>
+          </div>
+        </dd>
       </dl>
 
       <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">

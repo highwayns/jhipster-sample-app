@@ -24,7 +24,8 @@
       "customerReference": "Customer Reference",
       "billingAddress": "Billing Address",
       "billingIdentity": "Billing Identity",
-      "shippingAddress": "Shipping Address"
+      "shippingAddress": "Shipping Address",
+      "orderLines": "Order Lines"
     }
   }
 }

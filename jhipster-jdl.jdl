@@ -182,7 +182,6 @@ entity PaymentMethodInfo {
 	paymentMethod String,
 	logo String,
     supportsTokenisation Boolean,
-    currencies Currency,
     surchargeAmount Double,
     surchargeAmountExclVat Double,
     surchargeAmountVat Double,
@@ -246,6 +245,30 @@ relationship OneToOne {
     PaymentJob{attributes} to PaymentJobAttributes,
     PaymentJob{recurrenceCriteria} to RecurrenceCriteria,
     RefundStep{resultAttributes} to ResultAttributes
+}
+
+relationship OneToMany {
+	AbuseTrigger to AbuseReport{triggers},
+    Parameters to AbuseTrigger{parameters},
+    Parameters to Entry{parameters},
+    OrderLine to Order{orderLines},
+    PaymentMethods to Payment{paymentMethods},
+    PaymentMethods to PaymentStep{paymentMethods},
+    PaymentMethods to PaymentJob{paymentMethodsToUse},
+    Currencys to PaymentMethodInfo{currencies},
+    PaymentStep to Payment{steps},
+    Refund to Payment{refunds},
+    Capture to Payment{captures},
+    RefundStep to Refund{steps},
+    Payment to PaymentJob{payments},
+    Issuer to PaymentMethodInfo{issuerList},
+    CardTokenData to PaymentMethodInfo{tokenizedCards}
+}
+
+relationship ManyToOne {
+    ErrorReport{errors} to Entry,
+    ErrorReport{warnings} to Entry,
+    PaymentJob{orderHistory} to Order
 }
 
 enum Country {

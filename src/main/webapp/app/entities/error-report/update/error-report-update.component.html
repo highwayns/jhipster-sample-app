@@ -40,6 +40,32 @@
             formControlName="isFatalError"
           />
         </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.errorReport.errors" for="field_errors">Errors</label>
+          <select class="form-control" id="field_errors" data-cy="errors" name="errors" formControlName="errors">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="entryOption.id === editForm.get('errors')!.value?.id ? editForm.get('errors')!.value : entryOption"
+              *ngFor="let entryOption of entriesSharedCollection; trackBy: trackEntryById"
+            >
+              {{ entryOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.errorReport.warnings" for="field_warnings">Warnings</label>
+          <select class="form-control" id="field_warnings" data-cy="warnings" name="warnings" formControlName="warnings">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="entryOption.id === editForm.get('warnings')!.value?.id ? editForm.get('warnings')!.value : entryOption"
+              *ngFor="let entryOption of entriesSharedCollection; trackBy: trackEntryById"
+            >
+              {{ entryOption.id }}
+            </option>
+          </select>
+        </div>
       </div>
 
       <div>

@@ -38,7 +38,6 @@
           <th scope="col">
             <span jhiTranslate="jhipsterSampleApplicationApp.paymentMethodInfo.supportsTokenisation">Supports Tokenisation</span>
           </th>
-          <th scope="col"><span jhiTranslate="jhipsterSampleApplicationApp.paymentMethodInfo.currencies">Currencies</span></th>
           <th scope="col"><span jhiTranslate="jhipsterSampleApplicationApp.paymentMethodInfo.surchargeAmount">Surcharge Amount</span></th>
           <th scope="col">
             <span jhiTranslate="jhipsterSampleApplicationApp.paymentMethodInfo.surchargeAmountExclVat">Surcharge Amount Excl Vat</span>
@@ -50,6 +49,9 @@
             <span jhiTranslate="jhipsterSampleApplicationApp.paymentMethodInfo.surchargeVatPercentage">Surcharge Vat Percentage</span>
           </th>
           <th scope="col"><span jhiTranslate="jhipsterSampleApplicationApp.paymentMethodInfo.description">Description</span></th>
+          <th scope="col"><span jhiTranslate="jhipsterSampleApplicationApp.paymentMethodInfo.currencies">Currencies</span></th>
+          <th scope="col"><span jhiTranslate="jhipsterSampleApplicationApp.paymentMethodInfo.issuerList">Issuer List</span></th>
+          <th scope="col"><span jhiTranslate="jhipsterSampleApplicationApp.paymentMethodInfo.tokenizedCards">Tokenized Cards</span></th>
           <th scope="col"></th>
         </tr>
       </thead>
@@ -61,14 +63,28 @@
           <td>{{ paymentMethodInfo.paymentMethod }}</td>
           <td>{{ paymentMethodInfo.logo }}</td>
           <td>{{ paymentMethodInfo.supportsTokenisation }}</td>
-          <td jhiTranslate="{{ 'jhipsterSampleApplicationApp.Currency.' + paymentMethodInfo.currencies }}">
-            {{ paymentMethodInfo.currencies }}
-          </td>
           <td>{{ paymentMethodInfo.surchargeAmount }}</td>
           <td>{{ paymentMethodInfo.surchargeAmountExclVat }}</td>
           <td>{{ paymentMethodInfo.surchargeAmountVat }}</td>
           <td>{{ paymentMethodInfo.surchargeVatPercentage }}</td>
           <td>{{ paymentMethodInfo.description }}</td>
+          <td>
+            <div *ngIf="paymentMethodInfo.currencies">
+              <a [routerLink]="['/currencys', paymentMethodInfo.currencies?.id, 'view']">{{ paymentMethodInfo.currencies?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="paymentMethodInfo.issuerList">
+              <a [routerLink]="['/issuer', paymentMethodInfo.issuerList?.id, 'view']">{{ paymentMethodInfo.issuerList?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="paymentMethodInfo.tokenizedCards">
+              <a [routerLink]="['/card-token-data', paymentMethodInfo.tokenizedCards?.id, 'view']">{{
+                paymentMethodInfo.tokenizedCards?.id
+              }}</a>
+            </div>
+          </td>
           <td class="text-end">
             <div class="btn-group">
               <button

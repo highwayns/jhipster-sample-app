@@ -23,9 +23,6 @@
             <column name="supports_tokenisation" type="boolean">
                 <constraints nullable="true" />
             </column>
-            <column name="currencies" type="varchar(255)">
-                <constraints nullable="true" />
-            </column>
             <column name="surcharge_amount" type="double">
                 <constraints nullable="true" />
             </column>
@@ -39,6 +36,15 @@
                 <constraints nullable="true" />
             </column>
             <column name="description" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="currencies_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="issuer_list_id" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="tokenized_cards_id" type="bigint">
                 <constraints nullable="true" />
             </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
@@ -65,7 +71,6 @@
             <column name="payment_method" type="string"/>
             <column name="logo" type="string"/>
             <column name="supports_tokenisation" type="boolean"/>
-            <column name="currencies" type="string"/>
             <column name="surcharge_amount" type="numeric"/>
             <column name="surcharge_amount_excl_vat" type="numeric"/>
             <column name="surcharge_amount_vat" type="numeric"/>

@@ -1,5 +1,6 @@
 package io.github.jhipster.sample.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
 import java.time.Instant;
 import javax.persistence.*;
@@ -27,6 +28,10 @@ public class AbuseReport implements Serializable {
 
     @Column(name = "created_date_time_utc")
     private Instant createdDateTimeUtc;
+
+    @ManyToOne
+    @JsonIgnoreProperties(value = { "abuseReports", "parameters" }, allowSetters = true)
+    private AbuseTrigger triggers;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
@@ -67,6 +72,19 @@ public class AbuseReport implements Serializable {
 
     public void setCreatedDateTimeUtc(Instant createdDateTimeUtc) {
         this.createdDateTimeUtc = createdDateTimeUtc;
+    }
+
+    public AbuseTrigger getTriggers() {
+        return this.triggers;
+    }
+
+    public void setTriggers(AbuseTrigger abuseTrigger) {
+        this.triggers = abuseTrigger;
+    }
+
+    public AbuseReport triggers(AbuseTrigger abuseTrigger) {
+        this.setTriggers(abuseTrigger);
+        return this;
     }
 
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here

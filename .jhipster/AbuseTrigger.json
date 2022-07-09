@@ -23,6 +23,19 @@
   "name": "AbuseTrigger",
   "pagination": "no",
   "readOnly": false,
-  "relationships": [],
+  "relationships": [
+    {
+      "otherEntityName": "abuseReport",
+      "otherEntityRelationshipName": "triggers",
+      "relationshipName": "abuseReport",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "parameters",
+      "otherEntityRelationshipName": "abuseTrigger",
+      "relationshipName": "parameters",
+      "relationshipType": "many-to-one"
+    }
+  ],
   "service": "no"
 }

@@ -20,6 +20,12 @@
             <column name="is_fatal_error" type="boolean">
                 <constraints nullable="true" />
             </column>
+            <column name="errors_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="warnings_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
         </createTable>
     </changeSet>

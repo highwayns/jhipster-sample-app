@@ -18,11 +18,6 @@
       "fieldType": "Boolean"
     },
     {
-      "fieldName": "currencies",
-      "fieldType": "Currency",
-      "fieldValues": "CNY,JPY,USD,EUR,RUB,BTC,ETH"
-    },
-    {
       "fieldName": "surchargeAmount",
       "fieldType": "Double"
     },
@@ -48,6 +43,25 @@
   "name": "PaymentMethodInfo",
   "pagination": "no",
   "readOnly": false,
-  "relationships": [],
+  "relationships": [
+    {
+      "otherEntityName": "currencys",
+      "otherEntityRelationshipName": "paymentMethodInfo",
+      "relationshipName": "currencies",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "issuer",
+      "otherEntityRelationshipName": "paymentMethodInfo",
+      "relationshipName": "issuerList",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "cardTokenData",
+      "otherEntityRelationshipName": "paymentMethodInfo",
+      "relationshipName": "tokenizedCards",
+      "relationshipType": "many-to-one"
+    }
+  ],
   "service": "no"
 }

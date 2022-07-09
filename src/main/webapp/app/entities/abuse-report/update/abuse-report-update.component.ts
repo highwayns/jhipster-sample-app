@@ -3,13 +3,15 @@ import { HttpResponse } from '@angular/common/http';
 import { FormBuilder } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
-import { finalize } from 'rxjs/operators';
+import { finalize, map } from 'rxjs/operators';
 
 import dayjs from 'dayjs/esm';
 import { DATE_TIME_FORMAT } from 'app/config/input.constants';
 
 import { IAbuseReport, AbuseReport } from '../abuse-report.model';
 import { AbuseReportService } from '../service/abuse-report.service';
+import { IAbuseTrigger } from 'app/entities/abuse-trigger/abuse-trigger.model';
+import { AbuseTriggerService } from 'app/entities/abuse-trigger/service/abuse-trigger.service';
 
 @Component({
   selector: 'jhi-abuse-report-update',
@@ -18,13 +20,21 @@ import { AbuseReportService } from '../service/abuse-report.service';
 export class AbuseReportUpdateComponent implements OnInit {
   isSaving = false;
 
+  abuseTriggersSharedCollection: IAbuseTrigger[] = [];
+
   editForm = this.fb.group({
     id: [],
     score: [],
     createdDateTimeUtc: [],
+    triggers: [],
   });
 
-  constructor(protected abuseReportService: AbuseReportService, protected activatedRoute: ActivatedRoute, protected fb: FormBuilder) {}
+  constructor(
+    protected abuseReportService: AbuseReportService,
+    protected abuseTriggerService: AbuseTriggerService,
+    protected activatedRoute: ActivatedRoute,
+    protected fb: FormBuilder
+  ) {}
 
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(({ abuseReport }) => {
@@ -34,6 +44,8 @@ export class AbuseReportUpdateComponent implements OnInit {
       }
 
       this.updateForm(abuseReport);
+
+      this.loadRelationshipsOptions();
     });
   }
 
@@ -49,6 +61,10 @@ export class AbuseReportUpdateComponent implements OnInit {
     } else {
       this.subscribeToSaveResponse(this.abuseReportService.create(abuseReport));
     }
+  }
+
+  trackAbuseTriggerById(_index: number, item: IAbuseTrigger): number {
+    return item.id!;
   }
 
   protected subscribeToSaveResponse(result: Observable<HttpResponse<IAbuseReport>>): void {
@@ -75,7 +91,25 @@ export class AbuseReportUpdateComponent implements OnInit {
       id: abuseReport.id,
       score: abuseReport.score,
       createdDateTimeUtc: abuseReport.createdDateTimeUtc ? abuseReport.createdDateTimeUtc.format(DATE_TIME_FORMAT) : null,
+      triggers: abuseReport.triggers,
     });
+
+    this.abuseTriggersSharedCollection = this.abuseTriggerService.addAbuseTriggerToCollectionIfMissing(
+      this.abuseTriggersSharedCollection,
+      abuseReport.triggers
+    );
+  }
+
+  protected loadRelationshipsOptions(): void {
+    this.abuseTriggerService
+      .query()
+      .pipe(map((res: HttpResponse<IAbuseTrigger[]>) => res.body ?? []))
+      .pipe(
+        map((abuseTriggers: IAbuseTrigger[]) =>
+          this.abuseTriggerService.addAbuseTriggerToCollectionIfMissing(abuseTriggers, this.editForm.get('triggers')!.value)
+        )
+      )
+      .subscribe((abuseTriggers: IAbuseTrigger[]) => (this.abuseTriggersSharedCollection = abuseTriggers));
   }
 
   protected createFromForm(): IAbuseReport {
@@ -86,6 +120,7 @@ export class AbuseReportUpdateComponent implements OnInit {
       createdDateTimeUtc: this.editForm.get(['createdDateTimeUtc'])!.value
         ? dayjs(this.editForm.get(['createdDateTimeUtc'])!.value, DATE_TIME_FORMAT)
         : undefined,
+      triggers: this.editForm.get(['triggers'])!.value,
     };
   }
 }

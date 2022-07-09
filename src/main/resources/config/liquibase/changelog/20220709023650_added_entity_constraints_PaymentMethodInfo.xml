@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd">
+    <!--
+        Added the constraints for entity PaymentMethodInfo.
+    -->
+    <changeSet id="20220709023650-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="currencies_id"
+                                 baseTableName="payment_method_info"
+                                 constraintName="fk_payment_method_info__currencies_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="currencys"/>
+
+        <addForeignKeyConstraint baseColumnNames="issuer_list_id"
+                                 baseTableName="payment_method_info"
+                                 constraintName="fk_payment_method_info__issuer_list_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="issuer"/>
+
+        <addForeignKeyConstraint baseColumnNames="tokenized_cards_id"
+                                 baseTableName="payment_method_info"
+                                 constraintName="fk_payment_method_info__tokenized_cards_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="card_token_data"/>
+    </changeSet>
+</databaseChangeLog>

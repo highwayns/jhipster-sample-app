@@ -20,7 +20,9 @@
       "id": "ID",
       "score": "Score",
       "code": "Code",
-      "description": "Description"
+      "description": "Description",
+      "abuseReport": "Abuse Report",
+      "parameters": "Parameters"
     }
   }
 }

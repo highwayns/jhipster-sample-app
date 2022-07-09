@@ -38,6 +38,9 @@
             <column name="conversion_rate" type="double">
                 <constraints nullable="true" />
             </column>
+            <column name="steps_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
         </createTable>
         <dropDefaultValue tableName="refund" columnName="create_date_time_utc" columnDataType="${datetimeType}"/>

@@ -26,6 +26,12 @@
         <dd>
           <span>{{ entry.translatedMessage }}</span>
         </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.entry.parameters">Parameters</span></dt>
+        <dd>
+          <div *ngIf="entry.parameters">
+            <a [routerLink]="['/parameters', entry.parameters?.id, 'view']">{{ entry.parameters?.id }}</a>
+          </div>
+        </dd>
       </dl>
 
       <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">

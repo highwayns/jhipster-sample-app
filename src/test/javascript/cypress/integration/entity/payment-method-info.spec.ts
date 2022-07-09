@@ -155,17 +155,15 @@ describe('PaymentMethodInfo e2e test', () => {
       cy.get(`[data-cy="supportsTokenisation"]`).should('not.be.checked');
       cy.get(`[data-cy="supportsTokenisation"]`).click().should('be.checked');
 
-      cy.get(`[data-cy="currencies"]`).select('ETH');
+      cy.get(`[data-cy="surchargeAmount"]`).type('94318').should('have.value', '94318');
 
-      cy.get(`[data-cy="surchargeAmount"]`).type('61004').should('have.value', '61004');
+      cy.get(`[data-cy="surchargeAmountExclVat"]`).type('61004').should('have.value', '61004');
 
-      cy.get(`[data-cy="surchargeAmountExclVat"]`).type('11132').should('have.value', '11132');
+      cy.get(`[data-cy="surchargeAmountVat"]`).type('11132').should('have.value', '11132');
 
-      cy.get(`[data-cy="surchargeAmountVat"]`).type('13302').should('have.value', '13302');
+      cy.get(`[data-cy="surchargeVatPercentage"]`).type('13302').should('have.value', '13302');
 
-      cy.get(`[data-cy="surchargeVatPercentage"]`).type('93749').should('have.value', '93749');
-
-      cy.get(`[data-cy="description"]`).type('deposit Configurable Awesome').should('have.value', 'deposit Configurable Awesome');
+      cy.get(`[data-cy="description"]`).type('calculate Intelligent Kansas').should('have.value', 'calculate Intelligent Kansas');
 
       cy.get(entityCreateSaveButtonSelector).click();
 

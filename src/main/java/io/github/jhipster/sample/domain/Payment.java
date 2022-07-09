@@ -1,9 +1,12 @@
 package io.github.jhipster.sample.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import io.github.jhipster.sample.domain.enumeration.Currency;
 import io.github.jhipster.sample.domain.enumeration.PaymentStatus;
 import java.io.Serializable;
 import java.time.Instant;
+import java.util.HashSet;
+import java.util.Set;
 import javax.persistence.*;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
@@ -53,10 +56,12 @@ public class Payment implements Serializable {
     @Column(name = "paid_amount")
     private Double paidAmount;
 
+    @JsonIgnoreProperties(value = { "errors", "warnings" }, allowSetters = true)
     @OneToOne
     @JoinColumn(unique = true)
     private ErrorReport lastErrorReport;
 
+    @JsonIgnoreProperties(value = { "triggers" }, allowSetters = true)
     @OneToOne
     @JoinColumn(unique = true)
     private AbuseReport abuseReport;
@@ -64,6 +69,30 @@ public class Payment implements Serializable {
     @OneToOne
     @JoinColumn(unique = true)
     private PaymentAttributes attributes;
+
+    @OneToMany(mappedBy = "payments")
+    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+    @JsonIgnoreProperties(
+        value = { "order", "attributes", "recurrenceCriteria", "orderHistory", "paymentMethodsToUse", "payments" },
+        allowSetters = true
+    )
+    private Set<PaymentJob> paymentJobs = new HashSet<>();
+
+    @ManyToOne
+    @JsonIgnoreProperties(value = { "payments", "paymentSteps", "paymentJobs" }, allowSetters = true)
+    private PaymentMethods paymentMethods;
+
+    @ManyToOne
+    @JsonIgnoreProperties(value = { "payments", "paymentMethods" }, allowSetters = true)
+    private PaymentStep steps;
+
+    @ManyToOne
+    @JsonIgnoreProperties(value = { "payments", "steps" }, allowSetters = true)
+    private Refund refunds;
+
+    @ManyToOne
+    @JsonIgnoreProperties(value = { "payments" }, allowSetters = true)
+    private Capture captures;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
@@ -233,6 +262,89 @@ public class Payment implements Serializable {
 
     public Payment attributes(PaymentAttributes paymentAttributes) {
         this.setAttributes(paymentAttributes);
+        return this;
+    }
+
+    public Set<PaymentJob> getPaymentJobs() {
+        return this.paymentJobs;
+    }
+
+    public void setPaymentJobs(Set<PaymentJob> paymentJobs) {
+        if (this.paymentJobs != null) {
+            this.paymentJobs.forEach(i -> i.setPayments(null));
+        }
+        if (paymentJobs != null) {
+            paymentJobs.forEach(i -> i.setPayments(this));
+        }
+        this.paymentJobs = paymentJobs;
+    }
+
+    public Payment paymentJobs(Set<PaymentJob> paymentJobs) {
+        this.setPaymentJobs(paymentJobs);
+        return this;
+    }
+
+    public Payment addPaymentJob(PaymentJob paymentJob) {
+        this.paymentJobs.add(paymentJob);
+        paymentJob.setPayments(this);
+        return this;
+    }
+
+    public Payment removePaymentJob(PaymentJob paymentJob) {
+        this.paymentJobs.remove(paymentJob);
+        paymentJob.setPayments(null);
+        return this;
+    }
+
+    public PaymentMethods getPaymentMethods() {
+        return this.paymentMethods;
+    }
+
+    public void setPaymentMethods(PaymentMethods paymentMethods) {
+        this.paymentMethods = paymentMethods;
+    }
+
+    public Payment paymentMethods(PaymentMethods paymentMethods) {
+        this.setPaymentMethods(paymentMethods);
+        return this;
+    }
+
+    public PaymentStep getSteps() {
+        return this.steps;
+    }
+
+    public void setSteps(PaymentStep paymentStep) {
+        this.steps = paymentStep;
+    }
+
+    public Payment steps(PaymentStep paymentStep) {
+        this.setSteps(paymentStep);
+        return this;
+    }
+
+    public Refund getRefunds() {
+        return this.refunds;
+    }
+
+    public void setRefunds(Refund refund) {
+        this.refunds = refund;
+    }
+
+    public Payment refunds(Refund refund) {
+        this.setRefunds(refund);
+        return this;
+    }
+
+    public Capture getCaptures() {
+        return this.captures;
+    }
+
+    public void setCaptures(Capture capture) {
+        this.captures = capture;
+    }
+
+    public Payment captures(Capture capture) {
+        this.setCaptures(capture);
         return this;
     }
 

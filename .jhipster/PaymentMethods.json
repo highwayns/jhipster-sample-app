@@ -16,6 +16,25 @@
   "name": "PaymentMethods",
   "pagination": "no",
   "readOnly": false,
-  "relationships": [],
+  "relationships": [
+    {
+      "otherEntityName": "payment",
+      "otherEntityRelationshipName": "paymentMethods",
+      "relationshipName": "payment",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "paymentStep",
+      "otherEntityRelationshipName": "paymentMethods",
+      "relationshipName": "paymentStep",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "paymentJob",
+      "otherEntityRelationshipName": "paymentMethodsToUse",
+      "relationshipName": "paymentJob",
+      "relationshipType": "one-to-many"
+    }
+  ],
   "service": "no"
 }

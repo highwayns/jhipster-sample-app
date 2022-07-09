@@ -54,18 +54,6 @@
         </div>
 
         <div class="row mb-3">
-          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.paymentMethodInfo.currencies" for="field_currencies"
-            >Currencies</label
-          >
-          <select class="form-control" name="currencies" formControlName="currencies" id="field_currencies" data-cy="currencies">
-            <option [ngValue]="null">{{ 'jhipsterSampleApplicationApp.Currency.null' | translate }}</option>
-            <option *ngFor="let currency of currencyValues" [value]="currency">
-              {{ 'jhipsterSampleApplicationApp.Currency.' + currency | translate }}
-            </option>
-          </select>
-        </div>
-
-        <div class="row mb-3">
           <label
             class="form-label"
             jhiTranslate="jhipsterSampleApplicationApp.paymentMethodInfo.surchargeAmount"
@@ -145,6 +133,61 @@
             data-cy="description"
             formControlName="description"
           />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.paymentMethodInfo.currencies" for="field_currencies"
+            >Currencies</label
+          >
+          <select class="form-control" id="field_currencies" data-cy="currencies" name="currencies" formControlName="currencies">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="currencysOption.id === editForm.get('currencies')!.value?.id ? editForm.get('currencies')!.value : currencysOption"
+              *ngFor="let currencysOption of currencysSharedCollection; trackBy: trackCurrencysById"
+            >
+              {{ currencysOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.paymentMethodInfo.issuerList" for="field_issuerList"
+            >Issuer List</label
+          >
+          <select class="form-control" id="field_issuerList" data-cy="issuerList" name="issuerList" formControlName="issuerList">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="issuerOption.id === editForm.get('issuerList')!.value?.id ? editForm.get('issuerList')!.value : issuerOption"
+              *ngFor="let issuerOption of issuersSharedCollection; trackBy: trackIssuerById"
+            >
+              {{ issuerOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.paymentMethodInfo.tokenizedCards" for="field_tokenizedCards"
+            >Tokenized Cards</label
+          >
+          <select
+            class="form-control"
+            id="field_tokenizedCards"
+            data-cy="tokenizedCards"
+            name="tokenizedCards"
+            formControlName="tokenizedCards"
+          >
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                cardTokenDataOption.id === editForm.get('tokenizedCards')!.value?.id
+                  ? editForm.get('tokenizedCards')!.value
+                  : cardTokenDataOption
+              "
+              *ngFor="let cardTokenDataOption of cardTokenDataSharedCollection; trackBy: trackCardTokenDataById"
+            >
+              {{ cardTokenDataOption.id }}
+            </option>
+          </select>
         </div>
       </div>
 

@@ -36,6 +36,7 @@
           <th scope="col"><span jhiTranslate="jhipsterSampleApplicationApp.abuseTrigger.score">Score</span></th>
           <th scope="col"><span jhiTranslate="jhipsterSampleApplicationApp.abuseTrigger.code">Code</span></th>
           <th scope="col"><span jhiTranslate="jhipsterSampleApplicationApp.abuseTrigger.description">Description</span></th>
+          <th scope="col"><span jhiTranslate="jhipsterSampleApplicationApp.abuseTrigger.parameters">Parameters</span></th>
           <th scope="col"></th>
         </tr>
       </thead>
@@ -47,6 +48,11 @@
           <td>{{ abuseTrigger.score }}</td>
           <td>{{ abuseTrigger.code }}</td>
           <td>{{ abuseTrigger.description }}</td>
+          <td>
+            <div *ngIf="abuseTrigger.parameters">
+              <a [routerLink]="['/parameters', abuseTrigger.parameters?.id, 'view']">{{ abuseTrigger.parameters?.id }}</a>
+            </div>
+          </td>
           <td class="text-end">
             <div class="btn-group">
               <button

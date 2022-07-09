@@ -70,6 +70,30 @@
             <a [routerLink]="['/payment-attributes', payment.attributes?.id, 'view']">{{ payment.attributes?.id }}</a>
           </div>
         </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.payment.paymentMethods">Payment Methods</span></dt>
+        <dd>
+          <div *ngIf="payment.paymentMethods">
+            <a [routerLink]="['/payment-methods', payment.paymentMethods?.id, 'view']">{{ payment.paymentMethods?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.payment.steps">Steps</span></dt>
+        <dd>
+          <div *ngIf="payment.steps">
+            <a [routerLink]="['/payment-step', payment.steps?.id, 'view']">{{ payment.steps?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.payment.refunds">Refunds</span></dt>
+        <dd>
+          <div *ngIf="payment.refunds">
+            <a [routerLink]="['/refund', payment.refunds?.id, 'view']">{{ payment.refunds?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.payment.captures">Captures</span></dt>
+        <dd>
+          <div *ngIf="payment.captures">
+            <a [routerLink]="['/capture', payment.captures?.id, 'view']">{{ payment.captures?.id }}</a>
+          </div>
+        </dd>
       </dl>
 
       <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">

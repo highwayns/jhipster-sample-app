@@ -1,6 +1,7 @@
 import dayjs from 'dayjs/esm';
 import { IAddress } from 'app/entities/address/address.model';
 import { IIdentity } from 'app/entities/identity/identity.model';
+import { IOrderLine } from 'app/entities/order-line/order-line.model';
 
 export interface IOrder {
   id?: number;
@@ -11,6 +12,7 @@ export interface IOrder {
   billingAddress?: IAddress | null;
   billingIdentity?: IIdentity | null;
   shippingAddress?: IAddress | null;
+  orderLines?: IOrderLine | null;
 }
 
 export class Order implements IOrder {
@@ -22,7 +24,8 @@ export class Order implements IOrder {
     public customerReference?: number | null,
     public billingAddress?: IAddress | null,
     public billingIdentity?: IIdentity | null,
-    public shippingAddress?: IAddress | null
+    public shippingAddress?: IAddress | null,
+    public orderLines?: IOrderLine | null
   ) {}
 }
 

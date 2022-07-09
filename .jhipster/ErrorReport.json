@@ -20,6 +20,19 @@
   "name": "ErrorReport",
   "pagination": "no",
   "readOnly": false,
-  "relationships": [],
+  "relationships": [
+    {
+      "otherEntityName": "entry",
+      "otherEntityRelationshipName": "errorReport",
+      "relationshipName": "errors",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "entry",
+      "otherEntityRelationshipName": "errorReport",
+      "relationshipName": "warnings",
+      "relationshipType": "many-to-one"
+    }
+  ],
   "service": "no"
 }

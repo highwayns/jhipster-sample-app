@@ -33,6 +33,19 @@
   "name": "PaymentStep",
   "pagination": "no",
   "readOnly": false,
-  "relationships": [],
+  "relationships": [
+    {
+      "otherEntityName": "payment",
+      "otherEntityRelationshipName": "steps",
+      "relationshipName": "payment",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "paymentMethods",
+      "otherEntityRelationshipName": "paymentStep",
+      "relationshipName": "paymentMethods",
+      "relationshipType": "many-to-one"
+    }
+  ],
   "service": "no"
 }

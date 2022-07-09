@@ -53,6 +53,13 @@
     <include file="config/liquibase/changelog/20220709023644_added_entity_constraints_Payment.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20220709023647_added_entity_constraints_PaymentJob.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20220709023652_added_entity_constraints_RefundStep.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220709023630_added_entity_constraints_AbuseReport.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220709023631_added_entity_constraints_AbuseTrigger.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220709023636_added_entity_constraints_Entry.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220709023637_added_entity_constraints_ErrorReport.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220709023648_added_entity_constraints_PaymentStep.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220709023650_added_entity_constraints_PaymentMethodInfo.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220709023651_added_entity_constraints_Refund.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
     <!-- jhipster-needle-liquibase-add-incremental-changelog - JHipster will add incremental liquibase changelogs here -->
 </databaseChangeLog>

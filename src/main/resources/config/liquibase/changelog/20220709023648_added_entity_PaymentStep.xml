@@ -29,6 +29,9 @@
             <column name="amount_to_collect" type="double">
                 <constraints nullable="true" />
             </column>
+            <column name="payment_methods_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
         </createTable>
         <dropDefaultValue tableName="payment_step" columnName="create_date_time_utc" columnDataType="${datetimeType}"/>

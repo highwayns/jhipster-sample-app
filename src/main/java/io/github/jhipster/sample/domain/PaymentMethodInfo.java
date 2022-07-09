@@ -1,6 +1,6 @@
 package io.github.jhipster.sample.domain;
 
-import io.github.jhipster.sample.domain.enumeration.Currency;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
 import javax.persistence.*;
 import org.hibernate.annotations.Cache;
@@ -31,10 +31,6 @@ public class PaymentMethodInfo implements Serializable {
     @Column(name = "supports_tokenisation")
     private Boolean supportsTokenisation;
 
-    @Enumerated(EnumType.STRING)
-    @Column(name = "currencies")
-    private Currency currencies;
-
     @Column(name = "surcharge_amount")
     private Double surchargeAmount;
 
@@ -49,6 +45,18 @@ public class PaymentMethodInfo implements Serializable {
 
     @Column(name = "description")
     private String description;
+
+    @ManyToOne
+    @JsonIgnoreProperties(value = { "paymentMethodInfos" }, allowSetters = true)
+    private Currencys currencies;
+
+    @ManyToOne
+    @JsonIgnoreProperties(value = { "paymentMethodInfos" }, allowSetters = true)
+    private Issuer issuerList;
+
+    @ManyToOne
+    @JsonIgnoreProperties(value = { "paymentMethodInfos" }, allowSetters = true)
+    private CardTokenData tokenizedCards;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
@@ -102,19 +110,6 @@ public class PaymentMethodInfo implements Serializable {
 
     public void setSupportsTokenisation(Boolean supportsTokenisation) {
         this.supportsTokenisation = supportsTokenisation;
-    }
-
-    public Currency getCurrencies() {
-        return this.currencies;
-    }
-
-    public PaymentMethodInfo currencies(Currency currencies) {
-        this.setCurrencies(currencies);
-        return this;
-    }
-
-    public void setCurrencies(Currency currencies) {
-        this.currencies = currencies;
     }
 
     public Double getSurchargeAmount() {
@@ -182,6 +177,45 @@ public class PaymentMethodInfo implements Serializable {
         this.description = description;
     }
 
+    public Currencys getCurrencies() {
+        return this.currencies;
+    }
+
+    public void setCurrencies(Currencys currencys) {
+        this.currencies = currencys;
+    }
+
+    public PaymentMethodInfo currencies(Currencys currencys) {
+        this.setCurrencies(currencys);
+        return this;
+    }
+
+    public Issuer getIssuerList() {
+        return this.issuerList;
+    }
+
+    public void setIssuerList(Issuer issuer) {
+        this.issuerList = issuer;
+    }
+
+    public PaymentMethodInfo issuerList(Issuer issuer) {
+        this.setIssuerList(issuer);
+        return this;
+    }
+
+    public CardTokenData getTokenizedCards() {
+        return this.tokenizedCards;
+    }
+
+    public void setTokenizedCards(CardTokenData cardTokenData) {
+        this.tokenizedCards = cardTokenData;
+    }
+
+    public PaymentMethodInfo tokenizedCards(CardTokenData cardTokenData) {
+        this.setTokenizedCards(cardTokenData);
+        return this;
+    }
+
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
 
     @Override
@@ -209,7 +243,6 @@ public class PaymentMethodInfo implements Serializable {
             ", paymentMethod='" + getPaymentMethod() + "'" +
             ", logo='" + getLogo() + "'" +
             ", supportsTokenisation='" + getSupportsTokenisation() + "'" +
-            ", currencies='" + getCurrencies() + "'" +
             ", surchargeAmount=" + getSurchargeAmount() +
             ", surchargeAmountExclVat=" + getSurchargeAmountExclVat() +
             ", surchargeAmountVat=" + getSurchargeAmountVat() +

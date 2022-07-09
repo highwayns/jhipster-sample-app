@@ -20,6 +20,9 @@
             <column name="created_date_time_utc" type="${datetimeType}">
                 <constraints nullable="true" />
             </column>
+            <column name="triggers_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
         </createTable>
         <dropDefaultValue tableName="abuse_report" columnName="created_date_time_utc" columnDataType="${datetimeType}"/>

@@ -25,7 +25,8 @@
       "convertedAmountToCapture": "Converted Amount To Capture",
       "convertedCurrency": "Converted Currency",
       "conversionRate": "Conversion Rate",
-      "isFinalCapture": "Is Final Capture"
+      "isFinalCapture": "Is Final Capture",
+      "payment": "Payment"
     }
   }
 }

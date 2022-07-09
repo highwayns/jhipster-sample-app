@@ -24,6 +24,12 @@
         <dd>
           <span>{{ abuseReport.createdDateTimeUtc | formatMediumDatetime }}</span>
         </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.abuseReport.triggers">Triggers</span></dt>
+        <dd>
+          <div *ngIf="abuseReport.triggers">
+            <a [routerLink]="['/abuse-trigger', abuseReport.triggers?.id, 'view']">{{ abuseReport.triggers?.id }}</a>
+          </div>
+        </dd>
       </dl>
 
       <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">

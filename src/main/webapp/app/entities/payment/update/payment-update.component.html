@@ -198,6 +198,70 @@
             </option>
           </select>
         </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.payment.paymentMethods" for="field_paymentMethods"
+            >Payment Methods</label
+          >
+          <select
+            class="form-control"
+            id="field_paymentMethods"
+            data-cy="paymentMethods"
+            name="paymentMethods"
+            formControlName="paymentMethods"
+          >
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                paymentMethodsOption.id === editForm.get('paymentMethods')!.value?.id
+                  ? editForm.get('paymentMethods')!.value
+                  : paymentMethodsOption
+              "
+              *ngFor="let paymentMethodsOption of paymentMethodsSharedCollection; trackBy: trackPaymentMethodsById"
+            >
+              {{ paymentMethodsOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.payment.steps" for="field_steps">Steps</label>
+          <select class="form-control" id="field_steps" data-cy="steps" name="steps" formControlName="steps">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="paymentStepOption.id === editForm.get('steps')!.value?.id ? editForm.get('steps')!.value : paymentStepOption"
+              *ngFor="let paymentStepOption of paymentStepsSharedCollection; trackBy: trackPaymentStepById"
+            >
+              {{ paymentStepOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.payment.refunds" for="field_refunds">Refunds</label>
+          <select class="form-control" id="field_refunds" data-cy="refunds" name="refunds" formControlName="refunds">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="refundOption.id === editForm.get('refunds')!.value?.id ? editForm.get('refunds')!.value : refundOption"
+              *ngFor="let refundOption of refundsSharedCollection; trackBy: trackRefundById"
+            >
+              {{ refundOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.payment.captures" for="field_captures">Captures</label>
+          <select class="form-control" id="field_captures" data-cy="captures" name="captures" formControlName="captures">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="captureOption.id === editForm.get('captures')!.value?.id ? editForm.get('captures')!.value : captureOption"
+              *ngFor="let captureOption of capturesSharedCollection; trackBy: trackCaptureById"
+            >
+              {{ captureOption.id }}
+            </option>
+          </select>
+        </div>
       </div>
 
       <div>

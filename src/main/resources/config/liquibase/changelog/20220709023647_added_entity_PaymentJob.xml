@@ -80,6 +80,15 @@
             <column name="recurrence_criteria_id" type="bigint">
                 <constraints nullable="true" unique="true" uniqueConstraintName="ux_payment_job__recurrence_criteria_id" />
             </column>
+            <column name="order_history_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="payment_methods_to_use_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="payments_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
         </createTable>
         <dropDefaultValue tableName="payment_job" columnName="create_date_time_utc" columnDataType="${datetimeType}"/>

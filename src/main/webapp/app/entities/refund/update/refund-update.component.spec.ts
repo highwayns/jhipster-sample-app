@@ -8,6 +8,8 @@ import { of, Subject, from } from 'rxjs';
 
 import { RefundService } from '../service/refund.service';
 import { IRefund, Refund } from '../refund.model';
+import { IRefundStep } from 'app/entities/refund-step/refund-step.model';
+import { RefundStepService } from 'app/entities/refund-step/service/refund-step.service';
 
 import { RefundUpdateComponent } from './refund-update.component';
 
@@ -16,6 +18,7 @@ describe('Refund Management Update Component', () => {
   let fixture: ComponentFixture<RefundUpdateComponent>;
   let activatedRoute: ActivatedRoute;
   let refundService: RefundService;
+  let refundStepService: RefundStepService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -37,18 +40,41 @@ describe('Refund Management Update Component', () => {
     fixture = TestBed.createComponent(RefundUpdateComponent);
     activatedRoute = TestBed.inject(ActivatedRoute);
     refundService = TestBed.inject(RefundService);
+    refundStepService = TestBed.inject(RefundStepService);
 
     comp = fixture.componentInstance;
   });
 
   describe('ngOnInit', () => {
+    it('Should call RefundStep query and add missing value', () => {
+      const refund: IRefund = { id: 456 };
+      const steps: IRefundStep = { id: 35620 };
+      refund.steps = steps;
+
+      const refundStepCollection: IRefundStep[] = [{ id: 57490 }];
+      jest.spyOn(refundStepService, 'query').mockReturnValue(of(new HttpResponse({ body: refundStepCollection })));
+      const additionalRefundSteps = [steps];
+      const expectedCollection: IRefundStep[] = [...additionalRefundSteps, ...refundStepCollection];
+      jest.spyOn(refundStepService, 'addRefundStepToCollectionIfMissing').mockReturnValue(expectedCollection);
+
+      activatedRoute.data = of({ refund });
+      comp.ngOnInit();
+
+      expect(refundStepService.query).toHaveBeenCalled();
+      expect(refundStepService.addRefundStepToCollectionIfMissing).toHaveBeenCalledWith(refundStepCollection, ...additionalRefundSteps);
+      expect(comp.refundStepsSharedCollection).toEqual(expectedCollection);
+    });
+
     it('Should update editForm', () => {
       const refund: IRefund = { id: 456 };
+      const steps: IRefundStep = { id: 35307 };
+      refund.steps = steps;
 
       activatedRoute.data = of({ refund });
       comp.ngOnInit();
 
       expect(comp.editForm.value).toEqual(expect.objectContaining(refund));
+      expect(comp.refundStepsSharedCollection).toContain(steps);
     });
   });
 
@@ -113,6 +139,16 @@ describe('Refund Management Update Component', () => {
       expect(refundService.update).toHaveBeenCalledWith(refund);
       expect(comp.isSaving).toEqual(false);
       expect(comp.previousState).not.toHaveBeenCalled();
+    });
+  });
+
+  describe('Tracking relationships identifiers', () => {
+    describe('trackRefundStepById', () => {
+      it('Should return tracked RefundStep primary key', () => {
+        const entity = { id: 123 };
+        const trackResult = comp.trackRefundStepById(0, entity);
+        expect(trackResult).toEqual(entity.id);
+      });
     });
   });
 });

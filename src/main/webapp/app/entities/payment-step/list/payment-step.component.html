@@ -38,6 +38,7 @@
           <th scope="col"><span jhiTranslate="jhipsterSampleApplicationApp.paymentStep.action">Action</span></th>
           <th scope="col"><span jhiTranslate="jhipsterSampleApplicationApp.paymentStep.status">Status</span></th>
           <th scope="col"><span jhiTranslate="jhipsterSampleApplicationApp.paymentStep.amountToCollect">Amount To Collect</span></th>
+          <th scope="col"><span jhiTranslate="jhipsterSampleApplicationApp.paymentStep.paymentMethods">Payment Methods</span></th>
           <th scope="col"></th>
         </tr>
       </thead>
@@ -51,6 +52,11 @@
           <td jhiTranslate="{{ 'jhipsterSampleApplicationApp.PaymentStepAction.' + paymentStep.action }}">{{ paymentStep.action }}</td>
           <td jhiTranslate="{{ 'jhipsterSampleApplicationApp.PaymentStatus.' + paymentStep.status }}">{{ paymentStep.status }}</td>
           <td>{{ paymentStep.amountToCollect }}</td>
+          <td>
+            <div *ngIf="paymentStep.paymentMethods">
+              <a [routerLink]="['/payment-methods', paymentStep.paymentMethods?.id, 'view']">{{ paymentStep.paymentMethods?.id }}</a>
+            </div>
+          </td>
           <td class="text-end">
             <div class="btn-group">
               <button

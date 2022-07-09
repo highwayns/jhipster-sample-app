@@ -74,6 +74,31 @@
             formControlName="amountToCollect"
           />
         </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.paymentStep.paymentMethods" for="field_paymentMethods"
+            >Payment Methods</label
+          >
+          <select
+            class="form-control"
+            id="field_paymentMethods"
+            data-cy="paymentMethods"
+            name="paymentMethods"
+            formControlName="paymentMethods"
+          >
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                paymentMethodsOption.id === editForm.get('paymentMethods')!.value?.id
+                  ? editForm.get('paymentMethods')!.value
+                  : paymentMethodsOption
+              "
+              *ngFor="let paymentMethodsOption of paymentMethodsSharedCollection; trackBy: trackPaymentMethodsById"
+            >
+              {{ paymentMethodsOption.id }}
+            </option>
+          </select>
+        </div>
       </div>
 
       <div>

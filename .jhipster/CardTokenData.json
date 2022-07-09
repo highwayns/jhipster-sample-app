@@ -31,6 +31,13 @@
   "name": "CardTokenData",
   "pagination": "no",
   "readOnly": false,
-  "relationships": [],
+  "relationships": [
+    {
+      "otherEntityName": "paymentMethodInfo",
+      "otherEntityRelationshipName": "tokenizedCards",
+      "relationshipName": "paymentMethodInfo",
+      "relationshipType": "one-to-many"
+    }
+  ],
   "service": "no"
 }

@@ -1,5 +1,6 @@
 package io.github.jhipster.sample.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import io.github.jhipster.sample.domain.enumeration.Locale;
 import java.io.Serializable;
 import javax.persistence.*;
@@ -28,6 +29,14 @@ public class ErrorReport implements Serializable {
 
     @Column(name = "is_fatal_error")
     private Boolean isFatalError;
+
+    @ManyToOne
+    @JsonIgnoreProperties(value = { "parameters" }, allowSetters = true)
+    private Entry errors;
+
+    @ManyToOne
+    @JsonIgnoreProperties(value = { "parameters" }, allowSetters = true)
+    private Entry warnings;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
@@ -68,6 +77,32 @@ public class ErrorReport implements Serializable {
 
     public void setIsFatalError(Boolean isFatalError) {
         this.isFatalError = isFatalError;
+    }
+
+    public Entry getErrors() {
+        return this.errors;
+    }
+
+    public void setErrors(Entry entry) {
+        this.errors = entry;
+    }
+
+    public ErrorReport errors(Entry entry) {
+        this.setErrors(entry);
+        return this;
+    }
+
+    public Entry getWarnings() {
+        return this.warnings;
+    }
+
+    public void setWarnings(Entry entry) {
+        this.warnings = entry;
+    }
+
+    public ErrorReport warnings(Entry entry) {
+        this.setWarnings(entry);
+        return this;
     }
 
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here

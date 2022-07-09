@@ -16,6 +16,14 @@ import { IAbuseReport } from 'app/entities/abuse-report/abuse-report.model';
 import { AbuseReportService } from 'app/entities/abuse-report/service/abuse-report.service';
 import { IPaymentAttributes } from 'app/entities/payment-attributes/payment-attributes.model';
 import { PaymentAttributesService } from 'app/entities/payment-attributes/service/payment-attributes.service';
+import { IPaymentMethods } from 'app/entities/payment-methods/payment-methods.model';
+import { PaymentMethodsService } from 'app/entities/payment-methods/service/payment-methods.service';
+import { IPaymentStep } from 'app/entities/payment-step/payment-step.model';
+import { PaymentStepService } from 'app/entities/payment-step/service/payment-step.service';
+import { IRefund } from 'app/entities/refund/refund.model';
+import { RefundService } from 'app/entities/refund/service/refund.service';
+import { ICapture } from 'app/entities/capture/capture.model';
+import { CaptureService } from 'app/entities/capture/service/capture.service';
 import { PaymentStatus } from 'app/entities/enumerations/payment-status.model';
 import { Currency } from 'app/entities/enumerations/currency.model';
 
@@ -31,6 +39,10 @@ export class PaymentUpdateComponent implements OnInit {
   lastErrorReportsCollection: IErrorReport[] = [];
   abuseReportsCollection: IAbuseReport[] = [];
   attributesCollection: IPaymentAttributes[] = [];
+  paymentMethodsSharedCollection: IPaymentMethods[] = [];
+  paymentStepsSharedCollection: IPaymentStep[] = [];
+  refundsSharedCollection: IRefund[] = [];
+  capturesSharedCollection: ICapture[] = [];
 
   editForm = this.fb.group({
     id: [],
@@ -46,6 +58,10 @@ export class PaymentUpdateComponent implements OnInit {
     lastErrorReport: [],
     abuseReport: [],
     attributes: [],
+    paymentMethods: [],
+    steps: [],
+    refunds: [],
+    captures: [],
   });
 
   constructor(
@@ -53,6 +69,10 @@ export class PaymentUpdateComponent implements OnInit {
     protected errorReportService: ErrorReportService,
     protected abuseReportService: AbuseReportService,
     protected paymentAttributesService: PaymentAttributesService,
+    protected paymentMethodsService: PaymentMethodsService,
+    protected paymentStepService: PaymentStepService,
+    protected refundService: RefundService,
+    protected captureService: CaptureService,
     protected activatedRoute: ActivatedRoute,
     protected fb: FormBuilder
   ) {}
@@ -96,6 +116,22 @@ export class PaymentUpdateComponent implements OnInit {
     return item.id!;
   }
 
+  trackPaymentMethodsById(_index: number, item: IPaymentMethods): number {
+    return item.id!;
+  }
+
+  trackPaymentStepById(_index: number, item: IPaymentStep): number {
+    return item.id!;
+  }
+
+  trackRefundById(_index: number, item: IRefund): number {
+    return item.id!;
+  }
+
+  trackCaptureById(_index: number, item: ICapture): number {
+    return item.id!;
+  }
+
   protected subscribeToSaveResponse(result: Observable<HttpResponse<IPayment>>): void {
     result.pipe(finalize(() => this.onSaveFinalize())).subscribe({
       next: () => this.onSaveSuccess(),
@@ -130,6 +166,10 @@ export class PaymentUpdateComponent implements OnInit {
       lastErrorReport: payment.lastErrorReport,
       abuseReport: payment.abuseReport,
       attributes: payment.attributes,
+      paymentMethods: payment.paymentMethods,
+      steps: payment.steps,
+      refunds: payment.refunds,
+      captures: payment.captures,
     });
 
     this.lastErrorReportsCollection = this.errorReportService.addErrorReportToCollectionIfMissing(
@@ -144,6 +184,16 @@ export class PaymentUpdateComponent implements OnInit {
       this.attributesCollection,
       payment.attributes
     );
+    this.paymentMethodsSharedCollection = this.paymentMethodsService.addPaymentMethodsToCollectionIfMissing(
+      this.paymentMethodsSharedCollection,
+      payment.paymentMethods
+    );
+    this.paymentStepsSharedCollection = this.paymentStepService.addPaymentStepToCollectionIfMissing(
+      this.paymentStepsSharedCollection,
+      payment.steps
+    );
+    this.refundsSharedCollection = this.refundService.addRefundToCollectionIfMissing(this.refundsSharedCollection, payment.refunds);
+    this.capturesSharedCollection = this.captureService.addCaptureToCollectionIfMissing(this.capturesSharedCollection, payment.captures);
   }
 
   protected loadRelationshipsOptions(): void {
@@ -176,6 +226,40 @@ export class PaymentUpdateComponent implements OnInit {
         )
       )
       .subscribe((paymentAttributes: IPaymentAttributes[]) => (this.attributesCollection = paymentAttributes));
+
+    this.paymentMethodsService
+      .query()
+      .pipe(map((res: HttpResponse<IPaymentMethods[]>) => res.body ?? []))
+      .pipe(
+        map((paymentMethods: IPaymentMethods[]) =>
+          this.paymentMethodsService.addPaymentMethodsToCollectionIfMissing(paymentMethods, this.editForm.get('paymentMethods')!.value)
+        )
+      )
+      .subscribe((paymentMethods: IPaymentMethods[]) => (this.paymentMethodsSharedCollection = paymentMethods));
+
+    this.paymentStepService
+      .query()
+      .pipe(map((res: HttpResponse<IPaymentStep[]>) => res.body ?? []))
+      .pipe(
+        map((paymentSteps: IPaymentStep[]) =>
+          this.paymentStepService.addPaymentStepToCollectionIfMissing(paymentSteps, this.editForm.get('steps')!.value)
+        )
+      )
+      .subscribe((paymentSteps: IPaymentStep[]) => (this.paymentStepsSharedCollection = paymentSteps));
+
+    this.refundService
+      .query()
+      .pipe(map((res: HttpResponse<IRefund[]>) => res.body ?? []))
+      .pipe(map((refunds: IRefund[]) => this.refundService.addRefundToCollectionIfMissing(refunds, this.editForm.get('refunds')!.value)))
+      .subscribe((refunds: IRefund[]) => (this.refundsSharedCollection = refunds));
+
+    this.captureService
+      .query()
+      .pipe(map((res: HttpResponse<ICapture[]>) => res.body ?? []))
+      .pipe(
+        map((captures: ICapture[]) => this.captureService.addCaptureToCollectionIfMissing(captures, this.editForm.get('captures')!.value))
+      )
+      .subscribe((captures: ICapture[]) => (this.capturesSharedCollection = captures));
   }
 
   protected createFromForm(): IPayment {
@@ -196,6 +280,10 @@ export class PaymentUpdateComponent implements OnInit {
       lastErrorReport: this.editForm.get(['lastErrorReport'])!.value,
       abuseReport: this.editForm.get(['abuseReport'])!.value,
       attributes: this.editForm.get(['attributes'])!.value,
+      paymentMethods: this.editForm.get(['paymentMethods'])!.value,
+      steps: this.editForm.get(['steps'])!.value,
+      refunds: this.editForm.get(['refunds'])!.value,
+      captures: this.editForm.get(['captures'])!.value,
     };
   }
 }

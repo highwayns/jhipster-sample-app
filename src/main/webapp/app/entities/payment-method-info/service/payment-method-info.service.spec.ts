@@ -1,7 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 
-import { Currency } from 'app/entities/enumerations/currency.model';
 import { IPaymentMethodInfo, PaymentMethodInfo } from '../payment-method-info.model';
 
 import { PaymentMethodInfoService } from './payment-method-info.service';
@@ -25,7 +24,6 @@ describe('PaymentMethodInfo Service', () => {
       paymentMethod: 'AAAAAAA',
       logo: 'AAAAAAA',
       supportsTokenisation: false,
-      currencies: Currency.CNY,
       surchargeAmount: 0,
       surchargeAmountExclVat: 0,
       surchargeAmountVat: 0,
@@ -69,7 +67,6 @@ describe('PaymentMethodInfo Service', () => {
           paymentMethod: 'BBBBBB',
           logo: 'BBBBBB',
           supportsTokenisation: true,
-          currencies: 'BBBBBB',
           surchargeAmount: 1,
           surchargeAmountExclVat: 1,
           surchargeAmountVat: 1,
@@ -92,8 +89,7 @@ describe('PaymentMethodInfo Service', () => {
       const patchObject = Object.assign(
         {
           logo: 'BBBBBB',
-          surchargeAmount: 1,
-          surchargeVatPercentage: 1,
+          surchargeAmountExclVat: 1,
           description: 'BBBBBB',
         },
         new PaymentMethodInfo()
@@ -117,7 +113,6 @@ describe('PaymentMethodInfo Service', () => {
           paymentMethod: 'BBBBBB',
           logo: 'BBBBBB',
           supportsTokenisation: true,
-          currencies: 'BBBBBB',
           surchargeAmount: 1,
           surchargeAmountExclVat: 1,
           surchargeAmountVat: 1,
@@ -174,7 +169,7 @@ describe('PaymentMethodInfo Service', () => {
       });
 
       it('should add only unique PaymentMethodInfo to an array', () => {
-        const paymentMethodInfoArray: IPaymentMethodInfo[] = [{ id: 123 }, { id: 456 }, { id: 35393 }];
+        const paymentMethodInfoArray: IPaymentMethodInfo[] = [{ id: 123 }, { id: 456 }, { id: 61747 }];
         const paymentMethodInfoCollection: IPaymentMethodInfo[] = [{ id: 123 }];
         expectedResult = service.addPaymentMethodInfoToCollectionIfMissing(paymentMethodInfoCollection, ...paymentMethodInfoArray);
         expect(expectedResult).toHaveLength(3);

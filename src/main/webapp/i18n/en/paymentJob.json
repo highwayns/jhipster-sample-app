@@ -39,7 +39,10 @@
       "lastProcessedTimeUtc": "Last Processed Time Utc",
       "order": "Order",
       "attributes": "Attributes",
-      "recurrenceCriteria": "Recurrence Criteria"
+      "recurrenceCriteria": "Recurrence Criteria",
+      "orderHistory": "Order History",
+      "paymentMethodsToUse": "Payment Methods To Use",
+      "payments": "Payments"
     }
   }
 }

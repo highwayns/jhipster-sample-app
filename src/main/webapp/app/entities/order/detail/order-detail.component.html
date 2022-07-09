@@ -48,6 +48,12 @@
             <a [routerLink]="['/address', order.shippingAddress?.id, 'view']">{{ order.shippingAddress?.id }}</a>
           </div>
         </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.order.orderLines">Order Lines</span></dt>
+        <dd>
+          <div *ngIf="order.orderLines">
+            <a [routerLink]="['/order-line', order.orderLines?.id, 'view']">{{ order.orderLines?.id }}</a>
+          </div>
+        </dd>
       </dl>
 
       <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">

@@ -1,7 +1,10 @@
 package io.github.jhipster.sample.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import io.github.jhipster.sample.domain.enumeration.Currency;
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 import javax.persistence.*;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
@@ -25,6 +28,11 @@ public class Currencys implements Serializable {
     @Enumerated(EnumType.STRING)
     @Column(name = "currency")
     private Currency currency;
+
+    @OneToMany(mappedBy = "currencies")
+    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+    @JsonIgnoreProperties(value = { "currencies", "issuerList", "tokenizedCards" }, allowSetters = true)
+    private Set<PaymentMethodInfo> paymentMethodInfos = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
@@ -52,6 +60,37 @@ public class Currencys implements Serializable {
 
     public void setCurrency(Currency currency) {
         this.currency = currency;
+    }
+
+    public Set<PaymentMethodInfo> getPaymentMethodInfos() {
+        return this.paymentMethodInfos;
+    }
+
+    public void setPaymentMethodInfos(Set<PaymentMethodInfo> paymentMethodInfos) {
+        if (this.paymentMethodInfos != null) {
+            this.paymentMethodInfos.forEach(i -> i.setCurrencies(null));
+        }
+        if (paymentMethodInfos != null) {
+            paymentMethodInfos.forEach(i -> i.setCurrencies(this));
+        }
+        this.paymentMethodInfos = paymentMethodInfos;
+    }
+
+    public Currencys paymentMethodInfos(Set<PaymentMethodInfo> paymentMethodInfos) {
+        this.setPaymentMethodInfos(paymentMethodInfos);
+        return this;
+    }
+
+    public Currencys addPaymentMethodInfo(PaymentMethodInfo paymentMethodInfo) {
+        this.paymentMethodInfos.add(paymentMethodInfo);
+        paymentMethodInfo.setCurrencies(this);
+        return this;
+    }
+
+    public Currencys removePaymentMethodInfo(PaymentMethodInfo paymentMethodInfo) {
+        this.paymentMethodInfos.remove(paymentMethodInfo);
+        paymentMethodInfo.setCurrencies(null);
+        return this;
     }
 
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here

@@ -111,6 +111,24 @@
       "ownerSide": true,
       "relationshipName": "recurrenceCriteria",
       "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "order",
+      "otherEntityRelationshipName": "paymentJob",
+      "relationshipName": "orderHistory",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "paymentMethods",
+      "otherEntityRelationshipName": "paymentJob",
+      "relationshipName": "paymentMethodsToUse",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "payment",
+      "otherEntityRelationshipName": "paymentJob",
+      "relationshipName": "payments",
+      "relationshipType": "many-to-one"
     }
   ],
   "service": "no"

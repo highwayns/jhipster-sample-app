@@ -18,7 +18,9 @@
         "title": "Parameters"
       },
       "id": "ID",
-      "parameter": "Parameter"
+      "parameter": "Parameter",
+      "abuseTrigger": "Abuse Trigger",
+      "entry": "Entry"
     }
   }
 }

@@ -40,6 +40,23 @@
             formControlName="description"
           />
         </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.abuseTrigger.parameters" for="field_parameters"
+            >Parameters</label
+          >
+          <select class="form-control" id="field_parameters" data-cy="parameters" name="parameters" formControlName="parameters">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                parametersOption.id === editForm.get('parameters')!.value?.id ? editForm.get('parameters')!.value : parametersOption
+              "
+              *ngFor="let parametersOption of parametersSharedCollection; trackBy: trackParametersById"
+            >
+              {{ parametersOption.id }}
+            </option>
+          </select>
+        </div>
       </div>
 
       <div>

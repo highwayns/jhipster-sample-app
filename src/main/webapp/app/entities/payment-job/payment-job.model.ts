@@ -2,6 +2,8 @@ import dayjs from 'dayjs/esm';
 import { IOrder } from 'app/entities/order/order.model';
 import { IPaymentJobAttributes } from 'app/entities/payment-job-attributes/payment-job-attributes.model';
 import { IRecurrenceCriteria } from 'app/entities/recurrence-criteria/recurrence-criteria.model';
+import { IPaymentMethods } from 'app/entities/payment-methods/payment-methods.model';
+import { IPayment } from 'app/entities/payment/payment.model';
 import { PaymentJobType } from 'app/entities/enumerations/payment-job-type.model';
 import { Locale } from 'app/entities/enumerations/locale.model';
 import { Currency } from 'app/entities/enumerations/currency.model';
@@ -30,6 +32,9 @@ export interface IPaymentJob {
   order?: IOrder | null;
   attributes?: IPaymentJobAttributes | null;
   recurrenceCriteria?: IRecurrenceCriteria | null;
+  orderHistory?: IOrder | null;
+  paymentMethodsToUse?: IPaymentMethods | null;
+  payments?: IPayment | null;
 }
 
 export class PaymentJob implements IPaymentJob {
@@ -56,7 +61,10 @@ export class PaymentJob implements IPaymentJob {
     public lastProcessedTimeUtc?: dayjs.Dayjs | null,
     public order?: IOrder | null,
     public attributes?: IPaymentJobAttributes | null,
-    public recurrenceCriteria?: IRecurrenceCriteria | null
+    public recurrenceCriteria?: IRecurrenceCriteria | null,
+    public orderHistory?: IOrder | null,
+    public paymentMethodsToUse?: IPaymentMethods | null,
+    public payments?: IPayment | null
   ) {}
 }
 

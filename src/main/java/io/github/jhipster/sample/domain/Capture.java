@@ -1,9 +1,12 @@
 package io.github.jhipster.sample.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import io.github.jhipster.sample.domain.enumeration.CaptureStatus;
 import io.github.jhipster.sample.domain.enumeration.Currency;
 import java.io.Serializable;
 import java.time.Instant;
+import java.util.HashSet;
+import java.util.Set;
 import javax.persistence.*;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
@@ -49,6 +52,14 @@ public class Capture implements Serializable {
 
     @Column(name = "is_final_capture")
     private Boolean isFinalCapture;
+
+    @OneToMany(mappedBy = "captures")
+    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+    @JsonIgnoreProperties(
+        value = { "lastErrorReport", "abuseReport", "attributes", "paymentJobs", "paymentMethods", "steps", "refunds", "captures" },
+        allowSetters = true
+    )
+    private Set<Payment> payments = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
@@ -167,6 +178,37 @@ public class Capture implements Serializable {
 
     public void setIsFinalCapture(Boolean isFinalCapture) {
         this.isFinalCapture = isFinalCapture;
+    }
+
+    public Set<Payment> getPayments() {
+        return this.payments;
+    }
+
+    public void setPayments(Set<Payment> payments) {
+        if (this.payments != null) {
+            this.payments.forEach(i -> i.setCaptures(null));
+        }
+        if (payments != null) {
+            payments.forEach(i -> i.setCaptures(this));
+        }
+        this.payments = payments;
+    }
+
+    public Capture payments(Set<Payment> payments) {
+        this.setPayments(payments);
+        return this;
+    }
+
+    public Capture addPayment(Payment payment) {
+        this.payments.add(payment);
+        payment.setCaptures(this);
+        return this;
+    }
+
+    public Capture removePayment(Payment payment) {
+        this.payments.remove(payment);
+        payment.setCaptures(null);
+        return this;
     }
 
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd">
+    <!--
+        Added the constraints for entity ErrorReport.
+    -->
+    <changeSet id="20220709023637-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="errors_id"
+                                 baseTableName="error_report"
+                                 constraintName="fk_error_report__errors_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="entry"/>
+
+        <addForeignKeyConstraint baseColumnNames="warnings_id"
+                                 baseTableName="error_report"
+                                 constraintName="fk_error_report__warnings_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="entry"/>
+    </changeSet>
+</databaseChangeLog>

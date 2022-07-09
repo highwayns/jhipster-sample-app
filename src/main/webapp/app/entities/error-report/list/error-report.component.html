@@ -35,6 +35,8 @@
           <th scope="col"><span jhiTranslate="global.field.id">ID</span></th>
           <th scope="col"><span jhiTranslate="jhipsterSampleApplicationApp.errorReport.language">Language</span></th>
           <th scope="col"><span jhiTranslate="jhipsterSampleApplicationApp.errorReport.isFatalError">Is Fatal Error</span></th>
+          <th scope="col"><span jhiTranslate="jhipsterSampleApplicationApp.errorReport.errors">Errors</span></th>
+          <th scope="col"><span jhiTranslate="jhipsterSampleApplicationApp.errorReport.warnings">Warnings</span></th>
           <th scope="col"></th>
         </tr>
       </thead>
@@ -45,6 +47,16 @@
           </td>
           <td jhiTranslate="{{ 'jhipsterSampleApplicationApp.Locale.' + errorReport.language }}">{{ errorReport.language }}</td>
           <td>{{ errorReport.isFatalError }}</td>
+          <td>
+            <div *ngIf="errorReport.errors">
+              <a [routerLink]="['/entry', errorReport.errors?.id, 'view']">{{ errorReport.errors?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="errorReport.warnings">
+              <a [routerLink]="['/entry', errorReport.warnings?.id, 'view']">{{ errorReport.warnings?.id }}</a>
+            </div>
+          </td>
           <td class="text-end">
             <div class="btn-group">
               <button

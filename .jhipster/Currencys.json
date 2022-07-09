@@ -16,6 +16,13 @@
   "name": "Currencys",
   "pagination": "no",
   "readOnly": false,
-  "relationships": [],
+  "relationships": [
+    {
+      "otherEntityName": "paymentMethodInfo",
+      "otherEntityRelationshipName": "currencies",
+      "relationshipName": "paymentMethodInfo",
+      "relationshipType": "one-to-many"
+    }
+  ],
   "service": "no"
 }

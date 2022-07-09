@@ -1,6 +1,9 @@
 package io.github.jhipster.sample.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 import javax.persistence.*;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
@@ -29,6 +32,15 @@ public class AbuseTrigger implements Serializable {
 
     @Column(name = "description")
     private String description;
+
+    @OneToMany(mappedBy = "triggers")
+    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+    @JsonIgnoreProperties(value = { "triggers" }, allowSetters = true)
+    private Set<AbuseReport> abuseReports = new HashSet<>();
+
+    @ManyToOne
+    @JsonIgnoreProperties(value = { "abuseTriggers", "entries" }, allowSetters = true)
+    private Parameters parameters;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
@@ -82,6 +94,50 @@ public class AbuseTrigger implements Serializable {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Set<AbuseReport> getAbuseReports() {
+        return this.abuseReports;
+    }
+
+    public void setAbuseReports(Set<AbuseReport> abuseReports) {
+        if (this.abuseReports != null) {
+            this.abuseReports.forEach(i -> i.setTriggers(null));
+        }
+        if (abuseReports != null) {
+            abuseReports.forEach(i -> i.setTriggers(this));
+        }
+        this.abuseReports = abuseReports;
+    }
+
+    public AbuseTrigger abuseReports(Set<AbuseReport> abuseReports) {
+        this.setAbuseReports(abuseReports);
+        return this;
+    }
+
+    public AbuseTrigger addAbuseReport(AbuseReport abuseReport) {
+        this.abuseReports.add(abuseReport);
+        abuseReport.setTriggers(this);
+        return this;
+    }
+
+    public AbuseTrigger removeAbuseReport(AbuseReport abuseReport) {
+        this.abuseReports.remove(abuseReport);
+        abuseReport.setTriggers(null);
+        return this;
+    }
+
+    public Parameters getParameters() {
+        return this.parameters;
+    }
+
+    public void setParameters(Parameters parameters) {
+        this.parameters = parameters;
+    }
+
+    public AbuseTrigger parameters(Parameters parameters) {
+        this.setParameters(parameters);
+        return this;
     }
 
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here

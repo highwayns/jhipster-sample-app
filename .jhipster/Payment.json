@@ -70,6 +70,36 @@
       "ownerSide": true,
       "relationshipName": "attributes",
       "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "paymentJob",
+      "otherEntityRelationshipName": "payments",
+      "relationshipName": "paymentJob",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "paymentMethods",
+      "otherEntityRelationshipName": "payment",
+      "relationshipName": "paymentMethods",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "paymentStep",
+      "otherEntityRelationshipName": "payment",
+      "relationshipName": "steps",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "refund",
+      "otherEntityRelationshipName": "payment",
+      "relationshipName": "refunds",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "capture",
+      "otherEntityRelationshipName": "payment",
+      "relationshipName": "captures",
+      "relationshipType": "many-to-one"
     }
   ],
   "service": "no"

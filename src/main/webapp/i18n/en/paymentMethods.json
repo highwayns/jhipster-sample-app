@@ -18,7 +18,10 @@
         "title": "Payment Methods"
       },
       "id": "ID",
-      "paymentMethod": "Payment Method"
+      "paymentMethod": "Payment Method",
+      "payment": "Payment",
+      "paymentStep": "Payment Step",
+      "paymentJob": "Payment Job"
     }
   }
 }

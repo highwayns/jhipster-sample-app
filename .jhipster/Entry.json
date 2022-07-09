@@ -23,6 +23,13 @@
   "name": "Entry",
   "pagination": "no",
   "readOnly": false,
-  "relationships": [],
+  "relationships": [
+    {
+      "otherEntityName": "parameters",
+      "otherEntityRelationshipName": "entry",
+      "relationshipName": "parameters",
+      "relationshipType": "many-to-one"
+    }
+  ],
   "service": "no"
 }

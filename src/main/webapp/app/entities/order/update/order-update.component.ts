@@ -14,6 +14,8 @@ import { IAddress } from 'app/entities/address/address.model';
 import { AddressService } from 'app/entities/address/service/address.service';
 import { IIdentity } from 'app/entities/identity/identity.model';
 import { IdentityService } from 'app/entities/identity/service/identity.service';
+import { IOrderLine } from 'app/entities/order-line/order-line.model';
+import { OrderLineService } from 'app/entities/order-line/service/order-line.service';
 
 @Component({
   selector: 'jhi-order-update',
@@ -25,6 +27,7 @@ export class OrderUpdateComponent implements OnInit {
   billingAddressesCollection: IAddress[] = [];
   shippingAddressesCollection: IAddress[] = [];
   billingIdentitiesCollection: IIdentity[] = [];
+  orderLinesSharedCollection: IOrderLine[] = [];
 
   editForm = this.fb.group({
     id: [],
@@ -35,12 +38,14 @@ export class OrderUpdateComponent implements OnInit {
     billingAddress: [],
     billingIdentity: [],
     shippingAddress: [],
+    orderLines: [],
   });
 
   constructor(
     protected orderService: OrderService,
     protected addressService: AddressService,
     protected identityService: IdentityService,
+    protected orderLineService: OrderLineService,
     protected activatedRoute: ActivatedRoute,
     protected fb: FormBuilder
   ) {}
@@ -80,6 +85,10 @@ export class OrderUpdateComponent implements OnInit {
     return item.id!;
   }
 
+  trackOrderLineById(_index: number, item: IOrderLine): number {
+    return item.id!;
+  }
+
   protected subscribeToSaveResponse(result: Observable<HttpResponse<IOrder>>): void {
     result.pipe(finalize(() => this.onSaveFinalize())).subscribe({
       next: () => this.onSaveSuccess(),
@@ -109,6 +118,7 @@ export class OrderUpdateComponent implements OnInit {
       billingAddress: order.billingAddress,
       billingIdentity: order.billingIdentity,
       shippingAddress: order.shippingAddress,
+      orderLines: order.orderLines,
     });
 
     this.billingAddressesCollection = this.addressService.addAddressToCollectionIfMissing(
@@ -122,6 +132,10 @@ export class OrderUpdateComponent implements OnInit {
     this.billingIdentitiesCollection = this.identityService.addIdentityToCollectionIfMissing(
       this.billingIdentitiesCollection,
       order.billingIdentity
+    );
+    this.orderLinesSharedCollection = this.orderLineService.addOrderLineToCollectionIfMissing(
+      this.orderLinesSharedCollection,
+      order.orderLines
     );
   }
 
@@ -155,6 +169,16 @@ export class OrderUpdateComponent implements OnInit {
         )
       )
       .subscribe((identities: IIdentity[]) => (this.billingIdentitiesCollection = identities));
+
+    this.orderLineService
+      .query()
+      .pipe(map((res: HttpResponse<IOrderLine[]>) => res.body ?? []))
+      .pipe(
+        map((orderLines: IOrderLine[]) =>
+          this.orderLineService.addOrderLineToCollectionIfMissing(orderLines, this.editForm.get('orderLines')!.value)
+        )
+      )
+      .subscribe((orderLines: IOrderLine[]) => (this.orderLinesSharedCollection = orderLines));
   }
 
   protected createFromForm(): IOrder {
@@ -170,6 +194,7 @@ export class OrderUpdateComponent implements OnInit {
       billingAddress: this.editForm.get(['billingAddress'])!.value,
       billingIdentity: this.editForm.get(['billingIdentity'])!.value,
       shippingAddress: this.editForm.get(['shippingAddress'])!.value,
+      orderLines: this.editForm.get(['orderLines'])!.value,
     };
   }
 }

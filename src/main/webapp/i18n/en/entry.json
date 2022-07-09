@@ -20,7 +20,8 @@
       "id": "ID",
       "code": "Code",
       "message": "Message",
-      "translatedMessage": "Translated Message"
+      "translatedMessage": "Translated Message",
+      "parameters": "Parameters"
     }
   }
 }

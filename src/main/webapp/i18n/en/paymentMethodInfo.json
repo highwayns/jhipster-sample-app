@@ -21,12 +21,14 @@
       "paymentMethod": "Payment Method",
       "logo": "Logo",
       "supportsTokenisation": "Supports Tokenisation",
-      "currencies": "Currencies",
       "surchargeAmount": "Surcharge Amount",
       "surchargeAmountExclVat": "Surcharge Amount Excl Vat",
       "surchargeAmountVat": "Surcharge Amount Vat",
       "surchargeVatPercentage": "Surcharge Vat Percentage",
-      "description": "Description"
+      "description": "Description",
+      "currencies": "Currencies",
+      "issuerList": "Issuer List",
+      "tokenizedCards": "Tokenized Cards"
     }
   }
 }

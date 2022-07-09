@@ -19,7 +19,8 @@
       },
       "id": "ID",
       "score": "Score",
-      "createdDateTimeUtc": "Created Date Time Utc"
+      "createdDateTimeUtc": "Created Date Time Utc",
+      "triggers": "Triggers"
     }
   }
 }

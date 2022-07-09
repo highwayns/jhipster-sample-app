@@ -25,5 +25,29 @@
                                  constraintName="fk_payment__attributes_id"
                                  referencedColumnNames="id"
                                  referencedTableName="payment_attributes"/>
+
+        <addForeignKeyConstraint baseColumnNames="payment_methods_id"
+                                 baseTableName="payment"
+                                 constraintName="fk_payment__payment_methods_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="payment_methods"/>
+
+        <addForeignKeyConstraint baseColumnNames="steps_id"
+                                 baseTableName="payment"
+                                 constraintName="fk_payment__steps_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="payment_step"/>
+
+        <addForeignKeyConstraint baseColumnNames="refunds_id"
+                                 baseTableName="payment"
+                                 constraintName="fk_payment__refunds_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="refund"/>
+
+        <addForeignKeyConstraint baseColumnNames="captures_id"
+                                 baseTableName="payment"
+                                 constraintName="fk_payment__captures_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="capture"/>
     </changeSet>
 </databaseChangeLog>

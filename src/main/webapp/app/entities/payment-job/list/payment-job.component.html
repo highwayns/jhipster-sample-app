@@ -61,6 +61,11 @@
           <th scope="col"><span jhiTranslate="jhipsterSampleApplicationApp.paymentJob.order">Order</span></th>
           <th scope="col"><span jhiTranslate="jhipsterSampleApplicationApp.paymentJob.attributes">Attributes</span></th>
           <th scope="col"><span jhiTranslate="jhipsterSampleApplicationApp.paymentJob.recurrenceCriteria">Recurrence Criteria</span></th>
+          <th scope="col"><span jhiTranslate="jhipsterSampleApplicationApp.paymentJob.orderHistory">Order History</span></th>
+          <th scope="col">
+            <span jhiTranslate="jhipsterSampleApplicationApp.paymentJob.paymentMethodsToUse">Payment Methods To Use</span>
+          </th>
+          <th scope="col"><span jhiTranslate="jhipsterSampleApplicationApp.paymentJob.payments">Payments</span></th>
           <th scope="col"></th>
         </tr>
       </thead>
@@ -103,6 +108,23 @@
               <a [routerLink]="['/recurrence-criteria', paymentJob.recurrenceCriteria?.id, 'view']">{{
                 paymentJob.recurrenceCriteria?.id
               }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="paymentJob.orderHistory">
+              <a [routerLink]="['/order', paymentJob.orderHistory?.id, 'view']">{{ paymentJob.orderHistory?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="paymentJob.paymentMethodsToUse">
+              <a [routerLink]="['/payment-methods', paymentJob.paymentMethodsToUse?.id, 'view']">{{
+                paymentJob.paymentMethodsToUse?.id
+              }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="paymentJob.payments">
+              <a [routerLink]="['/payment', paymentJob.payments?.id, 'view']">{{ paymentJob.payments?.id }}</a>
             </div>
           </td>
           <td class="text-end">

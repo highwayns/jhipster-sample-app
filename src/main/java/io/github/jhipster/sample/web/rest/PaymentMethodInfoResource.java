@@ -133,9 +133,6 @@ public class PaymentMethodInfoResource {
                 if (paymentMethodInfo.getSupportsTokenisation() != null) {
                     existingPaymentMethodInfo.setSupportsTokenisation(paymentMethodInfo.getSupportsTokenisation());
                 }
-                if (paymentMethodInfo.getCurrencies() != null) {
-                    existingPaymentMethodInfo.setCurrencies(paymentMethodInfo.getCurrencies());
-                }
                 if (paymentMethodInfo.getSurchargeAmount() != null) {
                     existingPaymentMethodInfo.setSurchargeAmount(paymentMethodInfo.getSurchargeAmount());
                 }

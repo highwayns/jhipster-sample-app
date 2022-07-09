@@ -1,5 +1,6 @@
 import dayjs from 'dayjs/esm';
 import { IResultAttributes } from 'app/entities/result-attributes/result-attributes.model';
+import { IRefund } from 'app/entities/refund/refund.model';
 import { RefundStepAction } from 'app/entities/enumerations/refund-step-action.model';
 import { RefundStatus } from 'app/entities/enumerations/refund-status.model';
 
@@ -11,6 +12,7 @@ export interface IRefundStep {
   status?: RefundStatus | null;
   description?: string | null;
   resultAttributes?: IResultAttributes | null;
+  refunds?: IRefund[] | null;
 }
 
 export class RefundStep implements IRefundStep {
@@ -21,7 +23,8 @@ export class RefundStep implements IRefundStep {
     public action?: RefundStepAction | null,
     public status?: RefundStatus | null,
     public description?: string | null,
-    public resultAttributes?: IResultAttributes | null
+    public resultAttributes?: IResultAttributes | null,
+    public refunds?: IRefund[] | null
   ) {}
 }
 

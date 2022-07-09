@@ -12,6 +12,8 @@ import { IAddress } from 'app/entities/address/address.model';
 import { AddressService } from 'app/entities/address/service/address.service';
 import { IIdentity } from 'app/entities/identity/identity.model';
 import { IdentityService } from 'app/entities/identity/service/identity.service';
+import { IOrderLine } from 'app/entities/order-line/order-line.model';
+import { OrderLineService } from 'app/entities/order-line/service/order-line.service';
 
 import { OrderUpdateComponent } from './order-update.component';
 
@@ -22,6 +24,7 @@ describe('Order Management Update Component', () => {
   let orderService: OrderService;
   let addressService: AddressService;
   let identityService: IdentityService;
+  let orderLineService: OrderLineService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -45,6 +48,7 @@ describe('Order Management Update Component', () => {
     orderService = TestBed.inject(OrderService);
     addressService = TestBed.inject(AddressService);
     identityService = TestBed.inject(IdentityService);
+    orderLineService = TestBed.inject(OrderLineService);
 
     comp = fixture.componentInstance;
   });
@@ -104,6 +108,25 @@ describe('Order Management Update Component', () => {
       expect(comp.billingIdentitiesCollection).toEqual(expectedCollection);
     });
 
+    it('Should call OrderLine query and add missing value', () => {
+      const order: IOrder = { id: 456 };
+      const orderLines: IOrderLine = { id: 84748 };
+      order.orderLines = orderLines;
+
+      const orderLineCollection: IOrderLine[] = [{ id: 84616 }];
+      jest.spyOn(orderLineService, 'query').mockReturnValue(of(new HttpResponse({ body: orderLineCollection })));
+      const additionalOrderLines = [orderLines];
+      const expectedCollection: IOrderLine[] = [...additionalOrderLines, ...orderLineCollection];
+      jest.spyOn(orderLineService, 'addOrderLineToCollectionIfMissing').mockReturnValue(expectedCollection);
+
+      activatedRoute.data = of({ order });
+      comp.ngOnInit();
+
+      expect(orderLineService.query).toHaveBeenCalled();
+      expect(orderLineService.addOrderLineToCollectionIfMissing).toHaveBeenCalledWith(orderLineCollection, ...additionalOrderLines);
+      expect(comp.orderLinesSharedCollection).toEqual(expectedCollection);
+    });
+
     it('Should update editForm', () => {
       const order: IOrder = { id: 456 };
       const billingAddress: IAddress = { id: 63820 };
@@ -112,6 +135,8 @@ describe('Order Management Update Component', () => {
       order.shippingAddress = shippingAddress;
       const billingIdentity: IIdentity = { id: 47580 };
       order.billingIdentity = billingIdentity;
+      const orderLines: IOrderLine = { id: 16705 };
+      order.orderLines = orderLines;
 
       activatedRoute.data = of({ order });
       comp.ngOnInit();
@@ -120,6 +145,7 @@ describe('Order Management Update Component', () => {
       expect(comp.billingAddressesCollection).toContain(billingAddress);
       expect(comp.shippingAddressesCollection).toContain(shippingAddress);
       expect(comp.billingIdentitiesCollection).toContain(billingIdentity);
+      expect(comp.orderLinesSharedCollection).toContain(orderLines);
     });
   });
 
@@ -200,6 +226,14 @@ describe('Order Management Update Component', () => {
       it('Should return tracked Identity primary key', () => {
         const entity = { id: 123 };
         const trackResult = comp.trackIdentityById(0, entity);
+        expect(trackResult).toEqual(entity.id);
+      });
+    });
+
+    describe('trackOrderLineById', () => {
+      it('Should return tracked OrderLine primary key', () => {
+        const entity = { id: 123 };
+        const trackResult = comp.trackOrderLineById(0, entity);
         expect(trackResult).toEqual(entity.id);
       });
     });

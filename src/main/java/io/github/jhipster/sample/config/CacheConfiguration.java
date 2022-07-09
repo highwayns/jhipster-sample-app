@@ -81,6 +81,21 @@ public class CacheConfiguration {
             createCache(cm, io.github.jhipster.sample.domain.RecurrenceCriteria.class.getName());
             createCache(cm, io.github.jhipster.sample.domain.Currencys.class.getName());
             createCache(cm, io.github.jhipster.sample.domain.TokenisedCard.class.getName());
+            createCache(cm, io.github.jhipster.sample.domain.AbuseTrigger.class.getName() + ".abuseReports");
+            createCache(cm, io.github.jhipster.sample.domain.Parameters.class.getName() + ".abuseTriggers");
+            createCache(cm, io.github.jhipster.sample.domain.Parameters.class.getName() + ".entries");
+            createCache(cm, io.github.jhipster.sample.domain.Capture.class.getName() + ".payments");
+            createCache(cm, io.github.jhipster.sample.domain.CardTokenData.class.getName() + ".paymentMethodInfos");
+            createCache(cm, io.github.jhipster.sample.domain.Issuer.class.getName() + ".paymentMethodInfos");
+            createCache(cm, io.github.jhipster.sample.domain.OrderLine.class.getName() + ".orders");
+            createCache(cm, io.github.jhipster.sample.domain.Payment.class.getName() + ".paymentJobs");
+            createCache(cm, io.github.jhipster.sample.domain.PaymentStep.class.getName() + ".payments");
+            createCache(cm, io.github.jhipster.sample.domain.PaymentMethods.class.getName() + ".payments");
+            createCache(cm, io.github.jhipster.sample.domain.PaymentMethods.class.getName() + ".paymentSteps");
+            createCache(cm, io.github.jhipster.sample.domain.PaymentMethods.class.getName() + ".paymentJobs");
+            createCache(cm, io.github.jhipster.sample.domain.Refund.class.getName() + ".payments");
+            createCache(cm, io.github.jhipster.sample.domain.RefundStep.class.getName() + ".refunds");
+            createCache(cm, io.github.jhipster.sample.domain.Currencys.class.getName() + ".paymentMethodInfos");
             // jhipster-needle-ehcache-add-entry
         };
     }

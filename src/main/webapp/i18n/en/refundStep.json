@@ -23,7 +23,8 @@
       "action": "Action",
       "status": "Status",
       "description": "Description",
-      "resultAttributes": "Result Attributes"
+      "resultAttributes": "Result Attributes",
+      "refund": "Refund"
     }
   }
 }

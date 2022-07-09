@@ -45,6 +45,19 @@
   "name": "Refund",
   "pagination": "no",
   "readOnly": false,
-  "relationships": [],
+  "relationships": [
+    {
+      "otherEntityName": "payment",
+      "otherEntityRelationshipName": "refunds",
+      "relationshipName": "payment",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "refundStep",
+      "otherEntityRelationshipName": "refund",
+      "relationshipName": "steps",
+      "relationshipType": "many-to-one"
+    }
+  ],
   "service": "no"
 }

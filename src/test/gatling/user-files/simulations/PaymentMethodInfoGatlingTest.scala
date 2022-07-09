@@ -74,7 +74,6 @@ class PaymentMethodInfoGatlingTest extends Simulation {
                 "paymentMethod":"SAMPLE_TEXT"
                 , "logo":"SAMPLE_TEXT"
                 , "supportsTokenisation":null
-                , "currencies":"CNY"
                 , "surchargeAmount":"0"
                 , "surchargeAmountExclVat":"0"
                 , "surchargeAmountVat":"0"

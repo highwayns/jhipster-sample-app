@@ -1,4 +1,6 @@
 import dayjs from 'dayjs/esm';
+import { IPayment } from 'app/entities/payment/payment.model';
+import { IRefundStep } from 'app/entities/refund-step/refund-step.model';
 import { RefundStatus } from 'app/entities/enumerations/refund-status.model';
 import { Currency } from 'app/entities/enumerations/currency.model';
 
@@ -12,6 +14,8 @@ export interface IRefund {
   convertedAmountToRefund?: number | null;
   convertedCurrency?: Currency | null;
   conversionRate?: number | null;
+  payments?: IPayment[] | null;
+  steps?: IRefundStep | null;
 }
 
 export class Refund implements IRefund {
@@ -24,7 +28,9 @@ export class Refund implements IRefund {
     public amountToRefund?: number | null,
     public convertedAmountToRefund?: number | null,
     public convertedCurrency?: Currency | null,
-    public conversionRate?: number | null
+    public conversionRate?: number | null,
+    public payments?: IPayment[] | null,
+    public steps?: IRefundStep | null
   ) {}
 }
 

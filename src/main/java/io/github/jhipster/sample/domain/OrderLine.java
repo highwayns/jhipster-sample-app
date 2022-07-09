@@ -1,7 +1,10 @@
 package io.github.jhipster.sample.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import io.github.jhipster.sample.domain.enumeration.OrderLineType;
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 import javax.persistence.*;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
@@ -61,6 +64,11 @@ public class OrderLine implements Serializable {
 
     @Column(name = "url")
     private String url;
+
+    @OneToMany(mappedBy = "orderLines")
+    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+    @JsonIgnoreProperties(value = { "billingAddress", "billingIdentity", "shippingAddress", "orderLines" }, allowSetters = true)
+    private Set<Order> orders = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
@@ -244,6 +252,37 @@ public class OrderLine implements Serializable {
 
     public void setUrl(String url) {
         this.url = url;
+    }
+
+    public Set<Order> getOrders() {
+        return this.orders;
+    }
+
+    public void setOrders(Set<Order> orders) {
+        if (this.orders != null) {
+            this.orders.forEach(i -> i.setOrderLines(null));
+        }
+        if (orders != null) {
+            orders.forEach(i -> i.setOrderLines(this));
+        }
+        this.orders = orders;
+    }
+
+    public OrderLine orders(Set<Order> orders) {
+        this.setOrders(orders);
+        return this;
+    }
+
+    public OrderLine addOrder(Order order) {
+        this.orders.add(order);
+        order.setOrderLines(this);
+        return this;
+    }
+
+    public OrderLine removeOrder(Order order) {
+        this.orders.remove(order);
+        order.setOrderLines(null);
+        return this;
     }
 
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here

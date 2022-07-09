@@ -30,7 +30,8 @@
       "vatPercentageLabel": "Vat Percentage Label",
       "discountPercentageLabel": "Discount Percentage Label",
       "totalLineAmount": "Total Line Amount",
-      "url": "Url"
+      "url": "Url",
+      "order": "Order"
     }
   }
 }

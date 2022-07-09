@@ -36,6 +36,7 @@
           <th scope="col"><span jhiTranslate="jhipsterSampleApplicationApp.entry.code">Code</span></th>
           <th scope="col"><span jhiTranslate="jhipsterSampleApplicationApp.entry.message">Message</span></th>
           <th scope="col"><span jhiTranslate="jhipsterSampleApplicationApp.entry.translatedMessage">Translated Message</span></th>
+          <th scope="col"><span jhiTranslate="jhipsterSampleApplicationApp.entry.parameters">Parameters</span></th>
           <th scope="col"></th>
         </tr>
       </thead>
@@ -47,6 +48,11 @@
           <td>{{ entry.code }}</td>
           <td>{{ entry.message }}</td>
           <td>{{ entry.translatedMessage }}</td>
+          <td>
+            <div *ngIf="entry.parameters">
+              <a [routerLink]="['/parameters', entry.parameters?.id, 'view']">{{ entry.parameters?.id }}</a>
+            </div>
+          </td>
           <td class="text-end">
             <div class="btn-group">
               <button type="submit" [routerLink]="['/entry', entry.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">

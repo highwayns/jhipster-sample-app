@@ -25,7 +25,9 @@
       "amountToRefund": "Amount To Refund",
       "convertedAmountToRefund": "Converted Amount To Refund",
       "convertedCurrency": "Converted Currency",
-      "conversionRate": "Conversion Rate"
+      "conversionRate": "Conversion Rate",
+      "payment": "Payment",
+      "steps": "Steps"
     }
   }
 }

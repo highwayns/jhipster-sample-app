@@ -28,12 +28,6 @@
         <dd>
           <span>{{ paymentMethodInfo.supportsTokenisation }}</span>
         </dd>
-        <dt><span jhiTranslate="jhipsterSampleApplicationApp.paymentMethodInfo.currencies">Currencies</span></dt>
-        <dd>
-          <span jhiTranslate="{{ 'jhipsterSampleApplicationApp.Currency.' + paymentMethodInfo.currencies }}">{{
-            paymentMethodInfo.currencies
-          }}</span>
-        </dd>
         <dt><span jhiTranslate="jhipsterSampleApplicationApp.paymentMethodInfo.surchargeAmount">Surcharge Amount</span></dt>
         <dd>
           <span>{{ paymentMethodInfo.surchargeAmount }}</span>
@@ -53,6 +47,26 @@
         <dt><span jhiTranslate="jhipsterSampleApplicationApp.paymentMethodInfo.description">Description</span></dt>
         <dd>
           <span>{{ paymentMethodInfo.description }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.paymentMethodInfo.currencies">Currencies</span></dt>
+        <dd>
+          <div *ngIf="paymentMethodInfo.currencies">
+            <a [routerLink]="['/currencys', paymentMethodInfo.currencies?.id, 'view']">{{ paymentMethodInfo.currencies?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.paymentMethodInfo.issuerList">Issuer List</span></dt>
+        <dd>
+          <div *ngIf="paymentMethodInfo.issuerList">
+            <a [routerLink]="['/issuer', paymentMethodInfo.issuerList?.id, 'view']">{{ paymentMethodInfo.issuerList?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.paymentMethodInfo.tokenizedCards">Tokenized Cards</span></dt>
+        <dd>
+          <div *ngIf="paymentMethodInfo.tokenizedCards">
+            <a [routerLink]="['/card-token-data', paymentMethodInfo.tokenizedCards?.id, 'view']">{{
+              paymentMethodInfo.tokenizedCards?.id
+            }}</a>
+          </div>
         </dd>
       </dl>
 

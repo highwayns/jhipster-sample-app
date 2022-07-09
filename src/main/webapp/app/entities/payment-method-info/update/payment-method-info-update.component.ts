@@ -3,11 +3,16 @@ import { HttpResponse } from '@angular/common/http';
 import { FormBuilder } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
-import { finalize } from 'rxjs/operators';
+import { finalize, map } from 'rxjs/operators';
 
 import { IPaymentMethodInfo, PaymentMethodInfo } from '../payment-method-info.model';
 import { PaymentMethodInfoService } from '../service/payment-method-info.service';
-import { Currency } from 'app/entities/enumerations/currency.model';
+import { ICurrencys } from 'app/entities/currencys/currencys.model';
+import { CurrencysService } from 'app/entities/currencys/service/currencys.service';
+import { IIssuer } from 'app/entities/issuer/issuer.model';
+import { IssuerService } from 'app/entities/issuer/service/issuer.service';
+import { ICardTokenData } from 'app/entities/card-token-data/card-token-data.model';
+import { CardTokenDataService } from 'app/entities/card-token-data/service/card-token-data.service';
 
 @Component({
   selector: 'jhi-payment-method-info-update',
@@ -15,23 +20,31 @@ import { Currency } from 'app/entities/enumerations/currency.model';
 })
 export class PaymentMethodInfoUpdateComponent implements OnInit {
   isSaving = false;
-  currencyValues = Object.keys(Currency);
+
+  currencysSharedCollection: ICurrencys[] = [];
+  issuersSharedCollection: IIssuer[] = [];
+  cardTokenDataSharedCollection: ICardTokenData[] = [];
 
   editForm = this.fb.group({
     id: [],
     paymentMethod: [],
     logo: [],
     supportsTokenisation: [],
-    currencies: [],
     surchargeAmount: [],
     surchargeAmountExclVat: [],
     surchargeAmountVat: [],
     surchargeVatPercentage: [],
     description: [],
+    currencies: [],
+    issuerList: [],
+    tokenizedCards: [],
   });
 
   constructor(
     protected paymentMethodInfoService: PaymentMethodInfoService,
+    protected currencysService: CurrencysService,
+    protected issuerService: IssuerService,
+    protected cardTokenDataService: CardTokenDataService,
     protected activatedRoute: ActivatedRoute,
     protected fb: FormBuilder
   ) {}
@@ -39,6 +52,8 @@ export class PaymentMethodInfoUpdateComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(({ paymentMethodInfo }) => {
       this.updateForm(paymentMethodInfo);
+
+      this.loadRelationshipsOptions();
     });
   }
 
@@ -54,6 +69,18 @@ export class PaymentMethodInfoUpdateComponent implements OnInit {
     } else {
       this.subscribeToSaveResponse(this.paymentMethodInfoService.create(paymentMethodInfo));
     }
+  }
+
+  trackCurrencysById(_index: number, item: ICurrencys): number {
+    return item.id!;
+  }
+
+  trackIssuerById(_index: number, item: IIssuer): string {
+    return item.id!;
+  }
+
+  trackCardTokenDataById(_index: number, item: ICardTokenData): number {
+    return item.id!;
   }
 
   protected subscribeToSaveResponse(result: Observable<HttpResponse<IPaymentMethodInfo>>): void {
@@ -81,13 +108,56 @@ export class PaymentMethodInfoUpdateComponent implements OnInit {
       paymentMethod: paymentMethodInfo.paymentMethod,
       logo: paymentMethodInfo.logo,
       supportsTokenisation: paymentMethodInfo.supportsTokenisation,
-      currencies: paymentMethodInfo.currencies,
       surchargeAmount: paymentMethodInfo.surchargeAmount,
       surchargeAmountExclVat: paymentMethodInfo.surchargeAmountExclVat,
       surchargeAmountVat: paymentMethodInfo.surchargeAmountVat,
       surchargeVatPercentage: paymentMethodInfo.surchargeVatPercentage,
       description: paymentMethodInfo.description,
+      currencies: paymentMethodInfo.currencies,
+      issuerList: paymentMethodInfo.issuerList,
+      tokenizedCards: paymentMethodInfo.tokenizedCards,
     });
+
+    this.currencysSharedCollection = this.currencysService.addCurrencysToCollectionIfMissing(
+      this.currencysSharedCollection,
+      paymentMethodInfo.currencies
+    );
+    this.issuersSharedCollection = this.issuerService.addIssuerToCollectionIfMissing(
+      this.issuersSharedCollection,
+      paymentMethodInfo.issuerList
+    );
+    this.cardTokenDataSharedCollection = this.cardTokenDataService.addCardTokenDataToCollectionIfMissing(
+      this.cardTokenDataSharedCollection,
+      paymentMethodInfo.tokenizedCards
+    );
+  }
+
+  protected loadRelationshipsOptions(): void {
+    this.currencysService
+      .query()
+      .pipe(map((res: HttpResponse<ICurrencys[]>) => res.body ?? []))
+      .pipe(
+        map((currencys: ICurrencys[]) =>
+          this.currencysService.addCurrencysToCollectionIfMissing(currencys, this.editForm.get('currencies')!.value)
+        )
+      )
+      .subscribe((currencys: ICurrencys[]) => (this.currencysSharedCollection = currencys));
+
+    this.issuerService
+      .query()
+      .pipe(map((res: HttpResponse<IIssuer[]>) => res.body ?? []))
+      .pipe(map((issuers: IIssuer[]) => this.issuerService.addIssuerToCollectionIfMissing(issuers, this.editForm.get('issuerList')!.value)))
+      .subscribe((issuers: IIssuer[]) => (this.issuersSharedCollection = issuers));
+
+    this.cardTokenDataService
+      .query()
+      .pipe(map((res: HttpResponse<ICardTokenData[]>) => res.body ?? []))
+      .pipe(
+        map((cardTokenData: ICardTokenData[]) =>
+          this.cardTokenDataService.addCardTokenDataToCollectionIfMissing(cardTokenData, this.editForm.get('tokenizedCards')!.value)
+        )
+      )
+      .subscribe((cardTokenData: ICardTokenData[]) => (this.cardTokenDataSharedCollection = cardTokenData));
   }
 
   protected createFromForm(): IPaymentMethodInfo {
@@ -97,12 +167,14 @@ export class PaymentMethodInfoUpdateComponent implements OnInit {
       paymentMethod: this.editForm.get(['paymentMethod'])!.value,
       logo: this.editForm.get(['logo'])!.value,
       supportsTokenisation: this.editForm.get(['supportsTokenisation'])!.value,
-      currencies: this.editForm.get(['currencies'])!.value,
       surchargeAmount: this.editForm.get(['surchargeAmount'])!.value,
       surchargeAmountExclVat: this.editForm.get(['surchargeAmountExclVat'])!.value,
       surchargeAmountVat: this.editForm.get(['surchargeAmountVat'])!.value,
       surchargeVatPercentage: this.editForm.get(['surchargeVatPercentage'])!.value,
       description: this.editForm.get(['description'])!.value,
+      currencies: this.editForm.get(['currencies'])!.value,
+      issuerList: this.editForm.get(['issuerList'])!.value,
+      tokenizedCards: this.editForm.get(['tokenizedCards'])!.value,
     };
   }
 }

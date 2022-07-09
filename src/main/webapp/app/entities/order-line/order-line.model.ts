@@ -1,3 +1,4 @@
+import { IOrder } from 'app/entities/order/order.model';
 import { OrderLineType } from 'app/entities/enumerations/order-line-type.model';
 
 export interface IOrderLine {
@@ -15,6 +16,7 @@ export interface IOrderLine {
   discountPercentageLabel?: string | null;
   totalLineAmount?: number | null;
   url?: string | null;
+  orders?: IOrder[] | null;
 }
 
 export class OrderLine implements IOrderLine {
@@ -32,7 +34,8 @@ export class OrderLine implements IOrderLine {
     public vatPercentageLabel?: string | null,
     public discountPercentageLabel?: string | null,
     public totalLineAmount?: number | null,
-    public url?: string | null
+    public url?: string | null,
+    public orders?: IOrder[] | null
   ) {}
 }
 

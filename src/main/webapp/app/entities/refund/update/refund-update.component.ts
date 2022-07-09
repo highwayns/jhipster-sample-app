@@ -3,13 +3,15 @@ import { HttpResponse } from '@angular/common/http';
 import { FormBuilder } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
-import { finalize } from 'rxjs/operators';
+import { finalize, map } from 'rxjs/operators';
 
 import dayjs from 'dayjs/esm';
 import { DATE_TIME_FORMAT } from 'app/config/input.constants';
 
 import { IRefund, Refund } from '../refund.model';
 import { RefundService } from '../service/refund.service';
+import { IRefundStep } from 'app/entities/refund-step/refund-step.model';
+import { RefundStepService } from 'app/entities/refund-step/service/refund-step.service';
 import { RefundStatus } from 'app/entities/enumerations/refund-status.model';
 import { Currency } from 'app/entities/enumerations/currency.model';
 
@@ -22,6 +24,8 @@ export class RefundUpdateComponent implements OnInit {
   refundStatusValues = Object.keys(RefundStatus);
   currencyValues = Object.keys(Currency);
 
+  refundStepsSharedCollection: IRefundStep[] = [];
+
   editForm = this.fb.group({
     id: [],
     reference: [],
@@ -32,9 +36,15 @@ export class RefundUpdateComponent implements OnInit {
     convertedAmountToRefund: [],
     convertedCurrency: [],
     conversionRate: [],
+    steps: [],
   });
 
-  constructor(protected refundService: RefundService, protected activatedRoute: ActivatedRoute, protected fb: FormBuilder) {}
+  constructor(
+    protected refundService: RefundService,
+    protected refundStepService: RefundStepService,
+    protected activatedRoute: ActivatedRoute,
+    protected fb: FormBuilder
+  ) {}
 
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(({ refund }) => {
@@ -44,6 +54,8 @@ export class RefundUpdateComponent implements OnInit {
       }
 
       this.updateForm(refund);
+
+      this.loadRelationshipsOptions();
     });
   }
 
@@ -59,6 +71,10 @@ export class RefundUpdateComponent implements OnInit {
     } else {
       this.subscribeToSaveResponse(this.refundService.create(refund));
     }
+  }
+
+  trackRefundStepById(_index: number, item: IRefundStep): number {
+    return item.id!;
   }
 
   protected subscribeToSaveResponse(result: Observable<HttpResponse<IRefund>>): void {
@@ -91,7 +107,25 @@ export class RefundUpdateComponent implements OnInit {
       convertedAmountToRefund: refund.convertedAmountToRefund,
       convertedCurrency: refund.convertedCurrency,
       conversionRate: refund.conversionRate,
+      steps: refund.steps,
     });
+
+    this.refundStepsSharedCollection = this.refundStepService.addRefundStepToCollectionIfMissing(
+      this.refundStepsSharedCollection,
+      refund.steps
+    );
+  }
+
+  protected loadRelationshipsOptions(): void {
+    this.refundStepService
+      .query()
+      .pipe(map((res: HttpResponse<IRefundStep[]>) => res.body ?? []))
+      .pipe(
+        map((refundSteps: IRefundStep[]) =>
+          this.refundStepService.addRefundStepToCollectionIfMissing(refundSteps, this.editForm.get('steps')!.value)
+        )
+      )
+      .subscribe((refundSteps: IRefundStep[]) => (this.refundStepsSharedCollection = refundSteps));
   }
 
   protected createFromForm(): IRefund {
@@ -108,6 +142,7 @@ export class RefundUpdateComponent implements OnInit {
       convertedAmountToRefund: this.editForm.get(['convertedAmountToRefund'])!.value,
       convertedCurrency: this.editForm.get(['convertedCurrency'])!.value,
       conversionRate: this.editForm.get(['conversionRate'])!.value,
+      steps: this.editForm.get(['steps'])!.value,
     };
   }
 }

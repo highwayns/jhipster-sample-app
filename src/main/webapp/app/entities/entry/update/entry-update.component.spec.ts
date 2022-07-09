@@ -8,6 +8,8 @@ import { of, Subject, from } from 'rxjs';
 
 import { EntryService } from '../service/entry.service';
 import { IEntry, Entry } from '../entry.model';
+import { IParameters } from 'app/entities/parameters/parameters.model';
+import { ParametersService } from 'app/entities/parameters/service/parameters.service';
 
 import { EntryUpdateComponent } from './entry-update.component';
 
@@ -16,6 +18,7 @@ describe('Entry Management Update Component', () => {
   let fixture: ComponentFixture<EntryUpdateComponent>;
   let activatedRoute: ActivatedRoute;
   let entryService: EntryService;
+  let parametersService: ParametersService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -37,18 +40,41 @@ describe('Entry Management Update Component', () => {
     fixture = TestBed.createComponent(EntryUpdateComponent);
     activatedRoute = TestBed.inject(ActivatedRoute);
     entryService = TestBed.inject(EntryService);
+    parametersService = TestBed.inject(ParametersService);
 
     comp = fixture.componentInstance;
   });
 
   describe('ngOnInit', () => {
+    it('Should call Parameters query and add missing value', () => {
+      const entry: IEntry = { id: 456 };
+      const parameters: IParameters = { id: 74303 };
+      entry.parameters = parameters;
+
+      const parametersCollection: IParameters[] = [{ id: 36272 }];
+      jest.spyOn(parametersService, 'query').mockReturnValue(of(new HttpResponse({ body: parametersCollection })));
+      const additionalParameters = [parameters];
+      const expectedCollection: IParameters[] = [...additionalParameters, ...parametersCollection];
+      jest.spyOn(parametersService, 'addParametersToCollectionIfMissing').mockReturnValue(expectedCollection);
+
+      activatedRoute.data = of({ entry });
+      comp.ngOnInit();
+
+      expect(parametersService.query).toHaveBeenCalled();
+      expect(parametersService.addParametersToCollectionIfMissing).toHaveBeenCalledWith(parametersCollection, ...additionalParameters);
+      expect(comp.parametersSharedCollection).toEqual(expectedCollection);
+    });
+
     it('Should update editForm', () => {
       const entry: IEntry = { id: 456 };
+      const parameters: IParameters = { id: 90791 };
+      entry.parameters = parameters;
 
       activatedRoute.data = of({ entry });
       comp.ngOnInit();
 
       expect(comp.editForm.value).toEqual(expect.objectContaining(entry));
+      expect(comp.parametersSharedCollection).toContain(parameters);
     });
   });
 
@@ -113,6 +139,16 @@ describe('Entry Management Update Component', () => {
       expect(entryService.update).toHaveBeenCalledWith(entry);
       expect(comp.isSaving).toEqual(false);
       expect(comp.previousState).not.toHaveBeenCalled();
+    });
+  });
+
+  describe('Tracking relationships identifiers', () => {
+    describe('trackParametersById', () => {
+      it('Should return tracked Parameters primary key', () => {
+        const entity = { id: 123 };
+        const trackResult = comp.trackParametersById(0, entity);
+        expect(trackResult).toEqual(entity.id);
+      });
     });
   });
 });

@@ -8,6 +8,8 @@ import { of, Subject, from } from 'rxjs';
 
 import { ErrorReportService } from '../service/error-report.service';
 import { IErrorReport, ErrorReport } from '../error-report.model';
+import { IEntry } from 'app/entities/entry/entry.model';
+import { EntryService } from 'app/entities/entry/service/entry.service';
 
 import { ErrorReportUpdateComponent } from './error-report-update.component';
 
@@ -16,6 +18,7 @@ describe('ErrorReport Management Update Component', () => {
   let fixture: ComponentFixture<ErrorReportUpdateComponent>;
   let activatedRoute: ActivatedRoute;
   let errorReportService: ErrorReportService;
+  let entryService: EntryService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -37,18 +40,46 @@ describe('ErrorReport Management Update Component', () => {
     fixture = TestBed.createComponent(ErrorReportUpdateComponent);
     activatedRoute = TestBed.inject(ActivatedRoute);
     errorReportService = TestBed.inject(ErrorReportService);
+    entryService = TestBed.inject(EntryService);
 
     comp = fixture.componentInstance;
   });
 
   describe('ngOnInit', () => {
+    it('Should call Entry query and add missing value', () => {
+      const errorReport: IErrorReport = { id: 456 };
+      const errors: IEntry = { id: 59865 };
+      errorReport.errors = errors;
+      const warnings: IEntry = { id: 35533 };
+      errorReport.warnings = warnings;
+
+      const entryCollection: IEntry[] = [{ id: 96441 }];
+      jest.spyOn(entryService, 'query').mockReturnValue(of(new HttpResponse({ body: entryCollection })));
+      const additionalEntries = [errors, warnings];
+      const expectedCollection: IEntry[] = [...additionalEntries, ...entryCollection];
+      jest.spyOn(entryService, 'addEntryToCollectionIfMissing').mockReturnValue(expectedCollection);
+
+      activatedRoute.data = of({ errorReport });
+      comp.ngOnInit();
+
+      expect(entryService.query).toHaveBeenCalled();
+      expect(entryService.addEntryToCollectionIfMissing).toHaveBeenCalledWith(entryCollection, ...additionalEntries);
+      expect(comp.entriesSharedCollection).toEqual(expectedCollection);
+    });
+
     it('Should update editForm', () => {
       const errorReport: IErrorReport = { id: 456 };
+      const errors: IEntry = { id: 37116 };
+      errorReport.errors = errors;
+      const warnings: IEntry = { id: 98099 };
+      errorReport.warnings = warnings;
 
       activatedRoute.data = of({ errorReport });
       comp.ngOnInit();
 
       expect(comp.editForm.value).toEqual(expect.objectContaining(errorReport));
+      expect(comp.entriesSharedCollection).toContain(errors);
+      expect(comp.entriesSharedCollection).toContain(warnings);
     });
   });
 
@@ -113,6 +144,16 @@ describe('ErrorReport Management Update Component', () => {
       expect(errorReportService.update).toHaveBeenCalledWith(errorReport);
       expect(comp.isSaving).toEqual(false);
       expect(comp.previousState).not.toHaveBeenCalled();
+    });
+  });
+
+  describe('Tracking relationships identifiers', () => {
+    describe('trackEntryById', () => {
+      it('Should return tracked Entry primary key', () => {
+        const entity = { id: 123 };
+        const trackResult = comp.trackEntryById(0, entity);
+        expect(trackResult).toEqual(entity.id);
+      });
     });
   });
 });

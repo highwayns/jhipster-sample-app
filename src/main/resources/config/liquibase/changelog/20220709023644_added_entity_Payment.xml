@@ -50,6 +50,18 @@
             <column name="attributes_id" type="bigint">
                 <constraints nullable="true" unique="true" uniqueConstraintName="ux_payment__attributes_id" />
             </column>
+            <column name="payment_methods_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="steps_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="refunds_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="captures_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
         </createTable>
         <dropDefaultValue tableName="payment" columnName="create_date_time_utc" columnDataType="${datetimeType}"/>

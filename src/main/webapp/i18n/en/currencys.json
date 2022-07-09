@@ -18,7 +18,8 @@
         "title": "Currencys"
       },
       "id": "ID",
-      "currency": "Currency"
+      "currency": "Currency",
+      "paymentMethodInfo": "Payment Method Info"
     }
   }
 }

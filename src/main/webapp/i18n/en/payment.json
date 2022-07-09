@@ -29,7 +29,12 @@
       "paidAmount": "Paid Amount",
       "lastErrorReport": "Last Error Report",
       "abuseReport": "Abuse Report",
-      "attributes": "Attributes"
+      "attributes": "Attributes",
+      "paymentJob": "Payment Job",
+      "paymentMethods": "Payment Methods",
+      "steps": "Steps",
+      "refunds": "Refunds",
+      "captures": "Captures"
     }
   }
 }

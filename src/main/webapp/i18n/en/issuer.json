@@ -18,7 +18,8 @@
         "title": "Issuer"
       },
       "id": "Id",
-      "name": "Name"
+      "name": "Name",
+      "paymentMethodInfo": "Payment Method Info"
     }
   }
 }

@@ -40,6 +40,12 @@
       "ownerSide": true,
       "relationshipName": "resultAttributes",
       "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "refund",
+      "otherEntityRelationshipName": "steps",
+      "relationshipName": "refund",
+      "relationshipType": "one-to-many"
     }
   ],
   "service": "no"

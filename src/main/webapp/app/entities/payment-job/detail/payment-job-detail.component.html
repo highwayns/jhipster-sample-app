@@ -112,6 +112,24 @@
             }}</a>
           </div>
         </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.paymentJob.orderHistory">Order History</span></dt>
+        <dd>
+          <div *ngIf="paymentJob.orderHistory">
+            <a [routerLink]="['/order', paymentJob.orderHistory?.id, 'view']">{{ paymentJob.orderHistory?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.paymentJob.paymentMethodsToUse">Payment Methods To Use</span></dt>
+        <dd>
+          <div *ngIf="paymentJob.paymentMethodsToUse">
+            <a [routerLink]="['/payment-methods', paymentJob.paymentMethodsToUse?.id, 'view']">{{ paymentJob.paymentMethodsToUse?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.paymentJob.payments">Payments</span></dt>
+        <dd>
+          <div *ngIf="paymentJob.payments">
+            <a [routerLink]="['/payment', paymentJob.payments?.id, 'view']">{{ paymentJob.payments?.id }}</a>
+          </div>
+        </dd>
       </dl>
 
       <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">

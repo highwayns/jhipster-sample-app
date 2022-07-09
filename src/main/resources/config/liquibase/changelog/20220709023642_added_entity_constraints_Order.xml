@@ -25,5 +25,11 @@
                                  constraintName="fk_jhi_order__shipping_address_id"
                                  referencedColumnNames="id"
                                  referencedTableName="address"/>
+
+        <addForeignKeyConstraint baseColumnNames="order_lines_id"
+                                 baseTableName="jhi_order"
+                                 constraintName="fk_jhi_order__order_lines_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="order_line"/>
     </changeSet>
 </databaseChangeLog>

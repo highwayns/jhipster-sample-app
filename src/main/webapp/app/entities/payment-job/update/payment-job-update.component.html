@@ -327,6 +327,62 @@
             </option>
           </select>
         </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.paymentJob.orderHistory" for="field_orderHistory"
+            >Order History</label
+          >
+          <select class="form-control" id="field_orderHistory" data-cy="orderHistory" name="orderHistory" formControlName="orderHistory">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="orderOption.id === editForm.get('orderHistory')!.value?.id ? editForm.get('orderHistory')!.value : orderOption"
+              *ngFor="let orderOption of ordersSharedCollection; trackBy: trackOrderById"
+            >
+              {{ orderOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label
+            class="form-label"
+            jhiTranslate="jhipsterSampleApplicationApp.paymentJob.paymentMethodsToUse"
+            for="field_paymentMethodsToUse"
+            >Payment Methods To Use</label
+          >
+          <select
+            class="form-control"
+            id="field_paymentMethodsToUse"
+            data-cy="paymentMethodsToUse"
+            name="paymentMethodsToUse"
+            formControlName="paymentMethodsToUse"
+          >
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                paymentMethodsOption.id === editForm.get('paymentMethodsToUse')!.value?.id
+                  ? editForm.get('paymentMethodsToUse')!.value
+                  : paymentMethodsOption
+              "
+              *ngFor="let paymentMethodsOption of paymentMethodsSharedCollection; trackBy: trackPaymentMethodsById"
+            >
+              {{ paymentMethodsOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.paymentJob.payments" for="field_payments">Payments</label>
+          <select class="form-control" id="field_payments" data-cy="payments" name="payments" formControlName="payments">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="paymentOption.id === editForm.get('payments')!.value?.id ? editForm.get('payments')!.value : paymentOption"
+              *ngFor="let paymentOption of paymentsSharedCollection; trackBy: trackPaymentById"
+            >
+              {{ paymentOption.id }}
+            </option>
+          </select>
+        </div>
       </div>
 
       <div>

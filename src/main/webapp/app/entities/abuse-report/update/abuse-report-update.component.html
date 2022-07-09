@@ -41,6 +41,21 @@
             />
           </div>
         </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.abuseReport.triggers" for="field_triggers">Triggers</label>
+          <select class="form-control" id="field_triggers" data-cy="triggers" name="triggers" formControlName="triggers">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                abuseTriggerOption.id === editForm.get('triggers')!.value?.id ? editForm.get('triggers')!.value : abuseTriggerOption
+              "
+              *ngFor="let abuseTriggerOption of abuseTriggersSharedCollection; trackBy: trackAbuseTriggerById"
+            >
+              {{ abuseTriggerOption.id }}
+            </option>
+          </select>
+        </div>
       </div>
 
       <div>

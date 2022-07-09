@@ -19,7 +19,9 @@
       },
       "id": "ID",
       "language": "Language",
-      "isFatalError": "Is Fatal Error"
+      "isFatalError": "Is Fatal Error",
+      "errors": "Errors",
+      "warnings": "Warnings"
     }
   }
 }

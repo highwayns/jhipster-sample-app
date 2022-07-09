@@ -1,9 +1,12 @@
 package io.github.jhipster.sample.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import io.github.jhipster.sample.domain.enumeration.RefundStatus;
 import io.github.jhipster.sample.domain.enumeration.RefundStepAction;
 import java.io.Serializable;
 import java.time.Instant;
+import java.util.HashSet;
+import java.util.Set;
 import javax.persistence.*;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
@@ -44,6 +47,11 @@ public class RefundStep implements Serializable {
     @OneToOne
     @JoinColumn(unique = true)
     private ResultAttributes resultAttributes;
+
+    @OneToMany(mappedBy = "steps")
+    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+    @JsonIgnoreProperties(value = { "payments", "steps" }, allowSetters = true)
+    private Set<Refund> refunds = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
@@ -135,6 +143,37 @@ public class RefundStep implements Serializable {
 
     public RefundStep resultAttributes(ResultAttributes resultAttributes) {
         this.setResultAttributes(resultAttributes);
+        return this;
+    }
+
+    public Set<Refund> getRefunds() {
+        return this.refunds;
+    }
+
+    public void setRefunds(Set<Refund> refunds) {
+        if (this.refunds != null) {
+            this.refunds.forEach(i -> i.setSteps(null));
+        }
+        if (refunds != null) {
+            refunds.forEach(i -> i.setSteps(this));
+        }
+        this.refunds = refunds;
+    }
+
+    public RefundStep refunds(Set<Refund> refunds) {
+        this.setRefunds(refunds);
+        return this;
+    }
+
+    public RefundStep addRefund(Refund refund) {
+        this.refunds.add(refund);
+        refund.setSteps(this);
+        return this;
+    }
+
+    public RefundStep removeRefund(Refund refund) {
+        this.refunds.remove(refund);
+        refund.setSteps(null);
         return this;
     }
 

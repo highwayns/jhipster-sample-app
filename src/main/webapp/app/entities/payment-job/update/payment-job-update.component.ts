@@ -16,6 +16,10 @@ import { IPaymentJobAttributes } from 'app/entities/payment-job-attributes/payme
 import { PaymentJobAttributesService } from 'app/entities/payment-job-attributes/service/payment-job-attributes.service';
 import { IRecurrenceCriteria } from 'app/entities/recurrence-criteria/recurrence-criteria.model';
 import { RecurrenceCriteriaService } from 'app/entities/recurrence-criteria/service/recurrence-criteria.service';
+import { IPaymentMethods } from 'app/entities/payment-methods/payment-methods.model';
+import { PaymentMethodsService } from 'app/entities/payment-methods/service/payment-methods.service';
+import { IPayment } from 'app/entities/payment/payment.model';
+import { PaymentService } from 'app/entities/payment/service/payment.service';
 import { PaymentJobType } from 'app/entities/enumerations/payment-job-type.model';
 import { Locale } from 'app/entities/enumerations/locale.model';
 import { Currency } from 'app/entities/enumerations/currency.model';
@@ -30,9 +34,12 @@ export class PaymentJobUpdateComponent implements OnInit {
   localeValues = Object.keys(Locale);
   currencyValues = Object.keys(Currency);
 
+  ordersSharedCollection: IOrder[] = [];
   ordersCollection: IOrder[] = [];
   attributesCollection: IPaymentJobAttributes[] = [];
   recurrenceCriteriaCollection: IRecurrenceCriteria[] = [];
+  paymentMethodsSharedCollection: IPaymentMethods[] = [];
+  paymentsSharedCollection: IPayment[] = [];
 
   editForm = this.fb.group({
     id: [],
@@ -58,6 +65,9 @@ export class PaymentJobUpdateComponent implements OnInit {
     order: [],
     attributes: [],
     recurrenceCriteria: [],
+    orderHistory: [],
+    paymentMethodsToUse: [],
+    payments: [],
   });
 
   constructor(
@@ -65,6 +75,8 @@ export class PaymentJobUpdateComponent implements OnInit {
     protected orderService: OrderService,
     protected paymentJobAttributesService: PaymentJobAttributesService,
     protected recurrenceCriteriaService: RecurrenceCriteriaService,
+    protected paymentMethodsService: PaymentMethodsService,
+    protected paymentService: PaymentService,
     protected activatedRoute: ActivatedRoute,
     protected fb: FormBuilder
   ) {}
@@ -113,6 +125,14 @@ export class PaymentJobUpdateComponent implements OnInit {
     return item.id!;
   }
 
+  trackPaymentMethodsById(_index: number, item: IPaymentMethods): number {
+    return item.id!;
+  }
+
+  trackPaymentById(_index: number, item: IPayment): number {
+    return item.id!;
+  }
+
   protected subscribeToSaveResponse(result: Observable<HttpResponse<IPaymentJob>>): void {
     result.pipe(finalize(() => this.onSaveFinalize())).subscribe({
       next: () => this.onSaveSuccess(),
@@ -157,8 +177,12 @@ export class PaymentJobUpdateComponent implements OnInit {
       order: paymentJob.order,
       attributes: paymentJob.attributes,
       recurrenceCriteria: paymentJob.recurrenceCriteria,
+      orderHistory: paymentJob.orderHistory,
+      paymentMethodsToUse: paymentJob.paymentMethodsToUse,
+      payments: paymentJob.payments,
     });
 
+    this.ordersSharedCollection = this.orderService.addOrderToCollectionIfMissing(this.ordersSharedCollection, paymentJob.orderHistory);
     this.ordersCollection = this.orderService.addOrderToCollectionIfMissing(this.ordersCollection, paymentJob.order);
     this.attributesCollection = this.paymentJobAttributesService.addPaymentJobAttributesToCollectionIfMissing(
       this.attributesCollection,
@@ -168,9 +192,20 @@ export class PaymentJobUpdateComponent implements OnInit {
       this.recurrenceCriteriaCollection,
       paymentJob.recurrenceCriteria
     );
+    this.paymentMethodsSharedCollection = this.paymentMethodsService.addPaymentMethodsToCollectionIfMissing(
+      this.paymentMethodsSharedCollection,
+      paymentJob.paymentMethodsToUse
+    );
+    this.paymentsSharedCollection = this.paymentService.addPaymentToCollectionIfMissing(this.paymentsSharedCollection, paymentJob.payments);
   }
 
   protected loadRelationshipsOptions(): void {
+    this.orderService
+      .query()
+      .pipe(map((res: HttpResponse<IOrder[]>) => res.body ?? []))
+      .pipe(map((orders: IOrder[]) => this.orderService.addOrderToCollectionIfMissing(orders, this.editForm.get('orderHistory')!.value)))
+      .subscribe((orders: IOrder[]) => (this.ordersSharedCollection = orders));
+
     this.orderService
       .query({ filter: 'paymentjob-is-null' })
       .pipe(map((res: HttpResponse<IOrder[]>) => res.body ?? []))
@@ -202,6 +237,24 @@ export class PaymentJobUpdateComponent implements OnInit {
         )
       )
       .subscribe((recurrenceCriteria: IRecurrenceCriteria[]) => (this.recurrenceCriteriaCollection = recurrenceCriteria));
+
+    this.paymentMethodsService
+      .query()
+      .pipe(map((res: HttpResponse<IPaymentMethods[]>) => res.body ?? []))
+      .pipe(
+        map((paymentMethods: IPaymentMethods[]) =>
+          this.paymentMethodsService.addPaymentMethodsToCollectionIfMissing(paymentMethods, this.editForm.get('paymentMethodsToUse')!.value)
+        )
+      )
+      .subscribe((paymentMethods: IPaymentMethods[]) => (this.paymentMethodsSharedCollection = paymentMethods));
+
+    this.paymentService
+      .query()
+      .pipe(map((res: HttpResponse<IPayment[]>) => res.body ?? []))
+      .pipe(
+        map((payments: IPayment[]) => this.paymentService.addPaymentToCollectionIfMissing(payments, this.editForm.get('payments')!.value))
+      )
+      .subscribe((payments: IPayment[]) => (this.paymentsSharedCollection = payments));
   }
 
   protected createFromForm(): IPaymentJob {
@@ -242,6 +295,9 @@ export class PaymentJobUpdateComponent implements OnInit {
       order: this.editForm.get(['order'])!.value,
       attributes: this.editForm.get(['attributes'])!.value,
       recurrenceCriteria: this.editForm.get(['recurrenceCriteria'])!.value,
+      orderHistory: this.editForm.get(['orderHistory'])!.value,
+      paymentMethodsToUse: this.editForm.get(['paymentMethodsToUse'])!.value,
+      payments: this.editForm.get(['payments'])!.value,
     };
   }
 }

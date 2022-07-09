@@ -22,7 +22,8 @@
       "cardExpiryMonth": "Card Expiry Month",
       "cardExpiryYear": "Card Expiry Year",
       "issuerReturnCode": "Issuer Return Code",
-      "truncatedCardNumber": "Truncated Card Number"
+      "truncatedCardNumber": "Truncated Card Number",
+      "paymentMethodInfo": "Payment Method Info"
     }
   }
 }

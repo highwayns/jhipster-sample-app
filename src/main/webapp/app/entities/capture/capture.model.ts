@@ -1,4 +1,5 @@
 import dayjs from 'dayjs/esm';
+import { IPayment } from 'app/entities/payment/payment.model';
 import { CaptureStatus } from 'app/entities/enumerations/capture-status.model';
 import { Currency } from 'app/entities/enumerations/currency.model';
 
@@ -12,6 +13,7 @@ export interface ICapture {
   convertedCurrency?: Currency | null;
   conversionRate?: number | null;
   isFinalCapture?: boolean | null;
+  payments?: IPayment[] | null;
 }
 
 export class Capture implements ICapture {
@@ -24,7 +26,8 @@ export class Capture implements ICapture {
     public convertedAmountToCapture?: number | null,
     public convertedCurrency?: Currency | null,
     public conversionRate?: number | null,
-    public isFinalCapture?: boolean | null
+    public isFinalCapture?: boolean | null,
+    public payments?: IPayment[] | null
   ) {
     this.isFinalCapture = this.isFinalCapture ?? false;
   }

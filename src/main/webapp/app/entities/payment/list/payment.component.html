@@ -45,6 +45,10 @@
           <th scope="col"><span jhiTranslate="jhipsterSampleApplicationApp.payment.lastErrorReport">Last Error Report</span></th>
           <th scope="col"><span jhiTranslate="jhipsterSampleApplicationApp.payment.abuseReport">Abuse Report</span></th>
           <th scope="col"><span jhiTranslate="jhipsterSampleApplicationApp.payment.attributes">Attributes</span></th>
+          <th scope="col"><span jhiTranslate="jhipsterSampleApplicationApp.payment.paymentMethods">Payment Methods</span></th>
+          <th scope="col"><span jhiTranslate="jhipsterSampleApplicationApp.payment.steps">Steps</span></th>
+          <th scope="col"><span jhiTranslate="jhipsterSampleApplicationApp.payment.refunds">Refunds</span></th>
+          <th scope="col"><span jhiTranslate="jhipsterSampleApplicationApp.payment.captures">Captures</span></th>
           <th scope="col"></th>
         </tr>
       </thead>
@@ -75,6 +79,26 @@
           <td>
             <div *ngIf="payment.attributes">
               <a [routerLink]="['/payment-attributes', payment.attributes?.id, 'view']">{{ payment.attributes?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="payment.paymentMethods">
+              <a [routerLink]="['/payment-methods', payment.paymentMethods?.id, 'view']">{{ payment.paymentMethods?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="payment.steps">
+              <a [routerLink]="['/payment-step', payment.steps?.id, 'view']">{{ payment.steps?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="payment.refunds">
+              <a [routerLink]="['/refund', payment.refunds?.id, 'view']">{{ payment.refunds?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="payment.captures">
+              <a [routerLink]="['/capture', payment.captures?.id, 'view']">{{ payment.captures?.id }}</a>
             </div>
           </td>
           <td class="text-end">
