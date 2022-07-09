@@ -1,0 +1,36 @@
+{
+  "jhipsterSampleApplicationApp": {
+    "orderLine": {
+      "home": {
+        "title": "Order Lines",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Order Line",
+        "createOrEditLabel": "Create or edit a Order Line",
+        "notFound": "No Order Lines found"
+      },
+      "created": "A new Order Line is created with identifier {{ param }}",
+      "updated": "A Order Line is updated with identifier {{ param }}",
+      "deleted": "A Order Line is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Order Line {{ id }}?"
+      },
+      "detail": {
+        "title": "Order Line"
+      },
+      "id": "ID",
+      "lineNumber": "Line Number",
+      "type": "Type",
+      "skuCode": "Sku Code",
+      "name": "Name",
+      "description": "Description",
+      "quantity": "Quantity",
+      "unitPriceExclVat": "Unit Price Excl Vat",
+      "unitPriceInclVat": "Unit Price Incl Vat",
+      "vatPercentage": "Vat Percentage",
+      "vatPercentageLabel": "Vat Percentage Label",
+      "discountPercentageLabel": "Discount Percentage Label",
+      "totalLineAmount": "Total Line Amount",
+      "url": "Url"
+    }
+  }
+}

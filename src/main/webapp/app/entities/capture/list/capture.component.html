@@ -1,0 +1,94 @@
+<div>
+  <h2 id="page-heading" data-cy="CaptureHeading">
+    <span jhiTranslate="jhipsterSampleApplicationApp.capture.home.title">Captures</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="loadAll()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="jhipsterSampleApplicationApp.capture.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-capture"
+        [routerLink]="['/capture/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="jhipsterSampleApplicationApp.capture.home.createLabel"> Create a new Capture </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="captures?.length === 0">
+    <span jhiTranslate="jhipsterSampleApplicationApp.capture.home.notFound">No captures found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="captures && captures.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr>
+          <th scope="col"><span jhiTranslate="global.field.id">ID</span></th>
+          <th scope="col"><span jhiTranslate="jhipsterSampleApplicationApp.capture.reference">Reference</span></th>
+          <th scope="col"><span jhiTranslate="jhipsterSampleApplicationApp.capture.createDateTimeUtc">Create Date Time Utc</span></th>
+          <th scope="col"><span jhiTranslate="jhipsterSampleApplicationApp.capture.status">Status</span></th>
+          <th scope="col"><span jhiTranslate="jhipsterSampleApplicationApp.capture.amountToCapture">Amount To Capture</span></th>
+          <th scope="col">
+            <span jhiTranslate="jhipsterSampleApplicationApp.capture.convertedAmountToCapture">Converted Amount To Capture</span>
+          </th>
+          <th scope="col"><span jhiTranslate="jhipsterSampleApplicationApp.capture.convertedCurrency">Converted Currency</span></th>
+          <th scope="col"><span jhiTranslate="jhipsterSampleApplicationApp.capture.conversionRate">Conversion Rate</span></th>
+          <th scope="col"><span jhiTranslate="jhipsterSampleApplicationApp.capture.isFinalCapture">Is Final Capture</span></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let capture of captures; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/capture', capture.id, 'view']">{{ capture.id }}</a>
+          </td>
+          <td>{{ capture.reference }}</td>
+          <td>{{ capture.createDateTimeUtc | formatMediumDatetime }}</td>
+          <td jhiTranslate="{{ 'jhipsterSampleApplicationApp.CaptureStatus.' + capture.status }}">{{ capture.status }}</td>
+          <td>{{ capture.amountToCapture }}</td>
+          <td>{{ capture.convertedAmountToCapture }}</td>
+          <td jhiTranslate="{{ 'jhipsterSampleApplicationApp.Currency.' + capture.convertedCurrency }}">{{ capture.convertedCurrency }}</td>
+          <td>{{ capture.conversionRate }}</td>
+          <td>{{ capture.isFinalCapture }}</td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/capture', capture.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/capture', capture.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(capture)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

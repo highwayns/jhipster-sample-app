@@ -1,0 +1,62 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="capture">
+      <h2 data-cy="captureDetailsHeading"><span jhiTranslate="jhipsterSampleApplicationApp.capture.detail.title">Capture</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ capture.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.capture.reference">Reference</span></dt>
+        <dd>
+          <span>{{ capture.reference }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.capture.createDateTimeUtc">Create Date Time Utc</span></dt>
+        <dd>
+          <span>{{ capture.createDateTimeUtc | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.capture.status">Status</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'jhipsterSampleApplicationApp.CaptureStatus.' + capture.status }}">{{ capture.status }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.capture.amountToCapture">Amount To Capture</span></dt>
+        <dd>
+          <span>{{ capture.amountToCapture }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.capture.convertedAmountToCapture">Converted Amount To Capture</span></dt>
+        <dd>
+          <span>{{ capture.convertedAmountToCapture }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.capture.convertedCurrency">Converted Currency</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'jhipsterSampleApplicationApp.Currency.' + capture.convertedCurrency }}">{{
+            capture.convertedCurrency
+          }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.capture.conversionRate">Conversion Rate</span></dt>
+        <dd>
+          <span>{{ capture.conversionRate }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.capture.isFinalCapture">Is Final Capture</span></dt>
+        <dd>
+          <span>{{ capture.isFinalCapture }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/capture', capture.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

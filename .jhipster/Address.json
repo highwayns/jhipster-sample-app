@@ -1,0 +1,83 @@
+{
+  "applications": "*",
+  "changelogDate": "20220709023633",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "address",
+  "fields": [
+    {
+      "fieldName": "title",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "firstName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "middleName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "lastName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "country",
+      "fieldType": "Country",
+      "fieldValues": "ZH,JP,US,UK,RU,EU"
+    },
+    {
+      "fieldName": "addressLine1",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "addressLine2",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "zipCode",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "city",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "stateProvince",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "phoneNumber1",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "phoneNumber1Type",
+      "fieldType": "PhoneNumberType",
+      "fieldValues": "UNKNOWN,MOBILE,FIXED"
+    },
+    {
+      "fieldName": "phoneNumber2",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "phoneNumber2Type",
+      "fieldType": "PhoneNumberType",
+      "fieldValues": "UNKNOWN,MOBILE,FIXED"
+    },
+    {
+      "fieldName": "organisation",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "department",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Address",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [],
+  "service": "no"
+}

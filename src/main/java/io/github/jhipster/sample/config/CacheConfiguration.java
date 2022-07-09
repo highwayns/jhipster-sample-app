@@ -54,6 +54,33 @@ public class CacheConfiguration {
             createCache(cm, io.github.jhipster.sample.domain.Label.class.getName() + ".operations");
             createCache(cm, io.github.jhipster.sample.domain.Operation.class.getName());
             createCache(cm, io.github.jhipster.sample.domain.Operation.class.getName() + ".labels");
+            createCache(cm, io.github.jhipster.sample.domain.AbuseReport.class.getName());
+            createCache(cm, io.github.jhipster.sample.domain.AbuseTrigger.class.getName());
+            createCache(cm, io.github.jhipster.sample.domain.Parameters.class.getName());
+            createCache(cm, io.github.jhipster.sample.domain.Address.class.getName());
+            createCache(cm, io.github.jhipster.sample.domain.Capture.class.getName());
+            createCache(cm, io.github.jhipster.sample.domain.CardTokenData.class.getName());
+            createCache(cm, io.github.jhipster.sample.domain.Entry.class.getName());
+            createCache(cm, io.github.jhipster.sample.domain.ErrorReport.class.getName());
+            createCache(cm, io.github.jhipster.sample.domain.Identity.class.getName());
+            createCache(cm, io.github.jhipster.sample.domain.Issuer.class.getName());
+            createCache(cm, io.github.jhipster.sample.domain.Links.class.getName());
+            createCache(cm, io.github.jhipster.sample.domain.Link.class.getName());
+            createCache(cm, io.github.jhipster.sample.domain.Order.class.getName());
+            createCache(cm, io.github.jhipster.sample.domain.OrderLine.class.getName());
+            createCache(cm, io.github.jhipster.sample.domain.Payment.class.getName());
+            createCache(cm, io.github.jhipster.sample.domain.PaymentAttributes.class.getName());
+            createCache(cm, io.github.jhipster.sample.domain.PaymentJobAttributes.class.getName());
+            createCache(cm, io.github.jhipster.sample.domain.PaymentJob.class.getName());
+            createCache(cm, io.github.jhipster.sample.domain.PaymentStep.class.getName());
+            createCache(cm, io.github.jhipster.sample.domain.PaymentMethods.class.getName());
+            createCache(cm, io.github.jhipster.sample.domain.PaymentMethodInfo.class.getName());
+            createCache(cm, io.github.jhipster.sample.domain.Refund.class.getName());
+            createCache(cm, io.github.jhipster.sample.domain.RefundStep.class.getName());
+            createCache(cm, io.github.jhipster.sample.domain.ResultAttributes.class.getName());
+            createCache(cm, io.github.jhipster.sample.domain.RecurrenceCriteria.class.getName());
+            createCache(cm, io.github.jhipster.sample.domain.Currencys.class.getName());
+            createCache(cm, io.github.jhipster.sample.domain.TokenisedCard.class.getName());
             // jhipster-needle-ehcache-add-entry
         };
     }

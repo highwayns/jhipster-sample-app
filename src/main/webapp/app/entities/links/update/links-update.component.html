@@ -1,0 +1,85 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-links-heading"
+        data-cy="LinksCreateUpdateHeading"
+        jhiTranslate="jhipsterSampleApplicationApp.links.home.createOrEditLabel"
+      >
+        Create or edit a Links
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.links.data" for="field_data">Data</label>
+          <select class="form-control" id="field_data" data-cy="data" name="data" formControlName="data">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="linkOption.id === editForm.get('data')!.value?.id ? editForm.get('data')!.value : linkOption"
+              *ngFor="let linkOption of dataCollection; trackBy: trackLinkById"
+            >
+              {{ linkOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.links.action" for="field_action">Action</label>
+          <select class="form-control" id="field_action" data-cy="action" name="action" formControlName="action">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="linkOption.id === editForm.get('action')!.value?.id ? editForm.get('action')!.value : linkOption"
+              *ngFor="let linkOption of actionsCollection; trackBy: trackLinkById"
+            >
+              {{ linkOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.links.documentation" for="field_documentation"
+            >Documentation</label
+          >
+          <select
+            class="form-control"
+            id="field_documentation"
+            data-cy="documentation"
+            name="documentation"
+            formControlName="documentation"
+          >
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="linkOption.id === editForm.get('documentation')!.value?.id ? editForm.get('documentation')!.value : linkOption"
+              *ngFor="let linkOption of documentationsCollection; trackBy: trackLinkById"
+            >
+              {{ linkOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

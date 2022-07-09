@@ -1,0 +1,46 @@
+{
+  "applications": "*",
+  "changelogDate": "20220709023652",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "refund_step",
+  "fields": [
+    {
+      "fieldName": "reference",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "createDateTimeUtc",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "action",
+      "fieldType": "RefundStepAction",
+      "fieldValues": "START,PROCESS,CANCEL"
+    },
+    {
+      "fieldName": "status",
+      "fieldType": "RefundStatus",
+      "fieldValues": "PENDING,COMPLETED,FAILED"
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "RefundStep",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "resultAttributes",
+      "otherEntityRelationshipName": "refundStep",
+      "ownerSide": true,
+      "relationshipName": "resultAttributes",
+      "relationshipType": "one-to-one"
+    }
+  ],
+  "service": "no"
+}

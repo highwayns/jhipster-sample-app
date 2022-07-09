@@ -1,0 +1,10 @@
+{
+  "jhipsterSampleApplicationApp": {
+    "RefundStatus": {
+      "null": "",
+      "PENDING": "PENDING",
+      "COMPLETED": "COMPLETED",
+      "FAILED": "FAILED"
+    }
+  }
+}

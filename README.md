@@ -252,3 +252,10 @@ To configure CI for your project, run the ci-cd sub-generator (`jhipster ci-cd`)
 [definitelytyped]: https://definitelytyped.org/
 [angular cli]: https://cli.angular.io/
 [gatling]: https://gatling.io/
+
+#Workflow design
+https://demo.bpmn.io/new
+
+#JDL design
+https://start.jhipster.tech/jdl-studio/
+jhipster jdl jhipster-jdl.jdl --db --postgresql

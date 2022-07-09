@@ -1,0 +1,86 @@
+<div>
+  <h2 id="page-heading" data-cy="TokenisedCardHeading">
+    <span jhiTranslate="jhipsterSampleApplicationApp.tokenisedCard.home.title">Tokenised Cards</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="loadAll()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="jhipsterSampleApplicationApp.tokenisedCard.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-tokenised-card"
+        [routerLink]="['/tokenised-card/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="jhipsterSampleApplicationApp.tokenisedCard.home.createLabel"> Create a new Tokenised Card </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="tokenisedCards?.length === 0">
+    <span jhiTranslate="jhipsterSampleApplicationApp.tokenisedCard.home.notFound">No tokenisedCards found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="tokenisedCards && tokenisedCards.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr>
+          <th scope="col"><span jhiTranslate="global.field.id">ID</span></th>
+          <th scope="col"><span jhiTranslate="jhipsterSampleApplicationApp.tokenisedCard.token">Token</span></th>
+          <th scope="col"><span jhiTranslate="jhipsterSampleApplicationApp.tokenisedCard.cardExpiryMonth">Card Expiry Month</span></th>
+          <th scope="col"><span jhiTranslate="jhipsterSampleApplicationApp.tokenisedCard.cardExpiryYear">Card Expiry Year</span></th>
+          <th scope="col">
+            <span jhiTranslate="jhipsterSampleApplicationApp.tokenisedCard.truncatedCardNumber">Truncated Card Number</span>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let tokenisedCard of tokenisedCards; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/tokenised-card', tokenisedCard.id, 'view']">{{ tokenisedCard.id }}</a>
+          </td>
+          <td>{{ tokenisedCard.token }}</td>
+          <td>{{ tokenisedCard.cardExpiryMonth }}</td>
+          <td>{{ tokenisedCard.cardExpiryYear }}</td>
+          <td>{{ tokenisedCard.truncatedCardNumber }}</td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/tokenised-card', tokenisedCard.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/tokenised-card', tokenisedCard.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(tokenisedCard)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

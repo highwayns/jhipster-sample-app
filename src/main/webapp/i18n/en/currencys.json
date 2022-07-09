@@ -1,0 +1,24 @@
+{
+  "jhipsterSampleApplicationApp": {
+    "currencys": {
+      "home": {
+        "title": "Currencys",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Currencys",
+        "createOrEditLabel": "Create or edit a Currencys",
+        "notFound": "No Currencys found"
+      },
+      "created": "A new Currencys is created with identifier {{ param }}",
+      "updated": "A Currencys is updated with identifier {{ param }}",
+      "deleted": "A Currencys is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Currencys {{ id }}?"
+      },
+      "detail": {
+        "title": "Currencys"
+      },
+      "id": "ID",
+      "currency": "Currency"
+    }
+  }
+}

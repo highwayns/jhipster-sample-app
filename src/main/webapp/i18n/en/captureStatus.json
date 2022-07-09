@@ -1,0 +1,10 @@
+{
+  "jhipsterSampleApplicationApp": {
+    "CaptureStatus": {
+      "null": "",
+      "PENDING": "PENDING",
+      "COMPLETED": "COMPLETED",
+      "FAILED": "FAILED"
+    }
+  }
+}

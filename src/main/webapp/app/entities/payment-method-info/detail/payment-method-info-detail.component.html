@@ -1,0 +1,68 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="paymentMethodInfo">
+      <h2 data-cy="paymentMethodInfoDetailsHeading">
+        <span jhiTranslate="jhipsterSampleApplicationApp.paymentMethodInfo.detail.title">Payment Method Info</span>
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ paymentMethodInfo.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.paymentMethodInfo.paymentMethod">Payment Method</span></dt>
+        <dd>
+          <span>{{ paymentMethodInfo.paymentMethod }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.paymentMethodInfo.logo">Logo</span></dt>
+        <dd>
+          <span>{{ paymentMethodInfo.logo }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.paymentMethodInfo.supportsTokenisation">Supports Tokenisation</span></dt>
+        <dd>
+          <span>{{ paymentMethodInfo.supportsTokenisation }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.paymentMethodInfo.currencies">Currencies</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'jhipsterSampleApplicationApp.Currency.' + paymentMethodInfo.currencies }}">{{
+            paymentMethodInfo.currencies
+          }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.paymentMethodInfo.surchargeAmount">Surcharge Amount</span></dt>
+        <dd>
+          <span>{{ paymentMethodInfo.surchargeAmount }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.paymentMethodInfo.surchargeAmountExclVat">Surcharge Amount Excl Vat</span></dt>
+        <dd>
+          <span>{{ paymentMethodInfo.surchargeAmountExclVat }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.paymentMethodInfo.surchargeAmountVat">Surcharge Amount Vat</span></dt>
+        <dd>
+          <span>{{ paymentMethodInfo.surchargeAmountVat }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.paymentMethodInfo.surchargeVatPercentage">Surcharge Vat Percentage</span></dt>
+        <dd>
+          <span>{{ paymentMethodInfo.surchargeVatPercentage }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.paymentMethodInfo.description">Description</span></dt>
+        <dd>
+          <span>{{ paymentMethodInfo.description }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/payment-method-info', paymentMethodInfo.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

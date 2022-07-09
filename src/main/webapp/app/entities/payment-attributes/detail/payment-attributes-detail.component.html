@@ -1,0 +1,102 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="paymentAttributes">
+      <h2 data-cy="paymentAttributesDetailsHeading">
+        <span jhiTranslate="jhipsterSampleApplicationApp.paymentAttributes.detail.title">Payment Attributes</span>
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ paymentAttributes.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.paymentAttributes.originatingIpAddress">Originating Ip Address</span></dt>
+        <dd>
+          <span>{{ paymentAttributes.originatingIpAddress }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.paymentAttributes.originHeader">Origin Header</span></dt>
+        <dd>
+          <span>{{ paymentAttributes.originHeader }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.paymentAttributes.userAgent">User Agent</span></dt>
+        <dd>
+          <span>{{ paymentAttributes.userAgent }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.paymentAttributes.returnUrlSuccess">Return Url Success</span></dt>
+        <dd>
+          <span>{{ paymentAttributes.returnUrlSuccess }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.paymentAttributes.returnUrlFailed">Return Url Failed</span></dt>
+        <dd>
+          <span>{{ paymentAttributes.returnUrlFailed }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.paymentAttributes.returnUrlCancelled">Return Url Cancelled</span></dt>
+        <dd>
+          <span>{{ paymentAttributes.returnUrlCancelled }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.paymentAttributes.simulatedStatus">Simulated Status</span></dt>
+        <dd>
+          <span>{{ paymentAttributes.simulatedStatus }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.paymentAttributes.idealBic">Ideal Bic</span></dt>
+        <dd>
+          <span>{{ paymentAttributes.idealBic }}</span>
+        </dd>
+        <dt>
+          <span jhiTranslate="jhipsterSampleApplicationApp.paymentAttributes.paymentMethodTransactionId"
+            >Payment Method Transaction Id</span
+          >
+        </dt>
+        <dd>
+          <span>{{ paymentAttributes.paymentMethodTransactionId }}</span>
+        </dd>
+        <dt>
+          <span jhiTranslate="jhipsterSampleApplicationApp.paymentAttributes.paymentMethodVoidTransactionId"
+            >Payment Method Void Transaction Id</span
+          >
+        </dt>
+        <dd>
+          <span>{{ paymentAttributes.paymentMethodVoidTransactionId }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.paymentAttributes.token">Token</span></dt>
+        <dd>
+          <span>{{ paymentAttributes.token }}</span>
+        </dd>
+        <dt>
+          <span jhiTranslate="jhipsterSampleApplicationApp.paymentAttributes.cashFlowsAcquiringDetails">Cash Flows Acquiring Details</span>
+        </dt>
+        <dd>
+          <span>{{ paymentAttributes.cashFlowsAcquiringDetails }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.paymentAttributes.descriptor">Descriptor</span></dt>
+        <dd>
+          <span>{{ paymentAttributes.descriptor }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.paymentAttributes.ewalletType">Ewallet Type</span></dt>
+        <dd>
+          <span>{{ paymentAttributes.ewalletType }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.paymentAttributes.paymentStatus">Payment Status</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'jhipsterSampleApplicationApp.PaymentStatus.' + paymentAttributes.paymentStatus }}">{{
+            paymentAttributes.paymentStatus
+          }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/payment-attributes', paymentAttributes.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

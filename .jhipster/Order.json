@@ -1,0 +1,54 @@
+{
+  "applications": "*",
+  "changelogDate": "20220709023642",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "jhi_order",
+  "fields": [
+    {
+      "fieldName": "orderNumber",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "note",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "createDateTimeUtc",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "customerReference",
+      "fieldType": "Long"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Order",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "address",
+      "otherEntityRelationshipName": "order",
+      "ownerSide": true,
+      "relationshipName": "billingAddress",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "identity",
+      "otherEntityRelationshipName": "order",
+      "ownerSide": true,
+      "relationshipName": "billingIdentity",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "address",
+      "otherEntityRelationshipName": "order",
+      "ownerSide": true,
+      "relationshipName": "shippingAddress",
+      "relationshipType": "one-to-one"
+    }
+  ],
+  "service": "no"
+}

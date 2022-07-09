@@ -1,0 +1,33 @@
+{
+  "applications": "*",
+  "changelogDate": "20220709023654",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "recurrence_criteria",
+  "fields": [
+    {
+      "fieldName": "recurrenceType",
+      "fieldType": "RecurrenceType",
+      "fieldValues": "SUBSCRIPTION,INSTALMENT,UNSCHEDULED,CUSTOMERINITIATED"
+    },
+    {
+      "fieldName": "recurringExpiry",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "recurringFrequency",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "instalments",
+      "fieldType": "Integer"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "RecurrenceCriteria",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [],
+  "service": "no"
+}

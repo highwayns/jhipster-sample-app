@@ -1,0 +1,52 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="paymentJobAttributes">
+      <h2 data-cy="paymentJobAttributesDetailsHeading">
+        <span jhiTranslate="jhipsterSampleApplicationApp.paymentJobAttributes.detail.title">Payment Job Attributes</span>
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ paymentJobAttributes.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.paymentJobAttributes.webhookUrl">Webhook Url</span></dt>
+        <dd>
+          <span>{{ paymentJobAttributes.webhookUrl }}</span>
+        </dd>
+        <dt>
+          <span jhiTranslate="jhipsterSampleApplicationApp.paymentJobAttributes.googleAnalyticsClientId">Google Analytics Client Id</span>
+        </dt>
+        <dd>
+          <span>{{ paymentJobAttributes.googleAnalyticsClientId }}</span>
+        </dd>
+        <dt>
+          <span jhiTranslate="jhipsterSampleApplicationApp.paymentJobAttributes.allowedParentFrameDomains"
+            >Allowed Parent Frame Domains</span
+          >
+        </dt>
+        <dd>
+          <span>{{ paymentJobAttributes.allowedParentFrameDomains }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.paymentJobAttributes.paymentPageReference">Payment Page Reference</span></dt>
+        <dd>
+          <span>{{ paymentJobAttributes.paymentPageReference }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/payment-job-attributes', paymentJobAttributes.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

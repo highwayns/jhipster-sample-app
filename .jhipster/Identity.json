@@ -1,0 +1,45 @@
+{
+  "applications": "*",
+  "changelogDate": "20220709023638",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "identity",
+  "fields": [
+    {
+      "fieldName": "debtorId",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "emailAddress",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "gender",
+      "fieldType": "Gender",
+      "fieldValues": "FEMALE,MALE"
+    },
+    {
+      "fieldName": "dateOfBirth",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "socialSecurityNumber",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "chamberOfCommerceNumber",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "vatNumber",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Identity",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [],
+  "service": "no"
+}

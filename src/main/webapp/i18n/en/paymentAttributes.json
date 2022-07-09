@@ -1,0 +1,38 @@
+{
+  "jhipsterSampleApplicationApp": {
+    "paymentAttributes": {
+      "home": {
+        "title": "Payment Attributes",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Payment Attributes",
+        "createOrEditLabel": "Create or edit a Payment Attributes",
+        "notFound": "No Payment Attributes found"
+      },
+      "created": "A new Payment Attributes is created with identifier {{ param }}",
+      "updated": "A Payment Attributes is updated with identifier {{ param }}",
+      "deleted": "A Payment Attributes is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Payment Attributes {{ id }}?"
+      },
+      "detail": {
+        "title": "Payment Attributes"
+      },
+      "id": "ID",
+      "originatingIpAddress": "Originating Ip Address",
+      "originHeader": "Origin Header",
+      "userAgent": "User Agent",
+      "returnUrlSuccess": "Return Url Success",
+      "returnUrlFailed": "Return Url Failed",
+      "returnUrlCancelled": "Return Url Cancelled",
+      "simulatedStatus": "Simulated Status",
+      "idealBic": "Ideal Bic",
+      "paymentMethodTransactionId": "Payment Method Transaction Id",
+      "paymentMethodVoidTransactionId": "Payment Method Void Transaction Id",
+      "token": "Token",
+      "cashFlowsAcquiringDetails": "Cash Flows Acquiring Details",
+      "descriptor": "Descriptor",
+      "ewalletType": "Ewallet Type",
+      "paymentStatus": "Payment Status"
+    }
+  }
+}

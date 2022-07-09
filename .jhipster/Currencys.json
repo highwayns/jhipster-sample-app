@@ -1,0 +1,21 @@
+{
+  "applications": "*",
+  "changelogDate": "20220709023655",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "currencys",
+  "fields": [
+    {
+      "fieldName": "currency",
+      "fieldType": "Currency",
+      "fieldValues": "CNY,JPY,USD,EUR,RUB,BTC,ETH"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Currencys",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [],
+  "service": "no"
+}

@@ -1,0 +1,50 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="paymentStep">
+      <h2 data-cy="paymentStepDetailsHeading">
+        <span jhiTranslate="jhipsterSampleApplicationApp.paymentStep.detail.title">Payment Step</span>
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ paymentStep.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.paymentStep.reference">Reference</span></dt>
+        <dd>
+          <span>{{ paymentStep.reference }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.paymentStep.createDateTimeUtc">Create Date Time Utc</span></dt>
+        <dd>
+          <span>{{ paymentStep.createDateTimeUtc | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.paymentStep.action">Action</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'jhipsterSampleApplicationApp.PaymentStepAction.' + paymentStep.action }}">{{ paymentStep.action }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.paymentStep.status">Status</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'jhipsterSampleApplicationApp.PaymentStatus.' + paymentStep.status }}">{{ paymentStep.status }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.paymentStep.amountToCollect">Amount To Collect</span></dt>
+        <dd>
+          <span>{{ paymentStep.amountToCollect }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/payment-step', paymentStep.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

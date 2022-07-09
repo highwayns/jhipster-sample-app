@@ -1,0 +1,46 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="tokenisedCard">
+      <h2 data-cy="tokenisedCardDetailsHeading">
+        <span jhiTranslate="jhipsterSampleApplicationApp.tokenisedCard.detail.title">Tokenised Card</span>
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ tokenisedCard.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.tokenisedCard.token">Token</span></dt>
+        <dd>
+          <span>{{ tokenisedCard.token }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.tokenisedCard.cardExpiryMonth">Card Expiry Month</span></dt>
+        <dd>
+          <span>{{ tokenisedCard.cardExpiryMonth }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.tokenisedCard.cardExpiryYear">Card Expiry Year</span></dt>
+        <dd>
+          <span>{{ tokenisedCard.cardExpiryYear }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.tokenisedCard.truncatedCardNumber">Truncated Card Number</span></dt>
+        <dd>
+          <span>{{ tokenisedCard.truncatedCardNumber }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/tokenised-card', tokenisedCard.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

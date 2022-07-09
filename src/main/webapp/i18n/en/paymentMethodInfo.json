@@ -1,0 +1,32 @@
+{
+  "jhipsterSampleApplicationApp": {
+    "paymentMethodInfo": {
+      "home": {
+        "title": "Payment Method Infos",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Payment Method Info",
+        "createOrEditLabel": "Create or edit a Payment Method Info",
+        "notFound": "No Payment Method Infos found"
+      },
+      "created": "A new Payment Method Info is created with identifier {{ param }}",
+      "updated": "A Payment Method Info is updated with identifier {{ param }}",
+      "deleted": "A Payment Method Info is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Payment Method Info {{ id }}?"
+      },
+      "detail": {
+        "title": "Payment Method Info"
+      },
+      "id": "ID",
+      "paymentMethod": "Payment Method",
+      "logo": "Logo",
+      "supportsTokenisation": "Supports Tokenisation",
+      "currencies": "Currencies",
+      "surchargeAmount": "Surcharge Amount",
+      "surchargeAmountExclVat": "Surcharge Amount Excl Vat",
+      "surchargeAmountVat": "Surcharge Amount Vat",
+      "surchargeVatPercentage": "Surcharge Vat Percentage",
+      "description": "Description"
+    }
+  }
+}

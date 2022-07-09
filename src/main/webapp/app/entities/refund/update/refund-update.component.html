@@ -1,0 +1,147 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-refund-heading"
+        data-cy="RefundCreateUpdateHeading"
+        jhiTranslate="jhipsterSampleApplicationApp.refund.home.createOrEditLabel"
+      >
+        Create or edit a Refund
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.refund.reference" for="field_reference">Reference</label>
+          <input type="number" class="form-control" name="reference" id="field_reference" data-cy="reference" formControlName="reference" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.refund.createDateTimeUtc" for="field_createDateTimeUtc"
+            >Create Date Time Utc</label
+          >
+          <div class="d-flex">
+            <input
+              id="field_createDateTimeUtc"
+              data-cy="createDateTimeUtc"
+              type="datetime-local"
+              class="form-control"
+              name="createDateTimeUtc"
+              formControlName="createDateTimeUtc"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.refund.refundNumber" for="field_refundNumber"
+            >Refund Number</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="refundNumber"
+            id="field_refundNumber"
+            data-cy="refundNumber"
+            formControlName="refundNumber"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.refund.status" for="field_status">Status</label>
+          <select class="form-control" name="status" formControlName="status" id="field_status" data-cy="status">
+            <option [ngValue]="null">{{ 'jhipsterSampleApplicationApp.RefundStatus.null' | translate }}</option>
+            <option *ngFor="let refundStatus of refundStatusValues" [value]="refundStatus">
+              {{ 'jhipsterSampleApplicationApp.RefundStatus.' + refundStatus | translate }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.refund.amountToRefund" for="field_amountToRefund"
+            >Amount To Refund</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="amountToRefund"
+            id="field_amountToRefund"
+            data-cy="amountToRefund"
+            formControlName="amountToRefund"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label
+            class="form-label"
+            jhiTranslate="jhipsterSampleApplicationApp.refund.convertedAmountToRefund"
+            for="field_convertedAmountToRefund"
+            >Converted Amount To Refund</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="convertedAmountToRefund"
+            id="field_convertedAmountToRefund"
+            data-cy="convertedAmountToRefund"
+            formControlName="convertedAmountToRefund"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.refund.convertedCurrency" for="field_convertedCurrency"
+            >Converted Currency</label
+          >
+          <select
+            class="form-control"
+            name="convertedCurrency"
+            formControlName="convertedCurrency"
+            id="field_convertedCurrency"
+            data-cy="convertedCurrency"
+          >
+            <option [ngValue]="null">{{ 'jhipsterSampleApplicationApp.Currency.null' | translate }}</option>
+            <option *ngFor="let currency of currencyValues" [value]="currency">
+              {{ 'jhipsterSampleApplicationApp.Currency.' + currency | translate }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.refund.conversionRate" for="field_conversionRate"
+            >Conversion Rate</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="conversionRate"
+            id="field_conversionRate"
+            data-cy="conversionRate"
+            formControlName="conversionRate"
+          />
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,126 @@
+<div>
+  <h2 id="page-heading" data-cy="PaymentAttributesHeading">
+    <span jhiTranslate="jhipsterSampleApplicationApp.paymentAttributes.home.title">Payment Attributes</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="loadAll()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="jhipsterSampleApplicationApp.paymentAttributes.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-payment-attributes"
+        [routerLink]="['/payment-attributes/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="jhipsterSampleApplicationApp.paymentAttributes.home.createLabel"> Create a new Payment Attributes </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="paymentAttributes?.length === 0">
+    <span jhiTranslate="jhipsterSampleApplicationApp.paymentAttributes.home.notFound">No paymentAttributes found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="paymentAttributes && paymentAttributes.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr>
+          <th scope="col"><span jhiTranslate="global.field.id">ID</span></th>
+          <th scope="col">
+            <span jhiTranslate="jhipsterSampleApplicationApp.paymentAttributes.originatingIpAddress">Originating Ip Address</span>
+          </th>
+          <th scope="col"><span jhiTranslate="jhipsterSampleApplicationApp.paymentAttributes.originHeader">Origin Header</span></th>
+          <th scope="col"><span jhiTranslate="jhipsterSampleApplicationApp.paymentAttributes.userAgent">User Agent</span></th>
+          <th scope="col">
+            <span jhiTranslate="jhipsterSampleApplicationApp.paymentAttributes.returnUrlSuccess">Return Url Success</span>
+          </th>
+          <th scope="col"><span jhiTranslate="jhipsterSampleApplicationApp.paymentAttributes.returnUrlFailed">Return Url Failed</span></th>
+          <th scope="col">
+            <span jhiTranslate="jhipsterSampleApplicationApp.paymentAttributes.returnUrlCancelled">Return Url Cancelled</span>
+          </th>
+          <th scope="col"><span jhiTranslate="jhipsterSampleApplicationApp.paymentAttributes.simulatedStatus">Simulated Status</span></th>
+          <th scope="col"><span jhiTranslate="jhipsterSampleApplicationApp.paymentAttributes.idealBic">Ideal Bic</span></th>
+          <th scope="col">
+            <span jhiTranslate="jhipsterSampleApplicationApp.paymentAttributes.paymentMethodTransactionId"
+              >Payment Method Transaction Id</span
+            >
+          </th>
+          <th scope="col">
+            <span jhiTranslate="jhipsterSampleApplicationApp.paymentAttributes.paymentMethodVoidTransactionId"
+              >Payment Method Void Transaction Id</span
+            >
+          </th>
+          <th scope="col"><span jhiTranslate="jhipsterSampleApplicationApp.paymentAttributes.token">Token</span></th>
+          <th scope="col">
+            <span jhiTranslate="jhipsterSampleApplicationApp.paymentAttributes.cashFlowsAcquiringDetails"
+              >Cash Flows Acquiring Details</span
+            >
+          </th>
+          <th scope="col"><span jhiTranslate="jhipsterSampleApplicationApp.paymentAttributes.descriptor">Descriptor</span></th>
+          <th scope="col"><span jhiTranslate="jhipsterSampleApplicationApp.paymentAttributes.ewalletType">Ewallet Type</span></th>
+          <th scope="col"><span jhiTranslate="jhipsterSampleApplicationApp.paymentAttributes.paymentStatus">Payment Status</span></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let paymentAttributes of paymentAttributes; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/payment-attributes', paymentAttributes.id, 'view']">{{ paymentAttributes.id }}</a>
+          </td>
+          <td>{{ paymentAttributes.originatingIpAddress }}</td>
+          <td>{{ paymentAttributes.originHeader }}</td>
+          <td>{{ paymentAttributes.userAgent }}</td>
+          <td>{{ paymentAttributes.returnUrlSuccess }}</td>
+          <td>{{ paymentAttributes.returnUrlFailed }}</td>
+          <td>{{ paymentAttributes.returnUrlCancelled }}</td>
+          <td>{{ paymentAttributes.simulatedStatus }}</td>
+          <td>{{ paymentAttributes.idealBic }}</td>
+          <td>{{ paymentAttributes.paymentMethodTransactionId }}</td>
+          <td>{{ paymentAttributes.paymentMethodVoidTransactionId }}</td>
+          <td>{{ paymentAttributes.token }}</td>
+          <td>{{ paymentAttributes.cashFlowsAcquiringDetails }}</td>
+          <td>{{ paymentAttributes.descriptor }}</td>
+          <td>{{ paymentAttributes.ewalletType }}</td>
+          <td jhiTranslate="{{ 'jhipsterSampleApplicationApp.PaymentStatus.' + paymentAttributes.paymentStatus }}">
+            {{ paymentAttributes.paymentStatus }}
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/payment-attributes', paymentAttributes.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/payment-attributes', paymentAttributes.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(paymentAttributes)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,20 @@
+{
+  "applications": "*",
+  "changelogDate": "20220709023632",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "parameters",
+  "fields": [
+    {
+      "fieldName": "parameter",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Parameters",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [],
+  "service": "no"
+}

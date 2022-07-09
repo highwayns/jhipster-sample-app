@@ -1,0 +1,31 @@
+{
+  "jhipsterSampleApplicationApp": {
+    "capture": {
+      "home": {
+        "title": "Captures",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Capture",
+        "createOrEditLabel": "Create or edit a Capture",
+        "notFound": "No Captures found"
+      },
+      "created": "A new Capture is created with identifier {{ param }}",
+      "updated": "A Capture is updated with identifier {{ param }}",
+      "deleted": "A Capture is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Capture {{ id }}?"
+      },
+      "detail": {
+        "title": "Capture"
+      },
+      "id": "ID",
+      "reference": "Reference",
+      "createDateTimeUtc": "Create Date Time Utc",
+      "status": "Status",
+      "amountToCapture": "Amount To Capture",
+      "convertedAmountToCapture": "Converted Amount To Capture",
+      "convertedCurrency": "Converted Currency",
+      "conversionRate": "Conversion Rate",
+      "isFinalCapture": "Is Final Capture"
+    }
+  }
+}

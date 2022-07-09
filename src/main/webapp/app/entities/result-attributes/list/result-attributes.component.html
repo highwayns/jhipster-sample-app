@@ -1,0 +1,80 @@
+<div>
+  <h2 id="page-heading" data-cy="ResultAttributesHeading">
+    <span jhiTranslate="jhipsterSampleApplicationApp.resultAttributes.home.title">Result Attributes</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="loadAll()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="jhipsterSampleApplicationApp.resultAttributes.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-result-attributes"
+        [routerLink]="['/result-attributes/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="jhipsterSampleApplicationApp.resultAttributes.home.createLabel"> Create a new Result Attributes </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="resultAttributes?.length === 0">
+    <span jhiTranslate="jhipsterSampleApplicationApp.resultAttributes.home.notFound">No resultAttributes found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="resultAttributes && resultAttributes.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr>
+          <th scope="col"><span jhiTranslate="global.field.id">ID</span></th>
+          <th scope="col"><span jhiTranslate="jhipsterSampleApplicationApp.resultAttributes.key">Key</span></th>
+          <th scope="col"><span jhiTranslate="jhipsterSampleApplicationApp.resultAttributes.value">Value</span></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let resultAttributes of resultAttributes; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/result-attributes', resultAttributes.id, 'view']">{{ resultAttributes.id }}</a>
+          </td>
+          <td>{{ resultAttributes.key }}</td>
+          <td>{{ resultAttributes.value }}</td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/result-attributes', resultAttributes.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/result-attributes', resultAttributes.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(resultAttributes)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

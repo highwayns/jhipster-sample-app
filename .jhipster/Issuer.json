@@ -1,0 +1,24 @@
+{
+  "applications": "*",
+  "changelogDate": "20220709023639",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "issuer",
+  "fields": [
+    {
+      "fieldName": "id",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Issuer",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [],
+  "service": "no"
+}

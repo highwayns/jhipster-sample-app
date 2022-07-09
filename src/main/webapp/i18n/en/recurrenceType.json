@@ -1,0 +1,11 @@
+{
+  "jhipsterSampleApplicationApp": {
+    "RecurrenceType": {
+      "null": "",
+      "SUBSCRIPTION": "SUBSCRIPTION",
+      "INSTALMENT": "INSTALMENT",
+      "UNSCHEDULED": "UNSCHEDULED",
+      "CUSTOMERINITIATED": "CUSTOMERINITIATED"
+    }
+  }
+}

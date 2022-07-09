@@ -1,0 +1,140 @@
+<div>
+  <h2 id="page-heading" data-cy="PaymentJobHeading">
+    <span jhiTranslate="jhipsterSampleApplicationApp.paymentJob.home.title">Payment Jobs</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="loadAll()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="jhipsterSampleApplicationApp.paymentJob.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-payment-job"
+        [routerLink]="['/payment-job/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="jhipsterSampleApplicationApp.paymentJob.home.createLabel"> Create a new Payment Job </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="paymentJobs?.length === 0">
+    <span jhiTranslate="jhipsterSampleApplicationApp.paymentJob.home.notFound">No paymentJobs found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="paymentJobs && paymentJobs.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr>
+          <th scope="col"><span jhiTranslate="global.field.id">ID</span></th>
+          <th scope="col"><span jhiTranslate="jhipsterSampleApplicationApp.paymentJob.reference">Reference</span></th>
+          <th scope="col"><span jhiTranslate="jhipsterSampleApplicationApp.paymentJob.createDateTimeUtc">Create Date Time Utc</span></th>
+          <th scope="col"><span jhiTranslate="jhipsterSampleApplicationApp.paymentJob.type">Type</span></th>
+          <th scope="col"><span jhiTranslate="jhipsterSampleApplicationApp.paymentJob.traceReference">Trace Reference</span></th>
+          <th scope="col"><span jhiTranslate="jhipsterSampleApplicationApp.paymentJob.configurationId">Configuration Id</span></th>
+          <th scope="col"><span jhiTranslate="jhipsterSampleApplicationApp.paymentJob.domain">Domain</span></th>
+          <th scope="col"><span jhiTranslate="jhipsterSampleApplicationApp.paymentJob.locale">Locale</span></th>
+          <th scope="col"><span jhiTranslate="jhipsterSampleApplicationApp.paymentJob.timeZone">Time Zone</span></th>
+          <th scope="col">
+            <span jhiTranslate="jhipsterSampleApplicationApp.paymentJob.parentPaymentJobReference">Parent Payment Job Reference</span>
+          </th>
+          <th scope="col"><span jhiTranslate="jhipsterSampleApplicationApp.paymentJob.displayUrl">Display Url</span></th>
+          <th scope="col"><span jhiTranslate="jhipsterSampleApplicationApp.paymentJob.currency">Currency</span></th>
+          <th scope="col"><span jhiTranslate="jhipsterSampleApplicationApp.paymentJob.amountToCollect">Amount To Collect</span></th>
+          <th scope="col"><span jhiTranslate="jhipsterSampleApplicationApp.paymentJob.amountCollected">Amount Collected</span></th>
+          <th scope="col"><span jhiTranslate="jhipsterSampleApplicationApp.paymentJob.paidAmount">Paid Amount</span></th>
+          <th scope="col"><span jhiTranslate="jhipsterSampleApplicationApp.paymentJob.paidDateTimeUtc">Paid Date Time Utc</span></th>
+          <th scope="col">
+            <span jhiTranslate="jhipsterSampleApplicationApp.paymentJob.expirationDateTimeUtc">Expiration Date Time Utc</span>
+          </th>
+          <th scope="col"><span jhiTranslate="jhipsterSampleApplicationApp.paymentJob.dueDateTimeUtc">Due Date Time Utc</span></th>
+          <th scope="col"><span jhiTranslate="jhipsterSampleApplicationApp.paymentJob.lastUpdateTimeUtc">Last Update Time Utc</span></th>
+          <th scope="col">
+            <span jhiTranslate="jhipsterSampleApplicationApp.paymentJob.lastProcessedTimeUtc">Last Processed Time Utc</span>
+          </th>
+          <th scope="col"><span jhiTranslate="jhipsterSampleApplicationApp.paymentJob.order">Order</span></th>
+          <th scope="col"><span jhiTranslate="jhipsterSampleApplicationApp.paymentJob.attributes">Attributes</span></th>
+          <th scope="col"><span jhiTranslate="jhipsterSampleApplicationApp.paymentJob.recurrenceCriteria">Recurrence Criteria</span></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let paymentJob of paymentJobs; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/payment-job', paymentJob.id, 'view']">{{ paymentJob.id }}</a>
+          </td>
+          <td>{{ paymentJob.reference }}</td>
+          <td>{{ paymentJob.createDateTimeUtc | formatMediumDatetime }}</td>
+          <td jhiTranslate="{{ 'jhipsterSampleApplicationApp.PaymentJobType.' + paymentJob.type }}">{{ paymentJob.type }}</td>
+          <td>{{ paymentJob.traceReference }}</td>
+          <td>{{ paymentJob.configurationId }}</td>
+          <td>{{ paymentJob.domain }}</td>
+          <td jhiTranslate="{{ 'jhipsterSampleApplicationApp.Locale.' + paymentJob.locale }}">{{ paymentJob.locale }}</td>
+          <td>{{ paymentJob.timeZone }}</td>
+          <td>{{ paymentJob.parentPaymentJobReference }}</td>
+          <td>{{ paymentJob.displayUrl }}</td>
+          <td jhiTranslate="{{ 'jhipsterSampleApplicationApp.Currency.' + paymentJob.currency }}">{{ paymentJob.currency }}</td>
+          <td>{{ paymentJob.amountToCollect }}</td>
+          <td>{{ paymentJob.amountCollected }}</td>
+          <td>{{ paymentJob.paidAmount }}</td>
+          <td>{{ paymentJob.paidDateTimeUtc | formatMediumDatetime }}</td>
+          <td>{{ paymentJob.expirationDateTimeUtc | formatMediumDatetime }}</td>
+          <td>{{ paymentJob.dueDateTimeUtc | formatMediumDatetime }}</td>
+          <td>{{ paymentJob.lastUpdateTimeUtc | formatMediumDatetime }}</td>
+          <td>{{ paymentJob.lastProcessedTimeUtc | formatMediumDatetime }}</td>
+          <td>
+            <div *ngIf="paymentJob.order">
+              <a [routerLink]="['/order', paymentJob.order?.id, 'view']">{{ paymentJob.order?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="paymentJob.attributes">
+              <a [routerLink]="['/payment-job-attributes', paymentJob.attributes?.id, 'view']">{{ paymentJob.attributes?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="paymentJob.recurrenceCriteria">
+              <a [routerLink]="['/recurrence-criteria', paymentJob.recurrenceCriteria?.id, 'view']">{{
+                paymentJob.recurrenceCriteria?.id
+              }}</a>
+            </div>
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/payment-job', paymentJob.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/payment-job', paymentJob.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(paymentJob)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

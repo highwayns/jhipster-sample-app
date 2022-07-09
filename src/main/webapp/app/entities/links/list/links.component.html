@@ -1,0 +1,84 @@
+<div>
+  <h2 id="page-heading" data-cy="LinksHeading">
+    <span jhiTranslate="jhipsterSampleApplicationApp.links.home.title">Links</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="loadAll()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="jhipsterSampleApplicationApp.links.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-links"
+        [routerLink]="['/links/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="jhipsterSampleApplicationApp.links.home.createLabel"> Create a new Links </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="links?.length === 0">
+    <span jhiTranslate="jhipsterSampleApplicationApp.links.home.notFound">No links found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="links && links.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr>
+          <th scope="col"><span jhiTranslate="global.field.id">ID</span></th>
+          <th scope="col"><span jhiTranslate="jhipsterSampleApplicationApp.links.data">Data</span></th>
+          <th scope="col"><span jhiTranslate="jhipsterSampleApplicationApp.links.action">Action</span></th>
+          <th scope="col"><span jhiTranslate="jhipsterSampleApplicationApp.links.documentation">Documentation</span></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let links of links; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/links', links.id, 'view']">{{ links.id }}</a>
+          </td>
+          <td>
+            <div *ngIf="links.data">
+              <a [routerLink]="['/link', links.data?.id, 'view']">{{ links.data?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="links.action">
+              <a [routerLink]="['/link', links.action?.id, 'view']">{{ links.action?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="links.documentation">
+              <a [routerLink]="['/link', links.documentation?.id, 'view']">{{ links.documentation?.id }}</a>
+            </div>
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button type="submit" [routerLink]="['/links', links.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button type="submit" [routerLink]="['/links', links.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(links)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

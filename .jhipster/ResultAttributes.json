@@ -1,0 +1,24 @@
+{
+  "applications": "*",
+  "changelogDate": "20220709023653",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "result_attributes",
+  "fields": [
+    {
+      "fieldName": "key",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "value",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "ResultAttributes",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [],
+  "service": "no"
+}

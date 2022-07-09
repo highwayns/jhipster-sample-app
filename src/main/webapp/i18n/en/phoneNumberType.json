@@ -1,0 +1,10 @@
+{
+  "jhipsterSampleApplicationApp": {
+    "PhoneNumberType": {
+      "null": "",
+      "UNKNOWN": "UNKNOWN",
+      "MOBILE": "MOBILE",
+      "FIXED": "FIXED"
+    }
+  }
+}

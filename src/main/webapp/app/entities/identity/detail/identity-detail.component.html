@@ -1,0 +1,56 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="identity">
+      <h2 data-cy="identityDetailsHeading"><span jhiTranslate="jhipsterSampleApplicationApp.identity.detail.title">Identity</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ identity.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.identity.debtorId">Debtor Id</span></dt>
+        <dd>
+          <span>{{ identity.debtorId }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.identity.emailAddress">Email Address</span></dt>
+        <dd>
+          <span>{{ identity.emailAddress }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.identity.gender">Gender</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'jhipsterSampleApplicationApp.Gender.' + identity.gender }}">{{ identity.gender }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.identity.dateOfBirth">Date Of Birth</span></dt>
+        <dd>
+          <span>{{ identity.dateOfBirth | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.identity.socialSecurityNumber">Social Security Number</span></dt>
+        <dd>
+          <span>{{ identity.socialSecurityNumber }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.identity.chamberOfCommerceNumber">Chamber Of Commerce Number</span></dt>
+        <dd>
+          <span>{{ identity.chamberOfCommerceNumber }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.identity.vatNumber">Vat Number</span></dt>
+        <dd>
+          <span>{{ identity.vatNumber }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/identity', identity.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

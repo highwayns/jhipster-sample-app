@@ -1,0 +1,9 @@
+{
+  "jhipsterSampleApplicationApp": {
+    "Gender": {
+      "null": "",
+      "FEMALE": "FEMALE",
+      "MALE": "MALE"
+    }
+  }
+}

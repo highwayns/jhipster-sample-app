@@ -1,0 +1,321 @@
+entity AbuseReport {
+	score Double,
+    createdDateTimeUtc Instant
+}
+
+entity AbuseTrigger {
+	score Double,
+    code String,
+    description String
+}
+
+entity Parameters {
+	parameter String
+}
+
+entity Address {
+	title String,
+    firstName String,
+    middleName String,
+    lastName String,
+    country Country,
+    addressLine1 String,
+    addressLine2 String,
+    zipCode String,
+    city String,
+    stateProvince String,
+    phoneNumber1 String,
+    phoneNumber1Type PhoneNumberType,
+    phoneNumber2 String,
+    phoneNumber2Type PhoneNumberType,
+    organisation String,
+    department String
+}
+
+entity Capture {
+	reference Long,
+    createDateTimeUtc Instant,
+    status CaptureStatus,
+    amountToCapture Double,
+    convertedAmountToCapture Double,
+    convertedCurrency Currency,
+    conversionRate Double,
+    isFinalCapture Boolean
+}
+
+entity CardTokenData {
+	token String,
+    cardExpiryMonth String,
+    cardExpiryYear String,
+    issuerReturnCode String,
+    truncatedCardNumber String
+}
+
+entity Entry {
+	code String,
+    message String,
+    translatedMessage String
+}
+
+entity ErrorReport {
+	language Locale,
+    isFatalError Boolean
+}
+
+entity Identity {
+	debtorId String,
+    emailAddress String,
+    gender Gender,
+    dateOfBirth Instant,
+    socialSecurityNumber String,
+    chamberOfCommerceNumber String,
+    vatNumber String
+}
+
+entity Issuer {
+	id String,
+    name String
+}
+
+entity Links {}
+
+entity Link {
+	url String,
+    type String
+}
+
+entity Order {
+	orderNumber String,
+    note String,
+    createDateTimeUtc Instant,
+    customerReference Long
+}
+
+entity OrderLine {
+	lineNumber Long,
+    type OrderLineType,
+    skuCode String,
+    name String,
+    description String,
+    quantity Double,
+    unitPriceExclVat Double,
+    unitPriceInclVat Double,
+    vatPercentage Double,
+    vatPercentageLabel String,
+    discountPercentageLabel String,
+    totalLineAmount Double,
+    url String
+}
+
+entity Payment {
+	reference Long,
+    createDateTimeUtc Instant,
+    status PaymentStatus,
+    amountToCollect Double,
+    surchargeAmount Double,
+    convertedTotalAmount Double,
+    convertedCurrency Currency,
+    conversionRate Double,
+    paidAmount Double
+}
+
+entity PaymentAttributes {
+	originatingIpAddress String,
+    originHeader String,
+    userAgent String,
+    returnUrlSuccess String,
+    returnUrlFailed String,
+    returnUrlCancelled String,
+    simulatedStatus String,
+    idealBic String,
+    paymentMethodTransactionId String,
+    paymentMethodVoidTransactionId String,
+    token String,
+    cashFlowsAcquiringDetails String,
+    descriptor String,
+    ewalletType String,
+    paymentStatus PaymentStatus
+}
+
+entity PaymentJobAttributes {
+	webhookUrl String,
+    googleAnalyticsClientId String,
+    allowedParentFrameDomains String,
+    paymentPageReference String
+}
+
+entity PaymentJob {
+	reference Long,
+    createDateTimeUtc Instant,
+    type PaymentJobType,
+    traceReference Long,
+    configurationId String,
+    domain String,
+    locale Locale,
+    timeZone String,
+    parentPaymentJobReference Long,
+    displayUrl String,
+    currency Currency,
+    amountToCollect Double,
+    amountCollected Double,
+    paidAmount Double,
+    paidDateTimeUtc Instant,
+    expirationDateTimeUtc Instant,
+    dueDateTimeUtc Instant,
+    lastUpdateTimeUtc Instant,
+    lastProcessedTimeUtc Instant
+}
+
+entity PaymentStep {
+	reference Long,
+    createDateTimeUtc Instant,
+    action PaymentStepAction,
+    status PaymentStatus,
+    amountToCollect Double
+}
+
+entity PaymentMethods {
+	paymentMethod PaymentMethod
+}
+
+entity PaymentMethodInfo {
+	paymentMethod String,
+	logo String,
+    supportsTokenisation Boolean,
+    currencies Currency,
+    surchargeAmount Double,
+    surchargeAmountExclVat Double,
+    surchargeAmountVat Double,
+    surchargeVatPercentage Double,
+    description String
+}
+
+entity Refund {
+	reference Long,
+    createDateTimeUtc Instant,
+    refundNumber String,
+    status RefundStatus,
+    amountToRefund Double,
+    convertedAmountToRefund Double,
+    convertedCurrency Currency,
+    conversionRate Double
+}
+
+entity RefundStep {
+	reference Long,
+    createDateTimeUtc Instant,
+    action RefundStepAction,
+    status RefundStatus,
+    description String
+}
+
+entity ResultAttributes	{
+	key String,
+    value String
+}
+
+entity RecurrenceCriteria {
+	recurrenceType RecurrenceType,
+    recurringExpiry Instant,
+    recurringFrequency Integer,
+    instalments Integer
+}
+
+entity Currencys {
+	currency Currency
+}
+
+entity TokenisedCard {
+	token String,
+    cardExpiryMonth String,
+    cardExpiryYear String,
+    truncatedCardNumber String
+}
+
+relationship OneToOne {
+	Links{data} to Link,
+    Links{action} to Link,
+    Links{documentation} to Link,
+    Order{billingAddress} to Address,
+    Order{billingIdentity} to Identity,
+    Order{shippingAddress} to Address,
+    Payment{lastErrorReport} to ErrorReport,
+    Payment{abuseReport} to AbuseReport,
+    Payment{attributes} to PaymentAttributes,
+    PaymentJob{order} to Order,
+    PaymentJob{attributes} to PaymentJobAttributes,
+    PaymentJob{recurrenceCriteria} to RecurrenceCriteria,
+    RefundStep{resultAttributes} to ResultAttributes
+}
+
+enum Country {
+   	ZH,	JP, US, UK, RU, EU
+}
+
+enum PhoneNumberType {
+	UNKNOWN, MOBILE, FIXED
+}
+
+enum CaptureStatus {
+	PENDING, COMPLETED, FAILED
+}
+
+enum Currency {
+	CNY, JPY, USD, EUR, RUB, BTC, ETH
+}
+
+enum GatewayPaymentMethod {
+	IDEAL, PAYPAL, VISACREDITCARD, MASTERCREDITCARD,
+    SUMITOMODEBITCARD, MITSUBISHIDEBITCARD, CARD,
+    BANCONTACT, SEPABANKTRANSFER, KLARNAPAYLATER,
+    KLARNASLICEIT, KLARNAPAYNOW, AFTERPAY, DIRECTDEBIT
+}
+
+enum PaymentMethod {
+	IDEAL, PAYPAL, CARD, BANCONTACT, SEPABANKTRANSFER, KLARNAPAYLATER,
+    KLARNASLICEIT, KLARNAPAYNOW, AFTERPAY, DIRECTDEBIT
+}
+
+enum PaymentStatus {
+	PENDING, RESERVED, COMMISSIONED, PAID, VERIFIED, CANCELLED,
+    FAILED, REJECTED, EXPIRED, BLOCKED, DECLINED
+}
+
+enum PaymentStepAction {
+	DISPLAYHOSTEDPAGE, PAYMENTMETHODSELECTION, START, PROCESS,
+    BACKGROUNDPROCESS, CAPTURE, REFUND, CANCEL
+}
+
+enum PaymentJobType	{
+	PAYMENT, CREDIT
+}
+
+enum Gender {
+	FEMALE, MALE
+}
+
+enum Locale {
+	EL_GR, EN_US, NL_NL, EN_GB, ES_ES
+}
+
+enum OrderLineType {
+	PHYSICALITEM, DIGITALITEM, SHIPPINGCOST, PAYMENTCOST,
+    DISCOUNT, GIFTCARD, SHOPCREDIT
+}
+
+enum RefundStatus {
+	PENDING, COMPLETED, FAILED
+}
+
+enum RefundStepAction {
+	START, PROCESS, CANCEL
+}
+
+enum RecurrenceType {
+	SUBSCRIPTION, INSTALMENT, UNSCHEDULED, CUSTOMERINITIATED
+}
+
+enum PaymentJobOption {
+	ISRECURRINGPAYMENTJOBPARENT, ISMOTO, STORECUSTOMERINFORMATION,
+    STORECARDDETAILS, GENERATETOKEN, FRICTIONLESS
+}

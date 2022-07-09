@@ -1,0 +1,104 @@
+<div>
+  <h2 id="page-heading" data-cy="PaymentMethodInfoHeading">
+    <span jhiTranslate="jhipsterSampleApplicationApp.paymentMethodInfo.home.title">Payment Method Infos</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="loadAll()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="jhipsterSampleApplicationApp.paymentMethodInfo.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-payment-method-info"
+        [routerLink]="['/payment-method-info/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="jhipsterSampleApplicationApp.paymentMethodInfo.home.createLabel"> Create a new Payment Method Info </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="paymentMethodInfos?.length === 0">
+    <span jhiTranslate="jhipsterSampleApplicationApp.paymentMethodInfo.home.notFound">No paymentMethodInfos found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="paymentMethodInfos && paymentMethodInfos.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr>
+          <th scope="col"><span jhiTranslate="global.field.id">ID</span></th>
+          <th scope="col"><span jhiTranslate="jhipsterSampleApplicationApp.paymentMethodInfo.paymentMethod">Payment Method</span></th>
+          <th scope="col"><span jhiTranslate="jhipsterSampleApplicationApp.paymentMethodInfo.logo">Logo</span></th>
+          <th scope="col">
+            <span jhiTranslate="jhipsterSampleApplicationApp.paymentMethodInfo.supportsTokenisation">Supports Tokenisation</span>
+          </th>
+          <th scope="col"><span jhiTranslate="jhipsterSampleApplicationApp.paymentMethodInfo.currencies">Currencies</span></th>
+          <th scope="col"><span jhiTranslate="jhipsterSampleApplicationApp.paymentMethodInfo.surchargeAmount">Surcharge Amount</span></th>
+          <th scope="col">
+            <span jhiTranslate="jhipsterSampleApplicationApp.paymentMethodInfo.surchargeAmountExclVat">Surcharge Amount Excl Vat</span>
+          </th>
+          <th scope="col">
+            <span jhiTranslate="jhipsterSampleApplicationApp.paymentMethodInfo.surchargeAmountVat">Surcharge Amount Vat</span>
+          </th>
+          <th scope="col">
+            <span jhiTranslate="jhipsterSampleApplicationApp.paymentMethodInfo.surchargeVatPercentage">Surcharge Vat Percentage</span>
+          </th>
+          <th scope="col"><span jhiTranslate="jhipsterSampleApplicationApp.paymentMethodInfo.description">Description</span></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let paymentMethodInfo of paymentMethodInfos; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/payment-method-info', paymentMethodInfo.id, 'view']">{{ paymentMethodInfo.id }}</a>
+          </td>
+          <td>{{ paymentMethodInfo.paymentMethod }}</td>
+          <td>{{ paymentMethodInfo.logo }}</td>
+          <td>{{ paymentMethodInfo.supportsTokenisation }}</td>
+          <td jhiTranslate="{{ 'jhipsterSampleApplicationApp.Currency.' + paymentMethodInfo.currencies }}">
+            {{ paymentMethodInfo.currencies }}
+          </td>
+          <td>{{ paymentMethodInfo.surchargeAmount }}</td>
+          <td>{{ paymentMethodInfo.surchargeAmountExclVat }}</td>
+          <td>{{ paymentMethodInfo.surchargeAmountVat }}</td>
+          <td>{{ paymentMethodInfo.surchargeVatPercentage }}</td>
+          <td>{{ paymentMethodInfo.description }}</td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/payment-method-info', paymentMethodInfo.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/payment-method-info', paymentMethodInfo.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(paymentMethodInfo)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

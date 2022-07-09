@@ -1,0 +1,50 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="cardTokenData">
+      <h2 data-cy="cardTokenDataDetailsHeading">
+        <span jhiTranslate="jhipsterSampleApplicationApp.cardTokenData.detail.title">Card Token Data</span>
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ cardTokenData.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.cardTokenData.token">Token</span></dt>
+        <dd>
+          <span>{{ cardTokenData.token }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.cardTokenData.cardExpiryMonth">Card Expiry Month</span></dt>
+        <dd>
+          <span>{{ cardTokenData.cardExpiryMonth }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.cardTokenData.cardExpiryYear">Card Expiry Year</span></dt>
+        <dd>
+          <span>{{ cardTokenData.cardExpiryYear }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.cardTokenData.issuerReturnCode">Issuer Return Code</span></dt>
+        <dd>
+          <span>{{ cardTokenData.issuerReturnCode }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.cardTokenData.truncatedCardNumber">Truncated Card Number</span></dt>
+        <dd>
+          <span>{{ cardTokenData.truncatedCardNumber }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/card-token-data', cardTokenData.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,96 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-payment-step-heading"
+        data-cy="PaymentStepCreateUpdateHeading"
+        jhiTranslate="jhipsterSampleApplicationApp.paymentStep.home.createOrEditLabel"
+      >
+        Create or edit a Payment Step
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.paymentStep.reference" for="field_reference"
+            >Reference</label
+          >
+          <input type="number" class="form-control" name="reference" id="field_reference" data-cy="reference" formControlName="reference" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.paymentStep.createDateTimeUtc" for="field_createDateTimeUtc"
+            >Create Date Time Utc</label
+          >
+          <div class="d-flex">
+            <input
+              id="field_createDateTimeUtc"
+              data-cy="createDateTimeUtc"
+              type="datetime-local"
+              class="form-control"
+              name="createDateTimeUtc"
+              formControlName="createDateTimeUtc"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.paymentStep.action" for="field_action">Action</label>
+          <select class="form-control" name="action" formControlName="action" id="field_action" data-cy="action">
+            <option [ngValue]="null">{{ 'jhipsterSampleApplicationApp.PaymentStepAction.null' | translate }}</option>
+            <option *ngFor="let paymentStepAction of paymentStepActionValues" [value]="paymentStepAction">
+              {{ 'jhipsterSampleApplicationApp.PaymentStepAction.' + paymentStepAction | translate }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.paymentStep.status" for="field_status">Status</label>
+          <select class="form-control" name="status" formControlName="status" id="field_status" data-cy="status">
+            <option [ngValue]="null">{{ 'jhipsterSampleApplicationApp.PaymentStatus.null' | translate }}</option>
+            <option *ngFor="let paymentStatus of paymentStatusValues" [value]="paymentStatus">
+              {{ 'jhipsterSampleApplicationApp.PaymentStatus.' + paymentStatus | translate }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.paymentStep.amountToCollect" for="field_amountToCollect"
+            >Amount To Collect</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="amountToCollect"
+            id="field_amountToCollect"
+            data-cy="amountToCollect"
+            formControlName="amountToCollect"
+          />
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

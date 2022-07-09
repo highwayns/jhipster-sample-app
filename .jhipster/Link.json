@@ -1,0 +1,24 @@
+{
+  "applications": "*",
+  "changelogDate": "20220709023641",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "link",
+  "fields": [
+    {
+      "fieldName": "url",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "type",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Link",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [],
+  "service": "no"
+}

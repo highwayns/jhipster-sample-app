@@ -1,0 +1,69 @@
+{
+  "applications": "*",
+  "changelogDate": "20220709023643",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "order_line",
+  "fields": [
+    {
+      "fieldName": "lineNumber",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "type",
+      "fieldType": "OrderLineType",
+      "fieldValues": "PHYSICALITEM,DIGITALITEM,SHIPPINGCOST,PAYMENTCOST,DISCOUNT,GIFTCARD,SHOPCREDIT"
+    },
+    {
+      "fieldName": "skuCode",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "quantity",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "unitPriceExclVat",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "unitPriceInclVat",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "vatPercentage",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "vatPercentageLabel",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "discountPercentageLabel",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "totalLineAmount",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "url",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "OrderLine",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [],
+  "service": "no"
+}

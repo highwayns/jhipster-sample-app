@@ -1,0 +1,25 @@
+{
+  "applications": "*",
+  "changelogDate": "20220709023637",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "error_report",
+  "fields": [
+    {
+      "fieldName": "language",
+      "fieldType": "Locale",
+      "fieldValues": "EL_GR,EN_US,NL_NL,EN_GB,ES_ES"
+    },
+    {
+      "fieldName": "isFatalError",
+      "fieldType": "Boolean"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "ErrorReport",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [],
+  "service": "no"
+}

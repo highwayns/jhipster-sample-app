@@ -1,0 +1,253 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-payment-attributes-heading"
+        data-cy="PaymentAttributesCreateUpdateHeading"
+        jhiTranslate="jhipsterSampleApplicationApp.paymentAttributes.home.createOrEditLabel"
+      >
+        Create or edit a Payment Attributes
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label
+            class="form-label"
+            jhiTranslate="jhipsterSampleApplicationApp.paymentAttributes.originatingIpAddress"
+            for="field_originatingIpAddress"
+            >Originating Ip Address</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="originatingIpAddress"
+            id="field_originatingIpAddress"
+            data-cy="originatingIpAddress"
+            formControlName="originatingIpAddress"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.paymentAttributes.originHeader" for="field_originHeader"
+            >Origin Header</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="originHeader"
+            id="field_originHeader"
+            data-cy="originHeader"
+            formControlName="originHeader"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.paymentAttributes.userAgent" for="field_userAgent"
+            >User Agent</label
+          >
+          <input type="text" class="form-control" name="userAgent" id="field_userAgent" data-cy="userAgent" formControlName="userAgent" />
+        </div>
+
+        <div class="row mb-3">
+          <label
+            class="form-label"
+            jhiTranslate="jhipsterSampleApplicationApp.paymentAttributes.returnUrlSuccess"
+            for="field_returnUrlSuccess"
+            >Return Url Success</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="returnUrlSuccess"
+            id="field_returnUrlSuccess"
+            data-cy="returnUrlSuccess"
+            formControlName="returnUrlSuccess"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label
+            class="form-label"
+            jhiTranslate="jhipsterSampleApplicationApp.paymentAttributes.returnUrlFailed"
+            for="field_returnUrlFailed"
+            >Return Url Failed</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="returnUrlFailed"
+            id="field_returnUrlFailed"
+            data-cy="returnUrlFailed"
+            formControlName="returnUrlFailed"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label
+            class="form-label"
+            jhiTranslate="jhipsterSampleApplicationApp.paymentAttributes.returnUrlCancelled"
+            for="field_returnUrlCancelled"
+            >Return Url Cancelled</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="returnUrlCancelled"
+            id="field_returnUrlCancelled"
+            data-cy="returnUrlCancelled"
+            formControlName="returnUrlCancelled"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label
+            class="form-label"
+            jhiTranslate="jhipsterSampleApplicationApp.paymentAttributes.simulatedStatus"
+            for="field_simulatedStatus"
+            >Simulated Status</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="simulatedStatus"
+            id="field_simulatedStatus"
+            data-cy="simulatedStatus"
+            formControlName="simulatedStatus"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.paymentAttributes.idealBic" for="field_idealBic"
+            >Ideal Bic</label
+          >
+          <input type="text" class="form-control" name="idealBic" id="field_idealBic" data-cy="idealBic" formControlName="idealBic" />
+        </div>
+
+        <div class="row mb-3">
+          <label
+            class="form-label"
+            jhiTranslate="jhipsterSampleApplicationApp.paymentAttributes.paymentMethodTransactionId"
+            for="field_paymentMethodTransactionId"
+            >Payment Method Transaction Id</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="paymentMethodTransactionId"
+            id="field_paymentMethodTransactionId"
+            data-cy="paymentMethodTransactionId"
+            formControlName="paymentMethodTransactionId"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label
+            class="form-label"
+            jhiTranslate="jhipsterSampleApplicationApp.paymentAttributes.paymentMethodVoidTransactionId"
+            for="field_paymentMethodVoidTransactionId"
+            >Payment Method Void Transaction Id</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="paymentMethodVoidTransactionId"
+            id="field_paymentMethodVoidTransactionId"
+            data-cy="paymentMethodVoidTransactionId"
+            formControlName="paymentMethodVoidTransactionId"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.paymentAttributes.token" for="field_token">Token</label>
+          <input type="text" class="form-control" name="token" id="field_token" data-cy="token" formControlName="token" />
+        </div>
+
+        <div class="row mb-3">
+          <label
+            class="form-label"
+            jhiTranslate="jhipsterSampleApplicationApp.paymentAttributes.cashFlowsAcquiringDetails"
+            for="field_cashFlowsAcquiringDetails"
+            >Cash Flows Acquiring Details</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="cashFlowsAcquiringDetails"
+            id="field_cashFlowsAcquiringDetails"
+            data-cy="cashFlowsAcquiringDetails"
+            formControlName="cashFlowsAcquiringDetails"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.paymentAttributes.descriptor" for="field_descriptor"
+            >Descriptor</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="descriptor"
+            id="field_descriptor"
+            data-cy="descriptor"
+            formControlName="descriptor"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.paymentAttributes.ewalletType" for="field_ewalletType"
+            >Ewallet Type</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="ewalletType"
+            id="field_ewalletType"
+            data-cy="ewalletType"
+            formControlName="ewalletType"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.paymentAttributes.paymentStatus" for="field_paymentStatus"
+            >Payment Status</label
+          >
+          <select
+            class="form-control"
+            name="paymentStatus"
+            formControlName="paymentStatus"
+            id="field_paymentStatus"
+            data-cy="paymentStatus"
+          >
+            <option [ngValue]="null">{{ 'jhipsterSampleApplicationApp.PaymentStatus.null' | translate }}</option>
+            <option *ngFor="let paymentStatus of paymentStatusValues" [value]="paymentStatus">
+              {{ 'jhipsterSampleApplicationApp.PaymentStatus.' + paymentStatus | translate }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

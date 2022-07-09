@@ -1,0 +1,13 @@
+{
+  "jhipsterSampleApplicationApp": {
+    "Country": {
+      "null": "",
+      "ZH": "ZH",
+      "JP": "JP",
+      "US": "US",
+      "UK": "UK",
+      "RU": "RU",
+      "EU": "EU"
+    }
+  }
+}

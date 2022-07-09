@@ -1,0 +1,62 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="order">
+      <h2 data-cy="orderDetailsHeading"><span jhiTranslate="jhipsterSampleApplicationApp.order.detail.title">Order</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ order.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.order.orderNumber">Order Number</span></dt>
+        <dd>
+          <span>{{ order.orderNumber }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.order.note">Note</span></dt>
+        <dd>
+          <span>{{ order.note }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.order.createDateTimeUtc">Create Date Time Utc</span></dt>
+        <dd>
+          <span>{{ order.createDateTimeUtc | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.order.customerReference">Customer Reference</span></dt>
+        <dd>
+          <span>{{ order.customerReference }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.order.billingAddress">Billing Address</span></dt>
+        <dd>
+          <div *ngIf="order.billingAddress">
+            <a [routerLink]="['/address', order.billingAddress?.id, 'view']">{{ order.billingAddress?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.order.billingIdentity">Billing Identity</span></dt>
+        <dd>
+          <div *ngIf="order.billingIdentity">
+            <a [routerLink]="['/identity', order.billingIdentity?.id, 'view']">{{ order.billingIdentity?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.order.shippingAddress">Shipping Address</span></dt>
+        <dd>
+          <div *ngIf="order.shippingAddress">
+            <a [routerLink]="['/address', order.shippingAddress?.id, 'view']">{{ order.shippingAddress?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/order', order.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

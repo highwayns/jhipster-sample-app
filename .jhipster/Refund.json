@@ -1,0 +1,50 @@
+{
+  "applications": "*",
+  "changelogDate": "20220709023651",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "refund",
+  "fields": [
+    {
+      "fieldName": "reference",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "createDateTimeUtc",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "refundNumber",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "status",
+      "fieldType": "RefundStatus",
+      "fieldValues": "PENDING,COMPLETED,FAILED"
+    },
+    {
+      "fieldName": "amountToRefund",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "convertedAmountToRefund",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "convertedCurrency",
+      "fieldType": "Currency",
+      "fieldValues": "CNY,JPY,USD,EUR,RUB,BTC,ETH"
+    },
+    {
+      "fieldName": "conversionRate",
+      "fieldType": "Double"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Refund",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [],
+  "service": "no"
+}

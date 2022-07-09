@@ -1,0 +1,117 @@
+{
+  "applications": "*",
+  "changelogDate": "20220709023647",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "payment_job",
+  "fields": [
+    {
+      "fieldName": "reference",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "createDateTimeUtc",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "type",
+      "fieldType": "PaymentJobType",
+      "fieldValues": "PAYMENT,CREDIT"
+    },
+    {
+      "fieldName": "traceReference",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "configurationId",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "domain",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "locale",
+      "fieldType": "Locale",
+      "fieldValues": "EL_GR,EN_US,NL_NL,EN_GB,ES_ES"
+    },
+    {
+      "fieldName": "timeZone",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "parentPaymentJobReference",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "displayUrl",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "currency",
+      "fieldType": "Currency",
+      "fieldValues": "CNY,JPY,USD,EUR,RUB,BTC,ETH"
+    },
+    {
+      "fieldName": "amountToCollect",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "amountCollected",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "paidAmount",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "paidDateTimeUtc",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "expirationDateTimeUtc",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "dueDateTimeUtc",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "lastUpdateTimeUtc",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "lastProcessedTimeUtc",
+      "fieldType": "Instant"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "PaymentJob",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "order",
+      "otherEntityRelationshipName": "paymentJob",
+      "ownerSide": true,
+      "relationshipName": "order",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "paymentJobAttributes",
+      "otherEntityRelationshipName": "paymentJob",
+      "ownerSide": true,
+      "relationshipName": "attributes",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "recurrenceCriteria",
+      "otherEntityRelationshipName": "paymentJob",
+      "ownerSide": true,
+      "relationshipName": "recurrenceCriteria",
+      "relationshipType": "one-to-one"
+    }
+  ],
+  "service": "no"
+}

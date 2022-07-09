@@ -1,0 +1,36 @@
+{
+  "applications": "*",
+  "changelogDate": "20220709023635",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "card_token_data",
+  "fields": [
+    {
+      "fieldName": "token",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "cardExpiryMonth",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "cardExpiryYear",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "issuerReturnCode",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "truncatedCardNumber",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "CardTokenData",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [],
+  "service": "no"
+}

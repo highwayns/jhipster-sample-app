@@ -1,0 +1,147 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-capture-heading"
+        data-cy="CaptureCreateUpdateHeading"
+        jhiTranslate="jhipsterSampleApplicationApp.capture.home.createOrEditLabel"
+      >
+        Create or edit a Capture
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.capture.reference" for="field_reference">Reference</label>
+          <input type="number" class="form-control" name="reference" id="field_reference" data-cy="reference" formControlName="reference" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.capture.createDateTimeUtc" for="field_createDateTimeUtc"
+            >Create Date Time Utc</label
+          >
+          <div class="d-flex">
+            <input
+              id="field_createDateTimeUtc"
+              data-cy="createDateTimeUtc"
+              type="datetime-local"
+              class="form-control"
+              name="createDateTimeUtc"
+              formControlName="createDateTimeUtc"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.capture.status" for="field_status">Status</label>
+          <select class="form-control" name="status" formControlName="status" id="field_status" data-cy="status">
+            <option [ngValue]="null">{{ 'jhipsterSampleApplicationApp.CaptureStatus.null' | translate }}</option>
+            <option *ngFor="let captureStatus of captureStatusValues" [value]="captureStatus">
+              {{ 'jhipsterSampleApplicationApp.CaptureStatus.' + captureStatus | translate }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.capture.amountToCapture" for="field_amountToCapture"
+            >Amount To Capture</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="amountToCapture"
+            id="field_amountToCapture"
+            data-cy="amountToCapture"
+            formControlName="amountToCapture"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label
+            class="form-label"
+            jhiTranslate="jhipsterSampleApplicationApp.capture.convertedAmountToCapture"
+            for="field_convertedAmountToCapture"
+            >Converted Amount To Capture</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="convertedAmountToCapture"
+            id="field_convertedAmountToCapture"
+            data-cy="convertedAmountToCapture"
+            formControlName="convertedAmountToCapture"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.capture.convertedCurrency" for="field_convertedCurrency"
+            >Converted Currency</label
+          >
+          <select
+            class="form-control"
+            name="convertedCurrency"
+            formControlName="convertedCurrency"
+            id="field_convertedCurrency"
+            data-cy="convertedCurrency"
+          >
+            <option [ngValue]="null">{{ 'jhipsterSampleApplicationApp.Currency.null' | translate }}</option>
+            <option *ngFor="let currency of currencyValues" [value]="currency">
+              {{ 'jhipsterSampleApplicationApp.Currency.' + currency | translate }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.capture.conversionRate" for="field_conversionRate"
+            >Conversion Rate</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="conversionRate"
+            id="field_conversionRate"
+            data-cy="conversionRate"
+            formControlName="conversionRate"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.capture.isFinalCapture" for="field_isFinalCapture"
+            >Is Final Capture</label
+          >
+          <input
+            type="checkbox"
+            class="form-check"
+            name="isFinalCapture"
+            id="field_isFinalCapture"
+            data-cy="isFinalCapture"
+            formControlName="isFinalCapture"
+          />
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

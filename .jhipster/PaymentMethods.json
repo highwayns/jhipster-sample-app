@@ -1,0 +1,21 @@
+{
+  "applications": "*",
+  "changelogDate": "20220709023649",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "payment_methods",
+  "fields": [
+    {
+      "fieldName": "paymentMethod",
+      "fieldType": "PaymentMethod",
+      "fieldValues": "IDEAL,PAYPAL,CARD,BANCONTACT,SEPABANKTRANSFER,KLARNAPAYLATER,KLARNASLICEIT,KLARNAPAYNOW,AFTERPAY,DIRECTDEBIT"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "PaymentMethods",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [],
+  "service": "no"
+}

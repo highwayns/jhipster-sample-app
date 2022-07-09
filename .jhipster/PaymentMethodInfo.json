@@ -1,0 +1,53 @@
+{
+  "applications": "*",
+  "changelogDate": "20220709023650",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "payment_method_info",
+  "fields": [
+    {
+      "fieldName": "paymentMethod",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "logo",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "supportsTokenisation",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "currencies",
+      "fieldType": "Currency",
+      "fieldValues": "CNY,JPY,USD,EUR,RUB,BTC,ETH"
+    },
+    {
+      "fieldName": "surchargeAmount",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "surchargeAmountExclVat",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "surchargeAmountVat",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "surchargeVatPercentage",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "PaymentMethodInfo",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [],
+  "service": "no"
+}

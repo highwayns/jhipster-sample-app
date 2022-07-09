@@ -1,0 +1,25 @@
+{
+  "jhipsterSampleApplicationApp": {
+    "abuseReport": {
+      "home": {
+        "title": "Abuse Reports",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Abuse Report",
+        "createOrEditLabel": "Create or edit a Abuse Report",
+        "notFound": "No Abuse Reports found"
+      },
+      "created": "A new Abuse Report is created with identifier {{ param }}",
+      "updated": "A Abuse Report is updated with identifier {{ param }}",
+      "deleted": "A Abuse Report is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Abuse Report {{ id }}?"
+      },
+      "detail": {
+        "title": "Abuse Report"
+      },
+      "id": "ID",
+      "score": "Score",
+      "createdDateTimeUtc": "Created Date Time Utc"
+    }
+  }
+}

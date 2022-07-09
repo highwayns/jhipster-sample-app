@@ -1,0 +1,77 @@
+{
+  "applications": "*",
+  "changelogDate": "20220709023645",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "payment_attributes",
+  "fields": [
+    {
+      "fieldName": "originatingIpAddress",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "originHeader",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "userAgent",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "returnUrlSuccess",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "returnUrlFailed",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "returnUrlCancelled",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "simulatedStatus",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "idealBic",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "paymentMethodTransactionId",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "paymentMethodVoidTransactionId",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "token",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "cashFlowsAcquiringDetails",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "descriptor",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "ewalletType",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "paymentStatus",
+      "fieldType": "PaymentStatus",
+      "fieldValues": "PENDING,RESERVED,COMMISSIONED,PAID,VERIFIED,CANCELLED,FAILED,REJECTED,EXPIRED,BLOCKED,DECLINED"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "PaymentAttributes",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [],
+  "service": "no"
+}

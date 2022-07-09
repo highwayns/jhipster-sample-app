@@ -1,0 +1,82 @@
+<div>
+  <h2 id="page-heading" data-cy="AbuseTriggerHeading">
+    <span jhiTranslate="jhipsterSampleApplicationApp.abuseTrigger.home.title">Abuse Triggers</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="loadAll()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="jhipsterSampleApplicationApp.abuseTrigger.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-abuse-trigger"
+        [routerLink]="['/abuse-trigger/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="jhipsterSampleApplicationApp.abuseTrigger.home.createLabel"> Create a new Abuse Trigger </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="abuseTriggers?.length === 0">
+    <span jhiTranslate="jhipsterSampleApplicationApp.abuseTrigger.home.notFound">No abuseTriggers found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="abuseTriggers && abuseTriggers.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr>
+          <th scope="col"><span jhiTranslate="global.field.id">ID</span></th>
+          <th scope="col"><span jhiTranslate="jhipsterSampleApplicationApp.abuseTrigger.score">Score</span></th>
+          <th scope="col"><span jhiTranslate="jhipsterSampleApplicationApp.abuseTrigger.code">Code</span></th>
+          <th scope="col"><span jhiTranslate="jhipsterSampleApplicationApp.abuseTrigger.description">Description</span></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let abuseTrigger of abuseTriggers; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/abuse-trigger', abuseTrigger.id, 'view']">{{ abuseTrigger.id }}</a>
+          </td>
+          <td>{{ abuseTrigger.score }}</td>
+          <td>{{ abuseTrigger.code }}</td>
+          <td>{{ abuseTrigger.description }}</td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/abuse-trigger', abuseTrigger.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/abuse-trigger', abuseTrigger.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(abuseTrigger)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

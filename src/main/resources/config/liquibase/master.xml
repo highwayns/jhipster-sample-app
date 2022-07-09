@@ -18,9 +18,41 @@
     <include file="config/liquibase/changelog/20150805124838_added_entity_BankAccount.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20150805124936_added_entity_Label.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20150805125054_added_entity_Operation.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220709023630_added_entity_AbuseReport.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220709023631_added_entity_AbuseTrigger.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220709023632_added_entity_Parameters.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220709023633_added_entity_Address.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220709023634_added_entity_Capture.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220709023635_added_entity_CardTokenData.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220709023636_added_entity_Entry.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220709023637_added_entity_ErrorReport.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220709023638_added_entity_Identity.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220709023639_added_entity_Issuer.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220709023640_added_entity_Links.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220709023641_added_entity_Link.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220709023642_added_entity_Order.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220709023643_added_entity_OrderLine.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220709023644_added_entity_Payment.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220709023645_added_entity_PaymentAttributes.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220709023646_added_entity_PaymentJobAttributes.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220709023647_added_entity_PaymentJob.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220709023648_added_entity_PaymentStep.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220709023649_added_entity_PaymentMethods.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220709023650_added_entity_PaymentMethodInfo.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220709023651_added_entity_Refund.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220709023652_added_entity_RefundStep.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220709023653_added_entity_ResultAttributes.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220709023654_added_entity_RecurrenceCriteria.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220709023655_added_entity_Currencys.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220709023656_added_entity_TokenisedCard.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
     <include file="config/liquibase/changelog/20150805124838_added_entity_constraints_BankAccount.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20150805125054_added_entity_constraints_Operation.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220709023640_added_entity_constraints_Links.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220709023642_added_entity_constraints_Order.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220709023644_added_entity_constraints_Payment.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220709023647_added_entity_constraints_PaymentJob.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220709023652_added_entity_constraints_RefundStep.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
     <!-- jhipster-needle-liquibase-add-incremental-changelog - JHipster will add incremental liquibase changelogs here -->
 </databaseChangeLog>

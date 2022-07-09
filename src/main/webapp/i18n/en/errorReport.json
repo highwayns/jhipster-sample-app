@@ -1,0 +1,25 @@
+{
+  "jhipsterSampleApplicationApp": {
+    "errorReport": {
+      "home": {
+        "title": "Error Reports",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Error Report",
+        "createOrEditLabel": "Create or edit a Error Report",
+        "notFound": "No Error Reports found"
+      },
+      "created": "A new Error Report is created with identifier {{ param }}",
+      "updated": "A Error Report is updated with identifier {{ param }}",
+      "deleted": "A Error Report is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Error Report {{ id }}?"
+      },
+      "detail": {
+        "title": "Error Report"
+      },
+      "id": "ID",
+      "language": "Language",
+      "isFatalError": "Is Fatal Error"
+    }
+  }
+}

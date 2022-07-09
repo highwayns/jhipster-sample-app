@@ -1,0 +1,10 @@
+{
+  "jhipsterSampleApplicationApp": {
+    "RefundStepAction": {
+      "null": "",
+      "START": "START",
+      "PROCESS": "PROCESS",
+      "CANCEL": "CANCEL"
+    }
+  }
+}

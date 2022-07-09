@@ -1,0 +1,30 @@
+{
+  "jhipsterSampleApplicationApp": {
+    "identity": {
+      "home": {
+        "title": "Identities",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Identity",
+        "createOrEditLabel": "Create or edit a Identity",
+        "notFound": "No Identities found"
+      },
+      "created": "A new Identity is created with identifier {{ param }}",
+      "updated": "A Identity is updated with identifier {{ param }}",
+      "deleted": "A Identity is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Identity {{ id }}?"
+      },
+      "detail": {
+        "title": "Identity"
+      },
+      "id": "ID",
+      "debtorId": "Debtor Id",
+      "emailAddress": "Email Address",
+      "gender": "Gender",
+      "dateOfBirth": "Date Of Birth",
+      "socialSecurityNumber": "Social Security Number",
+      "chamberOfCommerceNumber": "Chamber Of Commerce Number",
+      "vatNumber": "Vat Number"
+    }
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "jhipsterSampleApplicationApp": {
+    "OrderLineType": {
+      "null": "",
+      "PHYSICALITEM": "PHYSICALITEM",
+      "DIGITALITEM": "DIGITALITEM",
+      "SHIPPINGCOST": "SHIPPINGCOST",
+      "PAYMENTCOST": "PAYMENTCOST",
+      "DISCOUNT": "DISCOUNT",
+      "GIFTCARD": "GIFTCARD",
+      "SHOPCREDIT": "SHOPCREDIT"
+    }
+  }
+}

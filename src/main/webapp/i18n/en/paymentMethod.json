@@ -1,0 +1,17 @@
+{
+  "jhipsterSampleApplicationApp": {
+    "PaymentMethod": {
+      "null": "",
+      "IDEAL": "IDEAL",
+      "PAYPAL": "PAYPAL",
+      "CARD": "CARD",
+      "BANCONTACT": "BANCONTACT",
+      "SEPABANKTRANSFER": "SEPABANKTRANSFER",
+      "KLARNAPAYLATER": "KLARNAPAYLATER",
+      "KLARNASLICEIT": "KLARNASLICEIT",
+      "KLARNAPAYNOW": "KLARNAPAYNOW",
+      "AFTERPAY": "AFTERPAY",
+      "DIRECTDEBIT": "DIRECTDEBIT"
+    }
+  }
+}

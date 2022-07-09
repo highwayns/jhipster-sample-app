@@ -1,0 +1,18 @@
+{
+  "jhipsterSampleApplicationApp": {
+    "PaymentStatus": {
+      "null": "",
+      "PENDING": "PENDING",
+      "RESERVED": "RESERVED",
+      "COMMISSIONED": "COMMISSIONED",
+      "PAID": "PAID",
+      "VERIFIED": "VERIFIED",
+      "CANCELLED": "CANCELLED",
+      "FAILED": "FAILED",
+      "REJECTED": "REJECTED",
+      "EXPIRED": "EXPIRED",
+      "BLOCKED": "BLOCKED",
+      "DECLINED": "DECLINED"
+    }
+  }
+}

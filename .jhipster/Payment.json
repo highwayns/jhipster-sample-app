@@ -1,0 +1,76 @@
+{
+  "applications": "*",
+  "changelogDate": "20220709023644",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "payment",
+  "fields": [
+    {
+      "fieldName": "reference",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "createDateTimeUtc",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "status",
+      "fieldType": "PaymentStatus",
+      "fieldValues": "PENDING,RESERVED,COMMISSIONED,PAID,VERIFIED,CANCELLED,FAILED,REJECTED,EXPIRED,BLOCKED,DECLINED"
+    },
+    {
+      "fieldName": "amountToCollect",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "surchargeAmount",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "convertedTotalAmount",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "convertedCurrency",
+      "fieldType": "Currency",
+      "fieldValues": "CNY,JPY,USD,EUR,RUB,BTC,ETH"
+    },
+    {
+      "fieldName": "conversionRate",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "paidAmount",
+      "fieldType": "Double"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Payment",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "errorReport",
+      "otherEntityRelationshipName": "payment",
+      "ownerSide": true,
+      "relationshipName": "lastErrorReport",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "abuseReport",
+      "otherEntityRelationshipName": "payment",
+      "ownerSide": true,
+      "relationshipName": "abuseReport",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "paymentAttributes",
+      "otherEntityRelationshipName": "payment",
+      "ownerSide": true,
+      "relationshipName": "attributes",
+      "relationshipType": "one-to-one"
+    }
+  ],
+  "service": "no"
+}

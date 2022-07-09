@@ -1,0 +1,9 @@
+{
+  "jhipsterSampleApplicationApp": {
+    "PaymentJobType": {
+      "null": "",
+      "PAYMENT": "PAYMENT",
+      "CREDIT": "CREDIT"
+    }
+  }
+}

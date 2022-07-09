@@ -1,0 +1,27 @@
+{
+  "jhipsterSampleApplicationApp": {
+    "tokenisedCard": {
+      "home": {
+        "title": "Tokenised Cards",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Tokenised Card",
+        "createOrEditLabel": "Create or edit a Tokenised Card",
+        "notFound": "No Tokenised Cards found"
+      },
+      "created": "A new Tokenised Card is created with identifier {{ param }}",
+      "updated": "A Tokenised Card is updated with identifier {{ param }}",
+      "deleted": "A Tokenised Card is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Tokenised Card {{ id }}?"
+      },
+      "detail": {
+        "title": "Tokenised Card"
+      },
+      "id": "ID",
+      "token": "Token",
+      "cardExpiryMonth": "Card Expiry Month",
+      "cardExpiryYear": "Card Expiry Year",
+      "truncatedCardNumber": "Truncated Card Number"
+    }
+  }
+}

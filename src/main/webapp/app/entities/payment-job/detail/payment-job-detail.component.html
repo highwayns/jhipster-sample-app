@@ -1,0 +1,126 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="paymentJob">
+      <h2 data-cy="paymentJobDetailsHeading">
+        <span jhiTranslate="jhipsterSampleApplicationApp.paymentJob.detail.title">Payment Job</span>
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ paymentJob.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.paymentJob.reference">Reference</span></dt>
+        <dd>
+          <span>{{ paymentJob.reference }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.paymentJob.createDateTimeUtc">Create Date Time Utc</span></dt>
+        <dd>
+          <span>{{ paymentJob.createDateTimeUtc | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.paymentJob.type">Type</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'jhipsterSampleApplicationApp.PaymentJobType.' + paymentJob.type }}">{{ paymentJob.type }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.paymentJob.traceReference">Trace Reference</span></dt>
+        <dd>
+          <span>{{ paymentJob.traceReference }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.paymentJob.configurationId">Configuration Id</span></dt>
+        <dd>
+          <span>{{ paymentJob.configurationId }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.paymentJob.domain">Domain</span></dt>
+        <dd>
+          <span>{{ paymentJob.domain }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.paymentJob.locale">Locale</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'jhipsterSampleApplicationApp.Locale.' + paymentJob.locale }}">{{ paymentJob.locale }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.paymentJob.timeZone">Time Zone</span></dt>
+        <dd>
+          <span>{{ paymentJob.timeZone }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.paymentJob.parentPaymentJobReference">Parent Payment Job Reference</span></dt>
+        <dd>
+          <span>{{ paymentJob.parentPaymentJobReference }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.paymentJob.displayUrl">Display Url</span></dt>
+        <dd>
+          <span>{{ paymentJob.displayUrl }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.paymentJob.currency">Currency</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'jhipsterSampleApplicationApp.Currency.' + paymentJob.currency }}">{{ paymentJob.currency }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.paymentJob.amountToCollect">Amount To Collect</span></dt>
+        <dd>
+          <span>{{ paymentJob.amountToCollect }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.paymentJob.amountCollected">Amount Collected</span></dt>
+        <dd>
+          <span>{{ paymentJob.amountCollected }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.paymentJob.paidAmount">Paid Amount</span></dt>
+        <dd>
+          <span>{{ paymentJob.paidAmount }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.paymentJob.paidDateTimeUtc">Paid Date Time Utc</span></dt>
+        <dd>
+          <span>{{ paymentJob.paidDateTimeUtc | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.paymentJob.expirationDateTimeUtc">Expiration Date Time Utc</span></dt>
+        <dd>
+          <span>{{ paymentJob.expirationDateTimeUtc | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.paymentJob.dueDateTimeUtc">Due Date Time Utc</span></dt>
+        <dd>
+          <span>{{ paymentJob.dueDateTimeUtc | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.paymentJob.lastUpdateTimeUtc">Last Update Time Utc</span></dt>
+        <dd>
+          <span>{{ paymentJob.lastUpdateTimeUtc | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.paymentJob.lastProcessedTimeUtc">Last Processed Time Utc</span></dt>
+        <dd>
+          <span>{{ paymentJob.lastProcessedTimeUtc | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.paymentJob.order">Order</span></dt>
+        <dd>
+          <div *ngIf="paymentJob.order">
+            <a [routerLink]="['/order', paymentJob.order?.id, 'view']">{{ paymentJob.order?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.paymentJob.attributes">Attributes</span></dt>
+        <dd>
+          <div *ngIf="paymentJob.attributes">
+            <a [routerLink]="['/payment-job-attributes', paymentJob.attributes?.id, 'view']">{{ paymentJob.attributes?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.paymentJob.recurrenceCriteria">Recurrence Criteria</span></dt>
+        <dd>
+          <div *ngIf="paymentJob.recurrenceCriteria">
+            <a [routerLink]="['/recurrence-criteria', paymentJob.recurrenceCriteria?.id, 'view']">{{
+              paymentJob.recurrenceCriteria?.id
+            }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/payment-job', paymentJob.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

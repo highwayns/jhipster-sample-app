@@ -1,0 +1,28 @@
+{
+  "jhipsterSampleApplicationApp": {
+    "paymentStep": {
+      "home": {
+        "title": "Payment Steps",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Payment Step",
+        "createOrEditLabel": "Create or edit a Payment Step",
+        "notFound": "No Payment Steps found"
+      },
+      "created": "A new Payment Step is created with identifier {{ param }}",
+      "updated": "A Payment Step is updated with identifier {{ param }}",
+      "deleted": "A Payment Step is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Payment Step {{ id }}?"
+      },
+      "detail": {
+        "title": "Payment Step"
+      },
+      "id": "ID",
+      "reference": "Reference",
+      "createDateTimeUtc": "Create Date Time Utc",
+      "action": "Action",
+      "status": "Status",
+      "amountToCollect": "Amount To Collect"
+    }
+  }
+}

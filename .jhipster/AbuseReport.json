@@ -1,0 +1,24 @@
+{
+  "applications": "*",
+  "changelogDate": "20220709023630",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "abuse_report",
+  "fields": [
+    {
+      "fieldName": "score",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "createdDateTimeUtc",
+      "fieldType": "Instant"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "AbuseReport",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [],
+  "service": "no"
+}

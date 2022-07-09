@@ -1,0 +1,92 @@
+<div>
+  <h2 id="page-heading" data-cy="IdentityHeading">
+    <span jhiTranslate="jhipsterSampleApplicationApp.identity.home.title">Identities</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="loadAll()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="jhipsterSampleApplicationApp.identity.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-identity"
+        [routerLink]="['/identity/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="jhipsterSampleApplicationApp.identity.home.createLabel"> Create a new Identity </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="identities?.length === 0">
+    <span jhiTranslate="jhipsterSampleApplicationApp.identity.home.notFound">No identities found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="identities && identities.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr>
+          <th scope="col"><span jhiTranslate="global.field.id">ID</span></th>
+          <th scope="col"><span jhiTranslate="jhipsterSampleApplicationApp.identity.debtorId">Debtor Id</span></th>
+          <th scope="col"><span jhiTranslate="jhipsterSampleApplicationApp.identity.emailAddress">Email Address</span></th>
+          <th scope="col"><span jhiTranslate="jhipsterSampleApplicationApp.identity.gender">Gender</span></th>
+          <th scope="col"><span jhiTranslate="jhipsterSampleApplicationApp.identity.dateOfBirth">Date Of Birth</span></th>
+          <th scope="col"><span jhiTranslate="jhipsterSampleApplicationApp.identity.socialSecurityNumber">Social Security Number</span></th>
+          <th scope="col">
+            <span jhiTranslate="jhipsterSampleApplicationApp.identity.chamberOfCommerceNumber">Chamber Of Commerce Number</span>
+          </th>
+          <th scope="col"><span jhiTranslate="jhipsterSampleApplicationApp.identity.vatNumber">Vat Number</span></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let identity of identities; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/identity', identity.id, 'view']">{{ identity.id }}</a>
+          </td>
+          <td>{{ identity.debtorId }}</td>
+          <td>{{ identity.emailAddress }}</td>
+          <td jhiTranslate="{{ 'jhipsterSampleApplicationApp.Gender.' + identity.gender }}">{{ identity.gender }}</td>
+          <td>{{ identity.dateOfBirth | formatMediumDatetime }}</td>
+          <td>{{ identity.socialSecurityNumber }}</td>
+          <td>{{ identity.chamberOfCommerceNumber }}</td>
+          <td>{{ identity.vatNumber }}</td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/identity', identity.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/identity', identity.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(identity)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

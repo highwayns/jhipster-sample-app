@@ -1,0 +1,25 @@
+{
+  "jhipsterSampleApplicationApp": {
+    "resultAttributes": {
+      "home": {
+        "title": "Result Attributes",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Result Attributes",
+        "createOrEditLabel": "Create or edit a Result Attributes",
+        "notFound": "No Result Attributes found"
+      },
+      "created": "A new Result Attributes is created with identifier {{ param }}",
+      "updated": "A Result Attributes is updated with identifier {{ param }}",
+      "deleted": "A Result Attributes is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Result Attributes {{ id }}?"
+      },
+      "detail": {
+        "title": "Result Attributes"
+      },
+      "id": "ID",
+      "key": "Key",
+      "value": "Value"
+    }
+  }
+}

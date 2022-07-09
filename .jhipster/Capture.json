@@ -1,0 +1,50 @@
+{
+  "applications": "*",
+  "changelogDate": "20220709023634",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "capture",
+  "fields": [
+    {
+      "fieldName": "reference",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "createDateTimeUtc",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "status",
+      "fieldType": "CaptureStatus",
+      "fieldValues": "PENDING,COMPLETED,FAILED"
+    },
+    {
+      "fieldName": "amountToCapture",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "convertedAmountToCapture",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "convertedCurrency",
+      "fieldType": "Currency",
+      "fieldValues": "CNY,JPY,USD,EUR,RUB,BTC,ETH"
+    },
+    {
+      "fieldName": "conversionRate",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "isFinalCapture",
+      "fieldType": "Boolean"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Capture",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [],
+  "service": "no"
+}

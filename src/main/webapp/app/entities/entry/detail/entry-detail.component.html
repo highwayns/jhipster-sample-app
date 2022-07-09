@@ -1,0 +1,40 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="entry">
+      <h2 data-cy="entryDetailsHeading"><span jhiTranslate="jhipsterSampleApplicationApp.entry.detail.title">Entry</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ entry.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.entry.code">Code</span></dt>
+        <dd>
+          <span>{{ entry.code }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.entry.message">Message</span></dt>
+        <dd>
+          <span>{{ entry.message }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.entry.translatedMessage">Translated Message</span></dt>
+        <dd>
+          <span>{{ entry.translatedMessage }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/entry', entry.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

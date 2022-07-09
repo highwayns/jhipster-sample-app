@@ -1,0 +1,38 @@
+{
+  "applications": "*",
+  "changelogDate": "20220709023648",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "payment_step",
+  "fields": [
+    {
+      "fieldName": "reference",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "createDateTimeUtc",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "action",
+      "fieldType": "PaymentStepAction",
+      "fieldValues": "DISPLAYHOSTEDPAGE,PAYMENTMETHODSELECTION,START,PROCESS,BACKGROUNDPROCESS,CAPTURE,REFUND,CANCEL"
+    },
+    {
+      "fieldName": "status",
+      "fieldType": "PaymentStatus",
+      "fieldValues": "PENDING,RESERVED,COMMISSIONED,PAID,VERIFIED,CANCELLED,FAILED,REJECTED,EXPIRED,BLOCKED,DECLINED"
+    },
+    {
+      "fieldName": "amountToCollect",
+      "fieldType": "Double"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "PaymentStep",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [],
+  "service": "no"
+}

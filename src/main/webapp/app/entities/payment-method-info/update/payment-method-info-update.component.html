@@ -1,0 +1,168 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-payment-method-info-heading"
+        data-cy="PaymentMethodInfoCreateUpdateHeading"
+        jhiTranslate="jhipsterSampleApplicationApp.paymentMethodInfo.home.createOrEditLabel"
+      >
+        Create or edit a Payment Method Info
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.paymentMethodInfo.paymentMethod" for="field_paymentMethod"
+            >Payment Method</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="paymentMethod"
+            id="field_paymentMethod"
+            data-cy="paymentMethod"
+            formControlName="paymentMethod"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.paymentMethodInfo.logo" for="field_logo">Logo</label>
+          <input type="text" class="form-control" name="logo" id="field_logo" data-cy="logo" formControlName="logo" />
+        </div>
+
+        <div class="row mb-3">
+          <label
+            class="form-label"
+            jhiTranslate="jhipsterSampleApplicationApp.paymentMethodInfo.supportsTokenisation"
+            for="field_supportsTokenisation"
+            >Supports Tokenisation</label
+          >
+          <input
+            type="checkbox"
+            class="form-check"
+            name="supportsTokenisation"
+            id="field_supportsTokenisation"
+            data-cy="supportsTokenisation"
+            formControlName="supportsTokenisation"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.paymentMethodInfo.currencies" for="field_currencies"
+            >Currencies</label
+          >
+          <select class="form-control" name="currencies" formControlName="currencies" id="field_currencies" data-cy="currencies">
+            <option [ngValue]="null">{{ 'jhipsterSampleApplicationApp.Currency.null' | translate }}</option>
+            <option *ngFor="let currency of currencyValues" [value]="currency">
+              {{ 'jhipsterSampleApplicationApp.Currency.' + currency | translate }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label
+            class="form-label"
+            jhiTranslate="jhipsterSampleApplicationApp.paymentMethodInfo.surchargeAmount"
+            for="field_surchargeAmount"
+            >Surcharge Amount</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="surchargeAmount"
+            id="field_surchargeAmount"
+            data-cy="surchargeAmount"
+            formControlName="surchargeAmount"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label
+            class="form-label"
+            jhiTranslate="jhipsterSampleApplicationApp.paymentMethodInfo.surchargeAmountExclVat"
+            for="field_surchargeAmountExclVat"
+            >Surcharge Amount Excl Vat</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="surchargeAmountExclVat"
+            id="field_surchargeAmountExclVat"
+            data-cy="surchargeAmountExclVat"
+            formControlName="surchargeAmountExclVat"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label
+            class="form-label"
+            jhiTranslate="jhipsterSampleApplicationApp.paymentMethodInfo.surchargeAmountVat"
+            for="field_surchargeAmountVat"
+            >Surcharge Amount Vat</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="surchargeAmountVat"
+            id="field_surchargeAmountVat"
+            data-cy="surchargeAmountVat"
+            formControlName="surchargeAmountVat"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label
+            class="form-label"
+            jhiTranslate="jhipsterSampleApplicationApp.paymentMethodInfo.surchargeVatPercentage"
+            for="field_surchargeVatPercentage"
+            >Surcharge Vat Percentage</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="surchargeVatPercentage"
+            id="field_surchargeVatPercentage"
+            data-cy="surchargeVatPercentage"
+            formControlName="surchargeVatPercentage"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.paymentMethodInfo.description" for="field_description"
+            >Description</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="description"
+            id="field_description"
+            data-cy="description"
+            formControlName="description"
+          />
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

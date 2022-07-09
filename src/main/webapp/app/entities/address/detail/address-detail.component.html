@@ -1,0 +1,96 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="address">
+      <h2 data-cy="addressDetailsHeading"><span jhiTranslate="jhipsterSampleApplicationApp.address.detail.title">Address</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ address.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.address.title">Title</span></dt>
+        <dd>
+          <span>{{ address.title }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.address.firstName">First Name</span></dt>
+        <dd>
+          <span>{{ address.firstName }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.address.middleName">Middle Name</span></dt>
+        <dd>
+          <span>{{ address.middleName }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.address.lastName">Last Name</span></dt>
+        <dd>
+          <span>{{ address.lastName }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.address.country">Country</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'jhipsterSampleApplicationApp.Country.' + address.country }}">{{ address.country }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.address.addressLine1">Address Line 1</span></dt>
+        <dd>
+          <span>{{ address.addressLine1 }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.address.addressLine2">Address Line 2</span></dt>
+        <dd>
+          <span>{{ address.addressLine2 }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.address.zipCode">Zip Code</span></dt>
+        <dd>
+          <span>{{ address.zipCode }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.address.city">City</span></dt>
+        <dd>
+          <span>{{ address.city }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.address.stateProvince">State Province</span></dt>
+        <dd>
+          <span>{{ address.stateProvince }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.address.phoneNumber1">Phone Number 1</span></dt>
+        <dd>
+          <span>{{ address.phoneNumber1 }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.address.phoneNumber1Type">Phone Number 1 Type</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'jhipsterSampleApplicationApp.PhoneNumberType.' + address.phoneNumber1Type }}">{{
+            address.phoneNumber1Type
+          }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.address.phoneNumber2">Phone Number 2</span></dt>
+        <dd>
+          <span>{{ address.phoneNumber2 }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.address.phoneNumber2Type">Phone Number 2 Type</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'jhipsterSampleApplicationApp.PhoneNumberType.' + address.phoneNumber2Type }}">{{
+            address.phoneNumber2Type
+          }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.address.organisation">Organisation</span></dt>
+        <dd>
+          <span>{{ address.organisation }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.address.department">Department</span></dt>
+        <dd>
+          <span>{{ address.department }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/address', address.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

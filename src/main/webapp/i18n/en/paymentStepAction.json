@@ -1,0 +1,15 @@
+{
+  "jhipsterSampleApplicationApp": {
+    "PaymentStepAction": {
+      "null": "",
+      "DISPLAYHOSTEDPAGE": "DISPLAYHOSTEDPAGE",
+      "PAYMENTMETHODSELECTION": "PAYMENTMETHODSELECTION",
+      "START": "START",
+      "PROCESS": "PROCESS",
+      "BACKGROUNDPROCESS": "BACKGROUNDPROCESS",
+      "CAPTURE": "CAPTURE",
+      "REFUND": "REFUND",
+      "CANCEL": "CANCEL"
+    }
+  }
+}

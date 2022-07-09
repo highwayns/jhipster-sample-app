@@ -1,0 +1,32 @@
+{
+  "applications": "*",
+  "changelogDate": "20220709023646",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "payment_job_attributes",
+  "fields": [
+    {
+      "fieldName": "webhookUrl",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "googleAnalyticsClientId",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "allowedParentFrameDomains",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "paymentPageReference",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "PaymentJobAttributes",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [],
+  "service": "no"
+}

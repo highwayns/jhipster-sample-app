@@ -1,0 +1,183 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-order-line-heading"
+        data-cy="OrderLineCreateUpdateHeading"
+        jhiTranslate="jhipsterSampleApplicationApp.orderLine.home.createOrEditLabel"
+      >
+        Create or edit a Order Line
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.orderLine.lineNumber" for="field_lineNumber"
+            >Line Number</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="lineNumber"
+            id="field_lineNumber"
+            data-cy="lineNumber"
+            formControlName="lineNumber"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.orderLine.type" for="field_type">Type</label>
+          <select class="form-control" name="type" formControlName="type" id="field_type" data-cy="type">
+            <option [ngValue]="null">{{ 'jhipsterSampleApplicationApp.OrderLineType.null' | translate }}</option>
+            <option *ngFor="let orderLineType of orderLineTypeValues" [value]="orderLineType">
+              {{ 'jhipsterSampleApplicationApp.OrderLineType.' + orderLineType | translate }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.orderLine.skuCode" for="field_skuCode">Sku Code</label>
+          <input type="text" class="form-control" name="skuCode" id="field_skuCode" data-cy="skuCode" formControlName="skuCode" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.orderLine.name" for="field_name">Name</label>
+          <input type="text" class="form-control" name="name" id="field_name" data-cy="name" formControlName="name" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.orderLine.description" for="field_description"
+            >Description</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="description"
+            id="field_description"
+            data-cy="description"
+            formControlName="description"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.orderLine.quantity" for="field_quantity">Quantity</label>
+          <input type="number" class="form-control" name="quantity" id="field_quantity" data-cy="quantity" formControlName="quantity" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.orderLine.unitPriceExclVat" for="field_unitPriceExclVat"
+            >Unit Price Excl Vat</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="unitPriceExclVat"
+            id="field_unitPriceExclVat"
+            data-cy="unitPriceExclVat"
+            formControlName="unitPriceExclVat"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.orderLine.unitPriceInclVat" for="field_unitPriceInclVat"
+            >Unit Price Incl Vat</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="unitPriceInclVat"
+            id="field_unitPriceInclVat"
+            data-cy="unitPriceInclVat"
+            formControlName="unitPriceInclVat"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.orderLine.vatPercentage" for="field_vatPercentage"
+            >Vat Percentage</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="vatPercentage"
+            id="field_vatPercentage"
+            data-cy="vatPercentage"
+            formControlName="vatPercentage"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.orderLine.vatPercentageLabel" for="field_vatPercentageLabel"
+            >Vat Percentage Label</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="vatPercentageLabel"
+            id="field_vatPercentageLabel"
+            data-cy="vatPercentageLabel"
+            formControlName="vatPercentageLabel"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label
+            class="form-label"
+            jhiTranslate="jhipsterSampleApplicationApp.orderLine.discountPercentageLabel"
+            for="field_discountPercentageLabel"
+            >Discount Percentage Label</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="discountPercentageLabel"
+            id="field_discountPercentageLabel"
+            data-cy="discountPercentageLabel"
+            formControlName="discountPercentageLabel"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.orderLine.totalLineAmount" for="field_totalLineAmount"
+            >Total Line Amount</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="totalLineAmount"
+            id="field_totalLineAmount"
+            data-cy="totalLineAmount"
+            formControlName="totalLineAmount"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.orderLine.url" for="field_url">Url</label>
+          <input type="text" class="form-control" name="url" id="field_url" data-cy="url" formControlName="url" />
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

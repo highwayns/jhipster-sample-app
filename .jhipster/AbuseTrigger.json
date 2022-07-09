@@ -1,0 +1,28 @@
+{
+  "applications": "*",
+  "changelogDate": "20220709023631",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "abuse_trigger",
+  "fields": [
+    {
+      "fieldName": "score",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "code",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "AbuseTrigger",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [],
+  "service": "no"
+}

@@ -1,0 +1,123 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-identity-heading"
+        data-cy="IdentityCreateUpdateHeading"
+        jhiTranslate="jhipsterSampleApplicationApp.identity.home.createOrEditLabel"
+      >
+        Create or edit a Identity
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.identity.debtorId" for="field_debtorId">Debtor Id</label>
+          <input type="text" class="form-control" name="debtorId" id="field_debtorId" data-cy="debtorId" formControlName="debtorId" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.identity.emailAddress" for="field_emailAddress"
+            >Email Address</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="emailAddress"
+            id="field_emailAddress"
+            data-cy="emailAddress"
+            formControlName="emailAddress"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.identity.gender" for="field_gender">Gender</label>
+          <select class="form-control" name="gender" formControlName="gender" id="field_gender" data-cy="gender">
+            <option [ngValue]="null">{{ 'jhipsterSampleApplicationApp.Gender.null' | translate }}</option>
+            <option *ngFor="let gender of genderValues" [value]="gender">
+              {{ 'jhipsterSampleApplicationApp.Gender.' + gender | translate }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.identity.dateOfBirth" for="field_dateOfBirth"
+            >Date Of Birth</label
+          >
+          <div class="d-flex">
+            <input
+              id="field_dateOfBirth"
+              data-cy="dateOfBirth"
+              type="datetime-local"
+              class="form-control"
+              name="dateOfBirth"
+              formControlName="dateOfBirth"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label
+            class="form-label"
+            jhiTranslate="jhipsterSampleApplicationApp.identity.socialSecurityNumber"
+            for="field_socialSecurityNumber"
+            >Social Security Number</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="socialSecurityNumber"
+            id="field_socialSecurityNumber"
+            data-cy="socialSecurityNumber"
+            formControlName="socialSecurityNumber"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label
+            class="form-label"
+            jhiTranslate="jhipsterSampleApplicationApp.identity.chamberOfCommerceNumber"
+            for="field_chamberOfCommerceNumber"
+            >Chamber Of Commerce Number</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="chamberOfCommerceNumber"
+            id="field_chamberOfCommerceNumber"
+            data-cy="chamberOfCommerceNumber"
+            formControlName="chamberOfCommerceNumber"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.identity.vatNumber" for="field_vatNumber">Vat Number</label>
+          <input type="text" class="form-control" name="vatNumber" id="field_vatNumber" data-cy="vatNumber" formControlName="vatNumber" />
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

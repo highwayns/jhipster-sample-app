@@ -1,0 +1,84 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="payment">
+      <h2 data-cy="paymentDetailsHeading"><span jhiTranslate="jhipsterSampleApplicationApp.payment.detail.title">Payment</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ payment.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.payment.reference">Reference</span></dt>
+        <dd>
+          <span>{{ payment.reference }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.payment.createDateTimeUtc">Create Date Time Utc</span></dt>
+        <dd>
+          <span>{{ payment.createDateTimeUtc | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.payment.status">Status</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'jhipsterSampleApplicationApp.PaymentStatus.' + payment.status }}">{{ payment.status }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.payment.amountToCollect">Amount To Collect</span></dt>
+        <dd>
+          <span>{{ payment.amountToCollect }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.payment.surchargeAmount">Surcharge Amount</span></dt>
+        <dd>
+          <span>{{ payment.surchargeAmount }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.payment.convertedTotalAmount">Converted Total Amount</span></dt>
+        <dd>
+          <span>{{ payment.convertedTotalAmount }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.payment.convertedCurrency">Converted Currency</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'jhipsterSampleApplicationApp.Currency.' + payment.convertedCurrency }}">{{
+            payment.convertedCurrency
+          }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.payment.conversionRate">Conversion Rate</span></dt>
+        <dd>
+          <span>{{ payment.conversionRate }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.payment.paidAmount">Paid Amount</span></dt>
+        <dd>
+          <span>{{ payment.paidAmount }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.payment.lastErrorReport">Last Error Report</span></dt>
+        <dd>
+          <div *ngIf="payment.lastErrorReport">
+            <a [routerLink]="['/error-report', payment.lastErrorReport?.id, 'view']">{{ payment.lastErrorReport?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.payment.abuseReport">Abuse Report</span></dt>
+        <dd>
+          <div *ngIf="payment.abuseReport">
+            <a [routerLink]="['/abuse-report', payment.abuseReport?.id, 'view']">{{ payment.abuseReport?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.payment.attributes">Attributes</span></dt>
+        <dd>
+          <div *ngIf="payment.attributes">
+            <a [routerLink]="['/payment-attributes', payment.attributes?.id, 'view']">{{ payment.attributes?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/payment', payment.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

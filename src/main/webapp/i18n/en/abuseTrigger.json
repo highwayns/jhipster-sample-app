@@ -1,0 +1,26 @@
+{
+  "jhipsterSampleApplicationApp": {
+    "abuseTrigger": {
+      "home": {
+        "title": "Abuse Triggers",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Abuse Trigger",
+        "createOrEditLabel": "Create or edit a Abuse Trigger",
+        "notFound": "No Abuse Triggers found"
+      },
+      "created": "A new Abuse Trigger is created with identifier {{ param }}",
+      "updated": "A Abuse Trigger is updated with identifier {{ param }}",
+      "deleted": "A Abuse Trigger is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Abuse Trigger {{ id }}?"
+      },
+      "detail": {
+        "title": "Abuse Trigger"
+      },
+      "id": "ID",
+      "score": "Score",
+      "code": "Code",
+      "description": "Description"
+    }
+  }
+}

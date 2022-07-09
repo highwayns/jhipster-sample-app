@@ -1,0 +1,28 @@
+{
+  "jhipsterSampleApplicationApp": {
+    "cardTokenData": {
+      "home": {
+        "title": "Card Token Data",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Card Token Data",
+        "createOrEditLabel": "Create or edit a Card Token Data",
+        "notFound": "No Card Token Data found"
+      },
+      "created": "A new Card Token Data is created with identifier {{ param }}",
+      "updated": "A Card Token Data is updated with identifier {{ param }}",
+      "deleted": "A Card Token Data is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Card Token Data {{ id }}?"
+      },
+      "detail": {
+        "title": "Card Token Data"
+      },
+      "id": "ID",
+      "token": "Token",
+      "cardExpiryMonth": "Card Expiry Month",
+      "cardExpiryYear": "Card Expiry Year",
+      "issuerReturnCode": "Issuer Return Code",
+      "truncatedCardNumber": "Truncated Card Number"
+    }
+  }
+}

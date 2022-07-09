@@ -1,0 +1,349 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-payment-job-heading"
+        data-cy="PaymentJobCreateUpdateHeading"
+        jhiTranslate="jhipsterSampleApplicationApp.paymentJob.home.createOrEditLabel"
+      >
+        Create or edit a Payment Job
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.paymentJob.reference" for="field_reference">Reference</label>
+          <input type="number" class="form-control" name="reference" id="field_reference" data-cy="reference" formControlName="reference" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.paymentJob.createDateTimeUtc" for="field_createDateTimeUtc"
+            >Create Date Time Utc</label
+          >
+          <div class="d-flex">
+            <input
+              id="field_createDateTimeUtc"
+              data-cy="createDateTimeUtc"
+              type="datetime-local"
+              class="form-control"
+              name="createDateTimeUtc"
+              formControlName="createDateTimeUtc"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.paymentJob.type" for="field_type">Type</label>
+          <select class="form-control" name="type" formControlName="type" id="field_type" data-cy="type">
+            <option [ngValue]="null">{{ 'jhipsterSampleApplicationApp.PaymentJobType.null' | translate }}</option>
+            <option *ngFor="let paymentJobType of paymentJobTypeValues" [value]="paymentJobType">
+              {{ 'jhipsterSampleApplicationApp.PaymentJobType.' + paymentJobType | translate }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.paymentJob.traceReference" for="field_traceReference"
+            >Trace Reference</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="traceReference"
+            id="field_traceReference"
+            data-cy="traceReference"
+            formControlName="traceReference"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.paymentJob.configurationId" for="field_configurationId"
+            >Configuration Id</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="configurationId"
+            id="field_configurationId"
+            data-cy="configurationId"
+            formControlName="configurationId"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.paymentJob.domain" for="field_domain">Domain</label>
+          <input type="text" class="form-control" name="domain" id="field_domain" data-cy="domain" formControlName="domain" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.paymentJob.locale" for="field_locale">Locale</label>
+          <select class="form-control" name="locale" formControlName="locale" id="field_locale" data-cy="locale">
+            <option [ngValue]="null">{{ 'jhipsterSampleApplicationApp.Locale.null' | translate }}</option>
+            <option *ngFor="let locale of localeValues" [value]="locale">
+              {{ 'jhipsterSampleApplicationApp.Locale.' + locale | translate }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.paymentJob.timeZone" for="field_timeZone">Time Zone</label>
+          <input type="text" class="form-control" name="timeZone" id="field_timeZone" data-cy="timeZone" formControlName="timeZone" />
+        </div>
+
+        <div class="row mb-3">
+          <label
+            class="form-label"
+            jhiTranslate="jhipsterSampleApplicationApp.paymentJob.parentPaymentJobReference"
+            for="field_parentPaymentJobReference"
+            >Parent Payment Job Reference</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="parentPaymentJobReference"
+            id="field_parentPaymentJobReference"
+            data-cy="parentPaymentJobReference"
+            formControlName="parentPaymentJobReference"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.paymentJob.displayUrl" for="field_displayUrl"
+            >Display Url</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="displayUrl"
+            id="field_displayUrl"
+            data-cy="displayUrl"
+            formControlName="displayUrl"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.paymentJob.currency" for="field_currency">Currency</label>
+          <select class="form-control" name="currency" formControlName="currency" id="field_currency" data-cy="currency">
+            <option [ngValue]="null">{{ 'jhipsterSampleApplicationApp.Currency.null' | translate }}</option>
+            <option *ngFor="let currency of currencyValues" [value]="currency">
+              {{ 'jhipsterSampleApplicationApp.Currency.' + currency | translate }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.paymentJob.amountToCollect" for="field_amountToCollect"
+            >Amount To Collect</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="amountToCollect"
+            id="field_amountToCollect"
+            data-cy="amountToCollect"
+            formControlName="amountToCollect"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.paymentJob.amountCollected" for="field_amountCollected"
+            >Amount Collected</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="amountCollected"
+            id="field_amountCollected"
+            data-cy="amountCollected"
+            formControlName="amountCollected"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.paymentJob.paidAmount" for="field_paidAmount"
+            >Paid Amount</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="paidAmount"
+            id="field_paidAmount"
+            data-cy="paidAmount"
+            formControlName="paidAmount"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.paymentJob.paidDateTimeUtc" for="field_paidDateTimeUtc"
+            >Paid Date Time Utc</label
+          >
+          <div class="d-flex">
+            <input
+              id="field_paidDateTimeUtc"
+              data-cy="paidDateTimeUtc"
+              type="datetime-local"
+              class="form-control"
+              name="paidDateTimeUtc"
+              formControlName="paidDateTimeUtc"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label
+            class="form-label"
+            jhiTranslate="jhipsterSampleApplicationApp.paymentJob.expirationDateTimeUtc"
+            for="field_expirationDateTimeUtc"
+            >Expiration Date Time Utc</label
+          >
+          <div class="d-flex">
+            <input
+              id="field_expirationDateTimeUtc"
+              data-cy="expirationDateTimeUtc"
+              type="datetime-local"
+              class="form-control"
+              name="expirationDateTimeUtc"
+              formControlName="expirationDateTimeUtc"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.paymentJob.dueDateTimeUtc" for="field_dueDateTimeUtc"
+            >Due Date Time Utc</label
+          >
+          <div class="d-flex">
+            <input
+              id="field_dueDateTimeUtc"
+              data-cy="dueDateTimeUtc"
+              type="datetime-local"
+              class="form-control"
+              name="dueDateTimeUtc"
+              formControlName="dueDateTimeUtc"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.paymentJob.lastUpdateTimeUtc" for="field_lastUpdateTimeUtc"
+            >Last Update Time Utc</label
+          >
+          <div class="d-flex">
+            <input
+              id="field_lastUpdateTimeUtc"
+              data-cy="lastUpdateTimeUtc"
+              type="datetime-local"
+              class="form-control"
+              name="lastUpdateTimeUtc"
+              formControlName="lastUpdateTimeUtc"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label
+            class="form-label"
+            jhiTranslate="jhipsterSampleApplicationApp.paymentJob.lastProcessedTimeUtc"
+            for="field_lastProcessedTimeUtc"
+            >Last Processed Time Utc</label
+          >
+          <div class="d-flex">
+            <input
+              id="field_lastProcessedTimeUtc"
+              data-cy="lastProcessedTimeUtc"
+              type="datetime-local"
+              class="form-control"
+              name="lastProcessedTimeUtc"
+              formControlName="lastProcessedTimeUtc"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.paymentJob.order" for="field_order">Order</label>
+          <select class="form-control" id="field_order" data-cy="order" name="order" formControlName="order">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="orderOption.id === editForm.get('order')!.value?.id ? editForm.get('order')!.value : orderOption"
+              *ngFor="let orderOption of ordersCollection; trackBy: trackOrderById"
+            >
+              {{ orderOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.paymentJob.attributes" for="field_attributes"
+            >Attributes</label
+          >
+          <select class="form-control" id="field_attributes" data-cy="attributes" name="attributes" formControlName="attributes">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                paymentJobAttributesOption.id === editForm.get('attributes')!.value?.id
+                  ? editForm.get('attributes')!.value
+                  : paymentJobAttributesOption
+              "
+              *ngFor="let paymentJobAttributesOption of attributesCollection; trackBy: trackPaymentJobAttributesById"
+            >
+              {{ paymentJobAttributesOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.paymentJob.recurrenceCriteria" for="field_recurrenceCriteria"
+            >Recurrence Criteria</label
+          >
+          <select
+            class="form-control"
+            id="field_recurrenceCriteria"
+            data-cy="recurrenceCriteria"
+            name="recurrenceCriteria"
+            formControlName="recurrenceCriteria"
+          >
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                recurrenceCriteriaOption.id === editForm.get('recurrenceCriteria')!.value?.id
+                  ? editForm.get('recurrenceCriteria')!.value
+                  : recurrenceCriteriaOption
+              "
+              *ngFor="let recurrenceCriteriaOption of recurrenceCriteriaCollection; trackBy: trackRecurrenceCriteriaById"
+            >
+              {{ recurrenceCriteriaOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

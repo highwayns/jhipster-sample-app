@@ -1,0 +1,220 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-payment-heading"
+        data-cy="PaymentCreateUpdateHeading"
+        jhiTranslate="jhipsterSampleApplicationApp.payment.home.createOrEditLabel"
+      >
+        Create or edit a Payment
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.payment.reference" for="field_reference">Reference</label>
+          <input type="number" class="form-control" name="reference" id="field_reference" data-cy="reference" formControlName="reference" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.payment.createDateTimeUtc" for="field_createDateTimeUtc"
+            >Create Date Time Utc</label
+          >
+          <div class="d-flex">
+            <input
+              id="field_createDateTimeUtc"
+              data-cy="createDateTimeUtc"
+              type="datetime-local"
+              class="form-control"
+              name="createDateTimeUtc"
+              formControlName="createDateTimeUtc"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.payment.status" for="field_status">Status</label>
+          <select class="form-control" name="status" formControlName="status" id="field_status" data-cy="status">
+            <option [ngValue]="null">{{ 'jhipsterSampleApplicationApp.PaymentStatus.null' | translate }}</option>
+            <option *ngFor="let paymentStatus of paymentStatusValues" [value]="paymentStatus">
+              {{ 'jhipsterSampleApplicationApp.PaymentStatus.' + paymentStatus | translate }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.payment.amountToCollect" for="field_amountToCollect"
+            >Amount To Collect</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="amountToCollect"
+            id="field_amountToCollect"
+            data-cy="amountToCollect"
+            formControlName="amountToCollect"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.payment.surchargeAmount" for="field_surchargeAmount"
+            >Surcharge Amount</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="surchargeAmount"
+            id="field_surchargeAmount"
+            data-cy="surchargeAmount"
+            formControlName="surchargeAmount"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label
+            class="form-label"
+            jhiTranslate="jhipsterSampleApplicationApp.payment.convertedTotalAmount"
+            for="field_convertedTotalAmount"
+            >Converted Total Amount</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="convertedTotalAmount"
+            id="field_convertedTotalAmount"
+            data-cy="convertedTotalAmount"
+            formControlName="convertedTotalAmount"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.payment.convertedCurrency" for="field_convertedCurrency"
+            >Converted Currency</label
+          >
+          <select
+            class="form-control"
+            name="convertedCurrency"
+            formControlName="convertedCurrency"
+            id="field_convertedCurrency"
+            data-cy="convertedCurrency"
+          >
+            <option [ngValue]="null">{{ 'jhipsterSampleApplicationApp.Currency.null' | translate }}</option>
+            <option *ngFor="let currency of currencyValues" [value]="currency">
+              {{ 'jhipsterSampleApplicationApp.Currency.' + currency | translate }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.payment.conversionRate" for="field_conversionRate"
+            >Conversion Rate</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="conversionRate"
+            id="field_conversionRate"
+            data-cy="conversionRate"
+            formControlName="conversionRate"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.payment.paidAmount" for="field_paidAmount"
+            >Paid Amount</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="paidAmount"
+            id="field_paidAmount"
+            data-cy="paidAmount"
+            formControlName="paidAmount"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.payment.lastErrorReport" for="field_lastErrorReport"
+            >Last Error Report</label
+          >
+          <select
+            class="form-control"
+            id="field_lastErrorReport"
+            data-cy="lastErrorReport"
+            name="lastErrorReport"
+            formControlName="lastErrorReport"
+          >
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                errorReportOption.id === editForm.get('lastErrorReport')!.value?.id
+                  ? editForm.get('lastErrorReport')!.value
+                  : errorReportOption
+              "
+              *ngFor="let errorReportOption of lastErrorReportsCollection; trackBy: trackErrorReportById"
+            >
+              {{ errorReportOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.payment.abuseReport" for="field_abuseReport"
+            >Abuse Report</label
+          >
+          <select class="form-control" id="field_abuseReport" data-cy="abuseReport" name="abuseReport" formControlName="abuseReport">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                abuseReportOption.id === editForm.get('abuseReport')!.value?.id ? editForm.get('abuseReport')!.value : abuseReportOption
+              "
+              *ngFor="let abuseReportOption of abuseReportsCollection; trackBy: trackAbuseReportById"
+            >
+              {{ abuseReportOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.payment.attributes" for="field_attributes">Attributes</label>
+          <select class="form-control" id="field_attributes" data-cy="attributes" name="attributes" formControlName="attributes">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                paymentAttributesOption.id === editForm.get('attributes')!.value?.id
+                  ? editForm.get('attributes')!.value
+                  : paymentAttributesOption
+              "
+              *ngFor="let paymentAttributesOption of attributesCollection; trackBy: trackPaymentAttributesById"
+            >
+              {{ paymentAttributesOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

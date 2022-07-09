@@ -1,0 +1,32 @@
+{
+  "applications": "*",
+  "changelogDate": "20220709023656",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "tokenised_card",
+  "fields": [
+    {
+      "fieldName": "token",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "cardExpiryMonth",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "cardExpiryYear",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "truncatedCardNumber",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "TokenisedCard",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [],
+  "service": "no"
+}

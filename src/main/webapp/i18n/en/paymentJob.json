@@ -1,0 +1,45 @@
+{
+  "jhipsterSampleApplicationApp": {
+    "paymentJob": {
+      "home": {
+        "title": "Payment Jobs",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Payment Job",
+        "createOrEditLabel": "Create or edit a Payment Job",
+        "notFound": "No Payment Jobs found"
+      },
+      "created": "A new Payment Job is created with identifier {{ param }}",
+      "updated": "A Payment Job is updated with identifier {{ param }}",
+      "deleted": "A Payment Job is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Payment Job {{ id }}?"
+      },
+      "detail": {
+        "title": "Payment Job"
+      },
+      "id": "ID",
+      "reference": "Reference",
+      "createDateTimeUtc": "Create Date Time Utc",
+      "type": "Type",
+      "traceReference": "Trace Reference",
+      "configurationId": "Configuration Id",
+      "domain": "Domain",
+      "locale": "Locale",
+      "timeZone": "Time Zone",
+      "parentPaymentJobReference": "Parent Payment Job Reference",
+      "displayUrl": "Display Url",
+      "currency": "Currency",
+      "amountToCollect": "Amount To Collect",
+      "amountCollected": "Amount Collected",
+      "paidAmount": "Paid Amount",
+      "paidDateTimeUtc": "Paid Date Time Utc",
+      "expirationDateTimeUtc": "Expiration Date Time Utc",
+      "dueDateTimeUtc": "Due Date Time Utc",
+      "lastUpdateTimeUtc": "Last Update Time Utc",
+      "lastProcessedTimeUtc": "Last Processed Time Utc",
+      "order": "Order",
+      "attributes": "Attributes",
+      "recurrenceCriteria": "Recurrence Criteria"
+    }
+  }
+}
