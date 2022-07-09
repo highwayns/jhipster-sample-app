@@ -63,7 +63,7 @@ public class JhipsterSampleApplicationApp {
      *
      * @param args the command line arguments.
      */
-    public static void main_(String[] args) {
+    public static void main(String[] args) {
         SpringApplication app = new SpringApplication(JhipsterSampleApplicationApp.class);
         DefaultProfileUtil.addDefaultProfile(app);
         Environment env = app.run(args).getEnvironment();
