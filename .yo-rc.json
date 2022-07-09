@@ -13,7 +13,7 @@
     "clusteredHttpSession": false,
     "creationTimestamp": 1577000812973,
     "databaseType": "sql",
-    "devDatabaseType": "h2Memory",
+    "devDatabaseType": "postgresql",
     "devServerPort": 4200,
     "dtoSuffix": "DTO",
     "embeddableLaunchScript": false,

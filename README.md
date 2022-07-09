@@ -253,9 +253,18 @@ To configure CI for your project, run the ci-cd sub-generator (`jhipster ci-cd`)
 [angular cli]: https://cli.angular.io/
 [gatling]: https://gatling.io/
 
-#Workflow design
-https://demo.bpmn.io/new
+# Workflow design
+[Workflow design tool]: https://demo.bpmn.io/new
+the completed bpmn file is in  src/main/resources
+.userregiste.bpmn
+.transaction.bpmn
+.transferin.bpmn
+.transfterout.bpmn
+.refund.bpmn
 
-#JDL design
+# JDL design
+JDL file is in the root path, and name is jhipster-jdl.jdl
+## JDL Studio URL
 https://start.jhipster.tech/jdl-studio/
-jhipster jdl jhipster-jdl.jdl --db --postgresql
+## JDL command
+jhipster jdl jhipster-jdl.jdl --db postgresql
