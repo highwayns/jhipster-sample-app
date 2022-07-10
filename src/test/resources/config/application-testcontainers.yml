@@ -9,12 +9,16 @@
 # ===================================================================
 
 spring:
+  # datasource:
+  #   driverClassName: com.mysql.jdbc.Driver
+  #   password: workflow
+  #   username: workflow
+  #   url: jdbc:mysql://localhost:3306/workflow-engine?useUnicode=yes&characterEncoding=UTF-8&useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true&nullCatalogMeansCurrent=true
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
-    driver-class-name: org.testcontainers.jdbc.ContainerDatabaseDriver
-    url: jdbc:tc:postgresql:14.2:///jhipsterSampleApplication?TC_TMPFS=/testtmpfs:rw
+    url: jdbc:postgresql://localhost:5432/jhipsterSampleApplication
     username: jhipsterSampleApplication
-    password:
+    password: jhipsterSampleApplication
     hikari:
       poolName: Hikari
       auto-commit: false

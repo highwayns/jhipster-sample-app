@@ -38,19 +38,24 @@ spring:
       enabled: false
     livereload:
       enabled: false
-  # datasource:
-  #   type: com.zaxxer.hikari.HikariDataSource
-  #   url: jdbc:postgresql://postgres/activitidb
-  #   username: activiti
-  #   password: mypassword
-  #   hikari:
-  #     poolName: Hikari
-  #     auto-commit: false
   datasource:
-    driverClassName: com.mysql.jdbc.Driver
-    password: workflow
-    username: workflow
-    url: jdbc:mysql://localhost:3306/workflow-engine?useUnicode=yes&characterEncoding=UTF-8&useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true&nullCatalogMeansCurrent=true
+    type: com.zaxxer.hikari.HikariDataSource
+    url: jdbc:postgresql://localhost:5432/jhipsterSampleApplication
+    username: jhipsterSampleApplication
+    password: jhipsterSampleApplication
+    hikari:
+      poolName: Hikari
+      auto-commit: false
+  # datasource:
+  #   driverClassName: com.mysql.jdbc.Driver
+  #   password: workflow
+  #   username: workflow
+  #   url: jdbc:mysql://localhost:3306/workflow-engine?useUnicode=yes&characterEncoding=UTF-8&useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true&nullCatalogMeansCurrent=true
+  # datasource:
+  #   driver-class-name: org.postgresql.Driver
+  #   url: jdbc:postgresql://localhost:5432/jhipsterSampleApplication
+  #   username: jhipsterSampleApplication
+  #   password: jhipsterSampleApplication
   jpa:
     database-platform: tech.jhipster.domain.util.FixedPostgreSQL10Dialect
   # Replace by 'prod, faker' to add the faker context and have sample data loaded in production
