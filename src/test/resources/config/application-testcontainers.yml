@@ -17,8 +17,8 @@ spring:
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5432/jhipsterSampleApplication
-    username: jhipsterSampleApplication
+    url: jdbc:postgresql://postgres/jhipstersampleapplication?user=jhipstersampleapplication&password=jhipsterSampleApplication
+    username: jhipstersampleapplication
     password: jhipsterSampleApplication
     hikari:
       poolName: Hikari
