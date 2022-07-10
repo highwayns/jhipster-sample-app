@@ -28,10 +28,10 @@ logging:
 
 spring:
   activiti:
-    async-executor-activate: 'false'
-    check-process-definitions: 'false'
+    async-executor-activate: false
+    check-process-definitions: false
     process-definition-location-prefix: /processes/
-    database-schema-update: 'true'
+    database-schema-update: true
   application:
     name: activiti-workflow
   devtools:
@@ -45,6 +45,7 @@ spring:
       indent-output: true
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: org.postgresql.Driver
     url: jdbc:postgresql://localhost:5432/jhipsterSampleApplication
     username: jhipsterSampleApplication
     password: jhipsterSampleApplication
@@ -67,11 +68,11 @@ spring:
       enabled: false
   jpa:
     database-platform: tech.jhipster.domain.util.FixedH2Dialect
-  liquibase:
-    # Remove 'faker' if you do not want the sample data to be loaded automatically
-    contexts: dev, faker
   # liquibase:
-  #   enabled: 'false'
+  #   # Remove 'faker' if you do not want the sample data to be loaded automatically
+  #   contexts: dev, faker
+  liquibase:
+    enabled: false
   mail:
     host: localhost
     port: 25
@@ -142,10 +143,10 @@ log:
     module: activiti-workflow
 mybatis-plus:
   global-config:
-    logic-not-delete-value: '0'
-    logic-delete-value: '1'
+    logic-not-delete-value: 0
+    logic-delete-value: 1
     db-config:
       id-type: auto
   mapper-locations: classpath*:mapper/*Mapper.xml
   configuration:
-    map-underscore-to-camel-case: 'true'
+    map-underscore-to-camel-case: true
