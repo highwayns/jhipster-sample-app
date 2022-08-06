@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.gogoing.workflow.mapper.CustomActivitiDatabaseMapper">
+<mapper namespace="com.activiti6.mapper.CustomActivitiDatabaseMapper">
 
 
     <select id="selectUnFinishTask" resultMap="taskResultMap">
@@ -293,7 +293,7 @@
         </trim>
     </select>
 
-    <resultMap id="taskResultMap" type="com.gogoing.workflow.domain.ProcessTaskResult">
+    <resultMap id="taskResultMap" type="com.activiti6.domain.ProcessTaskResult">
         <id property="taskId" column="ID_" jdbcType="VARCHAR"/>
         <result property="taskDefineName" column="NAME_" jdbcType="VARCHAR"/>
         <result property="assignee" column="ASSIGNEE_" jdbcType="VARCHAR"/>

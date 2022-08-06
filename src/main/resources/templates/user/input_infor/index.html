@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=8082&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "mainEntityOfPage": {
+             "@type": "WebPage",
+             "@id": "http:\/\/localhost:8082\/"
+        },
+        "articleSection": "user",
+        "name": "Input_infor",
+        "headline": "Input_infor",
+        "description": "",
+        "inLanguage": "en",
+        "author": "",
+        "creator": "",
+        "publisher": "",
+        "accountablePerson": "",
+        "copyrightHolder": "",
+        "copyrightYear": "2022",
+        "datePublished": "2022-07-18T02:57:28Z",
+        "dateModified": "2022-07-18T02:57:28Z",
+        "url" : "\/user\/input_infor\/",
+        "wordCount" : "6",
+        "keywords" : [ "Blog" ]
+    }
+</script>
+<title>Highway Bitcoin</title><meta charset="utf-8"/>
+<title>Spring-activiti</title>
+<meta name="description" content="description"/>
+<meta name="author" content="DevOOPS"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<link href="/plugins/bootstrap/bootstrap.css" rel="stylesheet"/>
+<link href="/plugins/jquery-ui/jquery-ui.min.css" rel="stylesheet"/>
+<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet"/>
+<link href='http://fonts.googleapis.com/css?family=Righteous' rel='stylesheet' type='text/css'/>
+<link href="/plugins/fancybox/jquery.fancybox.css" rel="stylesheet"/>
+<link href="/plugins/fullcalendar/fullcalendar.css" rel="stylesheet"/>
+<link href="/plugins/xcharts/xcharts.min.css" rel="stylesheet"/>
+<link href="/plugins/select2/select2.css" rel="stylesheet"/>
+<link href="/plugins/justified-gallery/justifiedGallery.css" rel="stylesheet"/>
+<link href="/css/style_v1.css" rel="stylesheet"/>
+<link href="/css/jquery.bootgrid.min.css" rel="stylesheet"/>
+<link href="/plugins/chartist/chartist.min.css" rel="stylesheet"/>
+
+
+</head>
+    <body class="text-center">
+<div id="screensaver">
+	<canvas id="canvas"></canvas>
+	<i class="fa fa-lock" id="screen_unlock"></i>
+</div>
+<div id="modalbox">
+	<div class="devoops-modal">
+		<div class="devoops-modal-header">
+			<div class="modal-header-name">
+				<span>Basic table</span>
+			</div>
+			<div class="box-icons">
+				<a class="close-link">
+					<i class="fa fa-times"></i>
+				</a>
+			</div>
+		</div>
+		<div class="devoops-modal-inner">
+		</div>
+		<div class="devoops-modal-bottom">
+		</div>
+	</div>
+</div>
+<header class="navbar">
+	<div class="container-fluid expanded-panel">
+		<div class="row">
+			<div id="logo" class="col-xs-12 col-sm-2">
+				<a href="/">HWB payment</a>
+			</div>
+			<div id="top-panel" class="col-xs-12 col-sm-10">
+				<div class="row">
+					<div class="col-xs-8 col-sm-4">
+					</div>
+					<div class="col-xs-4 col-sm-8 top-panel-right">
+						<ul class="nav navbar-nav pull-right panel-menu">
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle account" data-toggle="dropdown">
+									<div class="avatar">
+										<img src="/img/avatar.jpg" class="img-circle" alt="avatar" />
+									</div>
+									<i class="fa fa-angle-down pull-right"></i>
+									<div class="user-mini pull-right">
+										<span class="welcome">Welcome,</span>
+										<span id="currentuser"></span>
+									</div>
+								</a>
+								<ul class="dropdown-menu">
+									<li>
+										<a href="/logout">
+											<i class="fa fa-power-off"></i>
+											<span>Logout</span>
+										</a>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</header>
+
+
+    <div id="main" class="container-fluid"><div class="row">
+    <div id="sidebar-left" class="col-xs-2 col-sm-2">
+        <ul class="nav main-menu">
+            
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle">
+                    <i class="fa fa-bar-chart-o"></i>
+                    <span class="hidden-xs">User</span>
+                </a>
+                <ul class="dropdown-menu" style="display: block;">
+                    <li><a href="/user/input_infor">input infor</a></li>
+                    <li><a href="/user/update_infor">update infor</a></li>
+					<li><a href="/user/upload_user_certificate">upload user certificate</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle">
+                            <i class="fa fa-bars"></i>
+                            <span class="hidden-xs">input money</span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/user/input_money/show_company_account">show company account</a></li>
+                            <li><a href="/user/input_money/confirm_money_input">money input list</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle">
+                            <i class="fa fa-bars"></i>
+                            <span class="hidden-xs">output money</span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/user/output_money/input_account">input account</a></li>
+                            <li><a href="/user/output_money/input_transfer_out">input transfer out</a></li>
+                            <li><a href="/user/output_money/modify_transfer_out">modify transfer out</a></li>
+                            <li><a href="/user/output_money/confirm_transfer_out">confirm transfer out</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="/user/product">product</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle">
+                            <i class="fa fa-bars"></i>
+                            <span class="hidden-xs">transaction</span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/user/transaction/input_account">input account</a></li>
+                            <li><a href="/user/transaction/input_transfer_out">input transfer out</a></li>
+                            <li><a href="/user/transaction/modify_transfer_out">modify transfer out</a></li>
+                            <li><a href="/user/transaction/confirm_transfer_out">confirm transfer out</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle">
+                            <i class="fa fa-bars"></i>
+                            <span class="hidden-xs">refund</span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/user/refundy/input_account">input account</a></li>
+                            <li><a href="/user/refund/input_transfer_out">input transfer out</a></li>
+                            <li><a href="/user/refund/modify_transfer_out">modify transfer out</a></li>
+                            <li><a href="/user/refund/confirm_transfer_out">confirm transfer out</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            
+            
+            
+            
+        </ul>
+    </div>
+
+		<div id="content" class="col-xs-12 col-sm-10">
+
+
+<div class="row">
+	<div id="breadcrumb" class="col-xs-12">
+	<a href="#" class="show-sidebar">
+						  <i class="fa fa-bars"></i>
+						</a>
+		<ol class="breadcrumb pull-left">
+			<li><a href="/">top</a></li>
+			<li><a href="#">user</a></li>
+			<li><a href="#">Input_infor</a></li>
+		</ol>
+	</div>
+</div>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="box ui-draggable ui-droppable" id="dept">
+				<div class="box-header">
+					<div class="box-name">
+						<i class="fa fa-coffee"></i> <span>Input_infor</span>
+					</div>
+					<div class="box-icons">
+						<a class="collapse-link"> <i class="fa fa-chevron-up"></i>
+						</a> <a class="expand-link"> <i class="fa fa-expand"></i>
+						</a> <a class="close-link"> <i class="fa fa-times"></i>
+						</a>
+					</div>
+					<div class="no-move"></div>
+				</div>
+				<div class="box-content">
+					<form role="form" action="startleave" method="post">
+							<div class="form-group">
+								<label>username</label>
+								<input id="username" class="form-control" name="username"/>
+							</div>
+							<div class="form-group">
+								<label>password</label>
+								<input id="password" class="form-control" name="password"/>
+							</div>
+							<div class="form-group">
+								<label>birthday</label>
+								<input id="birthday" class="form-control" name="birthday"/>
+							</div>
+							<div class="form-group">
+								<label>tel</label>
+								<input id="tel" class="form-control" name="tel"/>
+							</div>
+							<div class="form-group">
+								<label>mail</label>
+								<input id="mail" class="form-control" name="mail"/>
+							</div>
+							<button id="userRegisterApply" type="button" class="btn btn-primary">register</button>
+							<button type="reset" class="btn btn-primary">Reset</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+		</div>
+		
+	</div>
+</div>
+
+
+
+<script src="/plugins/jquery/jquery.min.js"></script>
+<script src="/plugins/jquery-ui/jquery-ui.min.js"></script>
+
+<script src="/plugins/bootstrap/bootstrap.min.js"></script>
+<script src="/plugins/justified-gallery/jquery.justifiedGallery.min.js"></script>
+<script src="/plugins/tinymce/tinymce.min.js"></script>
+<script src="/plugins/tinymce/jquery.tinymce.min.js"></script>
+<script src="/js/jquery.bootgrid.min.js"></script>
+
+<script src="/js/devoops.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$("#userRegisterApply").click(function(){
+			$.post("startUserRegister",$("form").serialize(),function(){
+				alert("apply success");
+				document.location = "/user/upload_user_certificate";
+			});
+		});
+	});
+	
+</script>
+</body>
+</html>

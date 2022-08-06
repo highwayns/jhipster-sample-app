@@ -1,0 +1,20 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans   http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+  <bean id="processEngineConfiguration" class="org.activiti.engine.impl.cfg.ProcessEngineConfigurationImpl">
+
+    <property name="mailServerHost" value="smtp11.gmoserver.jp" />
+
+    <property name="mailServerPort" value="587" />
+    <property name="mailServerDefaultFrom" value="info@park.highwayns.com" />
+    <property name="mailServerUsername" value="info@park.highwayns.com" />
+    <property name="mailServerPassword" value="$ApQv2m0" />
+    <property name="mailServerUseSSL" value="false" />
+    <property name="mailServerUseTLS" value="false" />
+
+  </bean>
+
+ 
+
+</beans>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.activiti6.mapper.UserRegisterInfoMapper">
+	<resultMap id="BaseResultMap" type="com.activiti6.po.UserRegisterInfo">
+	    <id column="id" jdbcType="INTEGER" property="id" />
+		<result column="process_instance_id" jdbcType="VARCHAR" property="process_instance_id" />
+	    <result column="username" jdbcType="VARCHAR" property="username" />
+	    <result column="password" jdbcType="VARCHAR" property="password" />
+	    <result column="birthday" jdbcType="VARCHAR" property="birthday" />
+	    <result column="tel" jdbcType="VARCHAR" property="tel" />
+	    <result column="mail" jdbcType="VARCHAR" property="mail" />
+		<result column="user_id" jdbcType="VARCHAR" property="user_id" />
+		<result column="apply_time" jdbcType="VARCHAR" property="apply_time" />
+	    <result column="manager_check_time" jdbcType="VARCHAR" property="manager_check_time" />
+	    <result column="superManager_check_time" jdbcType="VARCHAR" property="superManager_check_time" />
+		<result column="remarks" jdbcType="VARCHAR" property="remarks" />
+	</resultMap>
+	
+	<select id="getUserRegisterInfo" resultType="com.activiti6.po.UserRegisterInfo" parameterType="int">
+		select * from user_register_info where id=#{id} 
+	</select>
+	
+	<insert id="save" useGeneratedKeys="true" keyProperty="id" parameterType="com.activiti6.po.UserRegisterInfo">
+	  insert into user_register_info (id,process_instance_id,username,password,birthday,tel,mail,user_id,apply_time,manager_check_time,superManager_check_time,remarks)
+	  values (#{id},#{process_instance_id},#{username},#{password},#{birthday},#{tel},#{mail},#{user_id},#{apply_time},#{manager_check_time},#{superManager_check_time},#{remarks})
+	</insert>
+	
+	<update id="updateByPrimaryKey" parameterType="com.activiti6.po.UserRegisterInfo">
+		 update user_register_info
+	    <set>
+	      <if test="process_instance_id != null">
+	        process_instance_id = #{process_instance_id,jdbcType=VARCHAR},
+	      </if>
+	      <if test="username != null">
+	        username = #{username,jdbcType=VARCHAR},
+	      </if>
+	      <if test="password != null">
+	        password = #{password,jdbcType=VARCHAR},
+	      </if>
+	      <if test="birthday != null">
+	        birthday = #{birthday,jdbcType=VARCHAR},
+	      </if>
+	      <if test="tel != null">
+	        tel = #{tel,jdbcType=VARCHAR},
+	      </if>
+	      <if test="mail != null">
+	        mail = #{mail,jdbcType=VARCHAR},
+	      </if>
+	      <if test="user_id != null">
+	        user_id = #{user_id,jdbcType=VARCHAR},
+	      </if>
+	      <if test="apply_time != null">
+	        apply_time = #{apply_time,jdbcType=VARCHAR},
+	      </if>
+	      <if test="manager_check_time != null">
+	        manager_check_time = #{manager_check_time,jdbcType=VARCHAR},
+	      </if>
+	      <if test="superManager_check_time != null">
+	        superManager_check_time = #{superManager_check_time,jdbcType=VARCHAR},
+	      </if>
+	      <if test="remarks != null">
+	        remarks = #{remarks,jdbcType=VARCHAR},
+	      </if>
+	    </set>
+	    where id = #{id,jdbcType=INTEGER}
+	</update>
+</mapper>
