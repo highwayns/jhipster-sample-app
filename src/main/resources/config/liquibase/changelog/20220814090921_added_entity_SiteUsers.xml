@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <!--
+        Added the entity SiteUsers.
+    -->
+    <changeSet id="20220814090921-1" author="jhipster">
+        <createTable tableName="site_users">
+            <column name="id" type="bigint">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="pass" type="varchar(200)">
+                <constraints nullable="false" />
+            </column>
+            <column name="first_name" type="varchar(200)">
+                <constraints nullable="false" />
+            </column>
+            <column name="last_name" type="varchar(200)">
+                <constraints nullable="false" />
+            </column>
+            <column name="email" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="date" type="${datetimeType}">
+                <constraints nullable="false" />
+            </column>
+            <column name="tel" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="jhi_user" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="country_code" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="authy_requested" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="verified_authy" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="authy_id" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="using_sms" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="dont_ask_30_days" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="dont_ask_date" type="${datetimeType}">
+                <constraints nullable="false" />
+            </column>
+            <column name="confirm_withdrawal_email_btc" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="confirm_withdrawal_2_fa_btc" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="confirm_withdrawal_2_fa_bank" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="confirm_withdrawal_email_bank" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="notify_deposit_btc" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="notify_deposit_bank" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="last_update" type="${datetimeType}">
+                <constraints nullable="false" />
+            </column>
+            <column name="no_logins" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="notify_login" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="deactivated" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="locked" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="google_2_fa_code" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="verified_google" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="last_lang" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="notify_withdraw_btc" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="notify_withdraw_bank" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="trusted" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="country_id" type="bigint">
+                <constraints nullable="true" unique="true" uniqueConstraintName="ux_site_users__country_id" />
+            </column>
+            <column name="fee_schedule_id" type="bigint">
+                <constraints nullable="true" unique="true" uniqueConstraintName="ux_site_users__fee_schedule_id" />
+            </column>
+            <column name="default_currency_id" type="bigint">
+                <constraints nullable="true" unique="true" uniqueConstraintName="ux_site_users__default_currency_id" />
+            </column>
+            <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
+        </createTable>
+        <dropDefaultValue tableName="site_users" columnName="date" columnDataType="${datetimeType}"/>
+        <dropDefaultValue tableName="site_users" columnName="dont_ask_date" columnDataType="${datetimeType}"/>
+        <dropDefaultValue tableName="site_users" columnName="last_update" columnDataType="${datetimeType}"/>
+    </changeSet>
+
+    <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here -->
+
+    <!--
+        Load sample data generated with Faker.js
+        - This data can be easily edited using a CSV editor (or even MS Excel) and
+          is located in the 'src/main/resources/config/liquibase/fake-data' directory
+        - By default this data is applied when running with the JHipster 'dev' profile.
+          This can be customized by adding or removing 'faker' in the 'spring.liquibase.contexts'
+          Spring Boot configuration key.
+    -->
+    <changeSet id="20220814090921-1-data" author="jhipster" context="faker">
+        <loadData
+                  file="config/liquibase/fake-data/site_users.csv"
+                  separator=";"
+                  tableName="site_users"
+                  usePreparedStatements="true">
+            <column name="id" type="numeric"/>
+            <column name="pass" type="string"/>
+            <column name="first_name" type="string"/>
+            <column name="last_name" type="string"/>
+            <column name="email" type="string"/>
+            <column name="date" type="date"/>
+            <column name="tel" type="string"/>
+            <column name="jhi_user" type="string"/>
+            <column name="country_code" type="numeric"/>
+            <column name="authy_requested" type="string"/>
+            <column name="verified_authy" type="string"/>
+            <column name="authy_id" type="numeric"/>
+            <column name="using_sms" type="string"/>
+            <column name="dont_ask_30_days" type="string"/>
+            <column name="dont_ask_date" type="date"/>
+            <column name="confirm_withdrawal_email_btc" type="string"/>
+            <column name="confirm_withdrawal_2_fa_btc" type="string"/>
+            <column name="confirm_withdrawal_2_fa_bank" type="string"/>
+            <column name="confirm_withdrawal_email_bank" type="string"/>
+            <column name="notify_deposit_btc" type="string"/>
+            <column name="notify_deposit_bank" type="string"/>
+            <column name="last_update" type="date"/>
+            <column name="no_logins" type="string"/>
+            <column name="notify_login" type="string"/>
+            <column name="deactivated" type="string"/>
+            <column name="locked" type="string"/>
+            <column name="google_2_fa_code" type="string"/>
+            <column name="verified_google" type="string"/>
+            <column name="last_lang" type="string"/>
+            <column name="notify_withdraw_btc" type="string"/>
+            <column name="notify_withdraw_bank" type="string"/>
+            <column name="trusted" type="string"/>
+            <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here -->
+        </loadData>
+    </changeSet>
+</databaseChangeLog>

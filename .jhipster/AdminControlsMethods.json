@@ -1,0 +1,51 @@
+{
+  "applications": "*",
+  "changelogDate": "20220814090838",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "admin_controls_methods",
+  "fields": [
+    {
+      "fieldName": "method",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "100"
+    },
+    {
+      "fieldName": "argument",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "maxlength"],
+      "fieldValidateRulesMaxlength": "255"
+    },
+    {
+      "fieldName": "order",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "pId",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "AdminControlsMethods",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "adminCron",
+      "otherEntityRelationshipName": "methodId",
+      "relationshipName": "adminCron",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "adminControls",
+      "otherEntityRelationshipName": "adminControlsMethods",
+      "relationshipName": "controlId",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceClass"
+}

@@ -1,0 +1,58 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="apiKeys">
+      <h2 data-cy="apiKeysDetailsHeading"><span jhiTranslate="jhipsterSampleApplicationApp.apiKeys.detail.title">Api Keys</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ apiKeys.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.apiKeys.key">Key</span></dt>
+        <dd>
+          <span>{{ apiKeys.key }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.apiKeys.secret">Secret</span></dt>
+        <dd>
+          <span>{{ apiKeys.secret }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.apiKeys.view">View</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'jhipsterSampleApplicationApp.YesNo.' + apiKeys.view }}">{{ apiKeys.view }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.apiKeys.orders">Orders</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'jhipsterSampleApplicationApp.YesNo.' + apiKeys.orders }}">{{ apiKeys.orders }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.apiKeys.withdraw">Withdraw</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'jhipsterSampleApplicationApp.YesNo.' + apiKeys.withdraw }}">{{ apiKeys.withdraw }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.apiKeys.nonce">Nonce</span></dt>
+        <dd>
+          <span>{{ apiKeys.nonce }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.apiKeys.siteUser">Site User</span></dt>
+        <dd>
+          <div *ngIf="apiKeys.siteUser">
+            <a [routerLink]="['/site-users', apiKeys.siteUser?.id, 'view']">{{ apiKeys.siteUser?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/api-keys', apiKeys.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

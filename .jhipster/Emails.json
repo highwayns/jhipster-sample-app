@@ -1,0 +1,70 @@
+{
+  "applications": "*",
+  "changelogDate": "20220814090901",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "emails",
+  "fields": [
+    {
+      "fieldName": "key",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "maxlength"],
+      "fieldValidateRulesMaxlength": "255"
+    },
+    {
+      "fieldName": "titleEn",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "maxlength"],
+      "fieldValidateRulesMaxlength": "255"
+    },
+    {
+      "fieldName": "titleEs",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "maxlength"],
+      "fieldValidateRulesMaxlength": "255"
+    },
+    {
+      "fieldName": "contentEn",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "any",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "contentEs",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "any",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "titleRu",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "maxlength"],
+      "fieldValidateRulesMaxlength": "255"
+    },
+    {
+      "fieldName": "titleZh",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "maxlength"],
+      "fieldValidateRulesMaxlength": "255"
+    },
+    {
+      "fieldName": "contentRu",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "any",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "contentZh",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "any",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Emails",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [],
+  "service": "serviceClass"
+}

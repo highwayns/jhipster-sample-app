@@ -39,13 +39,13 @@ public class LinkResource {
     }
 
     /**
-     * {@code POST  /link} : Create a new link.
+     * {@code POST  /links} : Create a new link.
      *
      * @param link the link to create.
      * @return the {@link ResponseEntity} with status {@code 201 (Created)} and with body the new link, or with status {@code 400 (Bad Request)} if the link has already an ID.
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
-    @PostMapping("/link")
+    @PostMapping("/links")
     public ResponseEntity<Link> createLink(@RequestBody Link link) throws URISyntaxException {
         log.debug("REST request to save Link : {}", link);
         if (link.getId() != null) {
@@ -59,7 +59,7 @@ public class LinkResource {
     }
 
     /**
-     * {@code PUT  /link/:id} : Updates an existing link.
+     * {@code PUT  /links/:id} : Updates an existing link.
      *
      * @param id the id of the link to save.
      * @param link the link to update.
@@ -68,7 +68,7 @@ public class LinkResource {
      * or with status {@code 500 (Internal Server Error)} if the link couldn't be updated.
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
-    @PutMapping("/link/{id}")
+    @PutMapping("/links/{id}")
     public ResponseEntity<Link> updateLink(@PathVariable(value = "id", required = false) final Long id, @RequestBody Link link)
         throws URISyntaxException {
         log.debug("REST request to update Link : {}, {}", id, link);
@@ -91,7 +91,7 @@ public class LinkResource {
     }
 
     /**
-     * {@code PATCH  /link/:id} : Partial updates given fields of an existing link, field will ignore if it is null
+     * {@code PATCH  /links/:id} : Partial updates given fields of an existing link, field will ignore if it is null
      *
      * @param id the id of the link to save.
      * @param link the link to update.
@@ -101,7 +101,7 @@ public class LinkResource {
      * or with status {@code 500 (Internal Server Error)} if the link couldn't be updated.
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
-    @PatchMapping(value = "/link/{id}", consumes = { "application/json", "application/merge-patch+json" })
+    @PatchMapping(value = "/links/{id}", consumes = { "application/json", "application/merge-patch+json" })
     public ResponseEntity<Link> partialUpdateLink(@PathVariable(value = "id", required = false) final Long id, @RequestBody Link link)
         throws URISyntaxException {
         log.debug("REST request to partial update Link partially : {}, {}", id, link);
@@ -137,23 +137,23 @@ public class LinkResource {
     }
 
     /**
-     * {@code GET  /link} : get all the links.
+     * {@code GET  /links} : get all the links.
      *
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of links in body.
      */
-    @GetMapping("/link")
+    @GetMapping("/links")
     public List<Link> getAllLinks() {
         log.debug("REST request to get all Links");
         return linkRepository.findAll();
     }
 
     /**
-     * {@code GET  /link/:id} : get the "id" link.
+     * {@code GET  /links/:id} : get the "id" link.
      *
      * @param id the id of the link to retrieve.
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the link, or with status {@code 404 (Not Found)}.
      */
-    @GetMapping("/link/{id}")
+    @GetMapping("/links/{id}")
     public ResponseEntity<Link> getLink(@PathVariable Long id) {
         log.debug("REST request to get Link : {}", id);
         Optional<Link> link = linkRepository.findById(id);
@@ -161,12 +161,12 @@ public class LinkResource {
     }
 
     /**
-     * {@code DELETE  /link/:id} : delete the "id" link.
+     * {@code DELETE  /links/:id} : delete the "id" link.
      *
      * @param id the id of the link to delete.
      * @return the {@link ResponseEntity} with status {@code 204 (NO_CONTENT)}.
      */
-    @DeleteMapping("/link/{id}")
+    @DeleteMapping("/links/{id}")
     public ResponseEntity<Void> deleteLink(@PathVariable Long id) {
         log.debug("REST request to delete Link : {}", id);
         linkRepository.deleteById(id);

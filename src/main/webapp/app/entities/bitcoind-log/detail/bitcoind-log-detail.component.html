@@ -1,0 +1,48 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="bitcoindLog">
+      <h2 data-cy="bitcoindLogDetailsHeading">
+        <span jhiTranslate="jhipsterSampleApplicationApp.bitcoindLog.detail.title">Bitcoind Log</span>
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ bitcoindLog.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.bitcoindLog.transactionId">Transaction Id</span></dt>
+        <dd>
+          <span>{{ bitcoindLog.transactionId }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.bitcoindLog.amount">Amount</span></dt>
+        <dd>
+          <span>{{ bitcoindLog.amount }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.bitcoindLog.date">Date</span></dt>
+        <dd>
+          <span>{{ bitcoindLog.date | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.bitcoindLog.siteUser">Site User</span></dt>
+        <dd>
+          <div *ngIf="bitcoindLog.siteUser">
+            <a [routerLink]="['/site-users', bitcoindLog.siteUser?.id, 'view']">{{ bitcoindLog.siteUser?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/bitcoind-log', bitcoindLog.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

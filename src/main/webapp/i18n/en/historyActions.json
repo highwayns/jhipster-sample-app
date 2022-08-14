@@ -1,0 +1,27 @@
+{
+  "jhipsterSampleApplicationApp": {
+    "historyActions": {
+      "home": {
+        "title": "History Actions",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new History Actions",
+        "createOrEditLabel": "Create or edit a History Actions",
+        "notFound": "No History Actions found"
+      },
+      "created": "A new History Actions is created with identifier {{ param }}",
+      "updated": "A History Actions is updated with identifier {{ param }}",
+      "deleted": "A History Actions is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete History Actions {{ id }}?"
+      },
+      "detail": {
+        "title": "History Actions"
+      },
+      "id": "ID",
+      "nameEn": "Name En",
+      "nameEs": "Name Es",
+      "nameRu": "Name Ru",
+      "nameZh": "Name Zh"
+    }
+  }
+}

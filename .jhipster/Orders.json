@@ -1,0 +1,76 @@
+{
+  "applications": "*",
+  "changelogDate": "20220814090915",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "orders",
+  "fields": [
+    {
+      "fieldName": "date",
+      "fieldType": "Instant",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "btc",
+      "fieldType": "Double",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "fiat",
+      "fieldType": "Double",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "btcPrice",
+      "fieldType": "Double",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "marketPrice",
+      "fieldType": "YesNo",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "Y,N"
+    },
+    {
+      "fieldName": "stopPrice",
+      "fieldType": "Double",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Orders",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "orderTypes",
+      "otherEntityRelationshipName": "orders",
+      "ownerSide": true,
+      "relationshipName": "orderType",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "siteUsers",
+      "otherEntityRelationshipName": "orders",
+      "ownerSide": true,
+      "relationshipName": "siteUser",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "currencies",
+      "otherEntityRelationshipName": "orders",
+      "ownerSide": true,
+      "relationshipName": "currency",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "orderLog",
+      "otherEntityRelationshipName": "orders",
+      "ownerSide": true,
+      "relationshipName": "logId",
+      "relationshipType": "one-to-one"
+    }
+  ],
+  "service": "serviceClass"
+}

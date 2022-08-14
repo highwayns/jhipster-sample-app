@@ -1,0 +1,92 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="status">
+      <h2 data-cy="statusDetailsHeading"><span jhiTranslate="jhipsterSampleApplicationApp.status.detail.title">Status</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ status.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.status.lastSweep">Last Sweep</span></dt>
+        <dd>
+          <span>{{ status.lastSweep | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.status.deficitBtc">Deficit Btc</span></dt>
+        <dd>
+          <span>{{ status.deficitBtc }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.status.hotWalletBtc">Hot Wallet Btc</span></dt>
+        <dd>
+          <span>{{ status.hotWalletBtc }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.status.warmWalletBtc">Warm Wallet Btc</span></dt>
+        <dd>
+          <span>{{ status.warmWalletBtc }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.status.totalBtc">Total Btc</span></dt>
+        <dd>
+          <span>{{ status.totalBtc }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.status.receivedBtcPending">Received Btc Pending</span></dt>
+        <dd>
+          <span>{{ status.receivedBtcPending }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.status.pendingWithdrawals">Pending Withdrawals</span></dt>
+        <dd>
+          <span>{{ status.pendingWithdrawals }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.status.tradingStatus">Trading Status</span></dt>
+        <dd>
+          <span>{{ status.tradingStatus }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.status.withdrawalsStatus">Withdrawals Status</span></dt>
+        <dd>
+          <span>{{ status.withdrawalsStatus }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.status.dbVersion">Db Version</span></dt>
+        <dd>
+          <span>{{ status.dbVersion }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.status.cronDailyStats">Cron Daily Stats</span></dt>
+        <dd>
+          <span>{{ status.cronDailyStats | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.status.cronGetStats">Cron Get Stats</span></dt>
+        <dd>
+          <span>{{ status.cronGetStats | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.status.cronMaintenance">Cron Maintenance</span></dt>
+        <dd>
+          <span>{{ status.cronMaintenance | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.status.cronMonthlyStats">Cron Monthly Stats</span></dt>
+        <dd>
+          <span>{{ status.cronMonthlyStats | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.status.cronReceiveBitcoin">Cron Receive Bitcoin</span></dt>
+        <dd>
+          <span>{{ status.cronReceiveBitcoin | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.status.cronSendBitcoin">Cron Send Bitcoin</span></dt>
+        <dd>
+          <span>{{ status.cronSendBitcoin | formatMediumDatetime }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/status', status.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

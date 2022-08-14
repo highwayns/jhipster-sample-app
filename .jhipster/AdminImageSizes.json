@@ -1,0 +1,28 @@
+{
+  "applications": "*",
+  "changelogDate": "20220814090843",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "admin_image_sizes",
+  "fields": [
+    {
+      "fieldName": "fieldName",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "maxlength"],
+      "fieldValidateRulesMaxlength": "100"
+    },
+    {
+      "fieldName": "value",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "maxlength"],
+      "fieldValidateRulesMaxlength": "255"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "AdminImageSizes",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [],
+  "service": "serviceClass"
+}

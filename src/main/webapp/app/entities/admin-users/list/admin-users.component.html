@@ -1,0 +1,166 @@
+<div>
+  <h2 id="page-heading" data-cy="AdminUsersHeading">
+    <span jhiTranslate="jhipsterSampleApplicationApp.adminUsers.home.title">Admin Users</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="loadPage()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="jhipsterSampleApplicationApp.adminUsers.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-admin-users"
+        [routerLink]="['/admin-users/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="jhipsterSampleApplicationApp.adminUsers.home.createLabel"> Create a new Admin Users </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="adminUsers?.length === 0">
+    <span jhiTranslate="jhipsterSampleApplicationApp.adminUsers.home.notFound">No adminUsers found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="adminUsers && adminUsers.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="loadPage()">
+          <th scope="col" jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="user">
+            <span jhiTranslate="jhipsterSampleApplicationApp.adminUsers.user">User</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="pass">
+            <span jhiTranslate="jhipsterSampleApplicationApp.adminUsers.pass">Pass</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="firstName">
+            <span jhiTranslate="jhipsterSampleApplicationApp.adminUsers.firstName">First Name</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="lastName">
+            <span jhiTranslate="jhipsterSampleApplicationApp.adminUsers.lastName">Last Name</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="company">
+            <span jhiTranslate="jhipsterSampleApplicationApp.adminUsers.company">Company</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="address">
+            <span jhiTranslate="jhipsterSampleApplicationApp.adminUsers.address">Address</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="city">
+            <span jhiTranslate="jhipsterSampleApplicationApp.adminUsers.city">City</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="phone">
+            <span jhiTranslate="jhipsterSampleApplicationApp.adminUsers.phone">Phone</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="email">
+            <span jhiTranslate="jhipsterSampleApplicationApp.adminUsers.email">Email</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="website">
+            <span jhiTranslate="jhipsterSampleApplicationApp.adminUsers.website">Website</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="fId">
+            <span jhiTranslate="jhipsterSampleApplicationApp.adminUsers.fId">F Id</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="order">
+            <span jhiTranslate="jhipsterSampleApplicationApp.adminUsers.order">Order</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="isAdmin">
+            <span jhiTranslate="jhipsterSampleApplicationApp.adminUsers.isAdmin">Is Admin</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="countryCode">
+            <span jhiTranslate="jhipsterSampleApplicationApp.adminUsers.countryCode">Country Code</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="verifiedAuthy">
+            <span jhiTranslate="jhipsterSampleApplicationApp.adminUsers.verifiedAuthy">Verified Authy</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="authyId">
+            <span jhiTranslate="jhipsterSampleApplicationApp.adminUsers.authyId">Authy Id</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="countryId.id">
+            <span jhiTranslate="jhipsterSampleApplicationApp.adminUsers.countryId">Country Id</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let adminUsers of adminUsers; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/admin-users', adminUsers.id, 'view']">{{ adminUsers.id }}</a>
+          </td>
+          <td>{{ adminUsers.user }}</td>
+          <td>{{ adminUsers.pass }}</td>
+          <td>{{ adminUsers.firstName }}</td>
+          <td>{{ adminUsers.lastName }}</td>
+          <td>{{ adminUsers.company }}</td>
+          <td>{{ adminUsers.address }}</td>
+          <td>{{ adminUsers.city }}</td>
+          <td>{{ adminUsers.phone }}</td>
+          <td>{{ adminUsers.email }}</td>
+          <td>{{ adminUsers.website }}</td>
+          <td>{{ adminUsers.fId }}</td>
+          <td>{{ adminUsers.order }}</td>
+          <td jhiTranslate="{{ 'jhipsterSampleApplicationApp.YesNo.' + adminUsers.isAdmin }}">{{ adminUsers.isAdmin }}</td>
+          <td>{{ adminUsers.countryCode }}</td>
+          <td jhiTranslate="{{ 'jhipsterSampleApplicationApp.YesNo.' + adminUsers.verifiedAuthy }}">{{ adminUsers.verifiedAuthy }}</td>
+          <td>{{ adminUsers.authyId }}</td>
+          <td>
+            <div *ngIf="adminUsers.countryId">
+              <a [routerLink]="['/iso-countries', adminUsers.countryId?.id, 'view']">{{ adminUsers.countryId?.id }}</a>
+            </div>
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/admin-users', adminUsers.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/admin-users', adminUsers.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(adminUsers)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="adminUsers && adminUsers.length > 0">
+    <div class="d-flex justify-content-center">
+      <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+    </div>
+
+    <div class="d-flex justify-content-center">
+      <ngb-pagination
+        [collectionSize]="totalItems"
+        [(page)]="ngbPaginationPage"
+        [pageSize]="itemsPerPage"
+        [maxSize]="5"
+        [rotate]="true"
+        [boundaryLinks]="true"
+        (pageChange)="loadPage($event)"
+      ></ngb-pagination>
+    </div>
+  </div>
+</div>

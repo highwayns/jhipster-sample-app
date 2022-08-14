@@ -1,0 +1,112 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-current-stats-heading"
+        data-cy="CurrentStatsCreateUpdateHeading"
+        jhiTranslate="jhipsterSampleApplicationApp.currentStats.home.createOrEditLabel"
+      >
+        Create or edit a Current Stats
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.currentStats.totalBtc" for="field_totalBtc">Total Btc</label>
+          <input type="number" class="form-control" name="totalBtc" id="field_totalBtc" data-cy="totalBtc" formControlName="totalBtc" />
+          <div *ngIf="editForm.get('totalBtc')!.invalid && (editForm.get('totalBtc')!.dirty || editForm.get('totalBtc')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('totalBtc')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('totalBtc')?.errors?.number"
+              jhiTranslate="entity.validation.number"
+            >
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.currentStats.marketCap" for="field_marketCap"
+            >Market Cap</label
+          >
+          <input type="number" class="form-control" name="marketCap" id="field_marketCap" data-cy="marketCap" formControlName="marketCap" />
+          <div *ngIf="editForm.get('marketCap')!.invalid && (editForm.get('marketCap')!.dirty || editForm.get('marketCap')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('marketCap')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('marketCap')?.errors?.number"
+              jhiTranslate="entity.validation.number"
+            >
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.currentStats.tradeVolume" for="field_tradeVolume"
+            >Trade Volume</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="tradeVolume"
+            id="field_tradeVolume"
+            data-cy="tradeVolume"
+            formControlName="tradeVolume"
+          />
+          <div *ngIf="editForm.get('tradeVolume')!.invalid && (editForm.get('tradeVolume')!.dirty || editForm.get('tradeVolume')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('tradeVolume')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('tradeVolume')?.errors?.number"
+              jhiTranslate="entity.validation.number"
+            >
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

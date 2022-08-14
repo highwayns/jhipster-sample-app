@@ -1,0 +1,48 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="siteUsersAccess">
+      <h2 data-cy="siteUsersAccessDetailsHeading">
+        <span jhiTranslate="jhipsterSampleApplicationApp.siteUsersAccess.detail.title">Site Users Access</span>
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ siteUsersAccess.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.siteUsersAccess.start">Start</span></dt>
+        <dd>
+          <span>{{ siteUsersAccess.start }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.siteUsersAccess.last">Last</span></dt>
+        <dd>
+          <span>{{ siteUsersAccess.last }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.siteUsersAccess.attempts">Attempts</span></dt>
+        <dd>
+          <span>{{ siteUsersAccess.attempts }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.siteUsersAccess.siteUser">Site User</span></dt>
+        <dd>
+          <div *ngIf="siteUsersAccess.siteUser">
+            <a [routerLink]="['/site-users', siteUsersAccess.siteUser?.id, 'view']">{{ siteUsersAccess.siteUser?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/site-users-access', siteUsersAccess.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

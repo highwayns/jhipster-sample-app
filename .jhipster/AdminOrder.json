@@ -1,0 +1,40 @@
+{
+  "applications": "*",
+  "changelogDate": "20220814090844",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "admin_order",
+  "fields": [
+    {
+      "fieldName": "orderBy",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "maxlength"],
+      "fieldValidateRulesMaxlength": "50"
+    },
+    {
+      "fieldName": "orderAsc",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "AdminOrder",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "adminControls",
+      "otherEntityRelationshipName": "adminOrder",
+      "relationshipName": "controlId",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "adminUsers",
+      "otherEntityRelationshipName": "adminOrder",
+      "relationshipName": "userId",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceClass"
+}

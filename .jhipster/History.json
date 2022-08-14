@@ -1,0 +1,72 @@
+{
+  "applications": "*",
+  "changelogDate": "20220814090905",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "history",
+  "fields": [
+    {
+      "fieldName": "date",
+      "fieldType": "Instant",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "ip",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "maxlength"],
+      "fieldValidateRulesMaxlength": "255"
+    },
+    {
+      "fieldName": "bitcoinAddress",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "maxlength"],
+      "fieldValidateRulesMaxlength": "255"
+    },
+    {
+      "fieldName": "balanceBefore",
+      "fieldType": "Double",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "balanceAfter",
+      "fieldType": "Double",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "History",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "historyActions",
+      "otherEntityRelationshipName": "history",
+      "ownerSide": true,
+      "relationshipName": "historyAction",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "orders",
+      "otherEntityRelationshipName": "history",
+      "ownerSide": true,
+      "relationshipName": "orderId",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "requests",
+      "otherEntityRelationshipName": "history",
+      "ownerSide": true,
+      "relationshipName": "requestId",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "siteUsers",
+      "otherEntityRelationshipName": "history",
+      "ownerSide": true,
+      "relationshipName": "siteUser",
+      "relationshipType": "one-to-one"
+    }
+  ],
+  "service": "serviceClass"
+}

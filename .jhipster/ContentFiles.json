@@ -1,0 +1,51 @@
+{
+  "applications": "*",
+  "changelogDate": "20220814090856",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "content_files",
+  "fields": [
+    {
+      "fieldName": "fId",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "ext",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "maxlength"],
+      "fieldValidateRulesMaxlength": "4"
+    },
+    {
+      "fieldName": "dir",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "maxlength"],
+      "fieldValidateRulesMaxlength": "255"
+    },
+    {
+      "fieldName": "url",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "maxlength"],
+      "fieldValidateRulesMaxlength": "255"
+    },
+    {
+      "fieldName": "oldName",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "maxlength"],
+      "fieldValidateRulesMaxlength": "255"
+    },
+    {
+      "fieldName": "fieldName",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "maxlength"],
+      "fieldValidateRulesMaxlength": "50"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "ContentFiles",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [],
+  "service": "serviceClass"
+}

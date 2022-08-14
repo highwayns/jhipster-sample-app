@@ -1,0 +1,29 @@
+{
+  "jhipsterSampleApplicationApp": {
+    "contentFiles": {
+      "home": {
+        "title": "Content Files",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Content Files",
+        "createOrEditLabel": "Create or edit a Content Files",
+        "notFound": "No Content Files found"
+      },
+      "created": "A new Content Files is created with identifier {{ param }}",
+      "updated": "A Content Files is updated with identifier {{ param }}",
+      "deleted": "A Content Files is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Content Files {{ id }}?"
+      },
+      "detail": {
+        "title": "Content Files"
+      },
+      "id": "ID",
+      "fId": "F Id",
+      "ext": "Ext",
+      "dir": "Dir",
+      "url": "Url",
+      "oldName": "Old Name",
+      "fieldName": "Field Name"
+    }
+  }
+}

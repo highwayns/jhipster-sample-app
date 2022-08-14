@@ -1,0 +1,30 @@
+{
+  "jhipsterSampleApplicationApp": {
+    "lang": {
+      "home": {
+        "title": "Langs",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Lang",
+        "createOrEditLabel": "Create or edit a Lang",
+        "notFound": "No Langs found"
+      },
+      "created": "A new Lang is created with identifier {{ param }}",
+      "updated": "A Lang is updated with identifier {{ param }}",
+      "deleted": "A Lang is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Lang {{ id }}?"
+      },
+      "detail": {
+        "title": "Lang"
+      },
+      "id": "ID",
+      "key": "Key",
+      "esp": "Esp",
+      "eng": "Eng",
+      "order": "Order",
+      "pId": "P Id",
+      "zh": "Zh",
+      "ru": "Ru"
+    }
+  }
+}

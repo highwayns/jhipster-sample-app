@@ -1,0 +1,248 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-history-heading"
+        data-cy="HistoryCreateUpdateHeading"
+        jhiTranslate="jhipsterSampleApplicationApp.history.home.createOrEditLabel"
+      >
+        Create or edit a History
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.history.date" for="field_date">Date</label>
+          <div class="d-flex">
+            <input
+              id="field_date"
+              data-cy="date"
+              type="datetime-local"
+              class="form-control"
+              name="date"
+              formControlName="date"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+          <div *ngIf="editForm.get('date')!.invalid && (editForm.get('date')!.dirty || editForm.get('date')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('date')?.errors?.required" jhiTranslate="entity.validation.required">
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('date')?.errors?.ZonedDateTimelocal"
+              jhiTranslate="entity.validation.ZonedDateTimelocal"
+            >
+              This field should be a date and time.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.history.ip" for="field_ip">Ip</label>
+          <input type="text" class="form-control" name="ip" id="field_ip" data-cy="ip" formControlName="ip" />
+          <div *ngIf="editForm.get('ip')!.invalid && (editForm.get('ip')!.dirty || editForm.get('ip')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('ip')?.errors?.required" jhiTranslate="entity.validation.required">
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('ip')?.errors?.maxlength"
+              jhiTranslate="entity.validation.maxlength"
+              [translateValues]="{ max: 255 }"
+            >
+              This field cannot be longer than 255 characters.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.history.bitcoinAddress" for="field_bitcoinAddress"
+            >Bitcoin Address</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="bitcoinAddress"
+            id="field_bitcoinAddress"
+            data-cy="bitcoinAddress"
+            formControlName="bitcoinAddress"
+          />
+          <div
+            *ngIf="
+              editForm.get('bitcoinAddress')!.invalid && (editForm.get('bitcoinAddress')!.dirty || editForm.get('bitcoinAddress')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('bitcoinAddress')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('bitcoinAddress')?.errors?.maxlength"
+              jhiTranslate="entity.validation.maxlength"
+              [translateValues]="{ max: 255 }"
+            >
+              This field cannot be longer than 255 characters.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.history.balanceBefore" for="field_balanceBefore"
+            >Balance Before</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="balanceBefore"
+            id="field_balanceBefore"
+            data-cy="balanceBefore"
+            formControlName="balanceBefore"
+          />
+          <div
+            *ngIf="
+              editForm.get('balanceBefore')!.invalid && (editForm.get('balanceBefore')!.dirty || editForm.get('balanceBefore')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('balanceBefore')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('balanceBefore')?.errors?.number"
+              jhiTranslate="entity.validation.number"
+            >
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.history.balanceAfter" for="field_balanceAfter"
+            >Balance After</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="balanceAfter"
+            id="field_balanceAfter"
+            data-cy="balanceAfter"
+            formControlName="balanceAfter"
+          />
+          <div
+            *ngIf="editForm.get('balanceAfter')!.invalid && (editForm.get('balanceAfter')!.dirty || editForm.get('balanceAfter')!.touched)"
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('balanceAfter')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('balanceAfter')?.errors?.number"
+              jhiTranslate="entity.validation.number"
+            >
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.history.historyAction" for="field_historyAction"
+            >History Action</label
+          >
+          <select
+            class="form-control"
+            id="field_historyAction"
+            data-cy="historyAction"
+            name="historyAction"
+            formControlName="historyAction"
+          >
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                historyActionsOption.id === editForm.get('historyAction')!.value?.id
+                  ? editForm.get('historyAction')!.value
+                  : historyActionsOption
+              "
+              *ngFor="let historyActionsOption of historyActionsCollection; trackBy: trackHistoryActionsById"
+            >
+              {{ historyActionsOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.history.orderId" for="field_orderId">Order Id</label>
+          <select class="form-control" id="field_orderId" data-cy="orderId" name="orderId" formControlName="orderId">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="ordersOption.id === editForm.get('orderId')!.value?.id ? editForm.get('orderId')!.value : ordersOption"
+              *ngFor="let ordersOption of orderIdsCollection; trackBy: trackOrdersById"
+            >
+              {{ ordersOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.history.requestId" for="field_requestId">Request Id</label>
+          <select class="form-control" id="field_requestId" data-cy="requestId" name="requestId" formControlName="requestId">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="requestsOption.id === editForm.get('requestId')!.value?.id ? editForm.get('requestId')!.value : requestsOption"
+              *ngFor="let requestsOption of requestIdsCollection; trackBy: trackRequestsById"
+            >
+              {{ requestsOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.history.siteUser" for="field_siteUser">Site User</label>
+          <select class="form-control" id="field_siteUser" data-cy="siteUser" name="siteUser" formControlName="siteUser">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="siteUsersOption.id === editForm.get('siteUser')!.value?.id ? editForm.get('siteUser')!.value : siteUsersOption"
+              *ngFor="let siteUsersOption of siteUsersCollection; trackBy: trackSiteUsersById"
+            >
+              {{ siteUsersOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

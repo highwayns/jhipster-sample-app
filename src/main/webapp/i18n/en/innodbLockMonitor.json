@@ -1,0 +1,24 @@
+{
+  "jhipsterSampleApplicationApp": {
+    "innodbLockMonitor": {
+      "home": {
+        "title": "Innodb Lock Monitors",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Innodb Lock Monitor",
+        "createOrEditLabel": "Create or edit a Innodb Lock Monitor",
+        "notFound": "No Innodb Lock Monitors found"
+      },
+      "created": "A new Innodb Lock Monitor is created with identifier {{ param }}",
+      "updated": "A Innodb Lock Monitor is updated with identifier {{ param }}",
+      "deleted": "A Innodb Lock Monitor is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Innodb Lock Monitor {{ id }}?"
+      },
+      "detail": {
+        "title": "Innodb Lock Monitor"
+      },
+      "id": "ID",
+      "a": "A"
+    }
+  }
+}

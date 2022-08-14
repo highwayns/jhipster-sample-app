@@ -1,0 +1,27 @@
+{
+  "jhipsterSampleApplicationApp": {
+    "adminOrder": {
+      "home": {
+        "title": "Admin Orders",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Admin Order",
+        "createOrEditLabel": "Create or edit a Admin Order",
+        "notFound": "No Admin Orders found"
+      },
+      "created": "A new Admin Order is created with identifier {{ param }}",
+      "updated": "A Admin Order is updated with identifier {{ param }}",
+      "deleted": "A Admin Order is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Admin Order {{ id }}?"
+      },
+      "detail": {
+        "title": "Admin Order"
+      },
+      "id": "ID",
+      "orderBy": "Order By",
+      "orderAsc": "Order Asc",
+      "controlId": "Control Id",
+      "userId": "User Id"
+    }
+  }
+}

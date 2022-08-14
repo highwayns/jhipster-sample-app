@@ -1,0 +1,620 @@
+enum AccountTypes {	Personal, Company }
+
+enum YesNo { Y, N }
+
+enum Status { 
+	ACTIVE, FILLED, CANCELLED_USER, OUT_OF_FUNDS, REPLACED
+}
+
+entity AdminControls {
+	action String required maxlength(50),
+	controlClass String maxlength(50),
+	argument String required maxlength(255),
+	order Integer required,
+	isStatic YesNo required
+}
+
+entity AdminControlsMethods {
+	method String maxlength(100),
+	argument String required maxlength(255),
+	order Integer required,
+	pId Integer required
+}
+
+entity AdminCron {
+	day String required maxlength(30),
+	month String required maxlength(30),
+	year String required maxlength(30),
+	sendCondition String required maxlength(255)
+}
+
+entity AdminGroups {
+	name String required maxlength(50),
+	order Integer required
+}
+
+entity AdminGroupsPages {
+	permission Boolean required
+}
+
+entity AdminGroupsTabs {
+	permission Boolean required
+}
+
+entity AdminImageSizes {
+	fieldName String required maxlength(100),
+	value String required maxlength(255)
+}
+
+entity AdminOrder {
+	orderBy String required maxlength(50),
+	orderAsc Integer required
+}
+
+entity AdminPages {
+	fId Integer required,
+	name String required maxlength(255),
+	url String required maxlength(255),
+	icon String required maxlength(255),
+	order Integer required,
+	pageMapReorders Boolean required,
+	oneRecord YesNo required
+}
+
+entity AdminSessions {
+	sessionId String required maxlength(32),
+	sessionTime Instant required,
+	sessionStart Instant required,
+	sessionValue String required maxlength(255),
+	ipAddress String required maxlength(16),
+	userAgent String required maxlength(255)
+}
+
+entity AdminTabs {
+	name String required maxlength(255),
+	order Integer required,
+	icon String required maxlength(255),
+	url String required maxlength(255),
+	hidden YesNo required,
+	isCtrlPanel YesNo required,
+	forGroup Integer required,
+	oneRecord YesNo required
+}
+
+entity AdminUsers {
+	user String required maxlength(50),
+	pass String required maxlength(50),
+	firstName String required maxlength(50),
+	lastName String required maxlength(50),
+	company String required maxlength(255),
+	address String required maxlength(255),
+	city String required maxlength(50),
+	phone String required maxlength(50),
+	email String required maxlength(50),
+	website String required maxlength(255),
+	fId Integer required,
+	order Integer required,
+	isAdmin YesNo required,
+	countryCode Integer required,
+	verifiedAuthy YesNo required,
+	authyId String required maxlength(255)
+}
+
+entity ApiKeys {
+	key String required unique maxlength(255),
+	secret String required maxlength(255),
+	view YesNo required,
+	orders YesNo required,
+	withdraw YesNo required,
+	nonce Long required
+}
+
+entity AppConfiguration {
+	defaultTimezone String required maxlength(255),
+	ordersUnderMarketPercent String required maxlength(255),
+	ordersMinUsd String required maxlength(255),
+	bitcoinSendingFee String required maxlength(255),
+	frontendBaseurl String required maxlength(255),
+	frontendDirroot String required maxlength(255),
+	fiatWithdrawFee String required maxlength(255),
+	apiDbDebug YesNo required,
+	apiDirroot String required maxlength(255),
+	supportEmail String required maxlength(255),
+	emailSmtpHost String required maxlength(255),
+	emailSmtpPort String required maxlength(255),
+	emailSmtpSecurity String required maxlength(255),
+	emailSmtpUsername String required maxlength(255),
+	emailSmtpPassword String required maxlength(255),
+	emailSmtpSendFrom String required maxlength(255),
+	bitcoinUsername String required maxlength(255),
+	bitcoinAccountname String required maxlength(255),
+	bitcoinPassphrase String required maxlength(255),
+	bitcoinHost String required maxlength(255),
+	bitcoinPort String required maxlength(255),
+	bitcoinProtocol String required maxlength(255),
+	authyApiKey String required maxlength(255),
+	helpdeskKey String required maxlength(255),
+	exchangeName String required maxlength(255),
+	mcryptKey String required maxlength(255),
+	currencyConversionFee String required maxlength(255),
+	crossCurrencyTrades YesNo required,
+	btcCurrencyId String required maxlength(255),
+	depositBitcoinDesc String required maxlength(255),
+	defaultFeeScheduleId String required maxlength(255),
+	historyBuyId String required maxlength(255),
+	historyDepositId String required maxlength(255),
+	historyLoginId String required maxlength(255),
+	historySellId String required maxlength(255),
+	historyWithdrawId String required maxlength(255),
+	orderTypeAsk String required maxlength(255),
+	requestAwaitingId String required maxlength(255),
+	requestCancelledId String required maxlength(255),
+	requestCompletedId String required maxlength(255),
+	orderTypeBid String required maxlength(255),
+	requestDepositId String required maxlength(255),
+	requestPendingId String required maxlength(255),
+	requestWithdrawalId String required maxlength(255),
+	transactionsBuyId String required maxlength(255),
+	transactionsSellId String required maxlength(255),
+	withdrawFiatDesc String required maxlength(255),
+	withdrawBtcDesc String required maxlength(255),
+	formEmailFrom String required maxlength(255),
+	emailNotifyNewUsers YesNo required,
+	passRegex String required maxlength(255),
+	passMinChars String required maxlength(255),
+	authDbDebug YesNo required,
+	bitcoinReserveMin String required maxlength(255),
+	bitcoinReserveRatio String required maxlength(255),
+	bitcoinWarmWalletAddress String required maxlength(255),
+	cronDbDebug YesNo required,
+	quandlApiKey String required maxlength(255),
+	cronDirroot String required maxlength(255),
+	backstageDbDebug YesNo required,
+	backstageDirroot String required maxlength(255),
+	emailNotifyFiatWithdrawals YesNo required,
+	contactEmail String required maxlength(255),
+	cloudflareApiKey String required maxlength(255),
+	googleRecaptchApiKey String required maxlength(255),
+	cloudflareBlacklist YesNo required,
+	cloudflareEmail String required maxlength(255),
+	googleRecaptchApiSecret String required maxlength(255),
+	cloudflareBlacklistAttempts Integer required,
+	cloudflareBlacklistTimeframe Double required,
+	cryptoCapitalPk String required maxlength(255),
+	depositFiatDesc String required maxlength(255),
+	emailNotifyFiatFailed YesNo required,
+	tradingStatus String required maxlength(255),
+	withdrawalsStatus String required maxlength(255)
+}
+
+entity BankAccounts {
+	accountNumber Long required,
+	description String required maxlength(255)
+}
+
+entity BitcoinAddresses {
+	address String required maxlength(255),
+	date Instant required,
+	systemAddress YesNo required,
+	hotWallet YesNo required,
+	warmWallet YesNo required
+}
+
+entity BitcoindLog {
+	transactionId String required maxlength(255),
+	amount Double required,
+	date Instant required
+}
+
+entity ChangeSettings {
+	request Blob required,
+	date Instant required
+}
+
+entity Content {
+	url String required maxlength(255),
+	titleEn String required maxlength(255),
+	titleEs String required maxlength(255),
+	contentEn Blob required,
+	contentEs Blob required,
+	titleRu String required maxlength(255),
+	titleZh String required maxlength(255),
+	contentRu Blob required,
+	contentZh Blob required
+}
+
+entity ContentFiles {
+	fId Integer required,
+	ext String required maxlength(4),
+	dir String required maxlength(255),
+	url String required maxlength(255),
+	oldName String required maxlength(255),
+	fieldName String required maxlength(50)
+}
+
+entity Conversions {
+	amount Double required,
+	date Instant required,
+	isActive YesNo required,
+	totalWithdrawals Double required,
+	profitToFactor Double required,
+	factored YesNo required,
+	date1 Instant required
+}
+
+entity Currencies {
+	currency String required maxlength(3),
+	faSymbol String required maxlength(255),
+	accountNumber Long required,
+	accountName String required maxlength(255),
+	isActive YesNo required,
+	usdBid String required maxlength(255),
+	usdAsk String required maxlength(255),
+	nameEn String required maxlength(255),
+	nameEs String required maxlength(255),
+	nameRu String required maxlength(255),
+	nameZh String required maxlength(255)
+}
+
+entity CurrentStats {
+	totalBtc Long required,
+	marketCap Long required,
+	tradeVolume Long required
+}
+
+entity DailyReports {
+	date Instant required,
+	totalBtc Double required,
+	totalFiatUsd Double required,
+	openOrdersBtc Double required,
+	btcPerUser Double required,
+	transactionsBtc Double required,
+	avgTransactionSizeBtc Double required,
+	transactionVolumePerUser Double required,
+	totalFeesBtc Double required,
+	feesPerUserBtc Double required,
+	usdPerUser Double required,
+	grossProfitBtc Double required
+}
+
+entity Emails {
+	key String required maxlength(255),
+	titleEn String required maxlength(255),
+	titleEs String required maxlength(255),
+	contentEn Blob required,
+	contentEs Blob required,
+	titleRu String required maxlength(255),
+	titleZh String required maxlength(255),
+	contentRu Blob required,
+	contentZh Blob required
+}
+
+entity FeeSchedule {
+	fee Double required,
+	fromUsd Double required,
+	toUsd Double required,
+	order Integer required,
+	fee1 Double required,
+	globalBtc Double required
+}
+
+entity Fees {
+	fee Double required,
+	date Instant required
+}
+
+entity HistoricalData {
+	id Long required,
+	date LocalDate required,
+	usd BigDecimal required
+}
+
+entity History {
+	date Instant required,
+	ip String required maxlength(255),
+	bitcoinAddress String required maxlength(255),
+	balanceBefore Double required,
+	balanceAfter Double required
+}
+
+entity HistoryActions {
+	nameEn String required maxlength(255),
+	nameEs String required maxlength(255),
+	nameRu String required maxlength(255),
+	nameZh String required maxlength(255)
+}
+
+entity InnodbLockMonitor {
+	a Integer
+}
+
+entity IpAccessLog {
+	ip Long required,
+	timestamp Instant required,
+	login YesNo required
+}
+
+entity IsoCountries {
+	locale String required maxlength(10),
+	code String required maxlength(2),
+	name String maxlength(200),
+	prefix String maxlength(50)
+}
+
+entity Lang {
+	key String required maxlength(255),
+	esp String required maxlength(255),
+	eng String required maxlength(255),
+	order String required maxlength(255),
+	pId Integer required,
+	zh String required maxlength(255),
+	ru String required maxlength(255)
+}
+
+entity MonthlyReports {
+	date Instant required,
+	transactionsBtc Double required,
+	avgTransactionSizeBtc Double required,
+	transactionVolumePerUser Double required,
+	totalFeesBtc Double required,
+	feesPerUserBtc Double required,
+	grossProfitBtc Double required
+}
+
+entity News {
+	titleEn String required maxlength(255),
+	titleEs String required maxlength(255),
+	date Instant required,
+	contentEn Blob required,
+	contentEs Blob required,
+	titleRu String required maxlength(255),
+	titleZh String required maxlength(255),
+	contentRu Blob required,
+	contentZh Blob required
+}
+
+entity OrderLog {
+	date Instant required,
+	btc Double required,
+	marketPrice YesNo required,
+	btcPrice Double required,
+	fiat Double required,
+	pId Integer required,
+	stopPrice String required maxlength(255),
+	status Status required,
+	btcRemaining Double required
+}
+
+entity OrderTypes {
+	nameEn String required maxlength(255),
+	nameEs String required maxlength(255),
+	nameRu String required maxlength(255),
+	nameZh String required maxlength(255)
+}
+
+entity Orders {
+	date Instant required,
+	btc Double required,
+	fiat Double required,
+	btcPrice Double required,
+	marketPrice YesNo required,
+	stopPrice Double required
+}
+
+entity RequestDescriptions {
+	nameEn String required maxlength(255),
+	nameEs String required maxlength(255),
+	nameRu String required maxlength(255),
+	nameZh String required maxlength(255)
+}
+
+entity RequestStatus { 
+	nameEn String required maxlength(255),
+	nameEs String required maxlength(255),
+	nameRu String required maxlength(255),
+	nameZh String required maxlength(255)
+}
+
+entity RequestTypes { 
+	nameEn String required maxlength(255),
+	nameEs String required maxlength(255),
+	nameRu String required maxlength(255),
+	nameZh String required maxlength(255)
+}
+
+entity Requests {
+	date Instant required,
+	amount Double required,
+	addressId Integer required,
+	account Long required,
+	sendAddress String required maxlength(255),
+	transactionId String required maxlength(255),
+	increment Double required,
+	done YesNo required,
+	cryptoId Integer required,
+	fee Double required,
+	netAmount Double required,
+	notified Integer required
+}
+
+entity SettingsFiles {
+	fId Integer required,
+	ext String required maxlength(4),
+	dir String required maxlength(255),
+	url String required maxlength(255),
+	oldName String required maxlength(255),
+	fieldName String required maxlength(50)
+}
+
+entity SiteUsers {
+	pass String required maxlength(200),
+	firstName String required maxlength(200),
+	lastName String required maxlength(200),
+	email String required maxlength(255),
+	date Instant required,
+	tel String required maxlength(255),
+	user String required maxlength(255),
+	countryCode Integer required,
+	authyRequested YesNo required,
+	verifiedAuthy YesNo required,
+	authyId Integer required,
+	usingSms YesNo required,
+	dontAsk30Days YesNo required,
+	dontAskDate Instant required,
+	confirmWithdrawalEmailBtc YesNo required,
+	confirmWithdrawal2faBtc YesNo required,
+	confirmWithdrawal2faBank YesNo required,
+	confirmWithdrawalEmailBank YesNo required,
+	notifyDepositBtc YesNo required,
+	notifyDepositBank YesNo required,
+	lastUpdate Instant required,
+	noLogins YesNo required,
+	notifyLogin YesNo required,
+	deactivated YesNo required,
+	locked YesNo required,
+	google2faCode String required maxlength(255),
+	verifiedGoogle YesNo required,
+	lastLang String required maxlength(255),
+	notifyWithdrawBtc YesNo required,
+	notifyWithdrawBank YesNo required,
+	trusted YesNo required
+}
+
+entity SiteUsersAccess {
+	start Long required,
+	last Long required,
+	attempts Integer required
+}
+
+entity SiteUsersBalances {
+	balance Double required
+}
+
+entity SiteUsersCatch {
+	attempts Integer required
+}
+
+entity Status {
+	lastSweep Instant required,
+	deficitBtc Double required,
+	hotWalletBtc Double required,
+	warmWalletBtc Double required,
+	totalBtc Double required,
+	receivedBtcPending Double required,
+	pendingWithdrawals Double required,
+	tradingStatus String required maxlength(255),
+	withdrawalsStatus String required maxlength(255),
+	dbVersion Double required,
+	cronDailyStats Instant required,
+	cronGetStats Instant required,
+	cronMaintenance Instant required,
+	cronMonthlyStats Instant required,
+	cronReceiveBitcoin Instant required,
+	cronSendBitcoin Instant required
+}
+
+entity StatusEscrows {
+	balance Double required
+}
+
+entity TransactionTypes {
+	nameEn String required maxlength(255),
+	nameEs String required maxlength(255),
+	nameRu String required maxlength(255),
+	nameZh String required maxlength(255)
+}
+
+entity Transactions {
+	date Instant required,
+	btc Double required,
+	btcPrice Double required,
+	fiat Double required,
+	fee Double required,
+	fee1 Double required,
+	btcNet Double required,
+	btcNet1 Double required,
+	btcBefore1 Double required,
+	btcAfter1 Double required,
+	fiatBefore1 Double required,
+	fiatAfter1 Double required,
+	btcBefore Double required,
+	btcAfter Double required,
+	fiatBefore Double required,
+	fiatAfter Double required,
+	feeLevel Double required,
+	feeLevel1 Double required,
+	origBtcPrice Double required,
+	conversionFee Double required,
+	convertAmount Double required,
+	convertRateGiven Double required,
+	convertSystemRate Double required,
+	conversion YesNo required,
+	bidAtTransaction Double required,
+	askAtTransaction Double required,
+	factored YesNo required
+}
+
+// Relations
+relationship OneToOne {
+    AdminControls{pageId} to AdminPages,
+	AdminControls{tabId} to AdminTabs,
+    AdminUsers {countryId} to IsoCountries,
+  	AdminGroupsPages{pageId} to AdminPages,
+    AdminGroupsTabs{tabId} to AdminTabs,
+    ApiKeys{siteUser} to SiteUsers,
+    ApiKeys{siteUser} to SiteUsers,
+    BankAccounts{siteUser} to SiteUsers,
+    BankAccounts{currency} to Currencies,
+    BitcoinAddresses{siteUser} to SiteUsers,
+    BitcoindLog{siteUser} to SiteUsers,
+    ChangeSettings{siteUser} to SiteUsers,
+    Conversions{currency} to Currencies,
+    History{historyAction} to HistoryActions,
+    History{orderId} to Orders,
+    History{requestId} to Requests,
+    History{siteUser} to SiteUsers,
+    OrderLog{siteUser} to SiteUsers,
+    OrderLog{currency} to Currencies,
+    OrderLog{orderType} to OrderTypes,
+    Orders{orderType} to OrderTypes,
+    Orders{siteUser} to SiteUsers,
+    Orders{currency} to Currencies,
+   	Orders{logId} to OrderLog,
+    Requests{siteUser} to SiteUsers,
+    Requests{currency} to Currencies,
+    Requests{description} to RequestDescriptions,
+    Requests{requestStatus} to RequestStatus,
+    Requests{requestType} to RequestTypes,
+    SiteUsers{country} to IsoCountries,
+    SiteUsers{feeSchedule} to FeeSchedule,
+    SiteUsers{defaultCurrency} to Currencies,
+    SiteUsersAccess{siteUser} to SiteUsers,
+	SiteUsersBalances{siteUser} to SiteUsers,
+    SiteUsersBalances{currency} to Currencies,
+    SiteUsersCatch{siteUser} to SiteUsers,
+    StatusEscrows{currency} to Currencies,
+    StatusEscrows{statusId} to Status,
+    Transactions{siteUser} to SiteUsers,
+    Transactions{siteUser1} to SiteUsers,
+    Transactions{transactionType} to TransactionTypes,
+    Transactions{transactionType1} to TransactionTypes,
+    Transactions{currency1} to Currencies,
+	Transactions{convertFromCurrency} to Currencies,
+    Transactions{convertToCurrency} to Currencies
+}
+
+relationship OneToMany {
+	AdminControls to AdminControlsMethods{controlId} ,
+    AdminControls to AdminCron{controlId},
+    AdminControlsMethods to AdminCron{methodId},
+    AdminGroups to AdminGroupsPages{groupId},
+    AdminGroups to AdminGroupsTabs{groupId},
+    AdminControls to AdminOrder{controlId},
+    AdminUsers to AdminOrder{userId}
+}
+
+// Options
+service * with serviceClass
+paginate * with pagination
+dto * with mapstruct
+

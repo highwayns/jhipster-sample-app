@@ -1,0 +1,50 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="bankAccounts">
+      <h2 data-cy="bankAccountsDetailsHeading">
+        <span jhiTranslate="jhipsterSampleApplicationApp.bankAccounts.detail.title">Bank Accounts</span>
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ bankAccounts.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.bankAccounts.accountNumber">Account Number</span></dt>
+        <dd>
+          <span>{{ bankAccounts.accountNumber }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.bankAccounts.description">Description</span></dt>
+        <dd>
+          <span>{{ bankAccounts.description }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.bankAccounts.siteUser">Site User</span></dt>
+        <dd>
+          <div *ngIf="bankAccounts.siteUser">
+            <a [routerLink]="['/site-users', bankAccounts.siteUser?.id, 'view']">{{ bankAccounts.siteUser?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.bankAccounts.currency">Currency</span></dt>
+        <dd>
+          <div *ngIf="bankAccounts.currency">
+            <a [routerLink]="['/currencies', bankAccounts.currency?.id, 'view']">{{ bankAccounts.currency?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/bank-accounts', bankAccounts.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,31 @@
+{
+  "applications": "*",
+  "changelogDate": "20220814090859",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "current_stats",
+  "fields": [
+    {
+      "fieldName": "totalBtc",
+      "fieldType": "Long",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "marketCap",
+      "fieldType": "Long",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "tradeVolume",
+      "fieldType": "Long",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "CurrentStats",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [],
+  "service": "serviceClass"
+}

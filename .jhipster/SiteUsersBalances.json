@@ -1,0 +1,36 @@
+{
+  "applications": "*",
+  "changelogDate": "20220814090923",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "site_users_balances",
+  "fields": [
+    {
+      "fieldName": "balance",
+      "fieldType": "Double",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "SiteUsersBalances",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "siteUsers",
+      "otherEntityRelationshipName": "siteUsersBalances",
+      "ownerSide": true,
+      "relationshipName": "siteUser",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "currencies",
+      "otherEntityRelationshipName": "siteUsersBalances",
+      "ownerSide": true,
+      "relationshipName": "currency",
+      "relationshipType": "one-to-one"
+    }
+  ],
+  "service": "serviceClass"
+}

@@ -1,0 +1,118 @@
+<div>
+  <h2 id="page-heading" data-cy="FeeScheduleHeading">
+    <span jhiTranslate="jhipsterSampleApplicationApp.feeSchedule.home.title">Fee Schedules</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="loadPage()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="jhipsterSampleApplicationApp.feeSchedule.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-fee-schedule"
+        [routerLink]="['/fee-schedule/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="jhipsterSampleApplicationApp.feeSchedule.home.createLabel"> Create a new Fee Schedule </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="feeSchedules?.length === 0">
+    <span jhiTranslate="jhipsterSampleApplicationApp.feeSchedule.home.notFound">No feeSchedules found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="feeSchedules && feeSchedules.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="loadPage()">
+          <th scope="col" jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="fee">
+            <span jhiTranslate="jhipsterSampleApplicationApp.feeSchedule.fee">Fee</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="fromUsd">
+            <span jhiTranslate="jhipsterSampleApplicationApp.feeSchedule.fromUsd">From Usd</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="toUsd">
+            <span jhiTranslate="jhipsterSampleApplicationApp.feeSchedule.toUsd">To Usd</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="order">
+            <span jhiTranslate="jhipsterSampleApplicationApp.feeSchedule.order">Order</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="fee1">
+            <span jhiTranslate="jhipsterSampleApplicationApp.feeSchedule.fee1">Fee 1</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="globalBtc">
+            <span jhiTranslate="jhipsterSampleApplicationApp.feeSchedule.globalBtc">Global Btc</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let feeSchedule of feeSchedules; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/fee-schedule', feeSchedule.id, 'view']">{{ feeSchedule.id }}</a>
+          </td>
+          <td>{{ feeSchedule.fee }}</td>
+          <td>{{ feeSchedule.fromUsd }}</td>
+          <td>{{ feeSchedule.toUsd }}</td>
+          <td>{{ feeSchedule.order }}</td>
+          <td>{{ feeSchedule.fee1 }}</td>
+          <td>{{ feeSchedule.globalBtc }}</td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/fee-schedule', feeSchedule.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/fee-schedule', feeSchedule.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(feeSchedule)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="feeSchedules && feeSchedules.length > 0">
+    <div class="d-flex justify-content-center">
+      <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+    </div>
+
+    <div class="d-flex justify-content-center">
+      <ngb-pagination
+        [collectionSize]="totalItems"
+        [(page)]="ngbPaginationPage"
+        [pageSize]="itemsPerPage"
+        [maxSize]="5"
+        [rotate]="true"
+        [boundaryLinks]="true"
+        (pageChange)="loadPage($event)"
+      ></ngb-pagination>
+    </div>
+  </div>
+</div>

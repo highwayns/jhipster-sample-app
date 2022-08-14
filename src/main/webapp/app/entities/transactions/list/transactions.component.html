@@ -1,0 +1,271 @@
+<div>
+  <h2 id="page-heading" data-cy="TransactionsHeading">
+    <span jhiTranslate="jhipsterSampleApplicationApp.transactions.home.title">Transactions</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="loadPage()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="jhipsterSampleApplicationApp.transactions.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-transactions"
+        [routerLink]="['/transactions/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="jhipsterSampleApplicationApp.transactions.home.createLabel"> Create a new Transactions </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="transactions?.length === 0">
+    <span jhiTranslate="jhipsterSampleApplicationApp.transactions.home.notFound">No transactions found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="transactions && transactions.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="loadPage()">
+          <th scope="col" jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="date">
+            <span jhiTranslate="jhipsterSampleApplicationApp.transactions.date">Date</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="btc">
+            <span jhiTranslate="jhipsterSampleApplicationApp.transactions.btc">Btc</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="btcPrice">
+            <span jhiTranslate="jhipsterSampleApplicationApp.transactions.btcPrice">Btc Price</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="fiat">
+            <span jhiTranslate="jhipsterSampleApplicationApp.transactions.fiat">Fiat</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="fee">
+            <span jhiTranslate="jhipsterSampleApplicationApp.transactions.fee">Fee</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="fee1">
+            <span jhiTranslate="jhipsterSampleApplicationApp.transactions.fee1">Fee 1</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="btcNet">
+            <span jhiTranslate="jhipsterSampleApplicationApp.transactions.btcNet">Btc Net</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="btcNet1">
+            <span jhiTranslate="jhipsterSampleApplicationApp.transactions.btcNet1">Btc Net 1</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="btcBefore1">
+            <span jhiTranslate="jhipsterSampleApplicationApp.transactions.btcBefore1">Btc Before 1</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="btcAfter1">
+            <span jhiTranslate="jhipsterSampleApplicationApp.transactions.btcAfter1">Btc After 1</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="fiatBefore1">
+            <span jhiTranslate="jhipsterSampleApplicationApp.transactions.fiatBefore1">Fiat Before 1</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="fiatAfter1">
+            <span jhiTranslate="jhipsterSampleApplicationApp.transactions.fiatAfter1">Fiat After 1</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="btcBefore">
+            <span jhiTranslate="jhipsterSampleApplicationApp.transactions.btcBefore">Btc Before</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="btcAfter">
+            <span jhiTranslate="jhipsterSampleApplicationApp.transactions.btcAfter">Btc After</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="fiatBefore">
+            <span jhiTranslate="jhipsterSampleApplicationApp.transactions.fiatBefore">Fiat Before</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="fiatAfter">
+            <span jhiTranslate="jhipsterSampleApplicationApp.transactions.fiatAfter">Fiat After</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="feeLevel">
+            <span jhiTranslate="jhipsterSampleApplicationApp.transactions.feeLevel">Fee Level</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="feeLevel1">
+            <span jhiTranslate="jhipsterSampleApplicationApp.transactions.feeLevel1">Fee Level 1</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="origBtcPrice">
+            <span jhiTranslate="jhipsterSampleApplicationApp.transactions.origBtcPrice">Orig Btc Price</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="conversionFee">
+            <span jhiTranslate="jhipsterSampleApplicationApp.transactions.conversionFee">Conversion Fee</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="convertAmount">
+            <span jhiTranslate="jhipsterSampleApplicationApp.transactions.convertAmount">Convert Amount</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="convertRateGiven">
+            <span jhiTranslate="jhipsterSampleApplicationApp.transactions.convertRateGiven">Convert Rate Given</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="convertSystemRate">
+            <span jhiTranslate="jhipsterSampleApplicationApp.transactions.convertSystemRate">Convert System Rate</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="conversion">
+            <span jhiTranslate="jhipsterSampleApplicationApp.transactions.conversion">Conversion</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="bidAtTransaction">
+            <span jhiTranslate="jhipsterSampleApplicationApp.transactions.bidAtTransaction">Bid At Transaction</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="askAtTransaction">
+            <span jhiTranslate="jhipsterSampleApplicationApp.transactions.askAtTransaction">Ask At Transaction</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="factored">
+            <span jhiTranslate="jhipsterSampleApplicationApp.transactions.factored">Factored</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="siteUser.id">
+            <span jhiTranslate="jhipsterSampleApplicationApp.transactions.siteUser">Site User</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="siteUser1.id">
+            <span jhiTranslate="jhipsterSampleApplicationApp.transactions.siteUser1">Site User 1</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="transactionType.id">
+            <span jhiTranslate="jhipsterSampleApplicationApp.transactions.transactionType">Transaction Type</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="transactionType1.id">
+            <span jhiTranslate="jhipsterSampleApplicationApp.transactions.transactionType1">Transaction Type 1</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="currency1.id">
+            <span jhiTranslate="jhipsterSampleApplicationApp.transactions.currency1">Currency 1</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="convertFromCurrency.id">
+            <span jhiTranslate="jhipsterSampleApplicationApp.transactions.convertFromCurrency">Convert From Currency</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="convertToCurrency.id">
+            <span jhiTranslate="jhipsterSampleApplicationApp.transactions.convertToCurrency">Convert To Currency</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let transactions of transactions; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/transactions', transactions.id, 'view']">{{ transactions.id }}</a>
+          </td>
+          <td>{{ transactions.date | formatMediumDatetime }}</td>
+          <td>{{ transactions.btc }}</td>
+          <td>{{ transactions.btcPrice }}</td>
+          <td>{{ transactions.fiat }}</td>
+          <td>{{ transactions.fee }}</td>
+          <td>{{ transactions.fee1 }}</td>
+          <td>{{ transactions.btcNet }}</td>
+          <td>{{ transactions.btcNet1 }}</td>
+          <td>{{ transactions.btcBefore1 }}</td>
+          <td>{{ transactions.btcAfter1 }}</td>
+          <td>{{ transactions.fiatBefore1 }}</td>
+          <td>{{ transactions.fiatAfter1 }}</td>
+          <td>{{ transactions.btcBefore }}</td>
+          <td>{{ transactions.btcAfter }}</td>
+          <td>{{ transactions.fiatBefore }}</td>
+          <td>{{ transactions.fiatAfter }}</td>
+          <td>{{ transactions.feeLevel }}</td>
+          <td>{{ transactions.feeLevel1 }}</td>
+          <td>{{ transactions.origBtcPrice }}</td>
+          <td>{{ transactions.conversionFee }}</td>
+          <td>{{ transactions.convertAmount }}</td>
+          <td>{{ transactions.convertRateGiven }}</td>
+          <td>{{ transactions.convertSystemRate }}</td>
+          <td jhiTranslate="{{ 'jhipsterSampleApplicationApp.YesNo.' + transactions.conversion }}">{{ transactions.conversion }}</td>
+          <td>{{ transactions.bidAtTransaction }}</td>
+          <td>{{ transactions.askAtTransaction }}</td>
+          <td jhiTranslate="{{ 'jhipsterSampleApplicationApp.YesNo.' + transactions.factored }}">{{ transactions.factored }}</td>
+          <td>
+            <div *ngIf="transactions.siteUser">
+              <a [routerLink]="['/site-users', transactions.siteUser?.id, 'view']">{{ transactions.siteUser?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="transactions.siteUser1">
+              <a [routerLink]="['/site-users', transactions.siteUser1?.id, 'view']">{{ transactions.siteUser1?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="transactions.transactionType">
+              <a [routerLink]="['/transaction-types', transactions.transactionType?.id, 'view']">{{ transactions.transactionType?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="transactions.transactionType1">
+              <a [routerLink]="['/transaction-types', transactions.transactionType1?.id, 'view']">{{
+                transactions.transactionType1?.id
+              }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="transactions.currency1">
+              <a [routerLink]="['/currencies', transactions.currency1?.id, 'view']">{{ transactions.currency1?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="transactions.convertFromCurrency">
+              <a [routerLink]="['/currencies', transactions.convertFromCurrency?.id, 'view']">{{ transactions.convertFromCurrency?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="transactions.convertToCurrency">
+              <a [routerLink]="['/currencies', transactions.convertToCurrency?.id, 'view']">{{ transactions.convertToCurrency?.id }}</a>
+            </div>
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/transactions', transactions.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/transactions', transactions.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(transactions)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="transactions && transactions.length > 0">
+    <div class="d-flex justify-content-center">
+      <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+    </div>
+
+    <div class="d-flex justify-content-center">
+      <ngb-pagination
+        [collectionSize]="totalItems"
+        [(page)]="ngbPaginationPage"
+        [pageSize]="itemsPerPage"
+        [maxSize]="5"
+        [rotate]="true"
+        [boundaryLinks]="true"
+        (pageChange)="loadPage($event)"
+      ></ngb-pagination>
+    </div>
+  </div>
+</div>

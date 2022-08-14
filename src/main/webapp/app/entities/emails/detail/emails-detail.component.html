@@ -1,0 +1,76 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="emails">
+      <h2 data-cy="emailsDetailsHeading"><span jhiTranslate="jhipsterSampleApplicationApp.emails.detail.title">Emails</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ emails.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.emails.key">Key</span></dt>
+        <dd>
+          <span>{{ emails.key }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.emails.titleEn">Title En</span></dt>
+        <dd>
+          <span>{{ emails.titleEn }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.emails.titleEs">Title Es</span></dt>
+        <dd>
+          <span>{{ emails.titleEs }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.emails.contentEn">Content En</span></dt>
+        <dd>
+          <div *ngIf="emails.contentEn">
+            <a (click)="openFile(emails.contentEn, emails.contentEnContentType)" jhiTranslate="entity.action.open">open</a>
+            {{ emails.contentEnContentType }}, {{ byteSize(emails.contentEn) }}
+          </div>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.emails.contentEs">Content Es</span></dt>
+        <dd>
+          <div *ngIf="emails.contentEs">
+            <a (click)="openFile(emails.contentEs, emails.contentEsContentType)" jhiTranslate="entity.action.open">open</a>
+            {{ emails.contentEsContentType }}, {{ byteSize(emails.contentEs) }}
+          </div>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.emails.titleRu">Title Ru</span></dt>
+        <dd>
+          <span>{{ emails.titleRu }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.emails.titleZh">Title Zh</span></dt>
+        <dd>
+          <span>{{ emails.titleZh }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.emails.contentRu">Content Ru</span></dt>
+        <dd>
+          <div *ngIf="emails.contentRu">
+            <a (click)="openFile(emails.contentRu, emails.contentRuContentType)" jhiTranslate="entity.action.open">open</a>
+            {{ emails.contentRuContentType }}, {{ byteSize(emails.contentRu) }}
+          </div>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.emails.contentZh">Content Zh</span></dt>
+        <dd>
+          <div *ngIf="emails.contentZh">
+            <a (click)="openFile(emails.contentZh, emails.contentZhContentType)" jhiTranslate="entity.action.open">open</a>
+            {{ emails.contentZhContentType }}, {{ byteSize(emails.contentZh) }}
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/emails', emails.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

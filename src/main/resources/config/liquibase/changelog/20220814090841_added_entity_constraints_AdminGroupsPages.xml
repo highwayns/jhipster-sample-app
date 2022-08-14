@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd">
+    <!--
+        Added the constraints for entity AdminGroupsPages.
+    -->
+    <changeSet id="20220814090841-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="page_id_id"
+                                 baseTableName="admin_groups_pages"
+                                 constraintName="fk_admin_groups_pages__page_id_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="admin_pages"/>
+
+        <addForeignKeyConstraint baseColumnNames="group_id_id"
+                                 baseTableName="admin_groups_pages"
+                                 constraintName="fk_admin_groups_pages__group_id_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="admin_groups"/>
+    </changeSet>
+</databaseChangeLog>

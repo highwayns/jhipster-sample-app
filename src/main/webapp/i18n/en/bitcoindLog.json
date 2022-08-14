@@ -1,0 +1,27 @@
+{
+  "jhipsterSampleApplicationApp": {
+    "bitcoindLog": {
+      "home": {
+        "title": "Bitcoind Logs",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Bitcoind Log",
+        "createOrEditLabel": "Create or edit a Bitcoind Log",
+        "notFound": "No Bitcoind Logs found"
+      },
+      "created": "A new Bitcoind Log is created with identifier {{ param }}",
+      "updated": "A Bitcoind Log is updated with identifier {{ param }}",
+      "deleted": "A Bitcoind Log is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Bitcoind Log {{ id }}?"
+      },
+      "detail": {
+        "title": "Bitcoind Log"
+      },
+      "id": "ID",
+      "transactionId": "Transaction Id",
+      "amount": "Amount",
+      "date": "Date",
+      "siteUser": "Site User"
+    }
+  }
+}

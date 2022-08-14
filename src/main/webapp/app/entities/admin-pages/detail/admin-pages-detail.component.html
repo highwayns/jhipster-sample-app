@@ -1,0 +1,58 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="adminPages">
+      <h2 data-cy="adminPagesDetailsHeading">
+        <span jhiTranslate="jhipsterSampleApplicationApp.adminPages.detail.title">Admin Pages</span>
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ adminPages.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.adminPages.fId">F Id</span></dt>
+        <dd>
+          <span>{{ adminPages.fId }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.adminPages.name">Name</span></dt>
+        <dd>
+          <span>{{ adminPages.name }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.adminPages.url">Url</span></dt>
+        <dd>
+          <span>{{ adminPages.url }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.adminPages.icon">Icon</span></dt>
+        <dd>
+          <span>{{ adminPages.icon }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.adminPages.order">Order</span></dt>
+        <dd>
+          <span>{{ adminPages.order }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.adminPages.pageMapReorders">Page Map Reorders</span></dt>
+        <dd>
+          <span>{{ adminPages.pageMapReorders }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.adminPages.oneRecord">One Record</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'jhipsterSampleApplicationApp.YesNo.' + adminPages.oneRecord }}">{{ adminPages.oneRecord }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/admin-pages', adminPages.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

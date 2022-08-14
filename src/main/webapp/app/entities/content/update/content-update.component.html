@@ -1,0 +1,336 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-content-heading"
+        data-cy="ContentCreateUpdateHeading"
+        jhiTranslate="jhipsterSampleApplicationApp.content.home.createOrEditLabel"
+      >
+        Create or edit a Content
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.content.url" for="field_url">Url</label>
+          <input type="text" class="form-control" name="url" id="field_url" data-cy="url" formControlName="url" />
+          <div *ngIf="editForm.get('url')!.invalid && (editForm.get('url')!.dirty || editForm.get('url')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('url')?.errors?.required" jhiTranslate="entity.validation.required">
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('url')?.errors?.maxlength"
+              jhiTranslate="entity.validation.maxlength"
+              [translateValues]="{ max: 255 }"
+            >
+              This field cannot be longer than 255 characters.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.content.titleEn" for="field_titleEn">Title En</label>
+          <input type="text" class="form-control" name="titleEn" id="field_titleEn" data-cy="titleEn" formControlName="titleEn" />
+          <div *ngIf="editForm.get('titleEn')!.invalid && (editForm.get('titleEn')!.dirty || editForm.get('titleEn')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('titleEn')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('titleEn')?.errors?.maxlength"
+              jhiTranslate="entity.validation.maxlength"
+              [translateValues]="{ max: 255 }"
+            >
+              This field cannot be longer than 255 characters.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.content.titleEs" for="field_titleEs">Title Es</label>
+          <input type="text" class="form-control" name="titleEs" id="field_titleEs" data-cy="titleEs" formControlName="titleEs" />
+          <div *ngIf="editForm.get('titleEs')!.invalid && (editForm.get('titleEs')!.dirty || editForm.get('titleEs')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('titleEs')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('titleEs')?.errors?.maxlength"
+              jhiTranslate="entity.validation.maxlength"
+              [translateValues]="{ max: 255 }"
+            >
+              This field cannot be longer than 255 characters.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.content.contentEn" for="field_contentEn">Content En</label>
+          <div>
+            <div *ngIf="editForm.get('contentEn')!.value" class="form-text text-danger clearfix">
+              <a
+                class="pull-start"
+                (click)="openFile(editForm.get('contentEn')!.value, editForm.get('contentEnContentType')!.value)"
+                jhiTranslate="entity.action.open"
+                >open</a
+              ><br />
+              <span class="pull-start"
+                >{{ editForm.get('contentEnContentType')!.value }}, {{ byteSize(editForm.get('contentEn')!.value) }}</span
+              >
+              <button
+                type="button"
+                (click)="editForm.patchValue({ contentEn: null }); editForm.patchValue({ contentEnContentType: null })"
+                class="btn btn-secondary btn-xs pull-end"
+              >
+                <fa-icon icon="times"></fa-icon>
+              </button>
+            </div>
+            <input
+              type="file"
+              id="file_contentEn"
+              data-cy="contentEn"
+              (change)="setFileData($event, 'contentEn', false)"
+              jhiTranslate="entity.action.addblob"
+            />
+          </div>
+          <input type="hidden" class="form-control" name="contentEn" id="field_contentEn" data-cy="contentEn" formControlName="contentEn" />
+          <input
+            type="hidden"
+            class="form-control"
+            name="contentEnContentType"
+            id="field_contentEnContentType"
+            formControlName="contentEnContentType"
+          />
+          <div *ngIf="editForm.get('contentEn')!.invalid && (editForm.get('contentEn')!.dirty || editForm.get('contentEn')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('contentEn')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.content.contentEs" for="field_contentEs">Content Es</label>
+          <div>
+            <div *ngIf="editForm.get('contentEs')!.value" class="form-text text-danger clearfix">
+              <a
+                class="pull-start"
+                (click)="openFile(editForm.get('contentEs')!.value, editForm.get('contentEsContentType')!.value)"
+                jhiTranslate="entity.action.open"
+                >open</a
+              ><br />
+              <span class="pull-start"
+                >{{ editForm.get('contentEsContentType')!.value }}, {{ byteSize(editForm.get('contentEs')!.value) }}</span
+              >
+              <button
+                type="button"
+                (click)="editForm.patchValue({ contentEs: null }); editForm.patchValue({ contentEsContentType: null })"
+                class="btn btn-secondary btn-xs pull-end"
+              >
+                <fa-icon icon="times"></fa-icon>
+              </button>
+            </div>
+            <input
+              type="file"
+              id="file_contentEs"
+              data-cy="contentEs"
+              (change)="setFileData($event, 'contentEs', false)"
+              jhiTranslate="entity.action.addblob"
+            />
+          </div>
+          <input type="hidden" class="form-control" name="contentEs" id="field_contentEs" data-cy="contentEs" formControlName="contentEs" />
+          <input
+            type="hidden"
+            class="form-control"
+            name="contentEsContentType"
+            id="field_contentEsContentType"
+            formControlName="contentEsContentType"
+          />
+          <div *ngIf="editForm.get('contentEs')!.invalid && (editForm.get('contentEs')!.dirty || editForm.get('contentEs')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('contentEs')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.content.titleRu" for="field_titleRu">Title Ru</label>
+          <input type="text" class="form-control" name="titleRu" id="field_titleRu" data-cy="titleRu" formControlName="titleRu" />
+          <div *ngIf="editForm.get('titleRu')!.invalid && (editForm.get('titleRu')!.dirty || editForm.get('titleRu')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('titleRu')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('titleRu')?.errors?.maxlength"
+              jhiTranslate="entity.validation.maxlength"
+              [translateValues]="{ max: 255 }"
+            >
+              This field cannot be longer than 255 characters.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.content.titleZh" for="field_titleZh">Title Zh</label>
+          <input type="text" class="form-control" name="titleZh" id="field_titleZh" data-cy="titleZh" formControlName="titleZh" />
+          <div *ngIf="editForm.get('titleZh')!.invalid && (editForm.get('titleZh')!.dirty || editForm.get('titleZh')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('titleZh')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('titleZh')?.errors?.maxlength"
+              jhiTranslate="entity.validation.maxlength"
+              [translateValues]="{ max: 255 }"
+            >
+              This field cannot be longer than 255 characters.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.content.contentRu" for="field_contentRu">Content Ru</label>
+          <div>
+            <div *ngIf="editForm.get('contentRu')!.value" class="form-text text-danger clearfix">
+              <a
+                class="pull-start"
+                (click)="openFile(editForm.get('contentRu')!.value, editForm.get('contentRuContentType')!.value)"
+                jhiTranslate="entity.action.open"
+                >open</a
+              ><br />
+              <span class="pull-start"
+                >{{ editForm.get('contentRuContentType')!.value }}, {{ byteSize(editForm.get('contentRu')!.value) }}</span
+              >
+              <button
+                type="button"
+                (click)="editForm.patchValue({ contentRu: null }); editForm.patchValue({ contentRuContentType: null })"
+                class="btn btn-secondary btn-xs pull-end"
+              >
+                <fa-icon icon="times"></fa-icon>
+              </button>
+            </div>
+            <input
+              type="file"
+              id="file_contentRu"
+              data-cy="contentRu"
+              (change)="setFileData($event, 'contentRu', false)"
+              jhiTranslate="entity.action.addblob"
+            />
+          </div>
+          <input type="hidden" class="form-control" name="contentRu" id="field_contentRu" data-cy="contentRu" formControlName="contentRu" />
+          <input
+            type="hidden"
+            class="form-control"
+            name="contentRuContentType"
+            id="field_contentRuContentType"
+            formControlName="contentRuContentType"
+          />
+          <div *ngIf="editForm.get('contentRu')!.invalid && (editForm.get('contentRu')!.dirty || editForm.get('contentRu')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('contentRu')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.content.contentZh" for="field_contentZh">Content Zh</label>
+          <div>
+            <div *ngIf="editForm.get('contentZh')!.value" class="form-text text-danger clearfix">
+              <a
+                class="pull-start"
+                (click)="openFile(editForm.get('contentZh')!.value, editForm.get('contentZhContentType')!.value)"
+                jhiTranslate="entity.action.open"
+                >open</a
+              ><br />
+              <span class="pull-start"
+                >{{ editForm.get('contentZhContentType')!.value }}, {{ byteSize(editForm.get('contentZh')!.value) }}</span
+              >
+              <button
+                type="button"
+                (click)="editForm.patchValue({ contentZh: null }); editForm.patchValue({ contentZhContentType: null })"
+                class="btn btn-secondary btn-xs pull-end"
+              >
+                <fa-icon icon="times"></fa-icon>
+              </button>
+            </div>
+            <input
+              type="file"
+              id="file_contentZh"
+              data-cy="contentZh"
+              (change)="setFileData($event, 'contentZh', false)"
+              jhiTranslate="entity.action.addblob"
+            />
+          </div>
+          <input type="hidden" class="form-control" name="contentZh" id="field_contentZh" data-cy="contentZh" formControlName="contentZh" />
+          <input
+            type="hidden"
+            class="form-control"
+            name="contentZhContentType"
+            id="field_contentZhContentType"
+            formControlName="contentZhContentType"
+          />
+          <div *ngIf="editForm.get('contentZh')!.invalid && (editForm.get('contentZh')!.dirty || editForm.get('contentZh')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('contentZh')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <!--
+        Added the entity Status.
+    -->
+    <changeSet id="20220814090925-1" author="jhipster">
+        <createTable tableName="status">
+            <column name="id" type="bigint">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="last_sweep" type="${datetimeType}">
+                <constraints nullable="false" />
+            </column>
+            <column name="deficit_btc" type="double">
+                <constraints nullable="false" />
+            </column>
+            <column name="hot_wallet_btc" type="double">
+                <constraints nullable="false" />
+            </column>
+            <column name="warm_wallet_btc" type="double">
+                <constraints nullable="false" />
+            </column>
+            <column name="total_btc" type="double">
+                <constraints nullable="false" />
+            </column>
+            <column name="received_btc_pending" type="double">
+                <constraints nullable="false" />
+            </column>
+            <column name="pending_withdrawals" type="double">
+                <constraints nullable="false" />
+            </column>
+            <column name="trading_status" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="withdrawals_status" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="db_version" type="double">
+                <constraints nullable="false" />
+            </column>
+            <column name="cron_daily_stats" type="${datetimeType}">
+                <constraints nullable="false" />
+            </column>
+            <column name="cron_get_stats" type="${datetimeType}">
+                <constraints nullable="false" />
+            </column>
+            <column name="cron_maintenance" type="${datetimeType}">
+                <constraints nullable="false" />
+            </column>
+            <column name="cron_monthly_stats" type="${datetimeType}">
+                <constraints nullable="false" />
+            </column>
+            <column name="cron_receive_bitcoin" type="${datetimeType}">
+                <constraints nullable="false" />
+            </column>
+            <column name="cron_send_bitcoin" type="${datetimeType}">
+                <constraints nullable="false" />
+            </column>
+            <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
+        </createTable>
+        <dropDefaultValue tableName="status" columnName="last_sweep" columnDataType="${datetimeType}"/>
+        <dropDefaultValue tableName="status" columnName="cron_daily_stats" columnDataType="${datetimeType}"/>
+        <dropDefaultValue tableName="status" columnName="cron_get_stats" columnDataType="${datetimeType}"/>
+        <dropDefaultValue tableName="status" columnName="cron_maintenance" columnDataType="${datetimeType}"/>
+        <dropDefaultValue tableName="status" columnName="cron_monthly_stats" columnDataType="${datetimeType}"/>
+        <dropDefaultValue tableName="status" columnName="cron_receive_bitcoin" columnDataType="${datetimeType}"/>
+        <dropDefaultValue tableName="status" columnName="cron_send_bitcoin" columnDataType="${datetimeType}"/>
+    </changeSet>
+
+    <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here -->
+
+    <!--
+        Load sample data generated with Faker.js
+        - This data can be easily edited using a CSV editor (or even MS Excel) and
+          is located in the 'src/main/resources/config/liquibase/fake-data' directory
+        - By default this data is applied when running with the JHipster 'dev' profile.
+          This can be customized by adding or removing 'faker' in the 'spring.liquibase.contexts'
+          Spring Boot configuration key.
+    -->
+    <changeSet id="20220814090925-1-data" author="jhipster" context="faker">
+        <loadData
+                  file="config/liquibase/fake-data/status.csv"
+                  separator=";"
+                  tableName="status"
+                  usePreparedStatements="true">
+            <column name="id" type="numeric"/>
+            <column name="last_sweep" type="date"/>
+            <column name="deficit_btc" type="numeric"/>
+            <column name="hot_wallet_btc" type="numeric"/>
+            <column name="warm_wallet_btc" type="numeric"/>
+            <column name="total_btc" type="numeric"/>
+            <column name="received_btc_pending" type="numeric"/>
+            <column name="pending_withdrawals" type="numeric"/>
+            <column name="trading_status" type="string"/>
+            <column name="withdrawals_status" type="string"/>
+            <column name="db_version" type="numeric"/>
+            <column name="cron_daily_stats" type="date"/>
+            <column name="cron_get_stats" type="date"/>
+            <column name="cron_maintenance" type="date"/>
+            <column name="cron_monthly_stats" type="date"/>
+            <column name="cron_receive_bitcoin" type="date"/>
+            <column name="cron_send_bitcoin" type="date"/>
+            <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here -->
+        </loadData>
+    </changeSet>
+</databaseChangeLog>

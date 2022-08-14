@@ -1,0 +1,26 @@
+{
+  "jhipsterSampleApplicationApp": {
+    "ipAccessLog": {
+      "home": {
+        "title": "Ip Access Logs",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Ip Access Log",
+        "createOrEditLabel": "Create or edit a Ip Access Log",
+        "notFound": "No Ip Access Logs found"
+      },
+      "created": "A new Ip Access Log is created with identifier {{ param }}",
+      "updated": "A Ip Access Log is updated with identifier {{ param }}",
+      "deleted": "A Ip Access Log is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Ip Access Log {{ id }}?"
+      },
+      "detail": {
+        "title": "Ip Access Log"
+      },
+      "id": "ID",
+      "ip": "Ip",
+      "timestamp": "Timestamp",
+      "login": "Login"
+    }
+  }
+}

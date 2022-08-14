@@ -1,0 +1,56 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="adminCron">
+      <h2 data-cy="adminCronDetailsHeading"><span jhiTranslate="jhipsterSampleApplicationApp.adminCron.detail.title">Admin Cron</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ adminCron.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.adminCron.day">Day</span></dt>
+        <dd>
+          <span>{{ adminCron.day }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.adminCron.month">Month</span></dt>
+        <dd>
+          <span>{{ adminCron.month }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.adminCron.year">Year</span></dt>
+        <dd>
+          <span>{{ adminCron.year }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.adminCron.sendCondition">Send Condition</span></dt>
+        <dd>
+          <span>{{ adminCron.sendCondition }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.adminCron.controlId">Control Id</span></dt>
+        <dd>
+          <div *ngIf="adminCron.controlId">
+            <a [routerLink]="['/admin-controls', adminCron.controlId?.id, 'view']">{{ adminCron.controlId?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.adminCron.methodId">Method Id</span></dt>
+        <dd>
+          <div *ngIf="adminCron.methodId">
+            <a [routerLink]="['/admin-controls-methods', adminCron.methodId?.id, 'view']">{{ adminCron.methodId?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/admin-cron', adminCron.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

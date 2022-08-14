@@ -1,0 +1,182 @@
+<div>
+  <h2 id="page-heading" data-cy="RequestsHeading">
+    <span jhiTranslate="jhipsterSampleApplicationApp.requests.home.title">Requests</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="loadPage()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="jhipsterSampleApplicationApp.requests.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-requests"
+        [routerLink]="['/requests/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="jhipsterSampleApplicationApp.requests.home.createLabel"> Create a new Requests </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="requests?.length === 0">
+    <span jhiTranslate="jhipsterSampleApplicationApp.requests.home.notFound">No requests found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="requests && requests.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="loadPage()">
+          <th scope="col" jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="date">
+            <span jhiTranslate="jhipsterSampleApplicationApp.requests.date">Date</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="amount">
+            <span jhiTranslate="jhipsterSampleApplicationApp.requests.amount">Amount</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="addressId">
+            <span jhiTranslate="jhipsterSampleApplicationApp.requests.addressId">Address Id</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="account">
+            <span jhiTranslate="jhipsterSampleApplicationApp.requests.account">Account</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="sendAddress">
+            <span jhiTranslate="jhipsterSampleApplicationApp.requests.sendAddress">Send Address</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="transactionId">
+            <span jhiTranslate="jhipsterSampleApplicationApp.requests.transactionId">Transaction Id</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="increment">
+            <span jhiTranslate="jhipsterSampleApplicationApp.requests.increment">Increment</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="done">
+            <span jhiTranslate="jhipsterSampleApplicationApp.requests.done">Done</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="cryptoId">
+            <span jhiTranslate="jhipsterSampleApplicationApp.requests.cryptoId">Crypto Id</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="fee">
+            <span jhiTranslate="jhipsterSampleApplicationApp.requests.fee">Fee</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="netAmount">
+            <span jhiTranslate="jhipsterSampleApplicationApp.requests.netAmount">Net Amount</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="notified">
+            <span jhiTranslate="jhipsterSampleApplicationApp.requests.notified">Notified</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="siteUser.id">
+            <span jhiTranslate="jhipsterSampleApplicationApp.requests.siteUser">Site User</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="currency.id">
+            <span jhiTranslate="jhipsterSampleApplicationApp.requests.currency">Currency</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="description.id">
+            <span jhiTranslate="jhipsterSampleApplicationApp.requests.description">Description</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="requestStatus.id">
+            <span jhiTranslate="jhipsterSampleApplicationApp.requests.requestStatus">Request Status</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="requestType.id">
+            <span jhiTranslate="jhipsterSampleApplicationApp.requests.requestType">Request Type</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let requests of requests; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/requests', requests.id, 'view']">{{ requests.id }}</a>
+          </td>
+          <td>{{ requests.date | formatMediumDatetime }}</td>
+          <td>{{ requests.amount }}</td>
+          <td>{{ requests.addressId }}</td>
+          <td>{{ requests.account }}</td>
+          <td>{{ requests.sendAddress }}</td>
+          <td>{{ requests.transactionId }}</td>
+          <td>{{ requests.increment }}</td>
+          <td jhiTranslate="{{ 'jhipsterSampleApplicationApp.YesNo.' + requests.done }}">{{ requests.done }}</td>
+          <td>{{ requests.cryptoId }}</td>
+          <td>{{ requests.fee }}</td>
+          <td>{{ requests.netAmount }}</td>
+          <td>{{ requests.notified }}</td>
+          <td>
+            <div *ngIf="requests.siteUser">
+              <a [routerLink]="['/site-users', requests.siteUser?.id, 'view']">{{ requests.siteUser?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="requests.currency">
+              <a [routerLink]="['/currencies', requests.currency?.id, 'view']">{{ requests.currency?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="requests.description">
+              <a [routerLink]="['/request-descriptions', requests.description?.id, 'view']">{{ requests.description?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="requests.requestStatus">
+              <a [routerLink]="['/request-status', requests.requestStatus?.id, 'view']">{{ requests.requestStatus?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="requests.requestType">
+              <a [routerLink]="['/request-types', requests.requestType?.id, 'view']">{{ requests.requestType?.id }}</a>
+            </div>
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/requests', requests.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/requests', requests.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(requests)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="requests && requests.length > 0">
+    <div class="d-flex justify-content-center">
+      <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+    </div>
+
+    <div class="d-flex justify-content-center">
+      <ngb-pagination
+        [collectionSize]="totalItems"
+        [(page)]="ngbPaginationPage"
+        [pageSize]="itemsPerPage"
+        [maxSize]="5"
+        [rotate]="true"
+        [boundaryLinks]="true"
+        (pageChange)="loadPage($event)"
+      ></ngb-pagination>
+    </div>
+  </div>
+</div>

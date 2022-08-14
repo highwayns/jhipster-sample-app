@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd">
+    <!--
+        Added the constraints for entity History.
+    -->
+    <changeSet id="20220814090905-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="history_action_id"
+                                 baseTableName="history"
+                                 constraintName="fk_history__history_action_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="history_actions"/>
+
+        <addForeignKeyConstraint baseColumnNames="order_id_id"
+                                 baseTableName="history"
+                                 constraintName="fk_history__order_id_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="orders"/>
+
+        <addForeignKeyConstraint baseColumnNames="request_id_id"
+                                 baseTableName="history"
+                                 constraintName="fk_history__request_id_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="requests"/>
+
+        <addForeignKeyConstraint baseColumnNames="site_user_id"
+                                 baseTableName="history"
+                                 constraintName="fk_history__site_user_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="site_users"/>
+    </changeSet>
+</databaseChangeLog>

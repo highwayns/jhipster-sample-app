@@ -1,0 +1,46 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="adminGroupsTabs">
+      <h2 data-cy="adminGroupsTabsDetailsHeading">
+        <span jhiTranslate="jhipsterSampleApplicationApp.adminGroupsTabs.detail.title">Admin Groups Tabs</span>
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ adminGroupsTabs.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.adminGroupsTabs.permission">Permission</span></dt>
+        <dd>
+          <span>{{ adminGroupsTabs.permission }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.adminGroupsTabs.tabId">Tab Id</span></dt>
+        <dd>
+          <div *ngIf="adminGroupsTabs.tabId">
+            <a [routerLink]="['/admin-tabs', adminGroupsTabs.tabId?.id, 'view']">{{ adminGroupsTabs.tabId?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.adminGroupsTabs.groupId">Group Id</span></dt>
+        <dd>
+          <div *ngIf="adminGroupsTabs.groupId">
+            <a [routerLink]="['/admin-groups', adminGroupsTabs.groupId?.id, 'view']">{{ adminGroupsTabs.groupId?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/admin-groups-tabs', adminGroupsTabs.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

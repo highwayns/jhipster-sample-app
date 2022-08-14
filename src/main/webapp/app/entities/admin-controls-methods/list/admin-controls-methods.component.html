@@ -1,0 +1,119 @@
+<div>
+  <h2 id="page-heading" data-cy="AdminControlsMethodsHeading">
+    <span jhiTranslate="jhipsterSampleApplicationApp.adminControlsMethods.home.title">Admin Controls Methods</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="loadPage()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="jhipsterSampleApplicationApp.adminControlsMethods.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-admin-controls-methods"
+        [routerLink]="['/admin-controls-methods/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="jhipsterSampleApplicationApp.adminControlsMethods.home.createLabel"> Create a new Admin Controls Methods </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="adminControlsMethods?.length === 0">
+    <span jhiTranslate="jhipsterSampleApplicationApp.adminControlsMethods.home.notFound">No adminControlsMethods found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="adminControlsMethods && adminControlsMethods.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="loadPage()">
+          <th scope="col" jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="method">
+            <span jhiTranslate="jhipsterSampleApplicationApp.adminControlsMethods.method">Method</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="argument">
+            <span jhiTranslate="jhipsterSampleApplicationApp.adminControlsMethods.argument">Argument</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="order">
+            <span jhiTranslate="jhipsterSampleApplicationApp.adminControlsMethods.order">Order</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="pId">
+            <span jhiTranslate="jhipsterSampleApplicationApp.adminControlsMethods.pId">P Id</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="controlId.id">
+            <span jhiTranslate="jhipsterSampleApplicationApp.adminControlsMethods.controlId">Control Id</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let adminControlsMethods of adminControlsMethods; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/admin-controls-methods', adminControlsMethods.id, 'view']">{{ adminControlsMethods.id }}</a>
+          </td>
+          <td>{{ adminControlsMethods.method }}</td>
+          <td>{{ adminControlsMethods.argument }}</td>
+          <td>{{ adminControlsMethods.order }}</td>
+          <td>{{ adminControlsMethods.pId }}</td>
+          <td>
+            <div *ngIf="adminControlsMethods.controlId">
+              <a [routerLink]="['/admin-controls', adminControlsMethods.controlId?.id, 'view']">{{ adminControlsMethods.controlId?.id }}</a>
+            </div>
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/admin-controls-methods', adminControlsMethods.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/admin-controls-methods', adminControlsMethods.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(adminControlsMethods)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="adminControlsMethods && adminControlsMethods.length > 0">
+    <div class="d-flex justify-content-center">
+      <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+    </div>
+
+    <div class="d-flex justify-content-center">
+      <ngb-pagination
+        [collectionSize]="totalItems"
+        [(page)]="ngbPaginationPage"
+        [pageSize]="itemsPerPage"
+        [maxSize]="5"
+        [rotate]="true"
+        [boundaryLinks]="true"
+        (pageChange)="loadPage($event)"
+      ></ngb-pagination>
+    </div>
+  </div>
+</div>

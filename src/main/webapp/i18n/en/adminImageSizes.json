@@ -1,0 +1,25 @@
+{
+  "jhipsterSampleApplicationApp": {
+    "adminImageSizes": {
+      "home": {
+        "title": "Admin Image Sizes",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Admin Image Sizes",
+        "createOrEditLabel": "Create or edit a Admin Image Sizes",
+        "notFound": "No Admin Image Sizes found"
+      },
+      "created": "A new Admin Image Sizes is created with identifier {{ param }}",
+      "updated": "A Admin Image Sizes is updated with identifier {{ param }}",
+      "deleted": "A Admin Image Sizes is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Admin Image Sizes {{ id }}?"
+      },
+      "detail": {
+        "title": "Admin Image Sizes"
+      },
+      "id": "ID",
+      "fieldName": "Field Name",
+      "value": "Value"
+    }
+  }
+}

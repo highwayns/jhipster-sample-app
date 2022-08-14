@@ -1,0 +1,27 @@
+{
+  "jhipsterSampleApplicationApp": {
+    "orderTypes": {
+      "home": {
+        "title": "Order Types",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Order Types",
+        "createOrEditLabel": "Create or edit a Order Types",
+        "notFound": "No Order Types found"
+      },
+      "created": "A new Order Types is created with identifier {{ param }}",
+      "updated": "A Order Types is updated with identifier {{ param }}",
+      "deleted": "A Order Types is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Order Types {{ id }}?"
+      },
+      "detail": {
+        "title": "Order Types"
+      },
+      "id": "ID",
+      "nameEn": "Name En",
+      "nameEs": "Name Es",
+      "nameRu": "Name Ru",
+      "nameZh": "Name Zh"
+    }
+  }
+}

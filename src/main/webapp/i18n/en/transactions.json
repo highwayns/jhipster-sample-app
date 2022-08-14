@@ -1,0 +1,57 @@
+{
+  "jhipsterSampleApplicationApp": {
+    "transactions": {
+      "home": {
+        "title": "Transactions",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Transactions",
+        "createOrEditLabel": "Create or edit a Transactions",
+        "notFound": "No Transactions found"
+      },
+      "created": "A new Transactions is created with identifier {{ param }}",
+      "updated": "A Transactions is updated with identifier {{ param }}",
+      "deleted": "A Transactions is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Transactions {{ id }}?"
+      },
+      "detail": {
+        "title": "Transactions"
+      },
+      "id": "ID",
+      "date": "Date",
+      "btc": "Btc",
+      "btcPrice": "Btc Price",
+      "fiat": "Fiat",
+      "fee": "Fee",
+      "fee1": "Fee 1",
+      "btcNet": "Btc Net",
+      "btcNet1": "Btc Net 1",
+      "btcBefore1": "Btc Before 1",
+      "btcAfter1": "Btc After 1",
+      "fiatBefore1": "Fiat Before 1",
+      "fiatAfter1": "Fiat After 1",
+      "btcBefore": "Btc Before",
+      "btcAfter": "Btc After",
+      "fiatBefore": "Fiat Before",
+      "fiatAfter": "Fiat After",
+      "feeLevel": "Fee Level",
+      "feeLevel1": "Fee Level 1",
+      "origBtcPrice": "Orig Btc Price",
+      "conversionFee": "Conversion Fee",
+      "convertAmount": "Convert Amount",
+      "convertRateGiven": "Convert Rate Given",
+      "convertSystemRate": "Convert System Rate",
+      "conversion": "Conversion",
+      "bidAtTransaction": "Bid At Transaction",
+      "askAtTransaction": "Ask At Transaction",
+      "factored": "Factored",
+      "siteUser": "Site User",
+      "siteUser1": "Site User 1",
+      "transactionType": "Transaction Type",
+      "transactionType1": "Transaction Type 1",
+      "currency1": "Currency 1",
+      "convertFromCurrency": "Convert From Currency",
+      "convertToCurrency": "Convert To Currency"
+    }
+  }
+}

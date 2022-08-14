@@ -1,0 +1,40 @@
+{
+  "applications": "*",
+  "changelogDate": "20220814090853",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "bitcoind_log",
+  "fields": [
+    {
+      "fieldName": "transactionId",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "maxlength"],
+      "fieldValidateRulesMaxlength": "255"
+    },
+    {
+      "fieldName": "amount",
+      "fieldType": "Double",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "date",
+      "fieldType": "Instant",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "BitcoindLog",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "siteUsers",
+      "otherEntityRelationshipName": "bitcoindLog",
+      "ownerSide": true,
+      "relationshipName": "siteUser",
+      "relationshipType": "one-to-one"
+    }
+  ],
+  "service": "serviceClass"
+}

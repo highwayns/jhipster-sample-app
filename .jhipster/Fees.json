@@ -1,0 +1,26 @@
+{
+  "applications": "*",
+  "changelogDate": "20220814090903",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "fees",
+  "fields": [
+    {
+      "fieldName": "fee",
+      "fieldType": "Double",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "date",
+      "fieldType": "Instant",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Fees",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [],
+  "service": "serviceClass"
+}

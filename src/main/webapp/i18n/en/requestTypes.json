@@ -1,0 +1,27 @@
+{
+  "jhipsterSampleApplicationApp": {
+    "requestTypes": {
+      "home": {
+        "title": "Request Types",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Request Types",
+        "createOrEditLabel": "Create or edit a Request Types",
+        "notFound": "No Request Types found"
+      },
+      "created": "A new Request Types is created with identifier {{ param }}",
+      "updated": "A Request Types is updated with identifier {{ param }}",
+      "deleted": "A Request Types is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Request Types {{ id }}?"
+      },
+      "detail": {
+        "title": "Request Types"
+      },
+      "id": "ID",
+      "nameEn": "Name En",
+      "nameEs": "Name Es",
+      "nameRu": "Name Ru",
+      "nameZh": "Name Zh"
+    }
+  }
+}

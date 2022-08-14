@@ -1,0 +1,53 @@
+{
+  "applications": "*",
+  "changelogDate": "20220814090839",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "admin_cron",
+  "fields": [
+    {
+      "fieldName": "day",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "maxlength"],
+      "fieldValidateRulesMaxlength": "30"
+    },
+    {
+      "fieldName": "month",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "maxlength"],
+      "fieldValidateRulesMaxlength": "30"
+    },
+    {
+      "fieldName": "year",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "maxlength"],
+      "fieldValidateRulesMaxlength": "30"
+    },
+    {
+      "fieldName": "sendCondition",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "maxlength"],
+      "fieldValidateRulesMaxlength": "255"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "AdminCron",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "adminControls",
+      "otherEntityRelationshipName": "adminCron",
+      "relationshipName": "controlId",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "adminControlsMethods",
+      "otherEntityRelationshipName": "adminCron",
+      "relationshipName": "methodId",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceClass"
+}

@@ -1,0 +1,62 @@
+{
+  "applications": "*",
+  "changelogDate": "20220814090847",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "admin_tabs",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "maxlength"],
+      "fieldValidateRulesMaxlength": "255"
+    },
+    {
+      "fieldName": "order",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "icon",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "maxlength"],
+      "fieldValidateRulesMaxlength": "255"
+    },
+    {
+      "fieldName": "url",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "maxlength"],
+      "fieldValidateRulesMaxlength": "255"
+    },
+    {
+      "fieldName": "hidden",
+      "fieldType": "YesNo",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "Y,N"
+    },
+    {
+      "fieldName": "isCtrlPanel",
+      "fieldType": "YesNo",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "Y,N"
+    },
+    {
+      "fieldName": "forGroup",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "oneRecord",
+      "fieldType": "YesNo",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "Y,N"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "AdminTabs",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [],
+  "service": "serviceClass"
+}

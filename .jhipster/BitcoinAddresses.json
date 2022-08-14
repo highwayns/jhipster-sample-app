@@ -1,0 +1,53 @@
+{
+  "applications": "*",
+  "changelogDate": "20220814090852",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "bitcoin_addresses",
+  "fields": [
+    {
+      "fieldName": "address",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "maxlength"],
+      "fieldValidateRulesMaxlength": "255"
+    },
+    {
+      "fieldName": "date",
+      "fieldType": "Instant",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "systemAddress",
+      "fieldType": "YesNo",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "Y,N"
+    },
+    {
+      "fieldName": "hotWallet",
+      "fieldType": "YesNo",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "Y,N"
+    },
+    {
+      "fieldName": "warmWallet",
+      "fieldType": "YesNo",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "Y,N"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "BitcoinAddresses",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "siteUsers",
+      "otherEntityRelationshipName": "bitcoinAddresses",
+      "ownerSide": true,
+      "relationshipName": "siteUser",
+      "relationshipType": "one-to-one"
+    }
+  ],
+  "service": "serviceClass"
+}

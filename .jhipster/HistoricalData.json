@@ -1,0 +1,31 @@
+{
+  "applications": "*",
+  "changelogDate": "20220814090904",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "historical_data",
+  "fields": [
+    {
+      "fieldName": "id",
+      "fieldType": "Long",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "date",
+      "fieldType": "LocalDate",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "usd",
+      "fieldType": "BigDecimal",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "HistoricalData",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [],
+  "service": "serviceClass"
+}

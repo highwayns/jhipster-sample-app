@@ -1,0 +1,54 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="contentFiles">
+      <h2 data-cy="contentFilesDetailsHeading">
+        <span jhiTranslate="jhipsterSampleApplicationApp.contentFiles.detail.title">Content Files</span>
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ contentFiles.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.contentFiles.fId">F Id</span></dt>
+        <dd>
+          <span>{{ contentFiles.fId }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.contentFiles.ext">Ext</span></dt>
+        <dd>
+          <span>{{ contentFiles.ext }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.contentFiles.dir">Dir</span></dt>
+        <dd>
+          <span>{{ contentFiles.dir }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.contentFiles.url">Url</span></dt>
+        <dd>
+          <span>{{ contentFiles.url }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.contentFiles.oldName">Old Name</span></dt>
+        <dd>
+          <span>{{ contentFiles.oldName }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.contentFiles.fieldName">Field Name</span></dt>
+        <dd>
+          <span>{{ contentFiles.fieldName }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/content-files', contentFiles.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,140 @@
+<div>
+  <h2 id="page-heading" data-cy="NewsHeading">
+    <span jhiTranslate="jhipsterSampleApplicationApp.news.home.title">News</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="loadPage()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="jhipsterSampleApplicationApp.news.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-news"
+        [routerLink]="['/news/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="jhipsterSampleApplicationApp.news.home.createLabel"> Create a new News </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="news?.length === 0">
+    <span jhiTranslate="jhipsterSampleApplicationApp.news.home.notFound">No news found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="news && news.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="loadPage()">
+          <th scope="col" jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="titleEn">
+            <span jhiTranslate="jhipsterSampleApplicationApp.news.titleEn">Title En</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="titleEs">
+            <span jhiTranslate="jhipsterSampleApplicationApp.news.titleEs">Title Es</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="date">
+            <span jhiTranslate="jhipsterSampleApplicationApp.news.date">Date</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="contentEn">
+            <span jhiTranslate="jhipsterSampleApplicationApp.news.contentEn">Content En</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="contentEs">
+            <span jhiTranslate="jhipsterSampleApplicationApp.news.contentEs">Content Es</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="titleRu">
+            <span jhiTranslate="jhipsterSampleApplicationApp.news.titleRu">Title Ru</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="titleZh">
+            <span jhiTranslate="jhipsterSampleApplicationApp.news.titleZh">Title Zh</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="contentRu">
+            <span jhiTranslate="jhipsterSampleApplicationApp.news.contentRu">Content Ru</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="contentZh">
+            <span jhiTranslate="jhipsterSampleApplicationApp.news.contentZh">Content Zh</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let news of news; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/news', news.id, 'view']">{{ news.id }}</a>
+          </td>
+          <td>{{ news.titleEn }}</td>
+          <td>{{ news.titleEs }}</td>
+          <td>{{ news.date | formatMediumDatetime }}</td>
+          <td>
+            <a *ngIf="news.contentEn" (click)="openFile(news.contentEn, news.contentEnContentType)" jhiTranslate="entity.action.open"
+              >open</a
+            >
+            <span *ngIf="news.contentEn">{{ news.contentEnContentType }}, {{ byteSize(news.contentEn) }}</span>
+          </td>
+          <td>
+            <a *ngIf="news.contentEs" (click)="openFile(news.contentEs, news.contentEsContentType)" jhiTranslate="entity.action.open"
+              >open</a
+            >
+            <span *ngIf="news.contentEs">{{ news.contentEsContentType }}, {{ byteSize(news.contentEs) }}</span>
+          </td>
+          <td>{{ news.titleRu }}</td>
+          <td>{{ news.titleZh }}</td>
+          <td>
+            <a *ngIf="news.contentRu" (click)="openFile(news.contentRu, news.contentRuContentType)" jhiTranslate="entity.action.open"
+              >open</a
+            >
+            <span *ngIf="news.contentRu">{{ news.contentRuContentType }}, {{ byteSize(news.contentRu) }}</span>
+          </td>
+          <td>
+            <a *ngIf="news.contentZh" (click)="openFile(news.contentZh, news.contentZhContentType)" jhiTranslate="entity.action.open"
+              >open</a
+            >
+            <span *ngIf="news.contentZh">{{ news.contentZhContentType }}, {{ byteSize(news.contentZh) }}</span>
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button type="submit" [routerLink]="['/news', news.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button type="submit" [routerLink]="['/news', news.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(news)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="news && news.length > 0">
+    <div class="d-flex justify-content-center">
+      <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+    </div>
+
+    <div class="d-flex justify-content-center">
+      <ngb-pagination
+        [collectionSize]="totalItems"
+        [(page)]="ngbPaginationPage"
+        [pageSize]="itemsPerPage"
+        [maxSize]="5"
+        [rotate]="true"
+        [boundaryLinks]="true"
+        (pageChange)="loadPage($event)"
+      ></ngb-pagination>
+    </div>
+  </div>
+</div>

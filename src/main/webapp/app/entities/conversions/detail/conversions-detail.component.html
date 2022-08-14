@@ -1,0 +1,64 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="conversions">
+      <h2 data-cy="conversionsDetailsHeading">
+        <span jhiTranslate="jhipsterSampleApplicationApp.conversions.detail.title">Conversions</span>
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ conversions.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.conversions.amount">Amount</span></dt>
+        <dd>
+          <span>{{ conversions.amount }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.conversions.date">Date</span></dt>
+        <dd>
+          <span>{{ conversions.date | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.conversions.isActive">Is Active</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'jhipsterSampleApplicationApp.YesNo.' + conversions.isActive }}">{{ conversions.isActive }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.conversions.totalWithdrawals">Total Withdrawals</span></dt>
+        <dd>
+          <span>{{ conversions.totalWithdrawals }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.conversions.profitToFactor">Profit To Factor</span></dt>
+        <dd>
+          <span>{{ conversions.profitToFactor }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.conversions.factored">Factored</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'jhipsterSampleApplicationApp.YesNo.' + conversions.factored }}">{{ conversions.factored }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.conversions.date1">Date 1</span></dt>
+        <dd>
+          <span>{{ conversions.date1 | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.conversions.currency">Currency</span></dt>
+        <dd>
+          <div *ngIf="conversions.currency">
+            <a [routerLink]="['/currencies', conversions.currency?.id, 'view']">{{ conversions.currency?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/conversions', conversions.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

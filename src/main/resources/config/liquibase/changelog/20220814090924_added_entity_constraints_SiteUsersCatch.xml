@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd">
+    <!--
+        Added the constraints for entity SiteUsersCatch.
+    -->
+    <changeSet id="20220814090924-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="site_user_id"
+                                 baseTableName="site_users_catch"
+                                 constraintName="fk_site_users_catch__site_user_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="site_users"/>
+    </changeSet>
+</databaseChangeLog>

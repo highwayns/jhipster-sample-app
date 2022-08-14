@@ -1,0 +1,916 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-site-users-heading"
+        data-cy="SiteUsersCreateUpdateHeading"
+        jhiTranslate="jhipsterSampleApplicationApp.siteUsers.home.createOrEditLabel"
+      >
+        Create or edit a Site Users
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.siteUsers.pass" for="field_pass">Pass</label>
+          <input type="text" class="form-control" name="pass" id="field_pass" data-cy="pass" formControlName="pass" />
+          <div *ngIf="editForm.get('pass')!.invalid && (editForm.get('pass')!.dirty || editForm.get('pass')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('pass')?.errors?.required" jhiTranslate="entity.validation.required">
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('pass')?.errors?.maxlength"
+              jhiTranslate="entity.validation.maxlength"
+              [translateValues]="{ max: 200 }"
+            >
+              This field cannot be longer than 200 characters.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.siteUsers.firstName" for="field_firstName">First Name</label>
+          <input type="text" class="form-control" name="firstName" id="field_firstName" data-cy="firstName" formControlName="firstName" />
+          <div *ngIf="editForm.get('firstName')!.invalid && (editForm.get('firstName')!.dirty || editForm.get('firstName')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('firstName')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('firstName')?.errors?.maxlength"
+              jhiTranslate="entity.validation.maxlength"
+              [translateValues]="{ max: 200 }"
+            >
+              This field cannot be longer than 200 characters.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.siteUsers.lastName" for="field_lastName">Last Name</label>
+          <input type="text" class="form-control" name="lastName" id="field_lastName" data-cy="lastName" formControlName="lastName" />
+          <div *ngIf="editForm.get('lastName')!.invalid && (editForm.get('lastName')!.dirty || editForm.get('lastName')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('lastName')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('lastName')?.errors?.maxlength"
+              jhiTranslate="entity.validation.maxlength"
+              [translateValues]="{ max: 200 }"
+            >
+              This field cannot be longer than 200 characters.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.siteUsers.email" for="field_email">Email</label>
+          <input type="text" class="form-control" name="email" id="field_email" data-cy="email" formControlName="email" />
+          <div *ngIf="editForm.get('email')!.invalid && (editForm.get('email')!.dirty || editForm.get('email')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('email')?.errors?.required" jhiTranslate="entity.validation.required">
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('email')?.errors?.maxlength"
+              jhiTranslate="entity.validation.maxlength"
+              [translateValues]="{ max: 255 }"
+            >
+              This field cannot be longer than 255 characters.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.siteUsers.date" for="field_date">Date</label>
+          <div class="d-flex">
+            <input
+              id="field_date"
+              data-cy="date"
+              type="datetime-local"
+              class="form-control"
+              name="date"
+              formControlName="date"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+          <div *ngIf="editForm.get('date')!.invalid && (editForm.get('date')!.dirty || editForm.get('date')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('date')?.errors?.required" jhiTranslate="entity.validation.required">
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('date')?.errors?.ZonedDateTimelocal"
+              jhiTranslate="entity.validation.ZonedDateTimelocal"
+            >
+              This field should be a date and time.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.siteUsers.tel" for="field_tel">Tel</label>
+          <input type="text" class="form-control" name="tel" id="field_tel" data-cy="tel" formControlName="tel" />
+          <div *ngIf="editForm.get('tel')!.invalid && (editForm.get('tel')!.dirty || editForm.get('tel')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('tel')?.errors?.required" jhiTranslate="entity.validation.required">
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('tel')?.errors?.maxlength"
+              jhiTranslate="entity.validation.maxlength"
+              [translateValues]="{ max: 255 }"
+            >
+              This field cannot be longer than 255 characters.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.siteUsers.user" for="field_user">User</label>
+          <input type="text" class="form-control" name="user" id="field_user" data-cy="user" formControlName="user" />
+          <div *ngIf="editForm.get('user')!.invalid && (editForm.get('user')!.dirty || editForm.get('user')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('user')?.errors?.required" jhiTranslate="entity.validation.required">
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('user')?.errors?.maxlength"
+              jhiTranslate="entity.validation.maxlength"
+              [translateValues]="{ max: 255 }"
+            >
+              This field cannot be longer than 255 characters.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.siteUsers.countryCode" for="field_countryCode"
+            >Country Code</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="countryCode"
+            id="field_countryCode"
+            data-cy="countryCode"
+            formControlName="countryCode"
+          />
+          <div *ngIf="editForm.get('countryCode')!.invalid && (editForm.get('countryCode')!.dirty || editForm.get('countryCode')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('countryCode')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('countryCode')?.errors?.number"
+              jhiTranslate="entity.validation.number"
+            >
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.siteUsers.authyRequested" for="field_authyRequested"
+            >Authy Requested</label
+          >
+          <select
+            class="form-control"
+            name="authyRequested"
+            formControlName="authyRequested"
+            id="field_authyRequested"
+            data-cy="authyRequested"
+          >
+            <option [ngValue]="null">{{ 'jhipsterSampleApplicationApp.YesNo.null' | translate }}</option>
+            <option *ngFor="let yesNo of yesNoValues" [value]="yesNo">
+              {{ 'jhipsterSampleApplicationApp.YesNo.' + yesNo | translate }}
+            </option>
+          </select>
+          <div
+            *ngIf="
+              editForm.get('authyRequested')!.invalid && (editForm.get('authyRequested')!.dirty || editForm.get('authyRequested')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('authyRequested')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.siteUsers.verifiedAuthy" for="field_verifiedAuthy"
+            >Verified Authy</label
+          >
+          <select
+            class="form-control"
+            name="verifiedAuthy"
+            formControlName="verifiedAuthy"
+            id="field_verifiedAuthy"
+            data-cy="verifiedAuthy"
+          >
+            <option [ngValue]="null">{{ 'jhipsterSampleApplicationApp.YesNo.null' | translate }}</option>
+            <option *ngFor="let yesNo of yesNoValues" [value]="yesNo">
+              {{ 'jhipsterSampleApplicationApp.YesNo.' + yesNo | translate }}
+            </option>
+          </select>
+          <div
+            *ngIf="
+              editForm.get('verifiedAuthy')!.invalid && (editForm.get('verifiedAuthy')!.dirty || editForm.get('verifiedAuthy')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('verifiedAuthy')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.siteUsers.authyId" for="field_authyId">Authy Id</label>
+          <input type="number" class="form-control" name="authyId" id="field_authyId" data-cy="authyId" formControlName="authyId" />
+          <div *ngIf="editForm.get('authyId')!.invalid && (editForm.get('authyId')!.dirty || editForm.get('authyId')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('authyId')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('authyId')?.errors?.number"
+              jhiTranslate="entity.validation.number"
+            >
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.siteUsers.usingSms" for="field_usingSms">Using Sms</label>
+          <select class="form-control" name="usingSms" formControlName="usingSms" id="field_usingSms" data-cy="usingSms">
+            <option [ngValue]="null">{{ 'jhipsterSampleApplicationApp.YesNo.null' | translate }}</option>
+            <option *ngFor="let yesNo of yesNoValues" [value]="yesNo">
+              {{ 'jhipsterSampleApplicationApp.YesNo.' + yesNo | translate }}
+            </option>
+          </select>
+          <div *ngIf="editForm.get('usingSms')!.invalid && (editForm.get('usingSms')!.dirty || editForm.get('usingSms')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('usingSms')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.siteUsers.dontAsk30Days" for="field_dontAsk30Days"
+            >Dont Ask 30 Days</label
+          >
+          <select
+            class="form-control"
+            name="dontAsk30Days"
+            formControlName="dontAsk30Days"
+            id="field_dontAsk30Days"
+            data-cy="dontAsk30Days"
+          >
+            <option [ngValue]="null">{{ 'jhipsterSampleApplicationApp.YesNo.null' | translate }}</option>
+            <option *ngFor="let yesNo of yesNoValues" [value]="yesNo">
+              {{ 'jhipsterSampleApplicationApp.YesNo.' + yesNo | translate }}
+            </option>
+          </select>
+          <div
+            *ngIf="
+              editForm.get('dontAsk30Days')!.invalid && (editForm.get('dontAsk30Days')!.dirty || editForm.get('dontAsk30Days')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('dontAsk30Days')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.siteUsers.dontAskDate" for="field_dontAskDate"
+            >Dont Ask Date</label
+          >
+          <div class="d-flex">
+            <input
+              id="field_dontAskDate"
+              data-cy="dontAskDate"
+              type="datetime-local"
+              class="form-control"
+              name="dontAskDate"
+              formControlName="dontAskDate"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+          <div *ngIf="editForm.get('dontAskDate')!.invalid && (editForm.get('dontAskDate')!.dirty || editForm.get('dontAskDate')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('dontAskDate')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('dontAskDate')?.errors?.ZonedDateTimelocal"
+              jhiTranslate="entity.validation.ZonedDateTimelocal"
+            >
+              This field should be a date and time.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label
+            class="form-label"
+            jhiTranslate="jhipsterSampleApplicationApp.siteUsers.confirmWithdrawalEmailBtc"
+            for="field_confirmWithdrawalEmailBtc"
+            >Confirm Withdrawal Email Btc</label
+          >
+          <select
+            class="form-control"
+            name="confirmWithdrawalEmailBtc"
+            formControlName="confirmWithdrawalEmailBtc"
+            id="field_confirmWithdrawalEmailBtc"
+            data-cy="confirmWithdrawalEmailBtc"
+          >
+            <option [ngValue]="null">{{ 'jhipsterSampleApplicationApp.YesNo.null' | translate }}</option>
+            <option *ngFor="let yesNo of yesNoValues" [value]="yesNo">
+              {{ 'jhipsterSampleApplicationApp.YesNo.' + yesNo | translate }}
+            </option>
+          </select>
+          <div
+            *ngIf="
+              editForm.get('confirmWithdrawalEmailBtc')!.invalid &&
+              (editForm.get('confirmWithdrawalEmailBtc')!.dirty || editForm.get('confirmWithdrawalEmailBtc')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('confirmWithdrawalEmailBtc')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label
+            class="form-label"
+            jhiTranslate="jhipsterSampleApplicationApp.siteUsers.confirmWithdrawal2faBtc"
+            for="field_confirmWithdrawal2faBtc"
+            >Confirm Withdrawal 2 Fa Btc</label
+          >
+          <select
+            class="form-control"
+            name="confirmWithdrawal2faBtc"
+            formControlName="confirmWithdrawal2faBtc"
+            id="field_confirmWithdrawal2faBtc"
+            data-cy="confirmWithdrawal2faBtc"
+          >
+            <option [ngValue]="null">{{ 'jhipsterSampleApplicationApp.YesNo.null' | translate }}</option>
+            <option *ngFor="let yesNo of yesNoValues" [value]="yesNo">
+              {{ 'jhipsterSampleApplicationApp.YesNo.' + yesNo | translate }}
+            </option>
+          </select>
+          <div
+            *ngIf="
+              editForm.get('confirmWithdrawal2faBtc')!.invalid &&
+              (editForm.get('confirmWithdrawal2faBtc')!.dirty || editForm.get('confirmWithdrawal2faBtc')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('confirmWithdrawal2faBtc')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label
+            class="form-label"
+            jhiTranslate="jhipsterSampleApplicationApp.siteUsers.confirmWithdrawal2faBank"
+            for="field_confirmWithdrawal2faBank"
+            >Confirm Withdrawal 2 Fa Bank</label
+          >
+          <select
+            class="form-control"
+            name="confirmWithdrawal2faBank"
+            formControlName="confirmWithdrawal2faBank"
+            id="field_confirmWithdrawal2faBank"
+            data-cy="confirmWithdrawal2faBank"
+          >
+            <option [ngValue]="null">{{ 'jhipsterSampleApplicationApp.YesNo.null' | translate }}</option>
+            <option *ngFor="let yesNo of yesNoValues" [value]="yesNo">
+              {{ 'jhipsterSampleApplicationApp.YesNo.' + yesNo | translate }}
+            </option>
+          </select>
+          <div
+            *ngIf="
+              editForm.get('confirmWithdrawal2faBank')!.invalid &&
+              (editForm.get('confirmWithdrawal2faBank')!.dirty || editForm.get('confirmWithdrawal2faBank')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('confirmWithdrawal2faBank')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label
+            class="form-label"
+            jhiTranslate="jhipsterSampleApplicationApp.siteUsers.confirmWithdrawalEmailBank"
+            for="field_confirmWithdrawalEmailBank"
+            >Confirm Withdrawal Email Bank</label
+          >
+          <select
+            class="form-control"
+            name="confirmWithdrawalEmailBank"
+            formControlName="confirmWithdrawalEmailBank"
+            id="field_confirmWithdrawalEmailBank"
+            data-cy="confirmWithdrawalEmailBank"
+          >
+            <option [ngValue]="null">{{ 'jhipsterSampleApplicationApp.YesNo.null' | translate }}</option>
+            <option *ngFor="let yesNo of yesNoValues" [value]="yesNo">
+              {{ 'jhipsterSampleApplicationApp.YesNo.' + yesNo | translate }}
+            </option>
+          </select>
+          <div
+            *ngIf="
+              editForm.get('confirmWithdrawalEmailBank')!.invalid &&
+              (editForm.get('confirmWithdrawalEmailBank')!.dirty || editForm.get('confirmWithdrawalEmailBank')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('confirmWithdrawalEmailBank')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.siteUsers.notifyDepositBtc" for="field_notifyDepositBtc"
+            >Notify Deposit Btc</label
+          >
+          <select
+            class="form-control"
+            name="notifyDepositBtc"
+            formControlName="notifyDepositBtc"
+            id="field_notifyDepositBtc"
+            data-cy="notifyDepositBtc"
+          >
+            <option [ngValue]="null">{{ 'jhipsterSampleApplicationApp.YesNo.null' | translate }}</option>
+            <option *ngFor="let yesNo of yesNoValues" [value]="yesNo">
+              {{ 'jhipsterSampleApplicationApp.YesNo.' + yesNo | translate }}
+            </option>
+          </select>
+          <div
+            *ngIf="
+              editForm.get('notifyDepositBtc')!.invalid &&
+              (editForm.get('notifyDepositBtc')!.dirty || editForm.get('notifyDepositBtc')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('notifyDepositBtc')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.siteUsers.notifyDepositBank" for="field_notifyDepositBank"
+            >Notify Deposit Bank</label
+          >
+          <select
+            class="form-control"
+            name="notifyDepositBank"
+            formControlName="notifyDepositBank"
+            id="field_notifyDepositBank"
+            data-cy="notifyDepositBank"
+          >
+            <option [ngValue]="null">{{ 'jhipsterSampleApplicationApp.YesNo.null' | translate }}</option>
+            <option *ngFor="let yesNo of yesNoValues" [value]="yesNo">
+              {{ 'jhipsterSampleApplicationApp.YesNo.' + yesNo | translate }}
+            </option>
+          </select>
+          <div
+            *ngIf="
+              editForm.get('notifyDepositBank')!.invalid &&
+              (editForm.get('notifyDepositBank')!.dirty || editForm.get('notifyDepositBank')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('notifyDepositBank')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.siteUsers.lastUpdate" for="field_lastUpdate"
+            >Last Update</label
+          >
+          <div class="d-flex">
+            <input
+              id="field_lastUpdate"
+              data-cy="lastUpdate"
+              type="datetime-local"
+              class="form-control"
+              name="lastUpdate"
+              formControlName="lastUpdate"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+          <div *ngIf="editForm.get('lastUpdate')!.invalid && (editForm.get('lastUpdate')!.dirty || editForm.get('lastUpdate')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('lastUpdate')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('lastUpdate')?.errors?.ZonedDateTimelocal"
+              jhiTranslate="entity.validation.ZonedDateTimelocal"
+            >
+              This field should be a date and time.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.siteUsers.noLogins" for="field_noLogins">No Logins</label>
+          <select class="form-control" name="noLogins" formControlName="noLogins" id="field_noLogins" data-cy="noLogins">
+            <option [ngValue]="null">{{ 'jhipsterSampleApplicationApp.YesNo.null' | translate }}</option>
+            <option *ngFor="let yesNo of yesNoValues" [value]="yesNo">
+              {{ 'jhipsterSampleApplicationApp.YesNo.' + yesNo | translate }}
+            </option>
+          </select>
+          <div *ngIf="editForm.get('noLogins')!.invalid && (editForm.get('noLogins')!.dirty || editForm.get('noLogins')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('noLogins')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.siteUsers.notifyLogin" for="field_notifyLogin"
+            >Notify Login</label
+          >
+          <select class="form-control" name="notifyLogin" formControlName="notifyLogin" id="field_notifyLogin" data-cy="notifyLogin">
+            <option [ngValue]="null">{{ 'jhipsterSampleApplicationApp.YesNo.null' | translate }}</option>
+            <option *ngFor="let yesNo of yesNoValues" [value]="yesNo">
+              {{ 'jhipsterSampleApplicationApp.YesNo.' + yesNo | translate }}
+            </option>
+          </select>
+          <div *ngIf="editForm.get('notifyLogin')!.invalid && (editForm.get('notifyLogin')!.dirty || editForm.get('notifyLogin')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('notifyLogin')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.siteUsers.deactivated" for="field_deactivated"
+            >Deactivated</label
+          >
+          <select class="form-control" name="deactivated" formControlName="deactivated" id="field_deactivated" data-cy="deactivated">
+            <option [ngValue]="null">{{ 'jhipsterSampleApplicationApp.YesNo.null' | translate }}</option>
+            <option *ngFor="let yesNo of yesNoValues" [value]="yesNo">
+              {{ 'jhipsterSampleApplicationApp.YesNo.' + yesNo | translate }}
+            </option>
+          </select>
+          <div *ngIf="editForm.get('deactivated')!.invalid && (editForm.get('deactivated')!.dirty || editForm.get('deactivated')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('deactivated')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.siteUsers.locked" for="field_locked">Locked</label>
+          <select class="form-control" name="locked" formControlName="locked" id="field_locked" data-cy="locked">
+            <option [ngValue]="null">{{ 'jhipsterSampleApplicationApp.YesNo.null' | translate }}</option>
+            <option *ngFor="let yesNo of yesNoValues" [value]="yesNo">
+              {{ 'jhipsterSampleApplicationApp.YesNo.' + yesNo | translate }}
+            </option>
+          </select>
+          <div *ngIf="editForm.get('locked')!.invalid && (editForm.get('locked')!.dirty || editForm.get('locked')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('locked')?.errors?.required" jhiTranslate="entity.validation.required">
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.siteUsers.google2faCode" for="field_google2faCode"
+            >Google 2 Fa Code</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="google2faCode"
+            id="field_google2faCode"
+            data-cy="google2faCode"
+            formControlName="google2faCode"
+          />
+          <div
+            *ngIf="
+              editForm.get('google2faCode')!.invalid && (editForm.get('google2faCode')!.dirty || editForm.get('google2faCode')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('google2faCode')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('google2faCode')?.errors?.maxlength"
+              jhiTranslate="entity.validation.maxlength"
+              [translateValues]="{ max: 255 }"
+            >
+              This field cannot be longer than 255 characters.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.siteUsers.verifiedGoogle" for="field_verifiedGoogle"
+            >Verified Google</label
+          >
+          <select
+            class="form-control"
+            name="verifiedGoogle"
+            formControlName="verifiedGoogle"
+            id="field_verifiedGoogle"
+            data-cy="verifiedGoogle"
+          >
+            <option [ngValue]="null">{{ 'jhipsterSampleApplicationApp.YesNo.null' | translate }}</option>
+            <option *ngFor="let yesNo of yesNoValues" [value]="yesNo">
+              {{ 'jhipsterSampleApplicationApp.YesNo.' + yesNo | translate }}
+            </option>
+          </select>
+          <div
+            *ngIf="
+              editForm.get('verifiedGoogle')!.invalid && (editForm.get('verifiedGoogle')!.dirty || editForm.get('verifiedGoogle')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('verifiedGoogle')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.siteUsers.lastLang" for="field_lastLang">Last Lang</label>
+          <input type="text" class="form-control" name="lastLang" id="field_lastLang" data-cy="lastLang" formControlName="lastLang" />
+          <div *ngIf="editForm.get('lastLang')!.invalid && (editForm.get('lastLang')!.dirty || editForm.get('lastLang')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('lastLang')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('lastLang')?.errors?.maxlength"
+              jhiTranslate="entity.validation.maxlength"
+              [translateValues]="{ max: 255 }"
+            >
+              This field cannot be longer than 255 characters.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.siteUsers.notifyWithdrawBtc" for="field_notifyWithdrawBtc"
+            >Notify Withdraw Btc</label
+          >
+          <select
+            class="form-control"
+            name="notifyWithdrawBtc"
+            formControlName="notifyWithdrawBtc"
+            id="field_notifyWithdrawBtc"
+            data-cy="notifyWithdrawBtc"
+          >
+            <option [ngValue]="null">{{ 'jhipsterSampleApplicationApp.YesNo.null' | translate }}</option>
+            <option *ngFor="let yesNo of yesNoValues" [value]="yesNo">
+              {{ 'jhipsterSampleApplicationApp.YesNo.' + yesNo | translate }}
+            </option>
+          </select>
+          <div
+            *ngIf="
+              editForm.get('notifyWithdrawBtc')!.invalid &&
+              (editForm.get('notifyWithdrawBtc')!.dirty || editForm.get('notifyWithdrawBtc')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('notifyWithdrawBtc')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.siteUsers.notifyWithdrawBank" for="field_notifyWithdrawBank"
+            >Notify Withdraw Bank</label
+          >
+          <select
+            class="form-control"
+            name="notifyWithdrawBank"
+            formControlName="notifyWithdrawBank"
+            id="field_notifyWithdrawBank"
+            data-cy="notifyWithdrawBank"
+          >
+            <option [ngValue]="null">{{ 'jhipsterSampleApplicationApp.YesNo.null' | translate }}</option>
+            <option *ngFor="let yesNo of yesNoValues" [value]="yesNo">
+              {{ 'jhipsterSampleApplicationApp.YesNo.' + yesNo | translate }}
+            </option>
+          </select>
+          <div
+            *ngIf="
+              editForm.get('notifyWithdrawBank')!.invalid &&
+              (editForm.get('notifyWithdrawBank')!.dirty || editForm.get('notifyWithdrawBank')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('notifyWithdrawBank')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.siteUsers.trusted" for="field_trusted">Trusted</label>
+          <select class="form-control" name="trusted" formControlName="trusted" id="field_trusted" data-cy="trusted">
+            <option [ngValue]="null">{{ 'jhipsterSampleApplicationApp.YesNo.null' | translate }}</option>
+            <option *ngFor="let yesNo of yesNoValues" [value]="yesNo">
+              {{ 'jhipsterSampleApplicationApp.YesNo.' + yesNo | translate }}
+            </option>
+          </select>
+          <div *ngIf="editForm.get('trusted')!.invalid && (editForm.get('trusted')!.dirty || editForm.get('trusted')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('trusted')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.siteUsers.country" for="field_country">Country</label>
+          <select class="form-control" id="field_country" data-cy="country" name="country" formControlName="country">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="isoCountriesOption.id === editForm.get('country')!.value?.id ? editForm.get('country')!.value : isoCountriesOption"
+              *ngFor="let isoCountriesOption of countriesCollection; trackBy: trackIsoCountriesById"
+            >
+              {{ isoCountriesOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.siteUsers.feeSchedule" for="field_feeSchedule"
+            >Fee Schedule</label
+          >
+          <select class="form-control" id="field_feeSchedule" data-cy="feeSchedule" name="feeSchedule" formControlName="feeSchedule">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                feeScheduleOption.id === editForm.get('feeSchedule')!.value?.id ? editForm.get('feeSchedule')!.value : feeScheduleOption
+              "
+              *ngFor="let feeScheduleOption of feeSchedulesCollection; trackBy: trackFeeScheduleById"
+            >
+              {{ feeScheduleOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.siteUsers.defaultCurrency" for="field_defaultCurrency"
+            >Default Currency</label
+          >
+          <select
+            class="form-control"
+            id="field_defaultCurrency"
+            data-cy="defaultCurrency"
+            name="defaultCurrency"
+            formControlName="defaultCurrency"
+          >
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                currenciesOption.id === editForm.get('defaultCurrency')!.value?.id
+                  ? editForm.get('defaultCurrency')!.value
+                  : currenciesOption
+              "
+              *ngFor="let currenciesOption of defaultCurrenciesCollection; trackBy: trackCurrenciesById"
+            >
+              {{ currenciesOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

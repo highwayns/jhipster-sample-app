@@ -1,0 +1,29 @@
+{
+  "jhipsterSampleApplicationApp": {
+    "adminSessions": {
+      "home": {
+        "title": "Admin Sessions",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Admin Sessions",
+        "createOrEditLabel": "Create or edit a Admin Sessions",
+        "notFound": "No Admin Sessions found"
+      },
+      "created": "A new Admin Sessions is created with identifier {{ param }}",
+      "updated": "A Admin Sessions is updated with identifier {{ param }}",
+      "deleted": "A Admin Sessions is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Admin Sessions {{ id }}?"
+      },
+      "detail": {
+        "title": "Admin Sessions"
+      },
+      "id": "ID",
+      "sessionId": "Session Id",
+      "sessionTime": "Session Time",
+      "sessionStart": "Session Start",
+      "sessionValue": "Session Value",
+      "ipAddress": "Ip Address",
+      "userAgent": "User Agent"
+    }
+  }
+}

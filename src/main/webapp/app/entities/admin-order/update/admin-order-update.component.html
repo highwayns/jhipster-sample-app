@@ -1,0 +1,111 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-admin-order-heading"
+        data-cy="AdminOrderCreateUpdateHeading"
+        jhiTranslate="jhipsterSampleApplicationApp.adminOrder.home.createOrEditLabel"
+      >
+        Create or edit a Admin Order
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.adminOrder.orderBy" for="field_orderBy">Order By</label>
+          <input type="text" class="form-control" name="orderBy" id="field_orderBy" data-cy="orderBy" formControlName="orderBy" />
+          <div *ngIf="editForm.get('orderBy')!.invalid && (editForm.get('orderBy')!.dirty || editForm.get('orderBy')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('orderBy')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('orderBy')?.errors?.maxlength"
+              jhiTranslate="entity.validation.maxlength"
+              [translateValues]="{ max: 50 }"
+            >
+              This field cannot be longer than 50 characters.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.adminOrder.orderAsc" for="field_orderAsc">Order Asc</label>
+          <input type="number" class="form-control" name="orderAsc" id="field_orderAsc" data-cy="orderAsc" formControlName="orderAsc" />
+          <div *ngIf="editForm.get('orderAsc')!.invalid && (editForm.get('orderAsc')!.dirty || editForm.get('orderAsc')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('orderAsc')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('orderAsc')?.errors?.number"
+              jhiTranslate="entity.validation.number"
+            >
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.adminOrder.controlId" for="field_controlId"
+            >Control Id</label
+          >
+          <select class="form-control" id="field_controlId" data-cy="controlId" name="controlId" formControlName="controlId">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                adminControlsOption.id === editForm.get('controlId')!.value?.id ? editForm.get('controlId')!.value : adminControlsOption
+              "
+              *ngFor="let adminControlsOption of adminControlsSharedCollection; trackBy: trackAdminControlsById"
+            >
+              {{ adminControlsOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.adminOrder.userId" for="field_userId">User Id</label>
+          <select class="form-control" id="field_userId" data-cy="userId" name="userId" formControlName="userId">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="adminUsersOption.id === editForm.get('userId')!.value?.id ? editForm.get('userId')!.value : adminUsersOption"
+              *ngFor="let adminUsersOption of adminUsersSharedCollection; trackBy: trackAdminUsersById"
+            >
+              {{ adminUsersOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

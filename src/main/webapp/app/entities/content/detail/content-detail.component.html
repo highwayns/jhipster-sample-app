@@ -1,0 +1,76 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="content">
+      <h2 data-cy="contentDetailsHeading"><span jhiTranslate="jhipsterSampleApplicationApp.content.detail.title">Content</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ content.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.content.url">Url</span></dt>
+        <dd>
+          <span>{{ content.url }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.content.titleEn">Title En</span></dt>
+        <dd>
+          <span>{{ content.titleEn }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.content.titleEs">Title Es</span></dt>
+        <dd>
+          <span>{{ content.titleEs }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.content.contentEn">Content En</span></dt>
+        <dd>
+          <div *ngIf="content.contentEn">
+            <a (click)="openFile(content.contentEn, content.contentEnContentType)" jhiTranslate="entity.action.open">open</a>
+            {{ content.contentEnContentType }}, {{ byteSize(content.contentEn) }}
+          </div>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.content.contentEs">Content Es</span></dt>
+        <dd>
+          <div *ngIf="content.contentEs">
+            <a (click)="openFile(content.contentEs, content.contentEsContentType)" jhiTranslate="entity.action.open">open</a>
+            {{ content.contentEsContentType }}, {{ byteSize(content.contentEs) }}
+          </div>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.content.titleRu">Title Ru</span></dt>
+        <dd>
+          <span>{{ content.titleRu }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.content.titleZh">Title Zh</span></dt>
+        <dd>
+          <span>{{ content.titleZh }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.content.contentRu">Content Ru</span></dt>
+        <dd>
+          <div *ngIf="content.contentRu">
+            <a (click)="openFile(content.contentRu, content.contentRuContentType)" jhiTranslate="entity.action.open">open</a>
+            {{ content.contentRuContentType }}, {{ byteSize(content.contentRu) }}
+          </div>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.content.contentZh">Content Zh</span></dt>
+        <dd>
+          <div *ngIf="content.contentZh">
+            <a (click)="openFile(content.contentZh, content.contentZhContentType)" jhiTranslate="entity.action.open">open</a>
+            {{ content.contentZhContentType }}, {{ byteSize(content.contentZh) }}
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/content', content.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

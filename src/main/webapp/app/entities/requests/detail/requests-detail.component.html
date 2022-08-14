@@ -1,0 +1,106 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="requests">
+      <h2 data-cy="requestsDetailsHeading"><span jhiTranslate="jhipsterSampleApplicationApp.requests.detail.title">Requests</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ requests.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.requests.date">Date</span></dt>
+        <dd>
+          <span>{{ requests.date | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.requests.amount">Amount</span></dt>
+        <dd>
+          <span>{{ requests.amount }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.requests.addressId">Address Id</span></dt>
+        <dd>
+          <span>{{ requests.addressId }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.requests.account">Account</span></dt>
+        <dd>
+          <span>{{ requests.account }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.requests.sendAddress">Send Address</span></dt>
+        <dd>
+          <span>{{ requests.sendAddress }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.requests.transactionId">Transaction Id</span></dt>
+        <dd>
+          <span>{{ requests.transactionId }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.requests.increment">Increment</span></dt>
+        <dd>
+          <span>{{ requests.increment }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.requests.done">Done</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'jhipsterSampleApplicationApp.YesNo.' + requests.done }}">{{ requests.done }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.requests.cryptoId">Crypto Id</span></dt>
+        <dd>
+          <span>{{ requests.cryptoId }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.requests.fee">Fee</span></dt>
+        <dd>
+          <span>{{ requests.fee }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.requests.netAmount">Net Amount</span></dt>
+        <dd>
+          <span>{{ requests.netAmount }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.requests.notified">Notified</span></dt>
+        <dd>
+          <span>{{ requests.notified }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.requests.siteUser">Site User</span></dt>
+        <dd>
+          <div *ngIf="requests.siteUser">
+            <a [routerLink]="['/site-users', requests.siteUser?.id, 'view']">{{ requests.siteUser?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.requests.currency">Currency</span></dt>
+        <dd>
+          <div *ngIf="requests.currency">
+            <a [routerLink]="['/currencies', requests.currency?.id, 'view']">{{ requests.currency?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.requests.description">Description</span></dt>
+        <dd>
+          <div *ngIf="requests.description">
+            <a [routerLink]="['/request-descriptions', requests.description?.id, 'view']">{{ requests.description?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.requests.requestStatus">Request Status</span></dt>
+        <dd>
+          <div *ngIf="requests.requestStatus">
+            <a [routerLink]="['/request-status', requests.requestStatus?.id, 'view']">{{ requests.requestStatus?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.requests.requestType">Request Type</span></dt>
+        <dd>
+          <div *ngIf="requests.requestType">
+            <a [routerLink]="['/request-types', requests.requestType?.id, 'view']">{{ requests.requestType?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/requests', requests.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

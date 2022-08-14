@@ -45,6 +45,58 @@
     <include file="config/liquibase/changelog/20220709023654_added_entity_RecurrenceCriteria.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20220709023655_added_entity_Currencys.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20220709023656_added_entity_TokenisedCard.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220814090837_added_entity_AdminControls.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220814090838_added_entity_AdminControlsMethods.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220814090839_added_entity_AdminCron.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220814090840_added_entity_AdminGroups.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220814090841_added_entity_AdminGroupsPages.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220814090842_added_entity_AdminGroupsTabs.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220814090843_added_entity_AdminImageSizes.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220814090844_added_entity_AdminOrder.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220814090845_added_entity_AdminPages.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220814090846_added_entity_AdminSessions.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220814090847_added_entity_AdminTabs.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220814090848_added_entity_AdminUsers.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220814090849_added_entity_ApiKeys.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220814090850_added_entity_AppConfiguration.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220814090851_added_entity_BankAccounts.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220814090852_added_entity_BitcoinAddresses.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220814090853_added_entity_BitcoindLog.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220814090854_added_entity_ChangeSettings.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220814090855_added_entity_Content.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220814090856_added_entity_ContentFiles.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220814090857_added_entity_Conversions.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220814090858_added_entity_Currencies.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220814090859_added_entity_CurrentStats.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220814090900_added_entity_DailyReports.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220814090901_added_entity_Emails.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220814090902_added_entity_FeeSchedule.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220814090903_added_entity_Fees.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220814090904_added_entity_HistoricalData.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220814090905_added_entity_History.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220814090906_added_entity_HistoryActions.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220814090907_added_entity_InnodbLockMonitor.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220814090908_added_entity_IpAccessLog.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220814090909_added_entity_IsoCountries.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220814090910_added_entity_Lang.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220814090911_added_entity_MonthlyReports.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220814090912_added_entity_News.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220814090913_added_entity_OrderLog.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220814090914_added_entity_OrderTypes.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220814090915_added_entity_Orders.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220814090916_added_entity_RequestDescriptions.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220814090917_added_entity_RequestStatus.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220814090918_added_entity_RequestTypes.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220814090919_added_entity_Requests.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220814090920_added_entity_SettingsFiles.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220814090921_added_entity_SiteUsers.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220814090922_added_entity_SiteUsersAccess.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220814090923_added_entity_SiteUsersBalances.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220814090924_added_entity_SiteUsersCatch.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220814090925_added_entity_Status.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220814090926_added_entity_StatusEscrows.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220814090927_added_entity_TransactionTypes.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220814090928_added_entity_Transactions.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
     <include file="config/liquibase/changelog/20150805124838_added_entity_constraints_BankAccount.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20150805125054_added_entity_constraints_Operation.xml" relativeToChangelogFile="false"/>
@@ -60,6 +112,29 @@
     <include file="config/liquibase/changelog/20220709023648_added_entity_constraints_PaymentStep.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20220709023650_added_entity_constraints_PaymentMethodInfo.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20220709023651_added_entity_constraints_Refund.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220814090837_added_entity_constraints_AdminControls.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220814090838_added_entity_constraints_AdminControlsMethods.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220814090839_added_entity_constraints_AdminCron.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220814090841_added_entity_constraints_AdminGroupsPages.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220814090842_added_entity_constraints_AdminGroupsTabs.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220814090844_added_entity_constraints_AdminOrder.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220814090848_added_entity_constraints_AdminUsers.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220814090849_added_entity_constraints_ApiKeys.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220814090851_added_entity_constraints_BankAccounts.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220814090852_added_entity_constraints_BitcoinAddresses.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220814090853_added_entity_constraints_BitcoindLog.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220814090854_added_entity_constraints_ChangeSettings.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220814090857_added_entity_constraints_Conversions.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220814090905_added_entity_constraints_History.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220814090913_added_entity_constraints_OrderLog.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220814090915_added_entity_constraints_Orders.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220814090919_added_entity_constraints_Requests.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220814090921_added_entity_constraints_SiteUsers.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220814090922_added_entity_constraints_SiteUsersAccess.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220814090923_added_entity_constraints_SiteUsersBalances.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220814090924_added_entity_constraints_SiteUsersCatch.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220814090926_added_entity_constraints_StatusEscrows.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220814090928_added_entity_constraints_Transactions.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
     <!-- jhipster-needle-liquibase-add-incremental-changelog - JHipster will add incremental liquibase changelogs here -->
 </databaseChangeLog>

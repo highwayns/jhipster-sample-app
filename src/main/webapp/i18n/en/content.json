@@ -1,0 +1,32 @@
+{
+  "jhipsterSampleApplicationApp": {
+    "content": {
+      "home": {
+        "title": "Contents",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Content",
+        "createOrEditLabel": "Create or edit a Content",
+        "notFound": "No Contents found"
+      },
+      "created": "A new Content is created with identifier {{ param }}",
+      "updated": "A Content is updated with identifier {{ param }}",
+      "deleted": "A Content is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Content {{ id }}?"
+      },
+      "detail": {
+        "title": "Content"
+      },
+      "id": "ID",
+      "url": "Url",
+      "titleEn": "Title En",
+      "titleEs": "Title Es",
+      "contentEn": "Content En",
+      "contentEs": "Content Es",
+      "titleRu": "Title Ru",
+      "titleZh": "Title Zh",
+      "contentRu": "Content Ru",
+      "contentZh": "Content Zh"
+    }
+  }
+}

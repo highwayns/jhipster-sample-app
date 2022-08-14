@@ -1,0 +1,40 @@
+{
+  "applications": "*",
+  "changelogDate": "20220814090840",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "admin_groups",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "maxlength"],
+      "fieldValidateRulesMaxlength": "50"
+    },
+    {
+      "fieldName": "order",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "AdminGroups",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "adminGroupsPages",
+      "otherEntityRelationshipName": "groupId",
+      "relationshipName": "adminGroupsPages",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "adminGroupsTabs",
+      "otherEntityRelationshipName": "groupId",
+      "relationshipName": "adminGroupsTabs",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "service": "serviceClass"
+}

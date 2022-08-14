@@ -1,0 +1,29 @@
+{
+  "applications": "*",
+  "changelogDate": "20220814090924",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "site_users_catch",
+  "fields": [
+    {
+      "fieldName": "attempts",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "SiteUsersCatch",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "siteUsers",
+      "otherEntityRelationshipName": "siteUsersCatch",
+      "ownerSide": true,
+      "relationshipName": "siteUser",
+      "relationshipType": "one-to-one"
+    }
+  ],
+  "service": "serviceClass"
+}

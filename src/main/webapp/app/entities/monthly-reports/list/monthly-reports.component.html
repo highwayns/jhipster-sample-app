@@ -1,0 +1,128 @@
+<div>
+  <h2 id="page-heading" data-cy="MonthlyReportsHeading">
+    <span jhiTranslate="jhipsterSampleApplicationApp.monthlyReports.home.title">Monthly Reports</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="loadPage()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="jhipsterSampleApplicationApp.monthlyReports.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-monthly-reports"
+        [routerLink]="['/monthly-reports/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="jhipsterSampleApplicationApp.monthlyReports.home.createLabel"> Create a new Monthly Reports </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="monthlyReports?.length === 0">
+    <span jhiTranslate="jhipsterSampleApplicationApp.monthlyReports.home.notFound">No monthlyReports found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="monthlyReports && monthlyReports.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="loadPage()">
+          <th scope="col" jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="date">
+            <span jhiTranslate="jhipsterSampleApplicationApp.monthlyReports.date">Date</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="transactionsBtc">
+            <span jhiTranslate="jhipsterSampleApplicationApp.monthlyReports.transactionsBtc">Transactions Btc</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="avgTransactionSizeBtc">
+            <span jhiTranslate="jhipsterSampleApplicationApp.monthlyReports.avgTransactionSizeBtc">Avg Transaction Size Btc</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="transactionVolumePerUser">
+            <span jhiTranslate="jhipsterSampleApplicationApp.monthlyReports.transactionVolumePerUser">Transaction Volume Per User</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="totalFeesBtc">
+            <span jhiTranslate="jhipsterSampleApplicationApp.monthlyReports.totalFeesBtc">Total Fees Btc</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="feesPerUserBtc">
+            <span jhiTranslate="jhipsterSampleApplicationApp.monthlyReports.feesPerUserBtc">Fees Per User Btc</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="grossProfitBtc">
+            <span jhiTranslate="jhipsterSampleApplicationApp.monthlyReports.grossProfitBtc">Gross Profit Btc</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let monthlyReports of monthlyReports; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/monthly-reports', monthlyReports.id, 'view']">{{ monthlyReports.id }}</a>
+          </td>
+          <td>{{ monthlyReports.date | formatMediumDatetime }}</td>
+          <td>{{ monthlyReports.transactionsBtc }}</td>
+          <td>{{ monthlyReports.avgTransactionSizeBtc }}</td>
+          <td>{{ monthlyReports.transactionVolumePerUser }}</td>
+          <td>{{ monthlyReports.totalFeesBtc }}</td>
+          <td>{{ monthlyReports.feesPerUserBtc }}</td>
+          <td>{{ monthlyReports.grossProfitBtc }}</td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/monthly-reports', monthlyReports.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/monthly-reports', monthlyReports.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(monthlyReports)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="monthlyReports && monthlyReports.length > 0">
+    <div class="d-flex justify-content-center">
+      <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+    </div>
+
+    <div class="d-flex justify-content-center">
+      <ngb-pagination
+        [collectionSize]="totalItems"
+        [(page)]="ngbPaginationPage"
+        [pageSize]="itemsPerPage"
+        [maxSize]="5"
+        [rotate]="true"
+        [boundaryLinks]="true"
+        (pageChange)="loadPage($event)"
+      ></ngb-pagination>
+    </div>
+  </div>
+</div>

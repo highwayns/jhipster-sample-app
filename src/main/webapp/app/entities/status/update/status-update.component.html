@@ -1,0 +1,570 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-status-heading"
+        data-cy="StatusCreateUpdateHeading"
+        jhiTranslate="jhipsterSampleApplicationApp.status.home.createOrEditLabel"
+      >
+        Create or edit a Status
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.status.lastSweep" for="field_lastSweep">Last Sweep</label>
+          <div class="d-flex">
+            <input
+              id="field_lastSweep"
+              data-cy="lastSweep"
+              type="datetime-local"
+              class="form-control"
+              name="lastSweep"
+              formControlName="lastSweep"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+          <div *ngIf="editForm.get('lastSweep')!.invalid && (editForm.get('lastSweep')!.dirty || editForm.get('lastSweep')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('lastSweep')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('lastSweep')?.errors?.ZonedDateTimelocal"
+              jhiTranslate="entity.validation.ZonedDateTimelocal"
+            >
+              This field should be a date and time.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.status.deficitBtc" for="field_deficitBtc">Deficit Btc</label>
+          <input
+            type="number"
+            class="form-control"
+            name="deficitBtc"
+            id="field_deficitBtc"
+            data-cy="deficitBtc"
+            formControlName="deficitBtc"
+          />
+          <div *ngIf="editForm.get('deficitBtc')!.invalid && (editForm.get('deficitBtc')!.dirty || editForm.get('deficitBtc')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('deficitBtc')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('deficitBtc')?.errors?.number"
+              jhiTranslate="entity.validation.number"
+            >
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.status.hotWalletBtc" for="field_hotWalletBtc"
+            >Hot Wallet Btc</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="hotWalletBtc"
+            id="field_hotWalletBtc"
+            data-cy="hotWalletBtc"
+            formControlName="hotWalletBtc"
+          />
+          <div
+            *ngIf="editForm.get('hotWalletBtc')!.invalid && (editForm.get('hotWalletBtc')!.dirty || editForm.get('hotWalletBtc')!.touched)"
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('hotWalletBtc')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('hotWalletBtc')?.errors?.number"
+              jhiTranslate="entity.validation.number"
+            >
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.status.warmWalletBtc" for="field_warmWalletBtc"
+            >Warm Wallet Btc</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="warmWalletBtc"
+            id="field_warmWalletBtc"
+            data-cy="warmWalletBtc"
+            formControlName="warmWalletBtc"
+          />
+          <div
+            *ngIf="
+              editForm.get('warmWalletBtc')!.invalid && (editForm.get('warmWalletBtc')!.dirty || editForm.get('warmWalletBtc')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('warmWalletBtc')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('warmWalletBtc')?.errors?.number"
+              jhiTranslate="entity.validation.number"
+            >
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.status.totalBtc" for="field_totalBtc">Total Btc</label>
+          <input type="number" class="form-control" name="totalBtc" id="field_totalBtc" data-cy="totalBtc" formControlName="totalBtc" />
+          <div *ngIf="editForm.get('totalBtc')!.invalid && (editForm.get('totalBtc')!.dirty || editForm.get('totalBtc')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('totalBtc')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('totalBtc')?.errors?.number"
+              jhiTranslate="entity.validation.number"
+            >
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.status.receivedBtcPending" for="field_receivedBtcPending"
+            >Received Btc Pending</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="receivedBtcPending"
+            id="field_receivedBtcPending"
+            data-cy="receivedBtcPending"
+            formControlName="receivedBtcPending"
+          />
+          <div
+            *ngIf="
+              editForm.get('receivedBtcPending')!.invalid &&
+              (editForm.get('receivedBtcPending')!.dirty || editForm.get('receivedBtcPending')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('receivedBtcPending')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('receivedBtcPending')?.errors?.number"
+              jhiTranslate="entity.validation.number"
+            >
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.status.pendingWithdrawals" for="field_pendingWithdrawals"
+            >Pending Withdrawals</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="pendingWithdrawals"
+            id="field_pendingWithdrawals"
+            data-cy="pendingWithdrawals"
+            formControlName="pendingWithdrawals"
+          />
+          <div
+            *ngIf="
+              editForm.get('pendingWithdrawals')!.invalid &&
+              (editForm.get('pendingWithdrawals')!.dirty || editForm.get('pendingWithdrawals')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('pendingWithdrawals')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('pendingWithdrawals')?.errors?.number"
+              jhiTranslate="entity.validation.number"
+            >
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.status.tradingStatus" for="field_tradingStatus"
+            >Trading Status</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="tradingStatus"
+            id="field_tradingStatus"
+            data-cy="tradingStatus"
+            formControlName="tradingStatus"
+          />
+          <div
+            *ngIf="
+              editForm.get('tradingStatus')!.invalid && (editForm.get('tradingStatus')!.dirty || editForm.get('tradingStatus')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('tradingStatus')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('tradingStatus')?.errors?.maxlength"
+              jhiTranslate="entity.validation.maxlength"
+              [translateValues]="{ max: 255 }"
+            >
+              This field cannot be longer than 255 characters.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.status.withdrawalsStatus" for="field_withdrawalsStatus"
+            >Withdrawals Status</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="withdrawalsStatus"
+            id="field_withdrawalsStatus"
+            data-cy="withdrawalsStatus"
+            formControlName="withdrawalsStatus"
+          />
+          <div
+            *ngIf="
+              editForm.get('withdrawalsStatus')!.invalid &&
+              (editForm.get('withdrawalsStatus')!.dirty || editForm.get('withdrawalsStatus')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('withdrawalsStatus')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('withdrawalsStatus')?.errors?.maxlength"
+              jhiTranslate="entity.validation.maxlength"
+              [translateValues]="{ max: 255 }"
+            >
+              This field cannot be longer than 255 characters.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.status.dbVersion" for="field_dbVersion">Db Version</label>
+          <input type="number" class="form-control" name="dbVersion" id="field_dbVersion" data-cy="dbVersion" formControlName="dbVersion" />
+          <div *ngIf="editForm.get('dbVersion')!.invalid && (editForm.get('dbVersion')!.dirty || editForm.get('dbVersion')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('dbVersion')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('dbVersion')?.errors?.number"
+              jhiTranslate="entity.validation.number"
+            >
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.status.cronDailyStats" for="field_cronDailyStats"
+            >Cron Daily Stats</label
+          >
+          <div class="d-flex">
+            <input
+              id="field_cronDailyStats"
+              data-cy="cronDailyStats"
+              type="datetime-local"
+              class="form-control"
+              name="cronDailyStats"
+              formControlName="cronDailyStats"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+          <div
+            *ngIf="
+              editForm.get('cronDailyStats')!.invalid && (editForm.get('cronDailyStats')!.dirty || editForm.get('cronDailyStats')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('cronDailyStats')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('cronDailyStats')?.errors?.ZonedDateTimelocal"
+              jhiTranslate="entity.validation.ZonedDateTimelocal"
+            >
+              This field should be a date and time.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.status.cronGetStats" for="field_cronGetStats"
+            >Cron Get Stats</label
+          >
+          <div class="d-flex">
+            <input
+              id="field_cronGetStats"
+              data-cy="cronGetStats"
+              type="datetime-local"
+              class="form-control"
+              name="cronGetStats"
+              formControlName="cronGetStats"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+          <div
+            *ngIf="editForm.get('cronGetStats')!.invalid && (editForm.get('cronGetStats')!.dirty || editForm.get('cronGetStats')!.touched)"
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('cronGetStats')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('cronGetStats')?.errors?.ZonedDateTimelocal"
+              jhiTranslate="entity.validation.ZonedDateTimelocal"
+            >
+              This field should be a date and time.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.status.cronMaintenance" for="field_cronMaintenance"
+            >Cron Maintenance</label
+          >
+          <div class="d-flex">
+            <input
+              id="field_cronMaintenance"
+              data-cy="cronMaintenance"
+              type="datetime-local"
+              class="form-control"
+              name="cronMaintenance"
+              formControlName="cronMaintenance"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+          <div
+            *ngIf="
+              editForm.get('cronMaintenance')!.invalid &&
+              (editForm.get('cronMaintenance')!.dirty || editForm.get('cronMaintenance')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('cronMaintenance')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('cronMaintenance')?.errors?.ZonedDateTimelocal"
+              jhiTranslate="entity.validation.ZonedDateTimelocal"
+            >
+              This field should be a date and time.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.status.cronMonthlyStats" for="field_cronMonthlyStats"
+            >Cron Monthly Stats</label
+          >
+          <div class="d-flex">
+            <input
+              id="field_cronMonthlyStats"
+              data-cy="cronMonthlyStats"
+              type="datetime-local"
+              class="form-control"
+              name="cronMonthlyStats"
+              formControlName="cronMonthlyStats"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+          <div
+            *ngIf="
+              editForm.get('cronMonthlyStats')!.invalid &&
+              (editForm.get('cronMonthlyStats')!.dirty || editForm.get('cronMonthlyStats')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('cronMonthlyStats')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('cronMonthlyStats')?.errors?.ZonedDateTimelocal"
+              jhiTranslate="entity.validation.ZonedDateTimelocal"
+            >
+              This field should be a date and time.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.status.cronReceiveBitcoin" for="field_cronReceiveBitcoin"
+            >Cron Receive Bitcoin</label
+          >
+          <div class="d-flex">
+            <input
+              id="field_cronReceiveBitcoin"
+              data-cy="cronReceiveBitcoin"
+              type="datetime-local"
+              class="form-control"
+              name="cronReceiveBitcoin"
+              formControlName="cronReceiveBitcoin"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+          <div
+            *ngIf="
+              editForm.get('cronReceiveBitcoin')!.invalid &&
+              (editForm.get('cronReceiveBitcoin')!.dirty || editForm.get('cronReceiveBitcoin')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('cronReceiveBitcoin')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('cronReceiveBitcoin')?.errors?.ZonedDateTimelocal"
+              jhiTranslate="entity.validation.ZonedDateTimelocal"
+            >
+              This field should be a date and time.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.status.cronSendBitcoin" for="field_cronSendBitcoin"
+            >Cron Send Bitcoin</label
+          >
+          <div class="d-flex">
+            <input
+              id="field_cronSendBitcoin"
+              data-cy="cronSendBitcoin"
+              type="datetime-local"
+              class="form-control"
+              name="cronSendBitcoin"
+              formControlName="cronSendBitcoin"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+          <div
+            *ngIf="
+              editForm.get('cronSendBitcoin')!.invalid &&
+              (editForm.get('cronSendBitcoin')!.dirty || editForm.get('cronSendBitcoin')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('cronSendBitcoin')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('cronSendBitcoin')?.errors?.ZonedDateTimelocal"
+              jhiTranslate="entity.validation.ZonedDateTimelocal"
+            >
+              This field should be a date and time.
+            </small>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

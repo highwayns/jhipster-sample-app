@@ -1,0 +1,26 @@
+{
+  "jhipsterSampleApplicationApp": {
+    "statusEscrows": {
+      "home": {
+        "title": "Status Escrows",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Status Escrows",
+        "createOrEditLabel": "Create or edit a Status Escrows",
+        "notFound": "No Status Escrows found"
+      },
+      "created": "A new Status Escrows is created with identifier {{ param }}",
+      "updated": "A Status Escrows is updated with identifier {{ param }}",
+      "deleted": "A Status Escrows is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Status Escrows {{ id }}?"
+      },
+      "detail": {
+        "title": "Status Escrows"
+      },
+      "id": "ID",
+      "balance": "Balance",
+      "currency": "Currency",
+      "statusId": "Status Id"
+    }
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "jhipsterSampleApplicationApp": {
+    "adminControls": {
+      "home": {
+        "title": "Admin Controls",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Admin Controls",
+        "createOrEditLabel": "Create or edit a Admin Controls",
+        "notFound": "No Admin Controls found"
+      },
+      "created": "A new Admin Controls is created with identifier {{ param }}",
+      "updated": "A Admin Controls is updated with identifier {{ param }}",
+      "deleted": "A Admin Controls is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Admin Controls {{ id }}?"
+      },
+      "detail": {
+        "title": "Admin Controls"
+      },
+      "id": "ID",
+      "action": "Action",
+      "controlClass": "Control Class",
+      "argument": "Argument",
+      "order": "Order",
+      "isStatic": "Is Static",
+      "pageId": "Page Id",
+      "tabId": "Tab Id",
+      "adminControlsMethods": "Admin Controls Methods",
+      "adminCron": "Admin Cron",
+      "adminOrder": "Admin Order"
+    }
+  }
+}

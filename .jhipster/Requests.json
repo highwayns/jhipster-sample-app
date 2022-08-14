@@ -1,0 +1,115 @@
+{
+  "applications": "*",
+  "changelogDate": "20220814090919",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "requests",
+  "fields": [
+    {
+      "fieldName": "date",
+      "fieldType": "Instant",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "amount",
+      "fieldType": "Double",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "addressId",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "account",
+      "fieldType": "Long",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "sendAddress",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "maxlength"],
+      "fieldValidateRulesMaxlength": "255"
+    },
+    {
+      "fieldName": "transactionId",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "maxlength"],
+      "fieldValidateRulesMaxlength": "255"
+    },
+    {
+      "fieldName": "increment",
+      "fieldType": "Double",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "done",
+      "fieldType": "YesNo",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "Y,N"
+    },
+    {
+      "fieldName": "cryptoId",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "fee",
+      "fieldType": "Double",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "netAmount",
+      "fieldType": "Double",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "notified",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Requests",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "siteUsers",
+      "otherEntityRelationshipName": "requests",
+      "ownerSide": true,
+      "relationshipName": "siteUser",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "currencies",
+      "otherEntityRelationshipName": "requests",
+      "ownerSide": true,
+      "relationshipName": "currency",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "requestDescriptions",
+      "otherEntityRelationshipName": "requests",
+      "ownerSide": true,
+      "relationshipName": "description",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "requestStatus",
+      "otherEntityRelationshipName": "requests",
+      "ownerSide": true,
+      "relationshipName": "requestStatus",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "requestTypes",
+      "otherEntityRelationshipName": "requests",
+      "ownerSide": true,
+      "relationshipName": "requestType",
+      "relationshipType": "one-to-one"
+    }
+  ],
+  "service": "serviceClass"
+}

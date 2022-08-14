@@ -1,0 +1,29 @@
+{
+  "jhipsterSampleApplicationApp": {
+    "feeSchedule": {
+      "home": {
+        "title": "Fee Schedules",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Fee Schedule",
+        "createOrEditLabel": "Create or edit a Fee Schedule",
+        "notFound": "No Fee Schedules found"
+      },
+      "created": "A new Fee Schedule is created with identifier {{ param }}",
+      "updated": "A Fee Schedule is updated with identifier {{ param }}",
+      "deleted": "A Fee Schedule is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Fee Schedule {{ id }}?"
+      },
+      "detail": {
+        "title": "Fee Schedule"
+      },
+      "id": "ID",
+      "fee": "Fee",
+      "fromUsd": "From Usd",
+      "toUsd": "To Usd",
+      "order": "Order",
+      "fee1": "Fee 1",
+      "globalBtc": "Global Btc"
+    }
+  }
+}

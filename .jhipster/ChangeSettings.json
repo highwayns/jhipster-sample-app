@@ -1,0 +1,35 @@
+{
+  "applications": "*",
+  "changelogDate": "20220814090854",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "change_settings",
+  "fields": [
+    {
+      "fieldName": "request",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "any",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "date",
+      "fieldType": "Instant",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "ChangeSettings",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "siteUsers",
+      "otherEntityRelationshipName": "changeSettings",
+      "ownerSide": true,
+      "relationshipName": "siteUser",
+      "relationshipType": "one-to-one"
+    }
+  ],
+  "service": "serviceClass"
+}

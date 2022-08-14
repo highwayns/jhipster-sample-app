@@ -1,0 +1,50 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="adminOrder">
+      <h2 data-cy="adminOrderDetailsHeading">
+        <span jhiTranslate="jhipsterSampleApplicationApp.adminOrder.detail.title">Admin Order</span>
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ adminOrder.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.adminOrder.orderBy">Order By</span></dt>
+        <dd>
+          <span>{{ adminOrder.orderBy }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.adminOrder.orderAsc">Order Asc</span></dt>
+        <dd>
+          <span>{{ adminOrder.orderAsc }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.adminOrder.controlId">Control Id</span></dt>
+        <dd>
+          <div *ngIf="adminOrder.controlId">
+            <a [routerLink]="['/admin-controls', adminOrder.controlId?.id, 'view']">{{ adminOrder.controlId?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.adminOrder.userId">User Id</span></dt>
+        <dd>
+          <div *ngIf="adminOrder.userId">
+            <a [routerLink]="['/admin-users', adminOrder.userId?.id, 'view']">{{ adminOrder.userId?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/admin-order', adminOrder.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

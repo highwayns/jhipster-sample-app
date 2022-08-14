@@ -1,0 +1,41 @@
+{
+  "jhipsterSampleApplicationApp": {
+    "adminUsers": {
+      "home": {
+        "title": "Admin Users",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Admin Users",
+        "createOrEditLabel": "Create or edit a Admin Users",
+        "notFound": "No Admin Users found"
+      },
+      "created": "A new Admin Users is created with identifier {{ param }}",
+      "updated": "A Admin Users is updated with identifier {{ param }}",
+      "deleted": "A Admin Users is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Admin Users {{ id }}?"
+      },
+      "detail": {
+        "title": "Admin Users"
+      },
+      "id": "ID",
+      "user": "User",
+      "pass": "Pass",
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "company": "Company",
+      "address": "Address",
+      "city": "City",
+      "phone": "Phone",
+      "email": "Email",
+      "website": "Website",
+      "fId": "F Id",
+      "order": "Order",
+      "isAdmin": "Is Admin",
+      "countryCode": "Country Code",
+      "verifiedAuthy": "Verified Authy",
+      "authyId": "Authy Id",
+      "countryId": "Country Id",
+      "adminOrder": "Admin Order"
+    }
+  }
+}

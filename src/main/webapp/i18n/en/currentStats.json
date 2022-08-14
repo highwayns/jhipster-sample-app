@@ -1,0 +1,26 @@
+{
+  "jhipsterSampleApplicationApp": {
+    "currentStats": {
+      "home": {
+        "title": "Current Stats",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Current Stats",
+        "createOrEditLabel": "Create or edit a Current Stats",
+        "notFound": "No Current Stats found"
+      },
+      "created": "A new Current Stats is created with identifier {{ param }}",
+      "updated": "A Current Stats is updated with identifier {{ param }}",
+      "deleted": "A Current Stats is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Current Stats {{ id }}?"
+      },
+      "detail": {
+        "title": "Current Stats"
+      },
+      "id": "ID",
+      "totalBtc": "Total Btc",
+      "marketCap": "Market Cap",
+      "tradeVolume": "Trade Volume"
+    }
+  }
+}

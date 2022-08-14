@@ -1,0 +1,154 @@
+<div>
+  <h2 id="page-heading" data-cy="OrderLogHeading">
+    <span jhiTranslate="jhipsterSampleApplicationApp.orderLog.home.title">Order Logs</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="loadPage()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="jhipsterSampleApplicationApp.orderLog.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-order-log"
+        [routerLink]="['/order-log/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="jhipsterSampleApplicationApp.orderLog.home.createLabel"> Create a new Order Log </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="orderLogs?.length === 0">
+    <span jhiTranslate="jhipsterSampleApplicationApp.orderLog.home.notFound">No orderLogs found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="orderLogs && orderLogs.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="loadPage()">
+          <th scope="col" jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="date">
+            <span jhiTranslate="jhipsterSampleApplicationApp.orderLog.date">Date</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="btc">
+            <span jhiTranslate="jhipsterSampleApplicationApp.orderLog.btc">Btc</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="marketPrice">
+            <span jhiTranslate="jhipsterSampleApplicationApp.orderLog.marketPrice">Market Price</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="btcPrice">
+            <span jhiTranslate="jhipsterSampleApplicationApp.orderLog.btcPrice">Btc Price</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="fiat">
+            <span jhiTranslate="jhipsterSampleApplicationApp.orderLog.fiat">Fiat</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="pId">
+            <span jhiTranslate="jhipsterSampleApplicationApp.orderLog.pId">P Id</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="stopPrice">
+            <span jhiTranslate="jhipsterSampleApplicationApp.orderLog.stopPrice">Stop Price</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="status">
+            <span jhiTranslate="jhipsterSampleApplicationApp.orderLog.status">Status</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="btcRemaining">
+            <span jhiTranslate="jhipsterSampleApplicationApp.orderLog.btcRemaining">Btc Remaining</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="siteUser.id">
+            <span jhiTranslate="jhipsterSampleApplicationApp.orderLog.siteUser">Site User</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="currency.id">
+            <span jhiTranslate="jhipsterSampleApplicationApp.orderLog.currency">Currency</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="orderType.id">
+            <span jhiTranslate="jhipsterSampleApplicationApp.orderLog.orderType">Order Type</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let orderLog of orderLogs; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/order-log', orderLog.id, 'view']">{{ orderLog.id }}</a>
+          </td>
+          <td>{{ orderLog.date | formatMediumDatetime }}</td>
+          <td>{{ orderLog.btc }}</td>
+          <td jhiTranslate="{{ 'jhipsterSampleApplicationApp.YesNo.' + orderLog.marketPrice }}">{{ orderLog.marketPrice }}</td>
+          <td>{{ orderLog.btcPrice }}</td>
+          <td>{{ orderLog.fiat }}</td>
+          <td>{{ orderLog.pId }}</td>
+          <td>{{ orderLog.stopPrice }}</td>
+          <td jhiTranslate="{{ 'jhipsterSampleApplicationApp.Status.' + orderLog.status }}">{{ orderLog.status }}</td>
+          <td>{{ orderLog.btcRemaining }}</td>
+          <td>
+            <div *ngIf="orderLog.siteUser">
+              <a [routerLink]="['/site-users', orderLog.siteUser?.id, 'view']">{{ orderLog.siteUser?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="orderLog.currency">
+              <a [routerLink]="['/currencies', orderLog.currency?.id, 'view']">{{ orderLog.currency?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="orderLog.orderType">
+              <a [routerLink]="['/order-types', orderLog.orderType?.id, 'view']">{{ orderLog.orderType?.id }}</a>
+            </div>
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/order-log', orderLog.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/order-log', orderLog.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(orderLog)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="orderLogs && orderLogs.length > 0">
+    <div class="d-flex justify-content-center">
+      <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+    </div>
+
+    <div class="d-flex justify-content-center">
+      <ngb-pagination
+        [collectionSize]="totalItems"
+        [(page)]="ngbPaginationPage"
+        [pageSize]="itemsPerPage"
+        [maxSize]="5"
+        [rotate]="true"
+        [boundaryLinks]="true"
+        (pageChange)="loadPage($event)"
+      ></ngb-pagination>
+    </div>
+  </div>
+</div>

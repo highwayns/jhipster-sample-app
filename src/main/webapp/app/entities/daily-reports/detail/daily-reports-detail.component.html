@@ -1,0 +1,78 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="dailyReports">
+      <h2 data-cy="dailyReportsDetailsHeading">
+        <span jhiTranslate="jhipsterSampleApplicationApp.dailyReports.detail.title">Daily Reports</span>
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ dailyReports.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.dailyReports.date">Date</span></dt>
+        <dd>
+          <span>{{ dailyReports.date | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.dailyReports.totalBtc">Total Btc</span></dt>
+        <dd>
+          <span>{{ dailyReports.totalBtc }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.dailyReports.totalFiatUsd">Total Fiat Usd</span></dt>
+        <dd>
+          <span>{{ dailyReports.totalFiatUsd }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.dailyReports.openOrdersBtc">Open Orders Btc</span></dt>
+        <dd>
+          <span>{{ dailyReports.openOrdersBtc }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.dailyReports.btcPerUser">Btc Per User</span></dt>
+        <dd>
+          <span>{{ dailyReports.btcPerUser }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.dailyReports.transactionsBtc">Transactions Btc</span></dt>
+        <dd>
+          <span>{{ dailyReports.transactionsBtc }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.dailyReports.avgTransactionSizeBtc">Avg Transaction Size Btc</span></dt>
+        <dd>
+          <span>{{ dailyReports.avgTransactionSizeBtc }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.dailyReports.transactionVolumePerUser">Transaction Volume Per User</span></dt>
+        <dd>
+          <span>{{ dailyReports.transactionVolumePerUser }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.dailyReports.totalFeesBtc">Total Fees Btc</span></dt>
+        <dd>
+          <span>{{ dailyReports.totalFeesBtc }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.dailyReports.feesPerUserBtc">Fees Per User Btc</span></dt>
+        <dd>
+          <span>{{ dailyReports.feesPerUserBtc }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.dailyReports.usdPerUser">Usd Per User</span></dt>
+        <dd>
+          <span>{{ dailyReports.usdPerUser }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.dailyReports.grossProfitBtc">Gross Profit Btc</span></dt>
+        <dd>
+          <span>{{ dailyReports.grossProfitBtc }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/daily-reports', dailyReports.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

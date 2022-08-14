@@ -1,0 +1,74 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="currencies">
+      <h2 data-cy="currenciesDetailsHeading">
+        <span jhiTranslate="jhipsterSampleApplicationApp.currencies.detail.title">Currencies</span>
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ currencies.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.currencies.currency">Currency</span></dt>
+        <dd>
+          <span>{{ currencies.currency }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.currencies.faSymbol">Fa Symbol</span></dt>
+        <dd>
+          <span>{{ currencies.faSymbol }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.currencies.accountNumber">Account Number</span></dt>
+        <dd>
+          <span>{{ currencies.accountNumber }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.currencies.accountName">Account Name</span></dt>
+        <dd>
+          <span>{{ currencies.accountName }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.currencies.isActive">Is Active</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'jhipsterSampleApplicationApp.YesNo.' + currencies.isActive }}">{{ currencies.isActive }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.currencies.usdBid">Usd Bid</span></dt>
+        <dd>
+          <span>{{ currencies.usdBid }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.currencies.usdAsk">Usd Ask</span></dt>
+        <dd>
+          <span>{{ currencies.usdAsk }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.currencies.nameEn">Name En</span></dt>
+        <dd>
+          <span>{{ currencies.nameEn }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.currencies.nameEs">Name Es</span></dt>
+        <dd>
+          <span>{{ currencies.nameEs }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.currencies.nameRu">Name Ru</span></dt>
+        <dd>
+          <span>{{ currencies.nameRu }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.currencies.nameZh">Name Zh</span></dt>
+        <dd>
+          <span>{{ currencies.nameZh }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/currencies', currencies.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

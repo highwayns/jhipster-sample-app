@@ -1,0 +1,99 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-ip-access-log-heading"
+        data-cy="IpAccessLogCreateUpdateHeading"
+        jhiTranslate="jhipsterSampleApplicationApp.ipAccessLog.home.createOrEditLabel"
+      >
+        Create or edit a Ip Access Log
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.ipAccessLog.ip" for="field_ip">Ip</label>
+          <input type="number" class="form-control" name="ip" id="field_ip" data-cy="ip" formControlName="ip" />
+          <div *ngIf="editForm.get('ip')!.invalid && (editForm.get('ip')!.dirty || editForm.get('ip')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('ip')?.errors?.required" jhiTranslate="entity.validation.required">
+              This field is required.
+            </small>
+            <small class="form-text text-danger" [hidden]="!editForm.get('ip')?.errors?.number" jhiTranslate="entity.validation.number">
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.ipAccessLog.timestamp" for="field_timestamp"
+            >Timestamp</label
+          >
+          <div class="d-flex">
+            <input
+              id="field_timestamp"
+              data-cy="timestamp"
+              type="datetime-local"
+              class="form-control"
+              name="timestamp"
+              formControlName="timestamp"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+          <div *ngIf="editForm.get('timestamp')!.invalid && (editForm.get('timestamp')!.dirty || editForm.get('timestamp')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('timestamp')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('timestamp')?.errors?.ZonedDateTimelocal"
+              jhiTranslate="entity.validation.ZonedDateTimelocal"
+            >
+              This field should be a date and time.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.ipAccessLog.login" for="field_login">Login</label>
+          <select class="form-control" name="login" formControlName="login" id="field_login" data-cy="login">
+            <option [ngValue]="null">{{ 'jhipsterSampleApplicationApp.YesNo.null' | translate }}</option>
+            <option *ngFor="let yesNo of yesNoValues" [value]="yesNo">
+              {{ 'jhipsterSampleApplicationApp.YesNo.' + yesNo | translate }}
+            </option>
+          </select>
+          <div *ngIf="editForm.get('login')!.invalid && (editForm.get('login')!.dirty || editForm.get('login')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('login')?.errors?.required" jhiTranslate="entity.validation.required">
+              This field is required.
+            </small>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

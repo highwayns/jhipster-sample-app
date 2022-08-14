@@ -1,0 +1,27 @@
+{
+  "jhipsterSampleApplicationApp": {
+    "adminGroups": {
+      "home": {
+        "title": "Admin Groups",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Admin Groups",
+        "createOrEditLabel": "Create or edit a Admin Groups",
+        "notFound": "No Admin Groups found"
+      },
+      "created": "A new Admin Groups is created with identifier {{ param }}",
+      "updated": "A Admin Groups is updated with identifier {{ param }}",
+      "deleted": "A Admin Groups is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Admin Groups {{ id }}?"
+      },
+      "detail": {
+        "title": "Admin Groups"
+      },
+      "id": "ID",
+      "name": "Name",
+      "order": "Order",
+      "adminGroupsPages": "Admin Groups Pages",
+      "adminGroupsTabs": "Admin Groups Tabs"
+    }
+  }
+}

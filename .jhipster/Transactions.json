@@ -1,0 +1,203 @@
+{
+  "applications": "*",
+  "changelogDate": "20220814090928",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "transactions",
+  "fields": [
+    {
+      "fieldName": "date",
+      "fieldType": "Instant",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "btc",
+      "fieldType": "Double",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "btcPrice",
+      "fieldType": "Double",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "fiat",
+      "fieldType": "Double",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "fee",
+      "fieldType": "Double",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "fee1",
+      "fieldType": "Double",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "btcNet",
+      "fieldType": "Double",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "btcNet1",
+      "fieldType": "Double",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "btcBefore1",
+      "fieldType": "Double",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "btcAfter1",
+      "fieldType": "Double",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "fiatBefore1",
+      "fieldType": "Double",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "fiatAfter1",
+      "fieldType": "Double",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "btcBefore",
+      "fieldType": "Double",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "btcAfter",
+      "fieldType": "Double",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "fiatBefore",
+      "fieldType": "Double",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "fiatAfter",
+      "fieldType": "Double",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "feeLevel",
+      "fieldType": "Double",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "feeLevel1",
+      "fieldType": "Double",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "origBtcPrice",
+      "fieldType": "Double",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "conversionFee",
+      "fieldType": "Double",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "convertAmount",
+      "fieldType": "Double",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "convertRateGiven",
+      "fieldType": "Double",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "convertSystemRate",
+      "fieldType": "Double",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "conversion",
+      "fieldType": "YesNo",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "Y,N"
+    },
+    {
+      "fieldName": "bidAtTransaction",
+      "fieldType": "Double",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "askAtTransaction",
+      "fieldType": "Double",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "factored",
+      "fieldType": "YesNo",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "Y,N"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Transactions",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "siteUsers",
+      "otherEntityRelationshipName": "transactions",
+      "ownerSide": true,
+      "relationshipName": "siteUser",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "siteUsers",
+      "otherEntityRelationshipName": "transactions",
+      "ownerSide": true,
+      "relationshipName": "siteUser1",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "transactionTypes",
+      "otherEntityRelationshipName": "transactions",
+      "ownerSide": true,
+      "relationshipName": "transactionType",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "transactionTypes",
+      "otherEntityRelationshipName": "transactions",
+      "ownerSide": true,
+      "relationshipName": "transactionType1",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "currencies",
+      "otherEntityRelationshipName": "transactions",
+      "ownerSide": true,
+      "relationshipName": "currency1",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "currencies",
+      "otherEntityRelationshipName": "transactions",
+      "ownerSide": true,
+      "relationshipName": "convertFromCurrency",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "currencies",
+      "otherEntityRelationshipName": "transactions",
+      "ownerSide": true,
+      "relationshipName": "convertToCurrency",
+      "relationshipType": "one-to-one"
+    }
+  ],
+  "service": "serviceClass"
+}

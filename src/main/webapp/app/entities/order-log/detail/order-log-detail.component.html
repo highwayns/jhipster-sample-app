@@ -1,0 +1,82 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="orderLog">
+      <h2 data-cy="orderLogDetailsHeading"><span jhiTranslate="jhipsterSampleApplicationApp.orderLog.detail.title">Order Log</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ orderLog.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.orderLog.date">Date</span></dt>
+        <dd>
+          <span>{{ orderLog.date | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.orderLog.btc">Btc</span></dt>
+        <dd>
+          <span>{{ orderLog.btc }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.orderLog.marketPrice">Market Price</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'jhipsterSampleApplicationApp.YesNo.' + orderLog.marketPrice }}">{{ orderLog.marketPrice }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.orderLog.btcPrice">Btc Price</span></dt>
+        <dd>
+          <span>{{ orderLog.btcPrice }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.orderLog.fiat">Fiat</span></dt>
+        <dd>
+          <span>{{ orderLog.fiat }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.orderLog.pId">P Id</span></dt>
+        <dd>
+          <span>{{ orderLog.pId }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.orderLog.stopPrice">Stop Price</span></dt>
+        <dd>
+          <span>{{ orderLog.stopPrice }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.orderLog.status">Status</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'jhipsterSampleApplicationApp.Status.' + orderLog.status }}">{{ orderLog.status }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.orderLog.btcRemaining">Btc Remaining</span></dt>
+        <dd>
+          <span>{{ orderLog.btcRemaining }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.orderLog.siteUser">Site User</span></dt>
+        <dd>
+          <div *ngIf="orderLog.siteUser">
+            <a [routerLink]="['/site-users', orderLog.siteUser?.id, 'view']">{{ orderLog.siteUser?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.orderLog.currency">Currency</span></dt>
+        <dd>
+          <div *ngIf="orderLog.currency">
+            <a [routerLink]="['/currencies', orderLog.currency?.id, 'view']">{{ orderLog.currency?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.orderLog.orderType">Order Type</span></dt>
+        <dd>
+          <div *ngIf="orderLog.orderType">
+            <a [routerLink]="['/order-types', orderLog.orderType?.id, 'view']">{{ orderLog.orderType?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/order-log', orderLog.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

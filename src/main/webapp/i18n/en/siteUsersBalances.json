@@ -1,0 +1,26 @@
+{
+  "jhipsterSampleApplicationApp": {
+    "siteUsersBalances": {
+      "home": {
+        "title": "Site Users Balances",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Site Users Balances",
+        "createOrEditLabel": "Create or edit a Site Users Balances",
+        "notFound": "No Site Users Balances found"
+      },
+      "created": "A new Site Users Balances is created with identifier {{ param }}",
+      "updated": "A Site Users Balances is updated with identifier {{ param }}",
+      "deleted": "A Site Users Balances is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Site Users Balances {{ id }}?"
+      },
+      "detail": {
+        "title": "Site Users Balances"
+      },
+      "id": "ID",
+      "balance": "Balance",
+      "siteUser": "Site User",
+      "currency": "Currency"
+    }
+  }
+}

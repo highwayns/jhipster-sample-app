@@ -1,0 +1,114 @@
+<div>
+  <h2 id="page-heading" data-cy="SiteUsersAccessHeading">
+    <span jhiTranslate="jhipsterSampleApplicationApp.siteUsersAccess.home.title">Site Users Accesses</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="loadPage()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="jhipsterSampleApplicationApp.siteUsersAccess.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-site-users-access"
+        [routerLink]="['/site-users-access/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="jhipsterSampleApplicationApp.siteUsersAccess.home.createLabel"> Create a new Site Users Access </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="siteUsersAccesses?.length === 0">
+    <span jhiTranslate="jhipsterSampleApplicationApp.siteUsersAccess.home.notFound">No siteUsersAccesses found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="siteUsersAccesses && siteUsersAccesses.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="loadPage()">
+          <th scope="col" jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="start">
+            <span jhiTranslate="jhipsterSampleApplicationApp.siteUsersAccess.start">Start</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="last">
+            <span jhiTranslate="jhipsterSampleApplicationApp.siteUsersAccess.last">Last</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="attempts">
+            <span jhiTranslate="jhipsterSampleApplicationApp.siteUsersAccess.attempts">Attempts</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="siteUser.id">
+            <span jhiTranslate="jhipsterSampleApplicationApp.siteUsersAccess.siteUser">Site User</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let siteUsersAccess of siteUsersAccesses; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/site-users-access', siteUsersAccess.id, 'view']">{{ siteUsersAccess.id }}</a>
+          </td>
+          <td>{{ siteUsersAccess.start }}</td>
+          <td>{{ siteUsersAccess.last }}</td>
+          <td>{{ siteUsersAccess.attempts }}</td>
+          <td>
+            <div *ngIf="siteUsersAccess.siteUser">
+              <a [routerLink]="['/site-users', siteUsersAccess.siteUser?.id, 'view']">{{ siteUsersAccess.siteUser?.id }}</a>
+            </div>
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/site-users-access', siteUsersAccess.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/site-users-access', siteUsersAccess.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(siteUsersAccess)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="siteUsersAccesses && siteUsersAccesses.length > 0">
+    <div class="d-flex justify-content-center">
+      <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+    </div>
+
+    <div class="d-flex justify-content-center">
+      <ngb-pagination
+        [collectionSize]="totalItems"
+        [(page)]="ngbPaginationPage"
+        [pageSize]="itemsPerPage"
+        [maxSize]="5"
+        [rotate]="true"
+        [boundaryLinks]="true"
+        (pageChange)="loadPage($event)"
+      ></ngb-pagination>
+    </div>
+  </div>
+</div>

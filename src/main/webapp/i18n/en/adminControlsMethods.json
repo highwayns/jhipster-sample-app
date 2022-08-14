@@ -1,0 +1,29 @@
+{
+  "jhipsterSampleApplicationApp": {
+    "adminControlsMethods": {
+      "home": {
+        "title": "Admin Controls Methods",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Admin Controls Methods",
+        "createOrEditLabel": "Create or edit a Admin Controls Methods",
+        "notFound": "No Admin Controls Methods found"
+      },
+      "created": "A new Admin Controls Methods is created with identifier {{ param }}",
+      "updated": "A Admin Controls Methods is updated with identifier {{ param }}",
+      "deleted": "A Admin Controls Methods is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Admin Controls Methods {{ id }}?"
+      },
+      "detail": {
+        "title": "Admin Controls Methods"
+      },
+      "id": "ID",
+      "method": "Method",
+      "argument": "Argument",
+      "order": "Order",
+      "pId": "P Id",
+      "adminCron": "Admin Cron",
+      "controlId": "Control Id"
+    }
+  }
+}

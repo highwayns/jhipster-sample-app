@@ -1,0 +1,46 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="statusEscrows">
+      <h2 data-cy="statusEscrowsDetailsHeading">
+        <span jhiTranslate="jhipsterSampleApplicationApp.statusEscrows.detail.title">Status Escrows</span>
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ statusEscrows.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.statusEscrows.balance">Balance</span></dt>
+        <dd>
+          <span>{{ statusEscrows.balance }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.statusEscrows.currency">Currency</span></dt>
+        <dd>
+          <div *ngIf="statusEscrows.currency">
+            <a [routerLink]="['/currencies', statusEscrows.currency?.id, 'view']">{{ statusEscrows.currency?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.statusEscrows.statusId">Status Id</span></dt>
+        <dd>
+          <div *ngIf="statusEscrows.statusId">
+            <a [routerLink]="['/status', statusEscrows.statusId?.id, 'view']">{{ statusEscrows.statusId?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/status-escrows', statusEscrows.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

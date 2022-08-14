@@ -1,0 +1,27 @@
+{
+  "jhipsterSampleApplicationApp": {
+    "siteUsersAccess": {
+      "home": {
+        "title": "Site Users Accesses",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Site Users Access",
+        "createOrEditLabel": "Create or edit a Site Users Access",
+        "notFound": "No Site Users Accesses found"
+      },
+      "created": "A new Site Users Access is created with identifier {{ param }}",
+      "updated": "A Site Users Access is updated with identifier {{ param }}",
+      "deleted": "A Site Users Access is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Site Users Access {{ id }}?"
+      },
+      "detail": {
+        "title": "Site Users Access"
+      },
+      "id": "ID",
+      "start": "Start",
+      "last": "Last",
+      "attempts": "Attempts",
+      "siteUser": "Site User"
+    }
+  }
+}

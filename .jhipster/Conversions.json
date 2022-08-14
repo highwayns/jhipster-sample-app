@@ -1,0 +1,61 @@
+{
+  "applications": "*",
+  "changelogDate": "20220814090857",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "conversions",
+  "fields": [
+    {
+      "fieldName": "amount",
+      "fieldType": "Double",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "date",
+      "fieldType": "Instant",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "isActive",
+      "fieldType": "YesNo",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "Y,N"
+    },
+    {
+      "fieldName": "totalWithdrawals",
+      "fieldType": "Double",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "profitToFactor",
+      "fieldType": "Double",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "factored",
+      "fieldType": "YesNo",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "Y,N"
+    },
+    {
+      "fieldName": "date1",
+      "fieldType": "Instant",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Conversions",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "currencies",
+      "otherEntityRelationshipName": "conversions",
+      "ownerSide": true,
+      "relationshipName": "currency",
+      "relationshipType": "one-to-one"
+    }
+  ],
+  "service": "serviceClass"
+}

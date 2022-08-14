@@ -1,0 +1,54 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="adminSessions">
+      <h2 data-cy="adminSessionsDetailsHeading">
+        <span jhiTranslate="jhipsterSampleApplicationApp.adminSessions.detail.title">Admin Sessions</span>
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ adminSessions.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.adminSessions.sessionId">Session Id</span></dt>
+        <dd>
+          <span>{{ adminSessions.sessionId }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.adminSessions.sessionTime">Session Time</span></dt>
+        <dd>
+          <span>{{ adminSessions.sessionTime | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.adminSessions.sessionStart">Session Start</span></dt>
+        <dd>
+          <span>{{ adminSessions.sessionStart | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.adminSessions.sessionValue">Session Value</span></dt>
+        <dd>
+          <span>{{ adminSessions.sessionValue }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.adminSessions.ipAddress">Ip Address</span></dt>
+        <dd>
+          <span>{{ adminSessions.ipAddress }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.adminSessions.userAgent">User Agent</span></dt>
+        <dd>
+          <span>{{ adminSessions.userAgent }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/admin-sessions', adminSessions.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

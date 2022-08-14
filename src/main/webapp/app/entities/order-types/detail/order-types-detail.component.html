@@ -1,0 +1,46 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="orderTypes">
+      <h2 data-cy="orderTypesDetailsHeading">
+        <span jhiTranslate="jhipsterSampleApplicationApp.orderTypes.detail.title">Order Types</span>
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ orderTypes.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.orderTypes.nameEn">Name En</span></dt>
+        <dd>
+          <span>{{ orderTypes.nameEn }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.orderTypes.nameEs">Name Es</span></dt>
+        <dd>
+          <span>{{ orderTypes.nameEs }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.orderTypes.nameRu">Name Ru</span></dt>
+        <dd>
+          <span>{{ orderTypes.nameRu }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.orderTypes.nameZh">Name Zh</span></dt>
+        <dd>
+          <span>{{ orderTypes.nameZh }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/order-types', orderTypes.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

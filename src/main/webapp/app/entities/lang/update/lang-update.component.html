@@ -1,0 +1,155 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-lang-heading" data-cy="LangCreateUpdateHeading" jhiTranslate="jhipsterSampleApplicationApp.lang.home.createOrEditLabel">
+        Create or edit a Lang
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.lang.key" for="field_key">Key</label>
+          <input type="text" class="form-control" name="key" id="field_key" data-cy="key" formControlName="key" />
+          <div *ngIf="editForm.get('key')!.invalid && (editForm.get('key')!.dirty || editForm.get('key')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('key')?.errors?.required" jhiTranslate="entity.validation.required">
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('key')?.errors?.maxlength"
+              jhiTranslate="entity.validation.maxlength"
+              [translateValues]="{ max: 255 }"
+            >
+              This field cannot be longer than 255 characters.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.lang.esp" for="field_esp">Esp</label>
+          <input type="text" class="form-control" name="esp" id="field_esp" data-cy="esp" formControlName="esp" />
+          <div *ngIf="editForm.get('esp')!.invalid && (editForm.get('esp')!.dirty || editForm.get('esp')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('esp')?.errors?.required" jhiTranslate="entity.validation.required">
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('esp')?.errors?.maxlength"
+              jhiTranslate="entity.validation.maxlength"
+              [translateValues]="{ max: 255 }"
+            >
+              This field cannot be longer than 255 characters.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.lang.eng" for="field_eng">Eng</label>
+          <input type="text" class="form-control" name="eng" id="field_eng" data-cy="eng" formControlName="eng" />
+          <div *ngIf="editForm.get('eng')!.invalid && (editForm.get('eng')!.dirty || editForm.get('eng')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('eng')?.errors?.required" jhiTranslate="entity.validation.required">
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('eng')?.errors?.maxlength"
+              jhiTranslate="entity.validation.maxlength"
+              [translateValues]="{ max: 255 }"
+            >
+              This field cannot be longer than 255 characters.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.lang.order" for="field_order">Order</label>
+          <input type="text" class="form-control" name="order" id="field_order" data-cy="order" formControlName="order" />
+          <div *ngIf="editForm.get('order')!.invalid && (editForm.get('order')!.dirty || editForm.get('order')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('order')?.errors?.required" jhiTranslate="entity.validation.required">
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('order')?.errors?.maxlength"
+              jhiTranslate="entity.validation.maxlength"
+              [translateValues]="{ max: 255 }"
+            >
+              This field cannot be longer than 255 characters.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.lang.pId" for="field_pId">P Id</label>
+          <input type="number" class="form-control" name="pId" id="field_pId" data-cy="pId" formControlName="pId" />
+          <div *ngIf="editForm.get('pId')!.invalid && (editForm.get('pId')!.dirty || editForm.get('pId')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('pId')?.errors?.required" jhiTranslate="entity.validation.required">
+              This field is required.
+            </small>
+            <small class="form-text text-danger" [hidden]="!editForm.get('pId')?.errors?.number" jhiTranslate="entity.validation.number">
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.lang.zh" for="field_zh">Zh</label>
+          <input type="text" class="form-control" name="zh" id="field_zh" data-cy="zh" formControlName="zh" />
+          <div *ngIf="editForm.get('zh')!.invalid && (editForm.get('zh')!.dirty || editForm.get('zh')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('zh')?.errors?.required" jhiTranslate="entity.validation.required">
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('zh')?.errors?.maxlength"
+              jhiTranslate="entity.validation.maxlength"
+              [translateValues]="{ max: 255 }"
+            >
+              This field cannot be longer than 255 characters.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.lang.ru" for="field_ru">Ru</label>
+          <input type="text" class="form-control" name="ru" id="field_ru" data-cy="ru" formControlName="ru" />
+          <div *ngIf="editForm.get('ru')!.invalid && (editForm.get('ru')!.dirty || editForm.get('ru')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('ru')?.errors?.required" jhiTranslate="entity.validation.required">
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('ru')?.errors?.maxlength"
+              jhiTranslate="entity.validation.maxlength"
+              [translateValues]="{ max: 255 }"
+            >
+              This field cannot be longer than 255 characters.
+            </small>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

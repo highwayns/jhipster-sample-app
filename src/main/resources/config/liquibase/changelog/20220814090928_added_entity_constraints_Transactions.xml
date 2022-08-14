@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd">
+    <!--
+        Added the constraints for entity Transactions.
+    -->
+    <changeSet id="20220814090928-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="site_user_id"
+                                 baseTableName="transactions"
+                                 constraintName="fk_transactions__site_user_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="site_users"/>
+
+        <addForeignKeyConstraint baseColumnNames="site_user1_id"
+                                 baseTableName="transactions"
+                                 constraintName="fk_transactions__site_user1_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="site_users"/>
+
+        <addForeignKeyConstraint baseColumnNames="transaction_type_id"
+                                 baseTableName="transactions"
+                                 constraintName="fk_transactions__transaction_type_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="transaction_types"/>
+
+        <addForeignKeyConstraint baseColumnNames="transaction_type1_id"
+                                 baseTableName="transactions"
+                                 constraintName="fk_transactions__transaction_type1_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="transaction_types"/>
+
+        <addForeignKeyConstraint baseColumnNames="currency1_id"
+                                 baseTableName="transactions"
+                                 constraintName="fk_transactions__currency1_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="currencies"/>
+
+        <addForeignKeyConstraint baseColumnNames="convert_from_currency_id"
+                                 baseTableName="transactions"
+                                 constraintName="fk_transactions__convert_from_currency_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="currencies"/>
+
+        <addForeignKeyConstraint baseColumnNames="convert_to_currency_id"
+                                 baseTableName="transactions"
+                                 constraintName="fk_transactions__convert_to_currency_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="currencies"/>
+    </changeSet>
+</databaseChangeLog>

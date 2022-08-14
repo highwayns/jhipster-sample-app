@@ -1,0 +1,30 @@
+{
+  "jhipsterSampleApplicationApp": {
+    "apiKeys": {
+      "home": {
+        "title": "Api Keys",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Api Keys",
+        "createOrEditLabel": "Create or edit a Api Keys",
+        "notFound": "No Api Keys found"
+      },
+      "created": "A new Api Keys is created with identifier {{ param }}",
+      "updated": "A Api Keys is updated with identifier {{ param }}",
+      "deleted": "A Api Keys is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Api Keys {{ id }}?"
+      },
+      "detail": {
+        "title": "Api Keys"
+      },
+      "id": "ID",
+      "key": "Key",
+      "secret": "Secret",
+      "view": "View",
+      "orders": "Orders",
+      "withdraw": "Withdraw",
+      "nonce": "Nonce",
+      "siteUser": "Site User"
+    }
+  }
+}

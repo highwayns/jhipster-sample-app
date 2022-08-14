@@ -1,0 +1,86 @@
+{
+  "applications": "*",
+  "changelogDate": "20220814090913",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "order_log",
+  "fields": [
+    {
+      "fieldName": "date",
+      "fieldType": "Instant",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "btc",
+      "fieldType": "Double",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "marketPrice",
+      "fieldType": "YesNo",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "Y,N"
+    },
+    {
+      "fieldName": "btcPrice",
+      "fieldType": "Double",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "fiat",
+      "fieldType": "Double",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "pId",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "stopPrice",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "maxlength"],
+      "fieldValidateRulesMaxlength": "255"
+    },
+    {
+      "fieldName": "status",
+      "fieldType": "Status",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "ACTIVE,FILLED,CANCELLED_USER,OUT_OF_FUNDS,REPLACED"
+    },
+    {
+      "fieldName": "btcRemaining",
+      "fieldType": "Double",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "OrderLog",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "siteUsers",
+      "otherEntityRelationshipName": "orderLog",
+      "ownerSide": true,
+      "relationshipName": "siteUser",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "currencies",
+      "otherEntityRelationshipName": "orderLog",
+      "ownerSide": true,
+      "relationshipName": "currency",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "orderTypes",
+      "otherEntityRelationshipName": "orderLog",
+      "ownerSide": true,
+      "relationshipName": "orderType",
+      "relationshipType": "one-to-one"
+    }
+  ],
+  "service": "serviceClass"
+}

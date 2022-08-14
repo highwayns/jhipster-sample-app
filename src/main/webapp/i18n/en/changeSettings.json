@@ -1,0 +1,26 @@
+{
+  "jhipsterSampleApplicationApp": {
+    "changeSettings": {
+      "home": {
+        "title": "Change Settings",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Change Settings",
+        "createOrEditLabel": "Create or edit a Change Settings",
+        "notFound": "No Change Settings found"
+      },
+      "created": "A new Change Settings is created with identifier {{ param }}",
+      "updated": "A Change Settings is updated with identifier {{ param }}",
+      "deleted": "A Change Settings is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Change Settings {{ id }}?"
+      },
+      "detail": {
+        "title": "Change Settings"
+      },
+      "id": "ID",
+      "request": "Request",
+      "date": "Date",
+      "siteUser": "Site User"
+    }
+  }
+}

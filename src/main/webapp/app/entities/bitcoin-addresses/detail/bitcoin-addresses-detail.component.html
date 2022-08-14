@@ -1,0 +1,62 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="bitcoinAddresses">
+      <h2 data-cy="bitcoinAddressesDetailsHeading">
+        <span jhiTranslate="jhipsterSampleApplicationApp.bitcoinAddresses.detail.title">Bitcoin Addresses</span>
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ bitcoinAddresses.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.bitcoinAddresses.address">Address</span></dt>
+        <dd>
+          <span>{{ bitcoinAddresses.address }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.bitcoinAddresses.date">Date</span></dt>
+        <dd>
+          <span>{{ bitcoinAddresses.date | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.bitcoinAddresses.systemAddress">System Address</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'jhipsterSampleApplicationApp.YesNo.' + bitcoinAddresses.systemAddress }}">{{
+            bitcoinAddresses.systemAddress
+          }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.bitcoinAddresses.hotWallet">Hot Wallet</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'jhipsterSampleApplicationApp.YesNo.' + bitcoinAddresses.hotWallet }}">{{
+            bitcoinAddresses.hotWallet
+          }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.bitcoinAddresses.warmWallet">Warm Wallet</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'jhipsterSampleApplicationApp.YesNo.' + bitcoinAddresses.warmWallet }}">{{
+            bitcoinAddresses.warmWallet
+          }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.bitcoinAddresses.siteUser">Site User</span></dt>
+        <dd>
+          <div *ngIf="bitcoinAddresses.siteUser">
+            <a [routerLink]="['/site-users', bitcoinAddresses.siteUser?.id, 'view']">{{ bitcoinAddresses.siteUser?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/bitcoin-addresses', bitcoinAddresses.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

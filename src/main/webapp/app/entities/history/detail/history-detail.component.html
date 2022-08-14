@@ -1,0 +1,72 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="history">
+      <h2 data-cy="historyDetailsHeading"><span jhiTranslate="jhipsterSampleApplicationApp.history.detail.title">History</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ history.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.history.date">Date</span></dt>
+        <dd>
+          <span>{{ history.date | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.history.ip">Ip</span></dt>
+        <dd>
+          <span>{{ history.ip }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.history.bitcoinAddress">Bitcoin Address</span></dt>
+        <dd>
+          <span>{{ history.bitcoinAddress }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.history.balanceBefore">Balance Before</span></dt>
+        <dd>
+          <span>{{ history.balanceBefore }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.history.balanceAfter">Balance After</span></dt>
+        <dd>
+          <span>{{ history.balanceAfter }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.history.historyAction">History Action</span></dt>
+        <dd>
+          <div *ngIf="history.historyAction">
+            <a [routerLink]="['/history-actions', history.historyAction?.id, 'view']">{{ history.historyAction?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.history.orderId">Order Id</span></dt>
+        <dd>
+          <div *ngIf="history.orderId">
+            <a [routerLink]="['/orders', history.orderId?.id, 'view']">{{ history.orderId?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.history.requestId">Request Id</span></dt>
+        <dd>
+          <div *ngIf="history.requestId">
+            <a [routerLink]="['/requests', history.requestId?.id, 'view']">{{ history.requestId?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.history.siteUser">Site User</span></dt>
+        <dd>
+          <div *ngIf="history.siteUser">
+            <a [routerLink]="['/site-users', history.siteUser?.id, 'view']">{{ history.siteUser?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/history', history.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

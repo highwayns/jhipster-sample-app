@@ -1,0 +1,852 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-transactions-heading"
+        data-cy="TransactionsCreateUpdateHeading"
+        jhiTranslate="jhipsterSampleApplicationApp.transactions.home.createOrEditLabel"
+      >
+        Create or edit a Transactions
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.transactions.date" for="field_date">Date</label>
+          <div class="d-flex">
+            <input
+              id="field_date"
+              data-cy="date"
+              type="datetime-local"
+              class="form-control"
+              name="date"
+              formControlName="date"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+          <div *ngIf="editForm.get('date')!.invalid && (editForm.get('date')!.dirty || editForm.get('date')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('date')?.errors?.required" jhiTranslate="entity.validation.required">
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('date')?.errors?.ZonedDateTimelocal"
+              jhiTranslate="entity.validation.ZonedDateTimelocal"
+            >
+              This field should be a date and time.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.transactions.btc" for="field_btc">Btc</label>
+          <input type="number" class="form-control" name="btc" id="field_btc" data-cy="btc" formControlName="btc" />
+          <div *ngIf="editForm.get('btc')!.invalid && (editForm.get('btc')!.dirty || editForm.get('btc')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('btc')?.errors?.required" jhiTranslate="entity.validation.required">
+              This field is required.
+            </small>
+            <small class="form-text text-danger" [hidden]="!editForm.get('btc')?.errors?.number" jhiTranslate="entity.validation.number">
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.transactions.btcPrice" for="field_btcPrice">Btc Price</label>
+          <input type="number" class="form-control" name="btcPrice" id="field_btcPrice" data-cy="btcPrice" formControlName="btcPrice" />
+          <div *ngIf="editForm.get('btcPrice')!.invalid && (editForm.get('btcPrice')!.dirty || editForm.get('btcPrice')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('btcPrice')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('btcPrice')?.errors?.number"
+              jhiTranslate="entity.validation.number"
+            >
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.transactions.fiat" for="field_fiat">Fiat</label>
+          <input type="number" class="form-control" name="fiat" id="field_fiat" data-cy="fiat" formControlName="fiat" />
+          <div *ngIf="editForm.get('fiat')!.invalid && (editForm.get('fiat')!.dirty || editForm.get('fiat')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('fiat')?.errors?.required" jhiTranslate="entity.validation.required">
+              This field is required.
+            </small>
+            <small class="form-text text-danger" [hidden]="!editForm.get('fiat')?.errors?.number" jhiTranslate="entity.validation.number">
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.transactions.fee" for="field_fee">Fee</label>
+          <input type="number" class="form-control" name="fee" id="field_fee" data-cy="fee" formControlName="fee" />
+          <div *ngIf="editForm.get('fee')!.invalid && (editForm.get('fee')!.dirty || editForm.get('fee')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('fee')?.errors?.required" jhiTranslate="entity.validation.required">
+              This field is required.
+            </small>
+            <small class="form-text text-danger" [hidden]="!editForm.get('fee')?.errors?.number" jhiTranslate="entity.validation.number">
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.transactions.fee1" for="field_fee1">Fee 1</label>
+          <input type="number" class="form-control" name="fee1" id="field_fee1" data-cy="fee1" formControlName="fee1" />
+          <div *ngIf="editForm.get('fee1')!.invalid && (editForm.get('fee1')!.dirty || editForm.get('fee1')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('fee1')?.errors?.required" jhiTranslate="entity.validation.required">
+              This field is required.
+            </small>
+            <small class="form-text text-danger" [hidden]="!editForm.get('fee1')?.errors?.number" jhiTranslate="entity.validation.number">
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.transactions.btcNet" for="field_btcNet">Btc Net</label>
+          <input type="number" class="form-control" name="btcNet" id="field_btcNet" data-cy="btcNet" formControlName="btcNet" />
+          <div *ngIf="editForm.get('btcNet')!.invalid && (editForm.get('btcNet')!.dirty || editForm.get('btcNet')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('btcNet')?.errors?.required" jhiTranslate="entity.validation.required">
+              This field is required.
+            </small>
+            <small class="form-text text-danger" [hidden]="!editForm.get('btcNet')?.errors?.number" jhiTranslate="entity.validation.number">
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.transactions.btcNet1" for="field_btcNet1">Btc Net 1</label>
+          <input type="number" class="form-control" name="btcNet1" id="field_btcNet1" data-cy="btcNet1" formControlName="btcNet1" />
+          <div *ngIf="editForm.get('btcNet1')!.invalid && (editForm.get('btcNet1')!.dirty || editForm.get('btcNet1')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('btcNet1')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('btcNet1')?.errors?.number"
+              jhiTranslate="entity.validation.number"
+            >
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.transactions.btcBefore1" for="field_btcBefore1"
+            >Btc Before 1</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="btcBefore1"
+            id="field_btcBefore1"
+            data-cy="btcBefore1"
+            formControlName="btcBefore1"
+          />
+          <div *ngIf="editForm.get('btcBefore1')!.invalid && (editForm.get('btcBefore1')!.dirty || editForm.get('btcBefore1')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('btcBefore1')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('btcBefore1')?.errors?.number"
+              jhiTranslate="entity.validation.number"
+            >
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.transactions.btcAfter1" for="field_btcAfter1"
+            >Btc After 1</label
+          >
+          <input type="number" class="form-control" name="btcAfter1" id="field_btcAfter1" data-cy="btcAfter1" formControlName="btcAfter1" />
+          <div *ngIf="editForm.get('btcAfter1')!.invalid && (editForm.get('btcAfter1')!.dirty || editForm.get('btcAfter1')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('btcAfter1')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('btcAfter1')?.errors?.number"
+              jhiTranslate="entity.validation.number"
+            >
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.transactions.fiatBefore1" for="field_fiatBefore1"
+            >Fiat Before 1</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="fiatBefore1"
+            id="field_fiatBefore1"
+            data-cy="fiatBefore1"
+            formControlName="fiatBefore1"
+          />
+          <div *ngIf="editForm.get('fiatBefore1')!.invalid && (editForm.get('fiatBefore1')!.dirty || editForm.get('fiatBefore1')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('fiatBefore1')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('fiatBefore1')?.errors?.number"
+              jhiTranslate="entity.validation.number"
+            >
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.transactions.fiatAfter1" for="field_fiatAfter1"
+            >Fiat After 1</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="fiatAfter1"
+            id="field_fiatAfter1"
+            data-cy="fiatAfter1"
+            formControlName="fiatAfter1"
+          />
+          <div *ngIf="editForm.get('fiatAfter1')!.invalid && (editForm.get('fiatAfter1')!.dirty || editForm.get('fiatAfter1')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('fiatAfter1')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('fiatAfter1')?.errors?.number"
+              jhiTranslate="entity.validation.number"
+            >
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.transactions.btcBefore" for="field_btcBefore"
+            >Btc Before</label
+          >
+          <input type="number" class="form-control" name="btcBefore" id="field_btcBefore" data-cy="btcBefore" formControlName="btcBefore" />
+          <div *ngIf="editForm.get('btcBefore')!.invalid && (editForm.get('btcBefore')!.dirty || editForm.get('btcBefore')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('btcBefore')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('btcBefore')?.errors?.number"
+              jhiTranslate="entity.validation.number"
+            >
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.transactions.btcAfter" for="field_btcAfter">Btc After</label>
+          <input type="number" class="form-control" name="btcAfter" id="field_btcAfter" data-cy="btcAfter" formControlName="btcAfter" />
+          <div *ngIf="editForm.get('btcAfter')!.invalid && (editForm.get('btcAfter')!.dirty || editForm.get('btcAfter')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('btcAfter')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('btcAfter')?.errors?.number"
+              jhiTranslate="entity.validation.number"
+            >
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.transactions.fiatBefore" for="field_fiatBefore"
+            >Fiat Before</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="fiatBefore"
+            id="field_fiatBefore"
+            data-cy="fiatBefore"
+            formControlName="fiatBefore"
+          />
+          <div *ngIf="editForm.get('fiatBefore')!.invalid && (editForm.get('fiatBefore')!.dirty || editForm.get('fiatBefore')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('fiatBefore')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('fiatBefore')?.errors?.number"
+              jhiTranslate="entity.validation.number"
+            >
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.transactions.fiatAfter" for="field_fiatAfter"
+            >Fiat After</label
+          >
+          <input type="number" class="form-control" name="fiatAfter" id="field_fiatAfter" data-cy="fiatAfter" formControlName="fiatAfter" />
+          <div *ngIf="editForm.get('fiatAfter')!.invalid && (editForm.get('fiatAfter')!.dirty || editForm.get('fiatAfter')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('fiatAfter')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('fiatAfter')?.errors?.number"
+              jhiTranslate="entity.validation.number"
+            >
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.transactions.feeLevel" for="field_feeLevel">Fee Level</label>
+          <input type="number" class="form-control" name="feeLevel" id="field_feeLevel" data-cy="feeLevel" formControlName="feeLevel" />
+          <div *ngIf="editForm.get('feeLevel')!.invalid && (editForm.get('feeLevel')!.dirty || editForm.get('feeLevel')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('feeLevel')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('feeLevel')?.errors?.number"
+              jhiTranslate="entity.validation.number"
+            >
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.transactions.feeLevel1" for="field_feeLevel1"
+            >Fee Level 1</label
+          >
+          <input type="number" class="form-control" name="feeLevel1" id="field_feeLevel1" data-cy="feeLevel1" formControlName="feeLevel1" />
+          <div *ngIf="editForm.get('feeLevel1')!.invalid && (editForm.get('feeLevel1')!.dirty || editForm.get('feeLevel1')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('feeLevel1')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('feeLevel1')?.errors?.number"
+              jhiTranslate="entity.validation.number"
+            >
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.transactions.origBtcPrice" for="field_origBtcPrice"
+            >Orig Btc Price</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="origBtcPrice"
+            id="field_origBtcPrice"
+            data-cy="origBtcPrice"
+            formControlName="origBtcPrice"
+          />
+          <div
+            *ngIf="editForm.get('origBtcPrice')!.invalid && (editForm.get('origBtcPrice')!.dirty || editForm.get('origBtcPrice')!.touched)"
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('origBtcPrice')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('origBtcPrice')?.errors?.number"
+              jhiTranslate="entity.validation.number"
+            >
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.transactions.conversionFee" for="field_conversionFee"
+            >Conversion Fee</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="conversionFee"
+            id="field_conversionFee"
+            data-cy="conversionFee"
+            formControlName="conversionFee"
+          />
+          <div
+            *ngIf="
+              editForm.get('conversionFee')!.invalid && (editForm.get('conversionFee')!.dirty || editForm.get('conversionFee')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('conversionFee')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('conversionFee')?.errors?.number"
+              jhiTranslate="entity.validation.number"
+            >
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.transactions.convertAmount" for="field_convertAmount"
+            >Convert Amount</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="convertAmount"
+            id="field_convertAmount"
+            data-cy="convertAmount"
+            formControlName="convertAmount"
+          />
+          <div
+            *ngIf="
+              editForm.get('convertAmount')!.invalid && (editForm.get('convertAmount')!.dirty || editForm.get('convertAmount')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('convertAmount')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('convertAmount')?.errors?.number"
+              jhiTranslate="entity.validation.number"
+            >
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.transactions.convertRateGiven" for="field_convertRateGiven"
+            >Convert Rate Given</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="convertRateGiven"
+            id="field_convertRateGiven"
+            data-cy="convertRateGiven"
+            formControlName="convertRateGiven"
+          />
+          <div
+            *ngIf="
+              editForm.get('convertRateGiven')!.invalid &&
+              (editForm.get('convertRateGiven')!.dirty || editForm.get('convertRateGiven')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('convertRateGiven')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('convertRateGiven')?.errors?.number"
+              jhiTranslate="entity.validation.number"
+            >
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.transactions.convertSystemRate" for="field_convertSystemRate"
+            >Convert System Rate</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="convertSystemRate"
+            id="field_convertSystemRate"
+            data-cy="convertSystemRate"
+            formControlName="convertSystemRate"
+          />
+          <div
+            *ngIf="
+              editForm.get('convertSystemRate')!.invalid &&
+              (editForm.get('convertSystemRate')!.dirty || editForm.get('convertSystemRate')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('convertSystemRate')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('convertSystemRate')?.errors?.number"
+              jhiTranslate="entity.validation.number"
+            >
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.transactions.conversion" for="field_conversion"
+            >Conversion</label
+          >
+          <select class="form-control" name="conversion" formControlName="conversion" id="field_conversion" data-cy="conversion">
+            <option [ngValue]="null">{{ 'jhipsterSampleApplicationApp.YesNo.null' | translate }}</option>
+            <option *ngFor="let yesNo of yesNoValues" [value]="yesNo">
+              {{ 'jhipsterSampleApplicationApp.YesNo.' + yesNo | translate }}
+            </option>
+          </select>
+          <div *ngIf="editForm.get('conversion')!.invalid && (editForm.get('conversion')!.dirty || editForm.get('conversion')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('conversion')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.transactions.bidAtTransaction" for="field_bidAtTransaction"
+            >Bid At Transaction</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="bidAtTransaction"
+            id="field_bidAtTransaction"
+            data-cy="bidAtTransaction"
+            formControlName="bidAtTransaction"
+          />
+          <div
+            *ngIf="
+              editForm.get('bidAtTransaction')!.invalid &&
+              (editForm.get('bidAtTransaction')!.dirty || editForm.get('bidAtTransaction')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('bidAtTransaction')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('bidAtTransaction')?.errors?.number"
+              jhiTranslate="entity.validation.number"
+            >
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.transactions.askAtTransaction" for="field_askAtTransaction"
+            >Ask At Transaction</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="askAtTransaction"
+            id="field_askAtTransaction"
+            data-cy="askAtTransaction"
+            formControlName="askAtTransaction"
+          />
+          <div
+            *ngIf="
+              editForm.get('askAtTransaction')!.invalid &&
+              (editForm.get('askAtTransaction')!.dirty || editForm.get('askAtTransaction')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('askAtTransaction')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('askAtTransaction')?.errors?.number"
+              jhiTranslate="entity.validation.number"
+            >
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.transactions.factored" for="field_factored">Factored</label>
+          <select class="form-control" name="factored" formControlName="factored" id="field_factored" data-cy="factored">
+            <option [ngValue]="null">{{ 'jhipsterSampleApplicationApp.YesNo.null' | translate }}</option>
+            <option *ngFor="let yesNo of yesNoValues" [value]="yesNo">
+              {{ 'jhipsterSampleApplicationApp.YesNo.' + yesNo | translate }}
+            </option>
+          </select>
+          <div *ngIf="editForm.get('factored')!.invalid && (editForm.get('factored')!.dirty || editForm.get('factored')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('factored')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.transactions.siteUser" for="field_siteUser">Site User</label>
+          <select class="form-control" id="field_siteUser" data-cy="siteUser" name="siteUser" formControlName="siteUser">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="siteUsersOption.id === editForm.get('siteUser')!.value?.id ? editForm.get('siteUser')!.value : siteUsersOption"
+              *ngFor="let siteUsersOption of siteUsersCollection; trackBy: trackSiteUsersById"
+            >
+              {{ siteUsersOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.transactions.siteUser1" for="field_siteUser1"
+            >Site User 1</label
+          >
+          <select class="form-control" id="field_siteUser1" data-cy="siteUser1" name="siteUser1" formControlName="siteUser1">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="siteUsersOption.id === editForm.get('siteUser1')!.value?.id ? editForm.get('siteUser1')!.value : siteUsersOption"
+              *ngFor="let siteUsersOption of siteUser1sCollection; trackBy: trackSiteUsersById"
+            >
+              {{ siteUsersOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.transactions.transactionType" for="field_transactionType"
+            >Transaction Type</label
+          >
+          <select
+            class="form-control"
+            id="field_transactionType"
+            data-cy="transactionType"
+            name="transactionType"
+            formControlName="transactionType"
+          >
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                transactionTypesOption.id === editForm.get('transactionType')!.value?.id
+                  ? editForm.get('transactionType')!.value
+                  : transactionTypesOption
+              "
+              *ngFor="let transactionTypesOption of transactionTypesCollection; trackBy: trackTransactionTypesById"
+            >
+              {{ transactionTypesOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.transactions.transactionType1" for="field_transactionType1"
+            >Transaction Type 1</label
+          >
+          <select
+            class="form-control"
+            id="field_transactionType1"
+            data-cy="transactionType1"
+            name="transactionType1"
+            formControlName="transactionType1"
+          >
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                transactionTypesOption.id === editForm.get('transactionType1')!.value?.id
+                  ? editForm.get('transactionType1')!.value
+                  : transactionTypesOption
+              "
+              *ngFor="let transactionTypesOption of transactionType1sCollection; trackBy: trackTransactionTypesById"
+            >
+              {{ transactionTypesOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.transactions.currency1" for="field_currency1"
+            >Currency 1</label
+          >
+          <select class="form-control" id="field_currency1" data-cy="currency1" name="currency1" formControlName="currency1">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="currenciesOption.id === editForm.get('currency1')!.value?.id ? editForm.get('currency1')!.value : currenciesOption"
+              *ngFor="let currenciesOption of currency1sCollection; trackBy: trackCurrenciesById"
+            >
+              {{ currenciesOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label
+            class="form-label"
+            jhiTranslate="jhipsterSampleApplicationApp.transactions.convertFromCurrency"
+            for="field_convertFromCurrency"
+            >Convert From Currency</label
+          >
+          <select
+            class="form-control"
+            id="field_convertFromCurrency"
+            data-cy="convertFromCurrency"
+            name="convertFromCurrency"
+            formControlName="convertFromCurrency"
+          >
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                currenciesOption.id === editForm.get('convertFromCurrency')!.value?.id
+                  ? editForm.get('convertFromCurrency')!.value
+                  : currenciesOption
+              "
+              *ngFor="let currenciesOption of convertFromCurrenciesCollection; trackBy: trackCurrenciesById"
+            >
+              {{ currenciesOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.transactions.convertToCurrency" for="field_convertToCurrency"
+            >Convert To Currency</label
+          >
+          <select
+            class="form-control"
+            id="field_convertToCurrency"
+            data-cy="convertToCurrency"
+            name="convertToCurrency"
+            formControlName="convertToCurrency"
+          >
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                currenciesOption.id === editForm.get('convertToCurrency')!.value?.id
+                  ? editForm.get('convertToCurrency')!.value
+                  : currenciesOption
+              "
+              *ngFor="let currenciesOption of convertToCurrenciesCollection; trackBy: trackCurrenciesById"
+            >
+              {{ currenciesOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

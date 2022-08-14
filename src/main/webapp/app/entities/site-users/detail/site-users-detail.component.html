@@ -1,0 +1,186 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="siteUsers">
+      <h2 data-cy="siteUsersDetailsHeading"><span jhiTranslate="jhipsterSampleApplicationApp.siteUsers.detail.title">Site Users</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ siteUsers.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.siteUsers.pass">Pass</span></dt>
+        <dd>
+          <span>{{ siteUsers.pass }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.siteUsers.firstName">First Name</span></dt>
+        <dd>
+          <span>{{ siteUsers.firstName }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.siteUsers.lastName">Last Name</span></dt>
+        <dd>
+          <span>{{ siteUsers.lastName }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.siteUsers.email">Email</span></dt>
+        <dd>
+          <span>{{ siteUsers.email }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.siteUsers.date">Date</span></dt>
+        <dd>
+          <span>{{ siteUsers.date | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.siteUsers.tel">Tel</span></dt>
+        <dd>
+          <span>{{ siteUsers.tel }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.siteUsers.user">User</span></dt>
+        <dd>
+          <span>{{ siteUsers.user }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.siteUsers.countryCode">Country Code</span></dt>
+        <dd>
+          <span>{{ siteUsers.countryCode }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.siteUsers.authyRequested">Authy Requested</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'jhipsterSampleApplicationApp.YesNo.' + siteUsers.authyRequested }}">{{ siteUsers.authyRequested }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.siteUsers.verifiedAuthy">Verified Authy</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'jhipsterSampleApplicationApp.YesNo.' + siteUsers.verifiedAuthy }}">{{ siteUsers.verifiedAuthy }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.siteUsers.authyId">Authy Id</span></dt>
+        <dd>
+          <span>{{ siteUsers.authyId }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.siteUsers.usingSms">Using Sms</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'jhipsterSampleApplicationApp.YesNo.' + siteUsers.usingSms }}">{{ siteUsers.usingSms }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.siteUsers.dontAsk30Days">Dont Ask 30 Days</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'jhipsterSampleApplicationApp.YesNo.' + siteUsers.dontAsk30Days }}">{{ siteUsers.dontAsk30Days }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.siteUsers.dontAskDate">Dont Ask Date</span></dt>
+        <dd>
+          <span>{{ siteUsers.dontAskDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.siteUsers.confirmWithdrawalEmailBtc">Confirm Withdrawal Email Btc</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'jhipsterSampleApplicationApp.YesNo.' + siteUsers.confirmWithdrawalEmailBtc }}">{{
+            siteUsers.confirmWithdrawalEmailBtc
+          }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.siteUsers.confirmWithdrawal2faBtc">Confirm Withdrawal 2 Fa Btc</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'jhipsterSampleApplicationApp.YesNo.' + siteUsers.confirmWithdrawal2faBtc }}">{{
+            siteUsers.confirmWithdrawal2faBtc
+          }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.siteUsers.confirmWithdrawal2faBank">Confirm Withdrawal 2 Fa Bank</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'jhipsterSampleApplicationApp.YesNo.' + siteUsers.confirmWithdrawal2faBank }}">{{
+            siteUsers.confirmWithdrawal2faBank
+          }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.siteUsers.confirmWithdrawalEmailBank">Confirm Withdrawal Email Bank</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'jhipsterSampleApplicationApp.YesNo.' + siteUsers.confirmWithdrawalEmailBank }}">{{
+            siteUsers.confirmWithdrawalEmailBank
+          }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.siteUsers.notifyDepositBtc">Notify Deposit Btc</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'jhipsterSampleApplicationApp.YesNo.' + siteUsers.notifyDepositBtc }}">{{
+            siteUsers.notifyDepositBtc
+          }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.siteUsers.notifyDepositBank">Notify Deposit Bank</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'jhipsterSampleApplicationApp.YesNo.' + siteUsers.notifyDepositBank }}">{{
+            siteUsers.notifyDepositBank
+          }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.siteUsers.lastUpdate">Last Update</span></dt>
+        <dd>
+          <span>{{ siteUsers.lastUpdate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.siteUsers.noLogins">No Logins</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'jhipsterSampleApplicationApp.YesNo.' + siteUsers.noLogins }}">{{ siteUsers.noLogins }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.siteUsers.notifyLogin">Notify Login</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'jhipsterSampleApplicationApp.YesNo.' + siteUsers.notifyLogin }}">{{ siteUsers.notifyLogin }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.siteUsers.deactivated">Deactivated</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'jhipsterSampleApplicationApp.YesNo.' + siteUsers.deactivated }}">{{ siteUsers.deactivated }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.siteUsers.locked">Locked</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'jhipsterSampleApplicationApp.YesNo.' + siteUsers.locked }}">{{ siteUsers.locked }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.siteUsers.google2faCode">Google 2 Fa Code</span></dt>
+        <dd>
+          <span>{{ siteUsers.google2faCode }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.siteUsers.verifiedGoogle">Verified Google</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'jhipsterSampleApplicationApp.YesNo.' + siteUsers.verifiedGoogle }}">{{ siteUsers.verifiedGoogle }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.siteUsers.lastLang">Last Lang</span></dt>
+        <dd>
+          <span>{{ siteUsers.lastLang }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.siteUsers.notifyWithdrawBtc">Notify Withdraw Btc</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'jhipsterSampleApplicationApp.YesNo.' + siteUsers.notifyWithdrawBtc }}">{{
+            siteUsers.notifyWithdrawBtc
+          }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.siteUsers.notifyWithdrawBank">Notify Withdraw Bank</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'jhipsterSampleApplicationApp.YesNo.' + siteUsers.notifyWithdrawBank }}">{{
+            siteUsers.notifyWithdrawBank
+          }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.siteUsers.trusted">Trusted</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'jhipsterSampleApplicationApp.YesNo.' + siteUsers.trusted }}">{{ siteUsers.trusted }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.siteUsers.country">Country</span></dt>
+        <dd>
+          <div *ngIf="siteUsers.country">
+            <a [routerLink]="['/iso-countries', siteUsers.country?.id, 'view']">{{ siteUsers.country?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.siteUsers.feeSchedule">Fee Schedule</span></dt>
+        <dd>
+          <div *ngIf="siteUsers.feeSchedule">
+            <a [routerLink]="['/fee-schedule', siteUsers.feeSchedule?.id, 'view']">{{ siteUsers.feeSchedule?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.siteUsers.defaultCurrency">Default Currency</span></dt>
+        <dd>
+          <div *ngIf="siteUsers.defaultCurrency">
+            <a [routerLink]="['/currencies', siteUsers.defaultCurrency?.id, 'view']">{{ siteUsers.defaultCurrency?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/site-users', siteUsers.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

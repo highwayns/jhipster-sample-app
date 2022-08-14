@@ -1,0 +1,20 @@
+{
+  "applications": "*",
+  "changelogDate": "20220814090907",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "innodb_lock_monitor",
+  "fields": [
+    {
+      "fieldName": "a",
+      "fieldType": "Integer"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "InnodbLockMonitor",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [],
+  "service": "serviceClass"
+}

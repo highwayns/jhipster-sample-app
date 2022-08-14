@@ -1,0 +1,164 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-admin-controls-heading"
+        data-cy="AdminControlsCreateUpdateHeading"
+        jhiTranslate="jhipsterSampleApplicationApp.adminControls.home.createOrEditLabel"
+      >
+        Create or edit a Admin Controls
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.adminControls.action" for="field_action">Action</label>
+          <input type="text" class="form-control" name="action" id="field_action" data-cy="action" formControlName="action" />
+          <div *ngIf="editForm.get('action')!.invalid && (editForm.get('action')!.dirty || editForm.get('action')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('action')?.errors?.required" jhiTranslate="entity.validation.required">
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('action')?.errors?.maxlength"
+              jhiTranslate="entity.validation.maxlength"
+              [translateValues]="{ max: 50 }"
+            >
+              This field cannot be longer than 50 characters.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.adminControls.controlClass" for="field_controlClass"
+            >Control Class</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="controlClass"
+            id="field_controlClass"
+            data-cy="controlClass"
+            formControlName="controlClass"
+          />
+          <div
+            *ngIf="editForm.get('controlClass')!.invalid && (editForm.get('controlClass')!.dirty || editForm.get('controlClass')!.touched)"
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('controlClass')?.errors?.maxlength"
+              jhiTranslate="entity.validation.maxlength"
+              [translateValues]="{ max: 50 }"
+            >
+              This field cannot be longer than 50 characters.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.adminControls.argument" for="field_argument">Argument</label>
+          <input type="text" class="form-control" name="argument" id="field_argument" data-cy="argument" formControlName="argument" />
+          <div *ngIf="editForm.get('argument')!.invalid && (editForm.get('argument')!.dirty || editForm.get('argument')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('argument')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('argument')?.errors?.maxlength"
+              jhiTranslate="entity.validation.maxlength"
+              [translateValues]="{ max: 255 }"
+            >
+              This field cannot be longer than 255 characters.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.adminControls.order" for="field_order">Order</label>
+          <input type="number" class="form-control" name="order" id="field_order" data-cy="order" formControlName="order" />
+          <div *ngIf="editForm.get('order')!.invalid && (editForm.get('order')!.dirty || editForm.get('order')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('order')?.errors?.required" jhiTranslate="entity.validation.required">
+              This field is required.
+            </small>
+            <small class="form-text text-danger" [hidden]="!editForm.get('order')?.errors?.number" jhiTranslate="entity.validation.number">
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.adminControls.isStatic" for="field_isStatic"
+            >Is Static</label
+          >
+          <select class="form-control" name="isStatic" formControlName="isStatic" id="field_isStatic" data-cy="isStatic">
+            <option [ngValue]="null">{{ 'jhipsterSampleApplicationApp.YesNo.null' | translate }}</option>
+            <option *ngFor="let yesNo of yesNoValues" [value]="yesNo">
+              {{ 'jhipsterSampleApplicationApp.YesNo.' + yesNo | translate }}
+            </option>
+          </select>
+          <div *ngIf="editForm.get('isStatic')!.invalid && (editForm.get('isStatic')!.dirty || editForm.get('isStatic')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('isStatic')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.adminControls.pageId" for="field_pageId">Page Id</label>
+          <select class="form-control" id="field_pageId" data-cy="pageId" name="pageId" formControlName="pageId">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="adminPagesOption.id === editForm.get('pageId')!.value?.id ? editForm.get('pageId')!.value : adminPagesOption"
+              *ngFor="let adminPagesOption of pageIdsCollection; trackBy: trackAdminPagesById"
+            >
+              {{ adminPagesOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.adminControls.tabId" for="field_tabId">Tab Id</label>
+          <select class="form-control" id="field_tabId" data-cy="tabId" name="tabId" formControlName="tabId">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="adminTabsOption.id === editForm.get('tabId')!.value?.id ? editForm.get('tabId')!.value : adminTabsOption"
+              *ngFor="let adminTabsOption of tabIdsCollection; trackBy: trackAdminTabsById"
+            >
+              {{ adminTabsOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <!--
+        Added the entity AppConfiguration.
+    -->
+    <changeSet id="20220814090850-1" author="jhipster">
+        <createTable tableName="app_configuration">
+            <column name="id" type="bigint">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="default_timezone" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="orders_under_market_percent" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="orders_min_usd" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="bitcoin_sending_fee" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="frontend_baseurl" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="frontend_dirroot" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="fiat_withdraw_fee" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="api_db_debug" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="api_dirroot" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="support_email" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="email_smtp_host" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="email_smtp_port" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="email_smtp_security" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="email_smtp_username" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="email_smtp_password" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="email_smtp_send_from" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="bitcoin_username" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="bitcoin_accountname" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="bitcoin_passphrase" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="bitcoin_host" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="bitcoin_port" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="bitcoin_protocol" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="authy_api_key" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="helpdesk_key" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="exchange_name" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="mcrypt_key" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="currency_conversion_fee" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="cross_currency_trades" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="btc_currency_id" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="deposit_bitcoin_desc" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="default_fee_schedule_id" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="history_buy_id" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="history_deposit_id" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="history_login_id" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="history_sell_id" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="history_withdraw_id" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="order_type_ask" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="request_awaiting_id" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="request_cancelled_id" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="request_completed_id" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="order_type_bid" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="request_deposit_id" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="request_pending_id" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="request_withdrawal_id" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="transactions_buy_id" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="transactions_sell_id" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="withdraw_fiat_desc" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="withdraw_btc_desc" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="form_email_from" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="email_notify_new_users" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="pass_regex" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="pass_min_chars" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="auth_db_debug" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="bitcoin_reserve_min" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="bitcoin_reserve_ratio" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="bitcoin_warm_wallet_address" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="cron_db_debug" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="quandl_api_key" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="cron_dirroot" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="backstage_db_debug" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="backstage_dirroot" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="email_notify_fiat_withdrawals" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="contact_email" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="cloudflare_api_key" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="google_recaptch_api_key" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="cloudflare_blacklist" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="cloudflare_email" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="google_recaptch_api_secret" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="cloudflare_blacklist_attempts" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="cloudflare_blacklist_timeframe" type="double">
+                <constraints nullable="false" />
+            </column>
+            <column name="crypto_capital_pk" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="deposit_fiat_desc" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="email_notify_fiat_failed" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="trading_status" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="withdrawals_status" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
+        </createTable>
+    </changeSet>
+
+    <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here -->
+
+    <!--
+        Load sample data generated with Faker.js
+        - This data can be easily edited using a CSV editor (or even MS Excel) and
+          is located in the 'src/main/resources/config/liquibase/fake-data' directory
+        - By default this data is applied when running with the JHipster 'dev' profile.
+          This can be customized by adding or removing 'faker' in the 'spring.liquibase.contexts'
+          Spring Boot configuration key.
+    -->
+    <changeSet id="20220814090850-1-data" author="jhipster" context="faker">
+        <loadData
+                  file="config/liquibase/fake-data/app_configuration.csv"
+                  separator=";"
+                  tableName="app_configuration"
+                  usePreparedStatements="true">
+            <column name="id" type="numeric"/>
+            <column name="default_timezone" type="string"/>
+            <column name="orders_under_market_percent" type="string"/>
+            <column name="orders_min_usd" type="string"/>
+            <column name="bitcoin_sending_fee" type="string"/>
+            <column name="frontend_baseurl" type="string"/>
+            <column name="frontend_dirroot" type="string"/>
+            <column name="fiat_withdraw_fee" type="string"/>
+            <column name="api_db_debug" type="string"/>
+            <column name="api_dirroot" type="string"/>
+            <column name="support_email" type="string"/>
+            <column name="email_smtp_host" type="string"/>
+            <column name="email_smtp_port" type="string"/>
+            <column name="email_smtp_security" type="string"/>
+            <column name="email_smtp_username" type="string"/>
+            <column name="email_smtp_password" type="string"/>
+            <column name="email_smtp_send_from" type="string"/>
+            <column name="bitcoin_username" type="string"/>
+            <column name="bitcoin_accountname" type="string"/>
+            <column name="bitcoin_passphrase" type="string"/>
+            <column name="bitcoin_host" type="string"/>
+            <column name="bitcoin_port" type="string"/>
+            <column name="bitcoin_protocol" type="string"/>
+            <column name="authy_api_key" type="string"/>
+            <column name="helpdesk_key" type="string"/>
+            <column name="exchange_name" type="string"/>
+            <column name="mcrypt_key" type="string"/>
+            <column name="currency_conversion_fee" type="string"/>
+            <column name="cross_currency_trades" type="string"/>
+            <column name="btc_currency_id" type="string"/>
+            <column name="deposit_bitcoin_desc" type="string"/>
+            <column name="default_fee_schedule_id" type="string"/>
+            <column name="history_buy_id" type="string"/>
+            <column name="history_deposit_id" type="string"/>
+            <column name="history_login_id" type="string"/>
+            <column name="history_sell_id" type="string"/>
+            <column name="history_withdraw_id" type="string"/>
+            <column name="order_type_ask" type="string"/>
+            <column name="request_awaiting_id" type="string"/>
+            <column name="request_cancelled_id" type="string"/>
+            <column name="request_completed_id" type="string"/>
+            <column name="order_type_bid" type="string"/>
+            <column name="request_deposit_id" type="string"/>
+            <column name="request_pending_id" type="string"/>
+            <column name="request_withdrawal_id" type="string"/>
+            <column name="transactions_buy_id" type="string"/>
+            <column name="transactions_sell_id" type="string"/>
+            <column name="withdraw_fiat_desc" type="string"/>
+            <column name="withdraw_btc_desc" type="string"/>
+            <column name="form_email_from" type="string"/>
+            <column name="email_notify_new_users" type="string"/>
+            <column name="pass_regex" type="string"/>
+            <column name="pass_min_chars" type="string"/>
+            <column name="auth_db_debug" type="string"/>
+            <column name="bitcoin_reserve_min" type="string"/>
+            <column name="bitcoin_reserve_ratio" type="string"/>
+            <column name="bitcoin_warm_wallet_address" type="string"/>
+            <column name="cron_db_debug" type="string"/>
+            <column name="quandl_api_key" type="string"/>
+            <column name="cron_dirroot" type="string"/>
+            <column name="backstage_db_debug" type="string"/>
+            <column name="backstage_dirroot" type="string"/>
+            <column name="email_notify_fiat_withdrawals" type="string"/>
+            <column name="contact_email" type="string"/>
+            <column name="cloudflare_api_key" type="string"/>
+            <column name="google_recaptch_api_key" type="string"/>
+            <column name="cloudflare_blacklist" type="string"/>
+            <column name="cloudflare_email" type="string"/>
+            <column name="google_recaptch_api_secret" type="string"/>
+            <column name="cloudflare_blacklist_attempts" type="numeric"/>
+            <column name="cloudflare_blacklist_timeframe" type="numeric"/>
+            <column name="crypto_capital_pk" type="string"/>
+            <column name="deposit_fiat_desc" type="string"/>
+            <column name="email_notify_fiat_failed" type="string"/>
+            <column name="trading_status" type="string"/>
+            <column name="withdrawals_status" type="string"/>
+            <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here -->
+        </loadData>
+    </changeSet>
+</databaseChangeLog>

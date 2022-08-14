@@ -1,0 +1,30 @@
+{
+  "jhipsterSampleApplicationApp": {
+    "monthlyReports": {
+      "home": {
+        "title": "Monthly Reports",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Monthly Reports",
+        "createOrEditLabel": "Create or edit a Monthly Reports",
+        "notFound": "No Monthly Reports found"
+      },
+      "created": "A new Monthly Reports is created with identifier {{ param }}",
+      "updated": "A Monthly Reports is updated with identifier {{ param }}",
+      "deleted": "A Monthly Reports is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Monthly Reports {{ id }}?"
+      },
+      "detail": {
+        "title": "Monthly Reports"
+      },
+      "id": "ID",
+      "date": "Date",
+      "transactionsBtc": "Transactions Btc",
+      "avgTransactionSizeBtc": "Avg Transaction Size Btc",
+      "transactionVolumePerUser": "Transaction Volume Per User",
+      "totalFeesBtc": "Total Fees Btc",
+      "feesPerUserBtc": "Fees Per User Btc",
+      "grossProfitBtc": "Gross Profit Btc"
+    }
+  }
+}

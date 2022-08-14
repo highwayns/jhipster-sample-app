@@ -1,0 +1,31 @@
+{
+  "jhipsterSampleApplicationApp": {
+    "adminTabs": {
+      "home": {
+        "title": "Admin Tabs",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Admin Tabs",
+        "createOrEditLabel": "Create or edit a Admin Tabs",
+        "notFound": "No Admin Tabs found"
+      },
+      "created": "A new Admin Tabs is created with identifier {{ param }}",
+      "updated": "A Admin Tabs is updated with identifier {{ param }}",
+      "deleted": "A Admin Tabs is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Admin Tabs {{ id }}?"
+      },
+      "detail": {
+        "title": "Admin Tabs"
+      },
+      "id": "ID",
+      "name": "Name",
+      "order": "Order",
+      "icon": "Icon",
+      "url": "Url",
+      "hidden": "Hidden",
+      "isCtrlPanel": "Is Ctrl Panel",
+      "forGroup": "For Group",
+      "oneRecord": "One Record"
+    }
+  }
+}

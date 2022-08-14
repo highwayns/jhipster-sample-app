@@ -1,0 +1,35 @@
+{
+  "applications": "*",
+  "changelogDate": "20220814090842",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "admin_groups_tabs",
+  "fields": [
+    {
+      "fieldName": "permission",
+      "fieldType": "Boolean",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "AdminGroupsTabs",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "adminTabs",
+      "otherEntityRelationshipName": "adminGroupsTabs",
+      "ownerSide": true,
+      "relationshipName": "tabId",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "adminGroups",
+      "otherEntityRelationshipName": "adminGroupsTabs",
+      "relationshipName": "groupId",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceClass"
+}

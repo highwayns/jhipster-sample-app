@@ -1,0 +1,25 @@
+{
+  "jhipsterSampleApplicationApp": {
+    "historicalData": {
+      "home": {
+        "title": "Historical Data",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Historical Data",
+        "createOrEditLabel": "Create or edit a Historical Data",
+        "notFound": "No Historical Data found"
+      },
+      "created": "A new Historical Data is created with identifier {{ param }}",
+      "updated": "A Historical Data is updated with identifier {{ param }}",
+      "deleted": "A Historical Data is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Historical Data {{ id }}?"
+      },
+      "detail": {
+        "title": "Historical Data"
+      },
+      "id": "Id",
+      "date": "Date",
+      "usd": "Usd"
+    }
+  }
+}

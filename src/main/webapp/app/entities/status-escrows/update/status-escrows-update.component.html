@@ -1,0 +1,87 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-status-escrows-heading"
+        data-cy="StatusEscrowsCreateUpdateHeading"
+        jhiTranslate="jhipsterSampleApplicationApp.statusEscrows.home.createOrEditLabel"
+      >
+        Create or edit a Status Escrows
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.statusEscrows.balance" for="field_balance">Balance</label>
+          <input type="number" class="form-control" name="balance" id="field_balance" data-cy="balance" formControlName="balance" />
+          <div *ngIf="editForm.get('balance')!.invalid && (editForm.get('balance')!.dirty || editForm.get('balance')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('balance')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('balance')?.errors?.number"
+              jhiTranslate="entity.validation.number"
+            >
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.statusEscrows.currency" for="field_currency">Currency</label>
+          <select class="form-control" id="field_currency" data-cy="currency" name="currency" formControlName="currency">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="currenciesOption.id === editForm.get('currency')!.value?.id ? editForm.get('currency')!.value : currenciesOption"
+              *ngFor="let currenciesOption of currenciesCollection; trackBy: trackCurrenciesById"
+            >
+              {{ currenciesOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.statusEscrows.statusId" for="field_statusId"
+            >Status Id</label
+          >
+          <select class="form-control" id="field_statusId" data-cy="statusId" name="statusId" formControlName="statusId">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="statusOption.id === editForm.get('statusId')!.value?.id ? editForm.get('statusId')!.value : statusOption"
+              *ngFor="let statusOption of statusIdsCollection; trackBy: trackStatusById"
+            >
+              {{ statusOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

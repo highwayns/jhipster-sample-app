@@ -1,0 +1,56 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="lang">
+      <h2 data-cy="langDetailsHeading"><span jhiTranslate="jhipsterSampleApplicationApp.lang.detail.title">Lang</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ lang.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.lang.key">Key</span></dt>
+        <dd>
+          <span>{{ lang.key }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.lang.esp">Esp</span></dt>
+        <dd>
+          <span>{{ lang.esp }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.lang.eng">Eng</span></dt>
+        <dd>
+          <span>{{ lang.eng }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.lang.order">Order</span></dt>
+        <dd>
+          <span>{{ lang.order }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.lang.pId">P Id</span></dt>
+        <dd>
+          <span>{{ lang.pId }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.lang.zh">Zh</span></dt>
+        <dd>
+          <span>{{ lang.zh }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.lang.ru">Ru</span></dt>
+        <dd>
+          <span>{{ lang.ru }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/lang', lang.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd">
+    <!--
+        Added the constraints for entity Requests.
+    -->
+    <changeSet id="20220814090919-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="site_user_id"
+                                 baseTableName="requests"
+                                 constraintName="fk_requests__site_user_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="site_users"/>
+
+        <addForeignKeyConstraint baseColumnNames="currency_id"
+                                 baseTableName="requests"
+                                 constraintName="fk_requests__currency_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="currencies"/>
+
+        <addForeignKeyConstraint baseColumnNames="description_id"
+                                 baseTableName="requests"
+                                 constraintName="fk_requests__description_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="request_descriptions"/>
+
+        <addForeignKeyConstraint baseColumnNames="request_status_id"
+                                 baseTableName="requests"
+                                 constraintName="fk_requests__request_status_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="request_status"/>
+
+        <addForeignKeyConstraint baseColumnNames="request_type_id"
+                                 baseTableName="requests"
+                                 constraintName="fk_requests__request_type_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="request_types"/>
+    </changeSet>
+</databaseChangeLog>

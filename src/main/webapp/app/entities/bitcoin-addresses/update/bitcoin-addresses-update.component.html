@@ -1,0 +1,175 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-bitcoin-addresses-heading"
+        data-cy="BitcoinAddressesCreateUpdateHeading"
+        jhiTranslate="jhipsterSampleApplicationApp.bitcoinAddresses.home.createOrEditLabel"
+      >
+        Create or edit a Bitcoin Addresses
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.bitcoinAddresses.address" for="field_address">Address</label>
+          <input type="text" class="form-control" name="address" id="field_address" data-cy="address" formControlName="address" />
+          <div *ngIf="editForm.get('address')!.invalid && (editForm.get('address')!.dirty || editForm.get('address')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('address')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('address')?.errors?.maxlength"
+              jhiTranslate="entity.validation.maxlength"
+              [translateValues]="{ max: 255 }"
+            >
+              This field cannot be longer than 255 characters.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.bitcoinAddresses.date" for="field_date">Date</label>
+          <div class="d-flex">
+            <input
+              id="field_date"
+              data-cy="date"
+              type="datetime-local"
+              class="form-control"
+              name="date"
+              formControlName="date"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+          <div *ngIf="editForm.get('date')!.invalid && (editForm.get('date')!.dirty || editForm.get('date')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('date')?.errors?.required" jhiTranslate="entity.validation.required">
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('date')?.errors?.ZonedDateTimelocal"
+              jhiTranslate="entity.validation.ZonedDateTimelocal"
+            >
+              This field should be a date and time.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.bitcoinAddresses.systemAddress" for="field_systemAddress"
+            >System Address</label
+          >
+          <select
+            class="form-control"
+            name="systemAddress"
+            formControlName="systemAddress"
+            id="field_systemAddress"
+            data-cy="systemAddress"
+          >
+            <option [ngValue]="null">{{ 'jhipsterSampleApplicationApp.YesNo.null' | translate }}</option>
+            <option *ngFor="let yesNo of yesNoValues" [value]="yesNo">
+              {{ 'jhipsterSampleApplicationApp.YesNo.' + yesNo | translate }}
+            </option>
+          </select>
+          <div
+            *ngIf="
+              editForm.get('systemAddress')!.invalid && (editForm.get('systemAddress')!.dirty || editForm.get('systemAddress')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('systemAddress')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.bitcoinAddresses.hotWallet" for="field_hotWallet"
+            >Hot Wallet</label
+          >
+          <select class="form-control" name="hotWallet" formControlName="hotWallet" id="field_hotWallet" data-cy="hotWallet">
+            <option [ngValue]="null">{{ 'jhipsterSampleApplicationApp.YesNo.null' | translate }}</option>
+            <option *ngFor="let yesNo of yesNoValues" [value]="yesNo">
+              {{ 'jhipsterSampleApplicationApp.YesNo.' + yesNo | translate }}
+            </option>
+          </select>
+          <div *ngIf="editForm.get('hotWallet')!.invalid && (editForm.get('hotWallet')!.dirty || editForm.get('hotWallet')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('hotWallet')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.bitcoinAddresses.warmWallet" for="field_warmWallet"
+            >Warm Wallet</label
+          >
+          <select class="form-control" name="warmWallet" formControlName="warmWallet" id="field_warmWallet" data-cy="warmWallet">
+            <option [ngValue]="null">{{ 'jhipsterSampleApplicationApp.YesNo.null' | translate }}</option>
+            <option *ngFor="let yesNo of yesNoValues" [value]="yesNo">
+              {{ 'jhipsterSampleApplicationApp.YesNo.' + yesNo | translate }}
+            </option>
+          </select>
+          <div *ngIf="editForm.get('warmWallet')!.invalid && (editForm.get('warmWallet')!.dirty || editForm.get('warmWallet')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('warmWallet')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.bitcoinAddresses.siteUser" for="field_siteUser"
+            >Site User</label
+          >
+          <select class="form-control" id="field_siteUser" data-cy="siteUser" name="siteUser" formControlName="siteUser">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="siteUsersOption.id === editForm.get('siteUser')!.value?.id ? editForm.get('siteUser')!.value : siteUsersOption"
+              *ngFor="let siteUsersOption of siteUsersCollection; trackBy: trackSiteUsersById"
+            >
+              {{ siteUsersOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

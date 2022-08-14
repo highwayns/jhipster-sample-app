@@ -1,0 +1,31 @@
+{
+  "jhipsterSampleApplicationApp": {
+    "conversions": {
+      "home": {
+        "title": "Conversions",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Conversions",
+        "createOrEditLabel": "Create or edit a Conversions",
+        "notFound": "No Conversions found"
+      },
+      "created": "A new Conversions is created with identifier {{ param }}",
+      "updated": "A Conversions is updated with identifier {{ param }}",
+      "deleted": "A Conversions is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Conversions {{ id }}?"
+      },
+      "detail": {
+        "title": "Conversions"
+      },
+      "id": "ID",
+      "amount": "Amount",
+      "date": "Date",
+      "isActive": "Is Active",
+      "totalWithdrawals": "Total Withdrawals",
+      "profitToFactor": "Profit To Factor",
+      "factored": "Factored",
+      "date1": "Date 1",
+      "currency": "Currency"
+    }
+  }
+}

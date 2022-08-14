@@ -1,0 +1,38 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="historicalData">
+      <h2 data-cy="historicalDataDetailsHeading">
+        <span jhiTranslate="jhipsterSampleApplicationApp.historicalData.detail.title">Historical Data</span>
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.historicalData.id">Id</span></dt>
+        <dd>
+          <span>{{ historicalData.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.historicalData.date">Date</span></dt>
+        <dd>
+          <span>{{ historicalData.date | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.historicalData.usd">Usd</span></dt>
+        <dd>
+          <span>{{ historicalData.usd }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/historical-data', historicalData.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

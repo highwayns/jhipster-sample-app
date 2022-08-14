@@ -1,0 +1,27 @@
+{
+  "jhipsterSampleApplicationApp": {
+    "isoCountries": {
+      "home": {
+        "title": "Iso Countries",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Iso Countries",
+        "createOrEditLabel": "Create or edit a Iso Countries",
+        "notFound": "No Iso Countries found"
+      },
+      "created": "A new Iso Countries is created with identifier {{ param }}",
+      "updated": "A Iso Countries is updated with identifier {{ param }}",
+      "deleted": "A Iso Countries is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Iso Countries {{ id }}?"
+      },
+      "detail": {
+        "title": "Iso Countries"
+      },
+      "id": "ID",
+      "locale": "Locale",
+      "code": "Code",
+      "name": "Name",
+      "prefix": "Prefix"
+    }
+  }
+}

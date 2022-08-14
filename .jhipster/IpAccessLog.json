@@ -1,0 +1,32 @@
+{
+  "applications": "*",
+  "changelogDate": "20220814090908",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "ip_access_log",
+  "fields": [
+    {
+      "fieldName": "ip",
+      "fieldType": "Long",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "timestamp",
+      "fieldType": "Instant",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "login",
+      "fieldType": "YesNo",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "Y,N"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "IpAccessLog",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [],
+  "service": "serviceClass"
+}

@@ -1,0 +1,52 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="adminControlsMethods">
+      <h2 data-cy="adminControlsMethodsDetailsHeading">
+        <span jhiTranslate="jhipsterSampleApplicationApp.adminControlsMethods.detail.title">Admin Controls Methods</span>
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ adminControlsMethods.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.adminControlsMethods.method">Method</span></dt>
+        <dd>
+          <span>{{ adminControlsMethods.method }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.adminControlsMethods.argument">Argument</span></dt>
+        <dd>
+          <span>{{ adminControlsMethods.argument }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.adminControlsMethods.order">Order</span></dt>
+        <dd>
+          <span>{{ adminControlsMethods.order }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.adminControlsMethods.pId">P Id</span></dt>
+        <dd>
+          <span>{{ adminControlsMethods.pId }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.adminControlsMethods.controlId">Control Id</span></dt>
+        <dd>
+          <div *ngIf="adminControlsMethods.controlId">
+            <a [routerLink]="['/admin-controls', adminControlsMethods.controlId?.id, 'view']">{{ adminControlsMethods.controlId?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/admin-controls-methods', adminControlsMethods.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

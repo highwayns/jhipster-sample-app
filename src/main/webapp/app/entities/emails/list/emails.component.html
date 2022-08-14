@@ -1,0 +1,140 @@
+<div>
+  <h2 id="page-heading" data-cy="EmailsHeading">
+    <span jhiTranslate="jhipsterSampleApplicationApp.emails.home.title">Emails</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="loadPage()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="jhipsterSampleApplicationApp.emails.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-emails"
+        [routerLink]="['/emails/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="jhipsterSampleApplicationApp.emails.home.createLabel"> Create a new Emails </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="emails?.length === 0">
+    <span jhiTranslate="jhipsterSampleApplicationApp.emails.home.notFound">No emails found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="emails && emails.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="loadPage()">
+          <th scope="col" jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="key">
+            <span jhiTranslate="jhipsterSampleApplicationApp.emails.key">Key</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="titleEn">
+            <span jhiTranslate="jhipsterSampleApplicationApp.emails.titleEn">Title En</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="titleEs">
+            <span jhiTranslate="jhipsterSampleApplicationApp.emails.titleEs">Title Es</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="contentEn">
+            <span jhiTranslate="jhipsterSampleApplicationApp.emails.contentEn">Content En</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="contentEs">
+            <span jhiTranslate="jhipsterSampleApplicationApp.emails.contentEs">Content Es</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="titleRu">
+            <span jhiTranslate="jhipsterSampleApplicationApp.emails.titleRu">Title Ru</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="titleZh">
+            <span jhiTranslate="jhipsterSampleApplicationApp.emails.titleZh">Title Zh</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="contentRu">
+            <span jhiTranslate="jhipsterSampleApplicationApp.emails.contentRu">Content Ru</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="contentZh">
+            <span jhiTranslate="jhipsterSampleApplicationApp.emails.contentZh">Content Zh</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let emails of emails; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/emails', emails.id, 'view']">{{ emails.id }}</a>
+          </td>
+          <td>{{ emails.key }}</td>
+          <td>{{ emails.titleEn }}</td>
+          <td>{{ emails.titleEs }}</td>
+          <td>
+            <a *ngIf="emails.contentEn" (click)="openFile(emails.contentEn, emails.contentEnContentType)" jhiTranslate="entity.action.open"
+              >open</a
+            >
+            <span *ngIf="emails.contentEn">{{ emails.contentEnContentType }}, {{ byteSize(emails.contentEn) }}</span>
+          </td>
+          <td>
+            <a *ngIf="emails.contentEs" (click)="openFile(emails.contentEs, emails.contentEsContentType)" jhiTranslate="entity.action.open"
+              >open</a
+            >
+            <span *ngIf="emails.contentEs">{{ emails.contentEsContentType }}, {{ byteSize(emails.contentEs) }}</span>
+          </td>
+          <td>{{ emails.titleRu }}</td>
+          <td>{{ emails.titleZh }}</td>
+          <td>
+            <a *ngIf="emails.contentRu" (click)="openFile(emails.contentRu, emails.contentRuContentType)" jhiTranslate="entity.action.open"
+              >open</a
+            >
+            <span *ngIf="emails.contentRu">{{ emails.contentRuContentType }}, {{ byteSize(emails.contentRu) }}</span>
+          </td>
+          <td>
+            <a *ngIf="emails.contentZh" (click)="openFile(emails.contentZh, emails.contentZhContentType)" jhiTranslate="entity.action.open"
+              >open</a
+            >
+            <span *ngIf="emails.contentZh">{{ emails.contentZhContentType }}, {{ byteSize(emails.contentZh) }}</span>
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button type="submit" [routerLink]="['/emails', emails.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button type="submit" [routerLink]="['/emails', emails.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(emails)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="emails && emails.length > 0">
+    <div class="d-flex justify-content-center">
+      <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+    </div>
+
+    <div class="d-flex justify-content-center">
+      <ngb-pagination
+        [collectionSize]="totalItems"
+        [(page)]="ngbPaginationPage"
+        [pageSize]="itemsPerPage"
+        [maxSize]="5"
+        [rotate]="true"
+        [boundaryLinks]="true"
+        (pageChange)="loadPage($event)"
+      ></ngb-pagination>
+    </div>
+  </div>
+</div>

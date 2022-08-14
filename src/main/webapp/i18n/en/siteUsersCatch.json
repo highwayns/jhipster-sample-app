@@ -1,0 +1,25 @@
+{
+  "jhipsterSampleApplicationApp": {
+    "siteUsersCatch": {
+      "home": {
+        "title": "Site Users Catches",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Site Users Catch",
+        "createOrEditLabel": "Create or edit a Site Users Catch",
+        "notFound": "No Site Users Catches found"
+      },
+      "created": "A new Site Users Catch is created with identifier {{ param }}",
+      "updated": "A Site Users Catch is updated with identifier {{ param }}",
+      "deleted": "A Site Users Catch is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Site Users Catch {{ id }}?"
+      },
+      "detail": {
+        "title": "Site Users Catch"
+      },
+      "id": "ID",
+      "attempts": "Attempts",
+      "siteUser": "Site User"
+    }
+  }
+}

@@ -1,0 +1,180 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="transactions">
+      <h2 data-cy="transactionsDetailsHeading">
+        <span jhiTranslate="jhipsterSampleApplicationApp.transactions.detail.title">Transactions</span>
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ transactions.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.transactions.date">Date</span></dt>
+        <dd>
+          <span>{{ transactions.date | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.transactions.btc">Btc</span></dt>
+        <dd>
+          <span>{{ transactions.btc }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.transactions.btcPrice">Btc Price</span></dt>
+        <dd>
+          <span>{{ transactions.btcPrice }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.transactions.fiat">Fiat</span></dt>
+        <dd>
+          <span>{{ transactions.fiat }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.transactions.fee">Fee</span></dt>
+        <dd>
+          <span>{{ transactions.fee }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.transactions.fee1">Fee 1</span></dt>
+        <dd>
+          <span>{{ transactions.fee1 }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.transactions.btcNet">Btc Net</span></dt>
+        <dd>
+          <span>{{ transactions.btcNet }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.transactions.btcNet1">Btc Net 1</span></dt>
+        <dd>
+          <span>{{ transactions.btcNet1 }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.transactions.btcBefore1">Btc Before 1</span></dt>
+        <dd>
+          <span>{{ transactions.btcBefore1 }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.transactions.btcAfter1">Btc After 1</span></dt>
+        <dd>
+          <span>{{ transactions.btcAfter1 }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.transactions.fiatBefore1">Fiat Before 1</span></dt>
+        <dd>
+          <span>{{ transactions.fiatBefore1 }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.transactions.fiatAfter1">Fiat After 1</span></dt>
+        <dd>
+          <span>{{ transactions.fiatAfter1 }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.transactions.btcBefore">Btc Before</span></dt>
+        <dd>
+          <span>{{ transactions.btcBefore }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.transactions.btcAfter">Btc After</span></dt>
+        <dd>
+          <span>{{ transactions.btcAfter }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.transactions.fiatBefore">Fiat Before</span></dt>
+        <dd>
+          <span>{{ transactions.fiatBefore }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.transactions.fiatAfter">Fiat After</span></dt>
+        <dd>
+          <span>{{ transactions.fiatAfter }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.transactions.feeLevel">Fee Level</span></dt>
+        <dd>
+          <span>{{ transactions.feeLevel }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.transactions.feeLevel1">Fee Level 1</span></dt>
+        <dd>
+          <span>{{ transactions.feeLevel1 }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.transactions.origBtcPrice">Orig Btc Price</span></dt>
+        <dd>
+          <span>{{ transactions.origBtcPrice }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.transactions.conversionFee">Conversion Fee</span></dt>
+        <dd>
+          <span>{{ transactions.conversionFee }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.transactions.convertAmount">Convert Amount</span></dt>
+        <dd>
+          <span>{{ transactions.convertAmount }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.transactions.convertRateGiven">Convert Rate Given</span></dt>
+        <dd>
+          <span>{{ transactions.convertRateGiven }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.transactions.convertSystemRate">Convert System Rate</span></dt>
+        <dd>
+          <span>{{ transactions.convertSystemRate }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.transactions.conversion">Conversion</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'jhipsterSampleApplicationApp.YesNo.' + transactions.conversion }}">{{ transactions.conversion }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.transactions.bidAtTransaction">Bid At Transaction</span></dt>
+        <dd>
+          <span>{{ transactions.bidAtTransaction }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.transactions.askAtTransaction">Ask At Transaction</span></dt>
+        <dd>
+          <span>{{ transactions.askAtTransaction }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.transactions.factored">Factored</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'jhipsterSampleApplicationApp.YesNo.' + transactions.factored }}">{{ transactions.factored }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.transactions.siteUser">Site User</span></dt>
+        <dd>
+          <div *ngIf="transactions.siteUser">
+            <a [routerLink]="['/site-users', transactions.siteUser?.id, 'view']">{{ transactions.siteUser?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.transactions.siteUser1">Site User 1</span></dt>
+        <dd>
+          <div *ngIf="transactions.siteUser1">
+            <a [routerLink]="['/site-users', transactions.siteUser1?.id, 'view']">{{ transactions.siteUser1?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.transactions.transactionType">Transaction Type</span></dt>
+        <dd>
+          <div *ngIf="transactions.transactionType">
+            <a [routerLink]="['/transaction-types', transactions.transactionType?.id, 'view']">{{ transactions.transactionType?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.transactions.transactionType1">Transaction Type 1</span></dt>
+        <dd>
+          <div *ngIf="transactions.transactionType1">
+            <a [routerLink]="['/transaction-types', transactions.transactionType1?.id, 'view']">{{ transactions.transactionType1?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.transactions.currency1">Currency 1</span></dt>
+        <dd>
+          <div *ngIf="transactions.currency1">
+            <a [routerLink]="['/currencies', transactions.currency1?.id, 'view']">{{ transactions.currency1?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.transactions.convertFromCurrency">Convert From Currency</span></dt>
+        <dd>
+          <div *ngIf="transactions.convertFromCurrency">
+            <a [routerLink]="['/currencies', transactions.convertFromCurrency?.id, 'view']">{{ transactions.convertFromCurrency?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.transactions.convertToCurrency">Convert To Currency</span></dt>
+        <dd>
+          <div *ngIf="transactions.convertToCurrency">
+            <a [routerLink]="['/currencies', transactions.convertToCurrency?.id, 'view']">{{ transactions.convertToCurrency?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/transactions', transactions.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

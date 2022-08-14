@@ -1,0 +1,62 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="adminControls">
+      <h2 data-cy="adminControlsDetailsHeading">
+        <span jhiTranslate="jhipsterSampleApplicationApp.adminControls.detail.title">Admin Controls</span>
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ adminControls.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.adminControls.action">Action</span></dt>
+        <dd>
+          <span>{{ adminControls.action }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.adminControls.controlClass">Control Class</span></dt>
+        <dd>
+          <span>{{ adminControls.controlClass }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.adminControls.argument">Argument</span></dt>
+        <dd>
+          <span>{{ adminControls.argument }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.adminControls.order">Order</span></dt>
+        <dd>
+          <span>{{ adminControls.order }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.adminControls.isStatic">Is Static</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'jhipsterSampleApplicationApp.YesNo.' + adminControls.isStatic }}">{{ adminControls.isStatic }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.adminControls.pageId">Page Id</span></dt>
+        <dd>
+          <div *ngIf="adminControls.pageId">
+            <a [routerLink]="['/admin-pages', adminControls.pageId?.id, 'view']">{{ adminControls.pageId?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.adminControls.tabId">Tab Id</span></dt>
+        <dd>
+          <div *ngIf="adminControls.tabId">
+            <a [routerLink]="['/admin-tabs', adminControls.tabId?.id, 'view']">{{ adminControls.tabId?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/admin-controls', adminControls.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

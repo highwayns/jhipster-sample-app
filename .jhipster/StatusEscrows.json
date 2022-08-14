@@ -1,0 +1,36 @@
+{
+  "applications": "*",
+  "changelogDate": "20220814090926",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "status_escrows",
+  "fields": [
+    {
+      "fieldName": "balance",
+      "fieldType": "Double",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "StatusEscrows",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "currencies",
+      "otherEntityRelationshipName": "statusEscrows",
+      "ownerSide": true,
+      "relationshipName": "currency",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "status",
+      "otherEntityRelationshipName": "statusEscrows",
+      "ownerSide": true,
+      "relationshipName": "statusId",
+      "relationshipType": "one-to-one"
+    }
+  ],
+  "service": "serviceClass"
+}

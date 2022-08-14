@@ -1,0 +1,46 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="siteUsersBalances">
+      <h2 data-cy="siteUsersBalancesDetailsHeading">
+        <span jhiTranslate="jhipsterSampleApplicationApp.siteUsersBalances.detail.title">Site Users Balances</span>
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ siteUsersBalances.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.siteUsersBalances.balance">Balance</span></dt>
+        <dd>
+          <span>{{ siteUsersBalances.balance }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.siteUsersBalances.siteUser">Site User</span></dt>
+        <dd>
+          <div *ngIf="siteUsersBalances.siteUser">
+            <a [routerLink]="['/site-users', siteUsersBalances.siteUser?.id, 'view']">{{ siteUsersBalances.siteUser?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.siteUsersBalances.currency">Currency</span></dt>
+        <dd>
+          <div *ngIf="siteUsersBalances.currency">
+            <a [routerLink]="['/currencies', siteUsersBalances.currency?.id, 'view']">{{ siteUsersBalances.currency?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/site-users-balances', siteUsersBalances.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

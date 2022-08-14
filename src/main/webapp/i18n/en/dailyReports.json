@@ -1,0 +1,35 @@
+{
+  "jhipsterSampleApplicationApp": {
+    "dailyReports": {
+      "home": {
+        "title": "Daily Reports",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Daily Reports",
+        "createOrEditLabel": "Create or edit a Daily Reports",
+        "notFound": "No Daily Reports found"
+      },
+      "created": "A new Daily Reports is created with identifier {{ param }}",
+      "updated": "A Daily Reports is updated with identifier {{ param }}",
+      "deleted": "A Daily Reports is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Daily Reports {{ id }}?"
+      },
+      "detail": {
+        "title": "Daily Reports"
+      },
+      "id": "ID",
+      "date": "Date",
+      "totalBtc": "Total Btc",
+      "totalFiatUsd": "Total Fiat Usd",
+      "openOrdersBtc": "Open Orders Btc",
+      "btcPerUser": "Btc Per User",
+      "transactionsBtc": "Transactions Btc",
+      "avgTransactionSizeBtc": "Avg Transaction Size Btc",
+      "transactionVolumePerUser": "Transaction Volume Per User",
+      "totalFeesBtc": "Total Fees Btc",
+      "feesPerUserBtc": "Fees Per User Btc",
+      "usdPerUser": "Usd Per User",
+      "grossProfitBtc": "Gross Profit Btc"
+    }
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "jhipsterSampleApplicationApp": {
+    "history": {
+      "home": {
+        "title": "Histories",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new History",
+        "createOrEditLabel": "Create or edit a History",
+        "notFound": "No Histories found"
+      },
+      "created": "A new History is created with identifier {{ param }}",
+      "updated": "A History is updated with identifier {{ param }}",
+      "deleted": "A History is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete History {{ id }}?"
+      },
+      "detail": {
+        "title": "History"
+      },
+      "id": "ID",
+      "date": "Date",
+      "ip": "Ip",
+      "bitcoinAddress": "Bitcoin Address",
+      "balanceBefore": "Balance Before",
+      "balanceAfter": "Balance After",
+      "historyAction": "History Action",
+      "orderId": "Order Id",
+      "requestId": "Request Id",
+      "siteUser": "Site User"
+    }
+  }
+}

@@ -1,0 +1,126 @@
+<div>
+  <h2 id="page-heading" data-cy="AdminTabsHeading">
+    <span jhiTranslate="jhipsterSampleApplicationApp.adminTabs.home.title">Admin Tabs</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="loadPage()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="jhipsterSampleApplicationApp.adminTabs.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-admin-tabs"
+        [routerLink]="['/admin-tabs/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="jhipsterSampleApplicationApp.adminTabs.home.createLabel"> Create a new Admin Tabs </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="adminTabs?.length === 0">
+    <span jhiTranslate="jhipsterSampleApplicationApp.adminTabs.home.notFound">No adminTabs found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="adminTabs && adminTabs.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="loadPage()">
+          <th scope="col" jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="name">
+            <span jhiTranslate="jhipsterSampleApplicationApp.adminTabs.name">Name</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="order">
+            <span jhiTranslate="jhipsterSampleApplicationApp.adminTabs.order">Order</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="icon">
+            <span jhiTranslate="jhipsterSampleApplicationApp.adminTabs.icon">Icon</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="url">
+            <span jhiTranslate="jhipsterSampleApplicationApp.adminTabs.url">Url</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="hidden">
+            <span jhiTranslate="jhipsterSampleApplicationApp.adminTabs.hidden">Hidden</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="isCtrlPanel">
+            <span jhiTranslate="jhipsterSampleApplicationApp.adminTabs.isCtrlPanel">Is Ctrl Panel</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="forGroup">
+            <span jhiTranslate="jhipsterSampleApplicationApp.adminTabs.forGroup">For Group</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="oneRecord">
+            <span jhiTranslate="jhipsterSampleApplicationApp.adminTabs.oneRecord">One Record</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let adminTabs of adminTabs; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/admin-tabs', adminTabs.id, 'view']">{{ adminTabs.id }}</a>
+          </td>
+          <td>{{ adminTabs.name }}</td>
+          <td>{{ adminTabs.order }}</td>
+          <td>{{ adminTabs.icon }}</td>
+          <td>{{ adminTabs.url }}</td>
+          <td jhiTranslate="{{ 'jhipsterSampleApplicationApp.YesNo.' + adminTabs.hidden }}">{{ adminTabs.hidden }}</td>
+          <td jhiTranslate="{{ 'jhipsterSampleApplicationApp.YesNo.' + adminTabs.isCtrlPanel }}">{{ adminTabs.isCtrlPanel }}</td>
+          <td>{{ adminTabs.forGroup }}</td>
+          <td jhiTranslate="{{ 'jhipsterSampleApplicationApp.YesNo.' + adminTabs.oneRecord }}">{{ adminTabs.oneRecord }}</td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/admin-tabs', adminTabs.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/admin-tabs', adminTabs.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(adminTabs)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="adminTabs && adminTabs.length > 0">
+    <div class="d-flex justify-content-center">
+      <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+    </div>
+
+    <div class="d-flex justify-content-center">
+      <ngb-pagination
+        [collectionSize]="totalItems"
+        [(page)]="ngbPaginationPage"
+        [pageSize]="itemsPerPage"
+        [maxSize]="5"
+        [rotate]="true"
+        [boundaryLinks]="true"
+        (pageChange)="loadPage($event)"
+      ></ngb-pagination>
+    </div>
+  </div>
+</div>

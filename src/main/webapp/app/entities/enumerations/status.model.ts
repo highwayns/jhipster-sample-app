@@ -1,0 +1,11 @@
+export enum Status {
+  ACTIVE = 'ACTIVE',
+
+  FILLED = 'FILLED',
+
+  CANCELLED_USER = 'CANCELLED_USER',
+
+  OUT_OF_FUNDS = 'OUT_OF_FUNDS',
+
+  REPLACED = 'REPLACED',
+}

@@ -1,0 +1,34 @@
+{
+  "jhipsterSampleApplicationApp": {
+    "currencies": {
+      "home": {
+        "title": "Currencies",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Currencies",
+        "createOrEditLabel": "Create or edit a Currencies",
+        "notFound": "No Currencies found"
+      },
+      "created": "A new Currencies is created with identifier {{ param }}",
+      "updated": "A Currencies is updated with identifier {{ param }}",
+      "deleted": "A Currencies is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Currencies {{ id }}?"
+      },
+      "detail": {
+        "title": "Currencies"
+      },
+      "id": "ID",
+      "currency": "Currency",
+      "faSymbol": "Fa Symbol",
+      "accountNumber": "Account Number",
+      "accountName": "Account Name",
+      "isActive": "Is Active",
+      "usdBid": "Usd Bid",
+      "usdAsk": "Usd Ask",
+      "nameEn": "Name En",
+      "nameEs": "Name Es",
+      "nameRu": "Name Ru",
+      "nameZh": "Name Zh"
+    }
+  }
+}

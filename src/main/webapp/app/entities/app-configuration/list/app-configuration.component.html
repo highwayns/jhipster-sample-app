@@ -1,0 +1,490 @@
+<div>
+  <h2 id="page-heading" data-cy="AppConfigurationHeading">
+    <span jhiTranslate="jhipsterSampleApplicationApp.appConfiguration.home.title">App Configurations</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="loadPage()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="jhipsterSampleApplicationApp.appConfiguration.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-app-configuration"
+        [routerLink]="['/app-configuration/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="jhipsterSampleApplicationApp.appConfiguration.home.createLabel"> Create a new App Configuration </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="appConfigurations?.length === 0">
+    <span jhiTranslate="jhipsterSampleApplicationApp.appConfiguration.home.notFound">No appConfigurations found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="appConfigurations && appConfigurations.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="loadPage()">
+          <th scope="col" jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="defaultTimezone">
+            <span jhiTranslate="jhipsterSampleApplicationApp.appConfiguration.defaultTimezone">Default Timezone</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="ordersUnderMarketPercent">
+            <span jhiTranslate="jhipsterSampleApplicationApp.appConfiguration.ordersUnderMarketPercent">Orders Under Market Percent</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="ordersMinUsd">
+            <span jhiTranslate="jhipsterSampleApplicationApp.appConfiguration.ordersMinUsd">Orders Min Usd</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="bitcoinSendingFee">
+            <span jhiTranslate="jhipsterSampleApplicationApp.appConfiguration.bitcoinSendingFee">Bitcoin Sending Fee</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="frontendBaseurl">
+            <span jhiTranslate="jhipsterSampleApplicationApp.appConfiguration.frontendBaseurl">Frontend Baseurl</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="frontendDirroot">
+            <span jhiTranslate="jhipsterSampleApplicationApp.appConfiguration.frontendDirroot">Frontend Dirroot</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="fiatWithdrawFee">
+            <span jhiTranslate="jhipsterSampleApplicationApp.appConfiguration.fiatWithdrawFee">Fiat Withdraw Fee</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="apiDbDebug">
+            <span jhiTranslate="jhipsterSampleApplicationApp.appConfiguration.apiDbDebug">Api Db Debug</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="apiDirroot">
+            <span jhiTranslate="jhipsterSampleApplicationApp.appConfiguration.apiDirroot">Api Dirroot</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="supportEmail">
+            <span jhiTranslate="jhipsterSampleApplicationApp.appConfiguration.supportEmail">Support Email</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="emailSmtpHost">
+            <span jhiTranslate="jhipsterSampleApplicationApp.appConfiguration.emailSmtpHost">Email Smtp Host</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="emailSmtpPort">
+            <span jhiTranslate="jhipsterSampleApplicationApp.appConfiguration.emailSmtpPort">Email Smtp Port</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="emailSmtpSecurity">
+            <span jhiTranslate="jhipsterSampleApplicationApp.appConfiguration.emailSmtpSecurity">Email Smtp Security</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="emailSmtpUsername">
+            <span jhiTranslate="jhipsterSampleApplicationApp.appConfiguration.emailSmtpUsername">Email Smtp Username</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="emailSmtpPassword">
+            <span jhiTranslate="jhipsterSampleApplicationApp.appConfiguration.emailSmtpPassword">Email Smtp Password</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="emailSmtpSendFrom">
+            <span jhiTranslate="jhipsterSampleApplicationApp.appConfiguration.emailSmtpSendFrom">Email Smtp Send From</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="bitcoinUsername">
+            <span jhiTranslate="jhipsterSampleApplicationApp.appConfiguration.bitcoinUsername">Bitcoin Username</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="bitcoinAccountname">
+            <span jhiTranslate="jhipsterSampleApplicationApp.appConfiguration.bitcoinAccountname">Bitcoin Accountname</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="bitcoinPassphrase">
+            <span jhiTranslate="jhipsterSampleApplicationApp.appConfiguration.bitcoinPassphrase">Bitcoin Passphrase</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="bitcoinHost">
+            <span jhiTranslate="jhipsterSampleApplicationApp.appConfiguration.bitcoinHost">Bitcoin Host</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="bitcoinPort">
+            <span jhiTranslate="jhipsterSampleApplicationApp.appConfiguration.bitcoinPort">Bitcoin Port</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="bitcoinProtocol">
+            <span jhiTranslate="jhipsterSampleApplicationApp.appConfiguration.bitcoinProtocol">Bitcoin Protocol</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="authyApiKey">
+            <span jhiTranslate="jhipsterSampleApplicationApp.appConfiguration.authyApiKey">Authy Api Key</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="helpdeskKey">
+            <span jhiTranslate="jhipsterSampleApplicationApp.appConfiguration.helpdeskKey">Helpdesk Key</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="exchangeName">
+            <span jhiTranslate="jhipsterSampleApplicationApp.appConfiguration.exchangeName">Exchange Name</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="mcryptKey">
+            <span jhiTranslate="jhipsterSampleApplicationApp.appConfiguration.mcryptKey">Mcrypt Key</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="currencyConversionFee">
+            <span jhiTranslate="jhipsterSampleApplicationApp.appConfiguration.currencyConversionFee">Currency Conversion Fee</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="crossCurrencyTrades">
+            <span jhiTranslate="jhipsterSampleApplicationApp.appConfiguration.crossCurrencyTrades">Cross Currency Trades</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="btcCurrencyId">
+            <span jhiTranslate="jhipsterSampleApplicationApp.appConfiguration.btcCurrencyId">Btc Currency Id</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="depositBitcoinDesc">
+            <span jhiTranslate="jhipsterSampleApplicationApp.appConfiguration.depositBitcoinDesc">Deposit Bitcoin Desc</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="defaultFeeScheduleId">
+            <span jhiTranslate="jhipsterSampleApplicationApp.appConfiguration.defaultFeeScheduleId">Default Fee Schedule Id</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="historyBuyId">
+            <span jhiTranslate="jhipsterSampleApplicationApp.appConfiguration.historyBuyId">History Buy Id</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="historyDepositId">
+            <span jhiTranslate="jhipsterSampleApplicationApp.appConfiguration.historyDepositId">History Deposit Id</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="historyLoginId">
+            <span jhiTranslate="jhipsterSampleApplicationApp.appConfiguration.historyLoginId">History Login Id</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="historySellId">
+            <span jhiTranslate="jhipsterSampleApplicationApp.appConfiguration.historySellId">History Sell Id</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="historyWithdrawId">
+            <span jhiTranslate="jhipsterSampleApplicationApp.appConfiguration.historyWithdrawId">History Withdraw Id</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="orderTypeAsk">
+            <span jhiTranslate="jhipsterSampleApplicationApp.appConfiguration.orderTypeAsk">Order Type Ask</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="requestAwaitingId">
+            <span jhiTranslate="jhipsterSampleApplicationApp.appConfiguration.requestAwaitingId">Request Awaiting Id</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="requestCancelledId">
+            <span jhiTranslate="jhipsterSampleApplicationApp.appConfiguration.requestCancelledId">Request Cancelled Id</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="requestCompletedId">
+            <span jhiTranslate="jhipsterSampleApplicationApp.appConfiguration.requestCompletedId">Request Completed Id</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="orderTypeBid">
+            <span jhiTranslate="jhipsterSampleApplicationApp.appConfiguration.orderTypeBid">Order Type Bid</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="requestDepositId">
+            <span jhiTranslate="jhipsterSampleApplicationApp.appConfiguration.requestDepositId">Request Deposit Id</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="requestPendingId">
+            <span jhiTranslate="jhipsterSampleApplicationApp.appConfiguration.requestPendingId">Request Pending Id</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="requestWithdrawalId">
+            <span jhiTranslate="jhipsterSampleApplicationApp.appConfiguration.requestWithdrawalId">Request Withdrawal Id</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="transactionsBuyId">
+            <span jhiTranslate="jhipsterSampleApplicationApp.appConfiguration.transactionsBuyId">Transactions Buy Id</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="transactionsSellId">
+            <span jhiTranslate="jhipsterSampleApplicationApp.appConfiguration.transactionsSellId">Transactions Sell Id</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="withdrawFiatDesc">
+            <span jhiTranslate="jhipsterSampleApplicationApp.appConfiguration.withdrawFiatDesc">Withdraw Fiat Desc</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="withdrawBtcDesc">
+            <span jhiTranslate="jhipsterSampleApplicationApp.appConfiguration.withdrawBtcDesc">Withdraw Btc Desc</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="formEmailFrom">
+            <span jhiTranslate="jhipsterSampleApplicationApp.appConfiguration.formEmailFrom">Form Email From</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="emailNotifyNewUsers">
+            <span jhiTranslate="jhipsterSampleApplicationApp.appConfiguration.emailNotifyNewUsers">Email Notify New Users</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="passRegex">
+            <span jhiTranslate="jhipsterSampleApplicationApp.appConfiguration.passRegex">Pass Regex</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="passMinChars">
+            <span jhiTranslate="jhipsterSampleApplicationApp.appConfiguration.passMinChars">Pass Min Chars</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="authDbDebug">
+            <span jhiTranslate="jhipsterSampleApplicationApp.appConfiguration.authDbDebug">Auth Db Debug</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="bitcoinReserveMin">
+            <span jhiTranslate="jhipsterSampleApplicationApp.appConfiguration.bitcoinReserveMin">Bitcoin Reserve Min</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="bitcoinReserveRatio">
+            <span jhiTranslate="jhipsterSampleApplicationApp.appConfiguration.bitcoinReserveRatio">Bitcoin Reserve Ratio</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="bitcoinWarmWalletAddress">
+            <span jhiTranslate="jhipsterSampleApplicationApp.appConfiguration.bitcoinWarmWalletAddress">Bitcoin Warm Wallet Address</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="cronDbDebug">
+            <span jhiTranslate="jhipsterSampleApplicationApp.appConfiguration.cronDbDebug">Cron Db Debug</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="quandlApiKey">
+            <span jhiTranslate="jhipsterSampleApplicationApp.appConfiguration.quandlApiKey">Quandl Api Key</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="cronDirroot">
+            <span jhiTranslate="jhipsterSampleApplicationApp.appConfiguration.cronDirroot">Cron Dirroot</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="backstageDbDebug">
+            <span jhiTranslate="jhipsterSampleApplicationApp.appConfiguration.backstageDbDebug">Backstage Db Debug</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="backstageDirroot">
+            <span jhiTranslate="jhipsterSampleApplicationApp.appConfiguration.backstageDirroot">Backstage Dirroot</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="emailNotifyFiatWithdrawals">
+            <span jhiTranslate="jhipsterSampleApplicationApp.appConfiguration.emailNotifyFiatWithdrawals"
+              >Email Notify Fiat Withdrawals</span
+            >
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="contactEmail">
+            <span jhiTranslate="jhipsterSampleApplicationApp.appConfiguration.contactEmail">Contact Email</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="cloudflareApiKey">
+            <span jhiTranslate="jhipsterSampleApplicationApp.appConfiguration.cloudflareApiKey">Cloudflare Api Key</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="googleRecaptchApiKey">
+            <span jhiTranslate="jhipsterSampleApplicationApp.appConfiguration.googleRecaptchApiKey">Google Recaptch Api Key</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="cloudflareBlacklist">
+            <span jhiTranslate="jhipsterSampleApplicationApp.appConfiguration.cloudflareBlacklist">Cloudflare Blacklist</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="cloudflareEmail">
+            <span jhiTranslate="jhipsterSampleApplicationApp.appConfiguration.cloudflareEmail">Cloudflare Email</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="googleRecaptchApiSecret">
+            <span jhiTranslate="jhipsterSampleApplicationApp.appConfiguration.googleRecaptchApiSecret">Google Recaptch Api Secret</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="cloudflareBlacklistAttempts">
+            <span jhiTranslate="jhipsterSampleApplicationApp.appConfiguration.cloudflareBlacklistAttempts"
+              >Cloudflare Blacklist Attempts</span
+            >
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="cloudflareBlacklistTimeframe">
+            <span jhiTranslate="jhipsterSampleApplicationApp.appConfiguration.cloudflareBlacklistTimeframe"
+              >Cloudflare Blacklist Timeframe</span
+            >
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="cryptoCapitalPk">
+            <span jhiTranslate="jhipsterSampleApplicationApp.appConfiguration.cryptoCapitalPk">Crypto Capital Pk</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="depositFiatDesc">
+            <span jhiTranslate="jhipsterSampleApplicationApp.appConfiguration.depositFiatDesc">Deposit Fiat Desc</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="emailNotifyFiatFailed">
+            <span jhiTranslate="jhipsterSampleApplicationApp.appConfiguration.emailNotifyFiatFailed">Email Notify Fiat Failed</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="tradingStatus">
+            <span jhiTranslate="jhipsterSampleApplicationApp.appConfiguration.tradingStatus">Trading Status</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="withdrawalsStatus">
+            <span jhiTranslate="jhipsterSampleApplicationApp.appConfiguration.withdrawalsStatus">Withdrawals Status</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let appConfiguration of appConfigurations; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/app-configuration', appConfiguration.id, 'view']">{{ appConfiguration.id }}</a>
+          </td>
+          <td>{{ appConfiguration.defaultTimezone }}</td>
+          <td>{{ appConfiguration.ordersUnderMarketPercent }}</td>
+          <td>{{ appConfiguration.ordersMinUsd }}</td>
+          <td>{{ appConfiguration.bitcoinSendingFee }}</td>
+          <td>{{ appConfiguration.frontendBaseurl }}</td>
+          <td>{{ appConfiguration.frontendDirroot }}</td>
+          <td>{{ appConfiguration.fiatWithdrawFee }}</td>
+          <td jhiTranslate="{{ 'jhipsterSampleApplicationApp.YesNo.' + appConfiguration.apiDbDebug }}">
+            {{ appConfiguration.apiDbDebug }}
+          </td>
+          <td>{{ appConfiguration.apiDirroot }}</td>
+          <td>{{ appConfiguration.supportEmail }}</td>
+          <td>{{ appConfiguration.emailSmtpHost }}</td>
+          <td>{{ appConfiguration.emailSmtpPort }}</td>
+          <td>{{ appConfiguration.emailSmtpSecurity }}</td>
+          <td>{{ appConfiguration.emailSmtpUsername }}</td>
+          <td>{{ appConfiguration.emailSmtpPassword }}</td>
+          <td>{{ appConfiguration.emailSmtpSendFrom }}</td>
+          <td>{{ appConfiguration.bitcoinUsername }}</td>
+          <td>{{ appConfiguration.bitcoinAccountname }}</td>
+          <td>{{ appConfiguration.bitcoinPassphrase }}</td>
+          <td>{{ appConfiguration.bitcoinHost }}</td>
+          <td>{{ appConfiguration.bitcoinPort }}</td>
+          <td>{{ appConfiguration.bitcoinProtocol }}</td>
+          <td>{{ appConfiguration.authyApiKey }}</td>
+          <td>{{ appConfiguration.helpdeskKey }}</td>
+          <td>{{ appConfiguration.exchangeName }}</td>
+          <td>{{ appConfiguration.mcryptKey }}</td>
+          <td>{{ appConfiguration.currencyConversionFee }}</td>
+          <td jhiTranslate="{{ 'jhipsterSampleApplicationApp.YesNo.' + appConfiguration.crossCurrencyTrades }}">
+            {{ appConfiguration.crossCurrencyTrades }}
+          </td>
+          <td>{{ appConfiguration.btcCurrencyId }}</td>
+          <td>{{ appConfiguration.depositBitcoinDesc }}</td>
+          <td>{{ appConfiguration.defaultFeeScheduleId }}</td>
+          <td>{{ appConfiguration.historyBuyId }}</td>
+          <td>{{ appConfiguration.historyDepositId }}</td>
+          <td>{{ appConfiguration.historyLoginId }}</td>
+          <td>{{ appConfiguration.historySellId }}</td>
+          <td>{{ appConfiguration.historyWithdrawId }}</td>
+          <td>{{ appConfiguration.orderTypeAsk }}</td>
+          <td>{{ appConfiguration.requestAwaitingId }}</td>
+          <td>{{ appConfiguration.requestCancelledId }}</td>
+          <td>{{ appConfiguration.requestCompletedId }}</td>
+          <td>{{ appConfiguration.orderTypeBid }}</td>
+          <td>{{ appConfiguration.requestDepositId }}</td>
+          <td>{{ appConfiguration.requestPendingId }}</td>
+          <td>{{ appConfiguration.requestWithdrawalId }}</td>
+          <td>{{ appConfiguration.transactionsBuyId }}</td>
+          <td>{{ appConfiguration.transactionsSellId }}</td>
+          <td>{{ appConfiguration.withdrawFiatDesc }}</td>
+          <td>{{ appConfiguration.withdrawBtcDesc }}</td>
+          <td>{{ appConfiguration.formEmailFrom }}</td>
+          <td jhiTranslate="{{ 'jhipsterSampleApplicationApp.YesNo.' + appConfiguration.emailNotifyNewUsers }}">
+            {{ appConfiguration.emailNotifyNewUsers }}
+          </td>
+          <td>{{ appConfiguration.passRegex }}</td>
+          <td>{{ appConfiguration.passMinChars }}</td>
+          <td jhiTranslate="{{ 'jhipsterSampleApplicationApp.YesNo.' + appConfiguration.authDbDebug }}">
+            {{ appConfiguration.authDbDebug }}
+          </td>
+          <td>{{ appConfiguration.bitcoinReserveMin }}</td>
+          <td>{{ appConfiguration.bitcoinReserveRatio }}</td>
+          <td>{{ appConfiguration.bitcoinWarmWalletAddress }}</td>
+          <td jhiTranslate="{{ 'jhipsterSampleApplicationApp.YesNo.' + appConfiguration.cronDbDebug }}">
+            {{ appConfiguration.cronDbDebug }}
+          </td>
+          <td>{{ appConfiguration.quandlApiKey }}</td>
+          <td>{{ appConfiguration.cronDirroot }}</td>
+          <td jhiTranslate="{{ 'jhipsterSampleApplicationApp.YesNo.' + appConfiguration.backstageDbDebug }}">
+            {{ appConfiguration.backstageDbDebug }}
+          </td>
+          <td>{{ appConfiguration.backstageDirroot }}</td>
+          <td jhiTranslate="{{ 'jhipsterSampleApplicationApp.YesNo.' + appConfiguration.emailNotifyFiatWithdrawals }}">
+            {{ appConfiguration.emailNotifyFiatWithdrawals }}
+          </td>
+          <td>{{ appConfiguration.contactEmail }}</td>
+          <td>{{ appConfiguration.cloudflareApiKey }}</td>
+          <td>{{ appConfiguration.googleRecaptchApiKey }}</td>
+          <td jhiTranslate="{{ 'jhipsterSampleApplicationApp.YesNo.' + appConfiguration.cloudflareBlacklist }}">
+            {{ appConfiguration.cloudflareBlacklist }}
+          </td>
+          <td>{{ appConfiguration.cloudflareEmail }}</td>
+          <td>{{ appConfiguration.googleRecaptchApiSecret }}</td>
+          <td>{{ appConfiguration.cloudflareBlacklistAttempts }}</td>
+          <td>{{ appConfiguration.cloudflareBlacklistTimeframe }}</td>
+          <td>{{ appConfiguration.cryptoCapitalPk }}</td>
+          <td>{{ appConfiguration.depositFiatDesc }}</td>
+          <td jhiTranslate="{{ 'jhipsterSampleApplicationApp.YesNo.' + appConfiguration.emailNotifyFiatFailed }}">
+            {{ appConfiguration.emailNotifyFiatFailed }}
+          </td>
+          <td>{{ appConfiguration.tradingStatus }}</td>
+          <td>{{ appConfiguration.withdrawalsStatus }}</td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/app-configuration', appConfiguration.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/app-configuration', appConfiguration.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(appConfiguration)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="appConfigurations && appConfigurations.length > 0">
+    <div class="d-flex justify-content-center">
+      <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+    </div>
+
+    <div class="d-flex justify-content-center">
+      <ngb-pagination
+        [collectionSize]="totalItems"
+        [(page)]="ngbPaginationPage"
+        [pageSize]="itemsPerPage"
+        [maxSize]="5"
+        [rotate]="true"
+        [boundaryLinks]="true"
+        (pageChange)="loadPage($event)"
+      ></ngb-pagination>
+    </div>
+  </div>
+</div>

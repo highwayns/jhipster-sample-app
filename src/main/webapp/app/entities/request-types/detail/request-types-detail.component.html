@@ -1,0 +1,46 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="requestTypes">
+      <h2 data-cy="requestTypesDetailsHeading">
+        <span jhiTranslate="jhipsterSampleApplicationApp.requestTypes.detail.title">Request Types</span>
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ requestTypes.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.requestTypes.nameEn">Name En</span></dt>
+        <dd>
+          <span>{{ requestTypes.nameEn }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.requestTypes.nameEs">Name Es</span></dt>
+        <dd>
+          <span>{{ requestTypes.nameEs }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.requestTypes.nameRu">Name Ru</span></dt>
+        <dd>
+          <span>{{ requestTypes.nameRu }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.requestTypes.nameZh">Name Zh</span></dt>
+        <dd>
+          <span>{{ requestTypes.nameZh }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/request-types', requestTypes.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,29 @@
+{
+  "jhipsterSampleApplicationApp": {
+    "adminCron": {
+      "home": {
+        "title": "Admin Crons",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Admin Cron",
+        "createOrEditLabel": "Create or edit a Admin Cron",
+        "notFound": "No Admin Crons found"
+      },
+      "created": "A new Admin Cron is created with identifier {{ param }}",
+      "updated": "A Admin Cron is updated with identifier {{ param }}",
+      "deleted": "A Admin Cron is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Admin Cron {{ id }}?"
+      },
+      "detail": {
+        "title": "Admin Cron"
+      },
+      "id": "ID",
+      "day": "Day",
+      "month": "Month",
+      "year": "Year",
+      "sendCondition": "Send Condition",
+      "controlId": "Control Id",
+      "methodId": "Method Id"
+    }
+  }
+}

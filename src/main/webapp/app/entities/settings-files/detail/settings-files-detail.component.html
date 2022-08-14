@@ -1,0 +1,54 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="settingsFiles">
+      <h2 data-cy="settingsFilesDetailsHeading">
+        <span jhiTranslate="jhipsterSampleApplicationApp.settingsFiles.detail.title">Settings Files</span>
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ settingsFiles.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.settingsFiles.fId">F Id</span></dt>
+        <dd>
+          <span>{{ settingsFiles.fId }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.settingsFiles.ext">Ext</span></dt>
+        <dd>
+          <span>{{ settingsFiles.ext }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.settingsFiles.dir">Dir</span></dt>
+        <dd>
+          <span>{{ settingsFiles.dir }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.settingsFiles.url">Url</span></dt>
+        <dd>
+          <span>{{ settingsFiles.url }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.settingsFiles.oldName">Old Name</span></dt>
+        <dd>
+          <span>{{ settingsFiles.oldName }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.settingsFiles.fieldName">Field Name</span></dt>
+        <dd>
+          <span>{{ settingsFiles.fieldName }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/settings-files', settingsFiles.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

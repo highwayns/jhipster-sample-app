@@ -1,0 +1,35 @@
+{
+  "jhipsterSampleApplicationApp": {
+    "orderLog": {
+      "home": {
+        "title": "Order Logs",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Order Log",
+        "createOrEditLabel": "Create or edit a Order Log",
+        "notFound": "No Order Logs found"
+      },
+      "created": "A new Order Log is created with identifier {{ param }}",
+      "updated": "A Order Log is updated with identifier {{ param }}",
+      "deleted": "A Order Log is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Order Log {{ id }}?"
+      },
+      "detail": {
+        "title": "Order Log"
+      },
+      "id": "ID",
+      "date": "Date",
+      "btc": "Btc",
+      "marketPrice": "Market Price",
+      "btcPrice": "Btc Price",
+      "fiat": "Fiat",
+      "pId": "P Id",
+      "stopPrice": "Stop Price",
+      "status": "Status",
+      "btcRemaining": "Btc Remaining",
+      "siteUser": "Site User",
+      "currency": "Currency",
+      "orderType": "Order Type"
+    }
+  }
+}

@@ -1,0 +1,100 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="adminUsers">
+      <h2 data-cy="adminUsersDetailsHeading">
+        <span jhiTranslate="jhipsterSampleApplicationApp.adminUsers.detail.title">Admin Users</span>
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ adminUsers.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.adminUsers.user">User</span></dt>
+        <dd>
+          <span>{{ adminUsers.user }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.adminUsers.pass">Pass</span></dt>
+        <dd>
+          <span>{{ adminUsers.pass }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.adminUsers.firstName">First Name</span></dt>
+        <dd>
+          <span>{{ adminUsers.firstName }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.adminUsers.lastName">Last Name</span></dt>
+        <dd>
+          <span>{{ adminUsers.lastName }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.adminUsers.company">Company</span></dt>
+        <dd>
+          <span>{{ adminUsers.company }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.adminUsers.address">Address</span></dt>
+        <dd>
+          <span>{{ adminUsers.address }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.adminUsers.city">City</span></dt>
+        <dd>
+          <span>{{ adminUsers.city }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.adminUsers.phone">Phone</span></dt>
+        <dd>
+          <span>{{ adminUsers.phone }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.adminUsers.email">Email</span></dt>
+        <dd>
+          <span>{{ adminUsers.email }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.adminUsers.website">Website</span></dt>
+        <dd>
+          <span>{{ adminUsers.website }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.adminUsers.fId">F Id</span></dt>
+        <dd>
+          <span>{{ adminUsers.fId }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.adminUsers.order">Order</span></dt>
+        <dd>
+          <span>{{ adminUsers.order }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.adminUsers.isAdmin">Is Admin</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'jhipsterSampleApplicationApp.YesNo.' + adminUsers.isAdmin }}">{{ adminUsers.isAdmin }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.adminUsers.countryCode">Country Code</span></dt>
+        <dd>
+          <span>{{ adminUsers.countryCode }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.adminUsers.verifiedAuthy">Verified Authy</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'jhipsterSampleApplicationApp.YesNo.' + adminUsers.verifiedAuthy }}">{{ adminUsers.verifiedAuthy }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.adminUsers.authyId">Authy Id</span></dt>
+        <dd>
+          <span>{{ adminUsers.authyId }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.adminUsers.countryId">Country Id</span></dt>
+        <dd>
+          <div *ngIf="adminUsers.countryId">
+            <a [routerLink]="['/iso-countries', adminUsers.countryId?.id, 'view']">{{ adminUsers.countryId?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/admin-users', adminUsers.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

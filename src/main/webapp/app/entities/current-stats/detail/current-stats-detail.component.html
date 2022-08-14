@@ -1,0 +1,42 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="currentStats">
+      <h2 data-cy="currentStatsDetailsHeading">
+        <span jhiTranslate="jhipsterSampleApplicationApp.currentStats.detail.title">Current Stats</span>
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ currentStats.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.currentStats.totalBtc">Total Btc</span></dt>
+        <dd>
+          <span>{{ currentStats.totalBtc }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.currentStats.marketCap">Market Cap</span></dt>
+        <dd>
+          <span>{{ currentStats.marketCap }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.currentStats.tradeVolume">Trade Volume</span></dt>
+        <dd>
+          <span>{{ currentStats.tradeVolume }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/current-stats', currentStats.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

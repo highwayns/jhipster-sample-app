@@ -1,0 +1,40 @@
+{
+  "jhipsterSampleApplicationApp": {
+    "requests": {
+      "home": {
+        "title": "Requests",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Requests",
+        "createOrEditLabel": "Create or edit a Requests",
+        "notFound": "No Requests found"
+      },
+      "created": "A new Requests is created with identifier {{ param }}",
+      "updated": "A Requests is updated with identifier {{ param }}",
+      "deleted": "A Requests is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Requests {{ id }}?"
+      },
+      "detail": {
+        "title": "Requests"
+      },
+      "id": "ID",
+      "date": "Date",
+      "amount": "Amount",
+      "addressId": "Address Id",
+      "account": "Account",
+      "sendAddress": "Send Address",
+      "transactionId": "Transaction Id",
+      "increment": "Increment",
+      "done": "Done",
+      "cryptoId": "Crypto Id",
+      "fee": "Fee",
+      "netAmount": "Net Amount",
+      "notified": "Notified",
+      "siteUser": "Site User",
+      "currency": "Currency",
+      "description": "Description",
+      "requestStatus": "Request Status",
+      "requestType": "Request Type"
+    }
+  }
+}

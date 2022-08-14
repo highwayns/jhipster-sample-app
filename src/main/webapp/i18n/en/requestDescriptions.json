@@ -1,0 +1,27 @@
+{
+  "jhipsterSampleApplicationApp": {
+    "requestDescriptions": {
+      "home": {
+        "title": "Request Descriptions",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Request Descriptions",
+        "createOrEditLabel": "Create or edit a Request Descriptions",
+        "notFound": "No Request Descriptions found"
+      },
+      "created": "A new Request Descriptions is created with identifier {{ param }}",
+      "updated": "A Request Descriptions is updated with identifier {{ param }}",
+      "deleted": "A Request Descriptions is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Request Descriptions {{ id }}?"
+      },
+      "detail": {
+        "title": "Request Descriptions"
+      },
+      "id": "ID",
+      "nameEn": "Name En",
+      "nameEs": "Name Es",
+      "nameRu": "Name Ru",
+      "nameZh": "Name Zh"
+    }
+  }
+}

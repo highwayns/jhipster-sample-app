@@ -1,0 +1,76 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="orders">
+      <h2 data-cy="ordersDetailsHeading"><span jhiTranslate="jhipsterSampleApplicationApp.orders.detail.title">Orders</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ orders.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.orders.date">Date</span></dt>
+        <dd>
+          <span>{{ orders.date | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.orders.btc">Btc</span></dt>
+        <dd>
+          <span>{{ orders.btc }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.orders.fiat">Fiat</span></dt>
+        <dd>
+          <span>{{ orders.fiat }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.orders.btcPrice">Btc Price</span></dt>
+        <dd>
+          <span>{{ orders.btcPrice }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.orders.marketPrice">Market Price</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'jhipsterSampleApplicationApp.YesNo.' + orders.marketPrice }}">{{ orders.marketPrice }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.orders.stopPrice">Stop Price</span></dt>
+        <dd>
+          <span>{{ orders.stopPrice }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.orders.orderType">Order Type</span></dt>
+        <dd>
+          <div *ngIf="orders.orderType">
+            <a [routerLink]="['/order-types', orders.orderType?.id, 'view']">{{ orders.orderType?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.orders.siteUser">Site User</span></dt>
+        <dd>
+          <div *ngIf="orders.siteUser">
+            <a [routerLink]="['/site-users', orders.siteUser?.id, 'view']">{{ orders.siteUser?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.orders.currency">Currency</span></dt>
+        <dd>
+          <div *ngIf="orders.currency">
+            <a [routerLink]="['/currencies', orders.currency?.id, 'view']">{{ orders.currency?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.orders.logId">Log Id</span></dt>
+        <dd>
+          <div *ngIf="orders.logId">
+            <a [routerLink]="['/order-log', orders.logId?.id, 'view']">{{ orders.logId?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/orders', orders.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,364 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="appConfiguration">
+      <h2 data-cy="appConfigurationDetailsHeading">
+        <span jhiTranslate="jhipsterSampleApplicationApp.appConfiguration.detail.title">App Configuration</span>
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ appConfiguration.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.appConfiguration.defaultTimezone">Default Timezone</span></dt>
+        <dd>
+          <span>{{ appConfiguration.defaultTimezone }}</span>
+        </dd>
+        <dt>
+          <span jhiTranslate="jhipsterSampleApplicationApp.appConfiguration.ordersUnderMarketPercent">Orders Under Market Percent</span>
+        </dt>
+        <dd>
+          <span>{{ appConfiguration.ordersUnderMarketPercent }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.appConfiguration.ordersMinUsd">Orders Min Usd</span></dt>
+        <dd>
+          <span>{{ appConfiguration.ordersMinUsd }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.appConfiguration.bitcoinSendingFee">Bitcoin Sending Fee</span></dt>
+        <dd>
+          <span>{{ appConfiguration.bitcoinSendingFee }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.appConfiguration.frontendBaseurl">Frontend Baseurl</span></dt>
+        <dd>
+          <span>{{ appConfiguration.frontendBaseurl }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.appConfiguration.frontendDirroot">Frontend Dirroot</span></dt>
+        <dd>
+          <span>{{ appConfiguration.frontendDirroot }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.appConfiguration.fiatWithdrawFee">Fiat Withdraw Fee</span></dt>
+        <dd>
+          <span>{{ appConfiguration.fiatWithdrawFee }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.appConfiguration.apiDbDebug">Api Db Debug</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'jhipsterSampleApplicationApp.YesNo.' + appConfiguration.apiDbDebug }}">{{
+            appConfiguration.apiDbDebug
+          }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.appConfiguration.apiDirroot">Api Dirroot</span></dt>
+        <dd>
+          <span>{{ appConfiguration.apiDirroot }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.appConfiguration.supportEmail">Support Email</span></dt>
+        <dd>
+          <span>{{ appConfiguration.supportEmail }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.appConfiguration.emailSmtpHost">Email Smtp Host</span></dt>
+        <dd>
+          <span>{{ appConfiguration.emailSmtpHost }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.appConfiguration.emailSmtpPort">Email Smtp Port</span></dt>
+        <dd>
+          <span>{{ appConfiguration.emailSmtpPort }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.appConfiguration.emailSmtpSecurity">Email Smtp Security</span></dt>
+        <dd>
+          <span>{{ appConfiguration.emailSmtpSecurity }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.appConfiguration.emailSmtpUsername">Email Smtp Username</span></dt>
+        <dd>
+          <span>{{ appConfiguration.emailSmtpUsername }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.appConfiguration.emailSmtpPassword">Email Smtp Password</span></dt>
+        <dd>
+          <span>{{ appConfiguration.emailSmtpPassword }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.appConfiguration.emailSmtpSendFrom">Email Smtp Send From</span></dt>
+        <dd>
+          <span>{{ appConfiguration.emailSmtpSendFrom }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.appConfiguration.bitcoinUsername">Bitcoin Username</span></dt>
+        <dd>
+          <span>{{ appConfiguration.bitcoinUsername }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.appConfiguration.bitcoinAccountname">Bitcoin Accountname</span></dt>
+        <dd>
+          <span>{{ appConfiguration.bitcoinAccountname }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.appConfiguration.bitcoinPassphrase">Bitcoin Passphrase</span></dt>
+        <dd>
+          <span>{{ appConfiguration.bitcoinPassphrase }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.appConfiguration.bitcoinHost">Bitcoin Host</span></dt>
+        <dd>
+          <span>{{ appConfiguration.bitcoinHost }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.appConfiguration.bitcoinPort">Bitcoin Port</span></dt>
+        <dd>
+          <span>{{ appConfiguration.bitcoinPort }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.appConfiguration.bitcoinProtocol">Bitcoin Protocol</span></dt>
+        <dd>
+          <span>{{ appConfiguration.bitcoinProtocol }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.appConfiguration.authyApiKey">Authy Api Key</span></dt>
+        <dd>
+          <span>{{ appConfiguration.authyApiKey }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.appConfiguration.helpdeskKey">Helpdesk Key</span></dt>
+        <dd>
+          <span>{{ appConfiguration.helpdeskKey }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.appConfiguration.exchangeName">Exchange Name</span></dt>
+        <dd>
+          <span>{{ appConfiguration.exchangeName }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.appConfiguration.mcryptKey">Mcrypt Key</span></dt>
+        <dd>
+          <span>{{ appConfiguration.mcryptKey }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.appConfiguration.currencyConversionFee">Currency Conversion Fee</span></dt>
+        <dd>
+          <span>{{ appConfiguration.currencyConversionFee }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.appConfiguration.crossCurrencyTrades">Cross Currency Trades</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'jhipsterSampleApplicationApp.YesNo.' + appConfiguration.crossCurrencyTrades }}">{{
+            appConfiguration.crossCurrencyTrades
+          }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.appConfiguration.btcCurrencyId">Btc Currency Id</span></dt>
+        <dd>
+          <span>{{ appConfiguration.btcCurrencyId }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.appConfiguration.depositBitcoinDesc">Deposit Bitcoin Desc</span></dt>
+        <dd>
+          <span>{{ appConfiguration.depositBitcoinDesc }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.appConfiguration.defaultFeeScheduleId">Default Fee Schedule Id</span></dt>
+        <dd>
+          <span>{{ appConfiguration.defaultFeeScheduleId }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.appConfiguration.historyBuyId">History Buy Id</span></dt>
+        <dd>
+          <span>{{ appConfiguration.historyBuyId }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.appConfiguration.historyDepositId">History Deposit Id</span></dt>
+        <dd>
+          <span>{{ appConfiguration.historyDepositId }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.appConfiguration.historyLoginId">History Login Id</span></dt>
+        <dd>
+          <span>{{ appConfiguration.historyLoginId }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.appConfiguration.historySellId">History Sell Id</span></dt>
+        <dd>
+          <span>{{ appConfiguration.historySellId }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.appConfiguration.historyWithdrawId">History Withdraw Id</span></dt>
+        <dd>
+          <span>{{ appConfiguration.historyWithdrawId }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.appConfiguration.orderTypeAsk">Order Type Ask</span></dt>
+        <dd>
+          <span>{{ appConfiguration.orderTypeAsk }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.appConfiguration.requestAwaitingId">Request Awaiting Id</span></dt>
+        <dd>
+          <span>{{ appConfiguration.requestAwaitingId }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.appConfiguration.requestCancelledId">Request Cancelled Id</span></dt>
+        <dd>
+          <span>{{ appConfiguration.requestCancelledId }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.appConfiguration.requestCompletedId">Request Completed Id</span></dt>
+        <dd>
+          <span>{{ appConfiguration.requestCompletedId }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.appConfiguration.orderTypeBid">Order Type Bid</span></dt>
+        <dd>
+          <span>{{ appConfiguration.orderTypeBid }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.appConfiguration.requestDepositId">Request Deposit Id</span></dt>
+        <dd>
+          <span>{{ appConfiguration.requestDepositId }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.appConfiguration.requestPendingId">Request Pending Id</span></dt>
+        <dd>
+          <span>{{ appConfiguration.requestPendingId }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.appConfiguration.requestWithdrawalId">Request Withdrawal Id</span></dt>
+        <dd>
+          <span>{{ appConfiguration.requestWithdrawalId }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.appConfiguration.transactionsBuyId">Transactions Buy Id</span></dt>
+        <dd>
+          <span>{{ appConfiguration.transactionsBuyId }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.appConfiguration.transactionsSellId">Transactions Sell Id</span></dt>
+        <dd>
+          <span>{{ appConfiguration.transactionsSellId }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.appConfiguration.withdrawFiatDesc">Withdraw Fiat Desc</span></dt>
+        <dd>
+          <span>{{ appConfiguration.withdrawFiatDesc }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.appConfiguration.withdrawBtcDesc">Withdraw Btc Desc</span></dt>
+        <dd>
+          <span>{{ appConfiguration.withdrawBtcDesc }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.appConfiguration.formEmailFrom">Form Email From</span></dt>
+        <dd>
+          <span>{{ appConfiguration.formEmailFrom }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.appConfiguration.emailNotifyNewUsers">Email Notify New Users</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'jhipsterSampleApplicationApp.YesNo.' + appConfiguration.emailNotifyNewUsers }}">{{
+            appConfiguration.emailNotifyNewUsers
+          }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.appConfiguration.passRegex">Pass Regex</span></dt>
+        <dd>
+          <span>{{ appConfiguration.passRegex }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.appConfiguration.passMinChars">Pass Min Chars</span></dt>
+        <dd>
+          <span>{{ appConfiguration.passMinChars }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.appConfiguration.authDbDebug">Auth Db Debug</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'jhipsterSampleApplicationApp.YesNo.' + appConfiguration.authDbDebug }}">{{
+            appConfiguration.authDbDebug
+          }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.appConfiguration.bitcoinReserveMin">Bitcoin Reserve Min</span></dt>
+        <dd>
+          <span>{{ appConfiguration.bitcoinReserveMin }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.appConfiguration.bitcoinReserveRatio">Bitcoin Reserve Ratio</span></dt>
+        <dd>
+          <span>{{ appConfiguration.bitcoinReserveRatio }}</span>
+        </dd>
+        <dt>
+          <span jhiTranslate="jhipsterSampleApplicationApp.appConfiguration.bitcoinWarmWalletAddress">Bitcoin Warm Wallet Address</span>
+        </dt>
+        <dd>
+          <span>{{ appConfiguration.bitcoinWarmWalletAddress }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.appConfiguration.cronDbDebug">Cron Db Debug</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'jhipsterSampleApplicationApp.YesNo.' + appConfiguration.cronDbDebug }}">{{
+            appConfiguration.cronDbDebug
+          }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.appConfiguration.quandlApiKey">Quandl Api Key</span></dt>
+        <dd>
+          <span>{{ appConfiguration.quandlApiKey }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.appConfiguration.cronDirroot">Cron Dirroot</span></dt>
+        <dd>
+          <span>{{ appConfiguration.cronDirroot }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.appConfiguration.backstageDbDebug">Backstage Db Debug</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'jhipsterSampleApplicationApp.YesNo.' + appConfiguration.backstageDbDebug }}">{{
+            appConfiguration.backstageDbDebug
+          }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.appConfiguration.backstageDirroot">Backstage Dirroot</span></dt>
+        <dd>
+          <span>{{ appConfiguration.backstageDirroot }}</span>
+        </dd>
+        <dt>
+          <span jhiTranslate="jhipsterSampleApplicationApp.appConfiguration.emailNotifyFiatWithdrawals">Email Notify Fiat Withdrawals</span>
+        </dt>
+        <dd>
+          <span jhiTranslate="{{ 'jhipsterSampleApplicationApp.YesNo.' + appConfiguration.emailNotifyFiatWithdrawals }}">{{
+            appConfiguration.emailNotifyFiatWithdrawals
+          }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.appConfiguration.contactEmail">Contact Email</span></dt>
+        <dd>
+          <span>{{ appConfiguration.contactEmail }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.appConfiguration.cloudflareApiKey">Cloudflare Api Key</span></dt>
+        <dd>
+          <span>{{ appConfiguration.cloudflareApiKey }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.appConfiguration.googleRecaptchApiKey">Google Recaptch Api Key</span></dt>
+        <dd>
+          <span>{{ appConfiguration.googleRecaptchApiKey }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.appConfiguration.cloudflareBlacklist">Cloudflare Blacklist</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'jhipsterSampleApplicationApp.YesNo.' + appConfiguration.cloudflareBlacklist }}">{{
+            appConfiguration.cloudflareBlacklist
+          }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.appConfiguration.cloudflareEmail">Cloudflare Email</span></dt>
+        <dd>
+          <span>{{ appConfiguration.cloudflareEmail }}</span>
+        </dd>
+        <dt>
+          <span jhiTranslate="jhipsterSampleApplicationApp.appConfiguration.googleRecaptchApiSecret">Google Recaptch Api Secret</span>
+        </dt>
+        <dd>
+          <span>{{ appConfiguration.googleRecaptchApiSecret }}</span>
+        </dd>
+        <dt>
+          <span jhiTranslate="jhipsterSampleApplicationApp.appConfiguration.cloudflareBlacklistAttempts"
+            >Cloudflare Blacklist Attempts</span
+          >
+        </dt>
+        <dd>
+          <span>{{ appConfiguration.cloudflareBlacklistAttempts }}</span>
+        </dd>
+        <dt>
+          <span jhiTranslate="jhipsterSampleApplicationApp.appConfiguration.cloudflareBlacklistTimeframe"
+            >Cloudflare Blacklist Timeframe</span
+          >
+        </dt>
+        <dd>
+          <span>{{ appConfiguration.cloudflareBlacklistTimeframe }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.appConfiguration.cryptoCapitalPk">Crypto Capital Pk</span></dt>
+        <dd>
+          <span>{{ appConfiguration.cryptoCapitalPk }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.appConfiguration.depositFiatDesc">Deposit Fiat Desc</span></dt>
+        <dd>
+          <span>{{ appConfiguration.depositFiatDesc }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.appConfiguration.emailNotifyFiatFailed">Email Notify Fiat Failed</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'jhipsterSampleApplicationApp.YesNo.' + appConfiguration.emailNotifyFiatFailed }}">{{
+            appConfiguration.emailNotifyFiatFailed
+          }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.appConfiguration.tradingStatus">Trading Status</span></dt>
+        <dd>
+          <span>{{ appConfiguration.tradingStatus }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.appConfiguration.withdrawalsStatus">Withdrawals Status</span></dt>
+        <dd>
+          <span>{{ appConfiguration.withdrawalsStatus }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/app-configuration', appConfiguration.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

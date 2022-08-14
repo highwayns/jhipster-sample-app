@@ -1,0 +1,159 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-admin-cron-heading"
+        data-cy="AdminCronCreateUpdateHeading"
+        jhiTranslate="jhipsterSampleApplicationApp.adminCron.home.createOrEditLabel"
+      >
+        Create or edit a Admin Cron
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.adminCron.day" for="field_day">Day</label>
+          <input type="text" class="form-control" name="day" id="field_day" data-cy="day" formControlName="day" />
+          <div *ngIf="editForm.get('day')!.invalid && (editForm.get('day')!.dirty || editForm.get('day')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('day')?.errors?.required" jhiTranslate="entity.validation.required">
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('day')?.errors?.maxlength"
+              jhiTranslate="entity.validation.maxlength"
+              [translateValues]="{ max: 30 }"
+            >
+              This field cannot be longer than 30 characters.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.adminCron.month" for="field_month">Month</label>
+          <input type="text" class="form-control" name="month" id="field_month" data-cy="month" formControlName="month" />
+          <div *ngIf="editForm.get('month')!.invalid && (editForm.get('month')!.dirty || editForm.get('month')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('month')?.errors?.required" jhiTranslate="entity.validation.required">
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('month')?.errors?.maxlength"
+              jhiTranslate="entity.validation.maxlength"
+              [translateValues]="{ max: 30 }"
+            >
+              This field cannot be longer than 30 characters.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.adminCron.year" for="field_year">Year</label>
+          <input type="text" class="form-control" name="year" id="field_year" data-cy="year" formControlName="year" />
+          <div *ngIf="editForm.get('year')!.invalid && (editForm.get('year')!.dirty || editForm.get('year')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('year')?.errors?.required" jhiTranslate="entity.validation.required">
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('year')?.errors?.maxlength"
+              jhiTranslate="entity.validation.maxlength"
+              [translateValues]="{ max: 30 }"
+            >
+              This field cannot be longer than 30 characters.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.adminCron.sendCondition" for="field_sendCondition"
+            >Send Condition</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="sendCondition"
+            id="field_sendCondition"
+            data-cy="sendCondition"
+            formControlName="sendCondition"
+          />
+          <div
+            *ngIf="
+              editForm.get('sendCondition')!.invalid && (editForm.get('sendCondition')!.dirty || editForm.get('sendCondition')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('sendCondition')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('sendCondition')?.errors?.maxlength"
+              jhiTranslate="entity.validation.maxlength"
+              [translateValues]="{ max: 255 }"
+            >
+              This field cannot be longer than 255 characters.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.adminCron.controlId" for="field_controlId">Control Id</label>
+          <select class="form-control" id="field_controlId" data-cy="controlId" name="controlId" formControlName="controlId">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                adminControlsOption.id === editForm.get('controlId')!.value?.id ? editForm.get('controlId')!.value : adminControlsOption
+              "
+              *ngFor="let adminControlsOption of adminControlsSharedCollection; trackBy: trackAdminControlsById"
+            >
+              {{ adminControlsOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipsterSampleApplicationApp.adminCron.methodId" for="field_methodId">Method Id</label>
+          <select class="form-control" id="field_methodId" data-cy="methodId" name="methodId" formControlName="methodId">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                adminControlsMethodsOption.id === editForm.get('methodId')!.value?.id
+                  ? editForm.get('methodId')!.value
+                  : adminControlsMethodsOption
+              "
+              *ngFor="let adminControlsMethodsOption of adminControlsMethodsSharedCollection; trackBy: trackAdminControlsMethodsById"
+            >
+              {{ adminControlsMethodsOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd">
+    <!--
+        Added the constraints for entity SiteUsersBalances.
+    -->
+    <changeSet id="20220814090923-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="site_user_id"
+                                 baseTableName="site_users_balances"
+                                 constraintName="fk_site_users_balances__site_user_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="site_users"/>
+
+        <addForeignKeyConstraint baseColumnNames="currency_id"
+                                 baseTableName="site_users_balances"
+                                 constraintName="fk_site_users_balances__currency_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="currencies"/>
+    </changeSet>
+</databaseChangeLog>
