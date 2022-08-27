@@ -71,7 +71,7 @@ public class userRegisterController {
 
 	@RequestMapping(value = "/user/upload_user_certificate", method = RequestMethod.GET)
 	public String uploadUserCertificate() {
-		return "user/update_infor/index";
+		return "user/upload_user_certificate/index";
 	}
 
 	@RequestMapping(value = "/startUserRegister", method = RequestMethod.POST)

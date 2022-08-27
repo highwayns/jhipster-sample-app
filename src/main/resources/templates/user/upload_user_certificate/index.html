@@ -123,7 +123,6 @@
 					<ul class="dropdown-menu" style="display: block;">
 						<li><a href="/user/input_infor">input infor</a></li>
 						<li><a href="/user/update_infor">update infor</a></li>
-						<li><a href="/user/upload_user_certificate">upload user certificate</a></li>
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle">
 								<i class="fa fa-bars"></i>
@@ -242,46 +241,30 @@
 								<div class="no-move"></div>
 							</div>
 							<div class="box-content">
-								<form role="form" action="" method="post">
-									<div class="form-group">
-										<label>applicator</label>
-										<input class="form-control" id="userid" readonly="readonly"/>
-									</div>
-									<div class="form-group">
-										<label>applytime</label>
-										<input class="form-control" id="applytime" readonly="readonly"/>
-									</div>
-									<div class="form-group">
-										<label>user name</label>
-										<input class="form-control" id="username" readonly="readonly"/>
-									</div>
-									<div class="form-group">
-										<label>password</label>
-										<input class="form-control" id="password" readonly="readonly"/>
-									</div>
-									<div class="form-group">
-										<label>birthday</label>
-										<input class="form-control" id="birthday" readonly="readonly"/>
-									</div>
-									<div class="form-group">
-										<label>tel</label>
-										<input class="form-control" id="tel" readonly="readonly"/>
-									</div>    
-									<div class="form-group">
-									<label>mail</label>
-										<input class="form-control" id="mail" readonly="readonly"/>
-									</div>    
-									<!-- <div class="form-group">
-										<label>application</label>
-										<div class="controls">
-											<select name="managerapprove">
-												<option value="true">agree</option>
-												<option value="false">refuse</option>
-											</select>
+								<div class="box-content">
+									<form id="upload" action="/importPhoto" method="post" enctype="multipart/form-data">
+										<div class="form-group">
+											<label for="fileupload">importPhoto</label> 
+											<input type="file" name="uploadfile" class="form-control" id="fileupload"/>
+											<input type="hidden" name="userId" id="userId"/>
 										</div>
-									</div>  -->
-									<button id="upload" type="button" class="btn btn-default">upload</button>
-								</form>
+										<button type="submit" class="btn btn-primary">upload</button>
+									</form>
+									<img id="imgphoto" style="display: block;-webkit-user-select: none;margin: auto;background-color: hsl(0, 0%, 90%);transition: background-color 300ms;" src="/showphoto?userId=17">
+								</div>
+							</div>
+							<div class="box-content">
+								<div class="box-content">
+									<form id="upload" action="/importIDCard" method="post" enctype="multipart/form-data">
+										<div class="form-group">
+											<label for="fileupload">importIDCard</label> 
+											<input type="file" name="uploadfile" class="form-control" id="fileupload"/>
+											<input type="hidden" name="userId2" id="userId2"/>
+										</div>
+										<button type="submit" class="btn btn-primary">upload</button>
+									</form>
+								    <img id="imgidCard" style="display: block;-webkit-user-select: none;margin: auto;background-color: hsl(0, 0%, 90%);transition: background-color 300ms;" src="/showIDCardphoto?userId=17">
+								</div>
 							</div>
 						</div>
 					</div>

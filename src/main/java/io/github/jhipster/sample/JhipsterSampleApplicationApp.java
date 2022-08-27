@@ -34,7 +34,7 @@ import tech.jhipster.config.JHipsterConstants;
 @MapperScan("com.activiti6.mapper")
 @EnableScheduling
 @EnableOpenApi
-@ComponentScan(basePackages = { "io.swagger", "io.swagger.api", "io.swagger.configuration" })
+@ComponentScan(basePackages = { "com.activiti6.controller","com.activiti6.service","io.swagger", "io.swagger.api", "io.swagger.configuration" })
 public class JhipsterSampleApplicationApp {
 
     private static final Logger log = LoggerFactory.getLogger(JhipsterSampleApplicationApp.class);

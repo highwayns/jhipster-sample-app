@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.activiti6.mapper.UserPhotoMapper">
+	<resultMap id="BaseResultMap" type="com.activiti6.po.UserPhoto">
+	    <id column="id" jdbcType="INTEGER" property="id" />
+		<result column="photo" jdbcType="VARCHAR" property="photo" />
+	    <result column="IDCardphoto" jdbcType="VARCHAR" property="IDCardphoto" />
+	</resultMap>
+	<select id="getUserPhoto" resultType="com.activiti6.po.UserPhoto" parameterType="int">
+		select * from user_photo_info where id=#{id} 
+	</select>
+	
+	<insert id="save" useGeneratedKeys="false" keyProperty="id" parameterType="com.activiti6.po.UserPhoto">
+	  insert into user_photo_info (id,photo,IDCardphoto)
+	  values (#{id},#{photo},#{IDCardphoto})
+	</insert>
+	
+	<update id="updateByPrimaryKey" parameterType="com.activiti6.po.UserPhoto">
+		 update user_photo_info
+	    <set>
+	      <if test="photo != null">
+	        photo = #{photo,jdbcType=VARCHAR},
+	      </if>
+	      <if test="IDCardphoto != null">
+	        IDCardphoto = #{IDCardphoto,jdbcType=VARCHAR},
+	      </if>
+
+	    </set>
+	    where id = #{id,jdbcType=INTEGER}
+	</update>
+</mapper>
