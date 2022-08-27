@@ -1,6 +1,8 @@
 package io.github.jhipster.sample;
 
 import io.github.jhipster.sample.config.ApplicationProperties;
+import springfox.documentation.oas.annotations.EnableOpenApi;
+
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.util.Arrays;
@@ -10,13 +12,17 @@ import javax.annotation.PostConstruct;
 
 import org.activiti.spring.boot.SecurityAutoConfiguration;
 import org.apache.commons.lang3.StringUtils;
+import org.mybatis.spring.annotation.MapperScan;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.liquibase.LiquibaseProperties;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.core.env.Environment;
+import org.springframework.scheduling.annotation.EnableScheduling;
+
 import tech.jhipster.config.DefaultProfileUtil;
 import tech.jhipster.config.JHipsterConstants;
 
@@ -25,7 +31,10 @@ import tech.jhipster.config.JHipsterConstants;
     SecurityAutoConfiguration.class
 })
 @EnableConfigurationProperties({ LiquibaseProperties.class, ApplicationProperties.class })
-
+@MapperScan("com.activiti6.mapper")
+@EnableScheduling
+@EnableOpenApi
+@ComponentScan(basePackages = { "io.swagger", "io.swagger.api", "io.swagger.configuration" })
 public class JhipsterSampleApplicationApp {
 
     private static final Logger log = LoggerFactory.getLogger(JhipsterSampleApplicationApp.class);

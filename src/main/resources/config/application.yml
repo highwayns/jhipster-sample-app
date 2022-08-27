@@ -98,6 +98,7 @@ spring:
     check-process-definitions: false
     process-definition-location-prefix: /processes/
     database-schema-update: true
+    history-level: full
   profiles:
     # The commented value for `active` can be replaced with valid Spring profiles to load.
     # Otherwise, it will be filled in by maven when building the JAR file
@@ -171,8 +172,49 @@ spring:
   #   password: workflow
   #   username: workflow
   #   url: jdbc:mysql://localhost:3306/workflow-engine?useUnicode=yes&characterEncoding=UTF-8&useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true&nullCatalogMeansCurrent=true
+  #freemarker template
+  freemarker:
+    suffix: .html
+    cache: false
+    charset: UTF-8
+    contentType: text/html
+    requestContextAttribute: ctx
+    templateEncoding: UTF-8
+    templateLoaderPath: classpath:/templates/
+    settings:
+      defaultEncoding: UTF-8
+      url_escaping_charset: UTF-8
+      locale: zh_CN
   liquibase:
     enabled: false
+  mail:
+    user: info@park.highwayns.com
+    password: $ApQv2m0
+    host: smtp11.gmoserver.jp
+    port: 587
+    from: info@park.highwayns.com
+    mime:
+      address:
+        strict: true
+    store:
+      protocol: imap
+    transport:
+      protocol: smtp
+    debug: false
+
+  graphql:
+    servlet:
+      enabled: true
+      mapping: /graphql
+      corsEnabled: true
+
+  keycloak:
+    enabled: true
+    auth-server-url: http://localhost:8088/auth
+    realm: myrealm
+    resource: client1
+    public-client: true
+
 server:
   servlet:
     session:
@@ -236,6 +278,13 @@ log:
     logger:
       level: info
     module: activiti-workflow
+
+#mybatis
+mybatis:
+  config-location: classpath:mybatis-config.xml
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.activiti6.po
+
 mybatis-plus:
   global-config:
     logic-not-delete-value: 0
@@ -245,11 +294,3 @@ mybatis-plus:
   mapper-locations: classpath*:mapper/*Mapper.xml
   configuration:
     map-underscore-to-camel-case: true
-logging:
-  level:
-    org:
-      activiti:
-        engine:
-          impl:
-            persistence:
-              entity: trace

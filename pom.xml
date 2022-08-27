@@ -97,6 +97,7 @@
         <mysql.version>8.0.29</mysql.version>
         <validation.version>2.0.1.Final</validation.version>
 		<apache.xmlgraphics.version>1.7</apache.xmlgraphics.version>
+        <keycloak.version>9.0.3</keycloak.version>
     </properties>
 
     <dependencyManagement>
@@ -109,6 +110,13 @@
                 <scope>import</scope>
             </dependency>
             <!-- jhipster-needle-maven-add-dependency-management -->
+            <dependency>
+                <groupId>org.keycloak.bom</groupId>
+                <artifactId>keycloak-adapter-bom</artifactId>
+                <version>${keycloak.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
@@ -189,6 +197,24 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-tomcat</artifactId>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/com.graphql-java/graphql-java -->
+        <dependency>
+            <groupId>com.graphql-java</groupId>
+            <artifactId>graphql-java</artifactId>
+            <version>11.0</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/com.graphql-java/graphql-spring-boot-starter -->
+        <dependency>
+            <groupId>com.graphql-java</groupId>
+            <artifactId>graphql-spring-boot-starter</artifactId>
+            <version>5.0.2</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/com.graphql-java/graphql-java-tools -->
+        <dependency>
+            <groupId>com.graphql-java</groupId>
+            <artifactId>graphql-java-tools</artifactId>
+            <version>5.2.4</version>
         </dependency>
         <!--SpringFox dependencies -->
         <dependency>
@@ -462,6 +488,14 @@
             <groupId>io.jsonwebtoken</groupId>
             <artifactId>jjwt-jackson</artifactId>
             <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.keycloak</groupId>
+            <artifactId>keycloak-spring-boot-starter</artifactId>
         </dependency>
         <!-- Spring Cloud -->
         <dependency>
